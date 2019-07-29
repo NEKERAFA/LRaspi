@@ -52,4 +52,5 @@ Mkfile.old
 dkms.conf
 
 # Visual Studio Core
-.vscore
+.vscode/
+build/

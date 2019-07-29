@@ -20,5 +20,5 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * lua-raspi.cc - NEKERAFA - 25th july 2019
+ * lraspi.h - NEKERAFA - 26th july 2019
  */
