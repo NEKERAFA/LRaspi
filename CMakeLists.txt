@@ -9,6 +9,7 @@ find_package(Lua REQUIRED)
 
 set(LRASPI_SRC_LUA_MODULES
         src/lraspi/lscreen.cc
+        src/lraspi/limage.cc
     )
 
 set(LRASPI_SRC_COMMON
@@ -21,6 +22,7 @@ set(LRASPI_SRC_SCREEN_MODULE
 
 set(LRASPI_SRC_IMAGE_MODULE
     src/modules/image/texture.cc
+    src/modules/image/image.cc
 )
 
 set(LRASPI_SRC

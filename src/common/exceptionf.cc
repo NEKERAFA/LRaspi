@@ -1,7 +1,7 @@
-/**
- * common/exception.cc - NEKERAFA - 28th july 2019
- * 
- * See Copyright Notice in lraspi.h 
+/*
+    common/exception.cc - NEKERAFA - 28th july 2019
+
+    See Copyright Notice in lraspi.h 
  */
 
 #include <vector>
@@ -17,6 +17,9 @@ namespace common
 
 exceptionf::exceptionf(const char* fmt, ...)
 {
+    /*
+        See https://en.cppreference.com/w/cpp/io/c/vfprintf
+     */
     va_list args1;
     va_list args2;
     size_t size_buffer;

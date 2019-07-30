@@ -7,7 +7,9 @@
 #include <iostream>
 
 #include <lua.hpp>
-#include <lraspi/lscreen.h>
+
+#include "lraspi/lscreen.h"
+#include "lraspi/limage.h"
 
 static void print_traceback (lua_State* L) 
 {
@@ -30,6 +32,7 @@ int main(int argc, char* const argv[])
     // luaL_openlibs(L);
     luaL_requiref(L, "", luaopen_base, 1);
     luaL_requiref(L, "screen", luaopen_screen, 1);
+    luaL_requiref(L, "image", luaopen_image, 1);
 
     lua_getglobal(L, "screen");
     lua_getfield(L, -1, "init");

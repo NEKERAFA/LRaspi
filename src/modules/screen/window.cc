@@ -1,8 +1,8 @@
-/**
- * modules/window/window.cc - NEKERAFA - 26th july 2019
- * 
- * See Copyright Notice in lraspi.h 
- */
+/*
+    modules/window/window.cc - NEKERAFA - 26th july 2019
+
+    See Copyright Notice in lraspi.h 
+*/
 
 #include <iostream>
 
@@ -48,6 +48,7 @@ void window::init()
         throw common::exceptionf("Could not create window (%s)", SDL_GetError());
     }
 
+    _loaded = true;
     _showed = true;
 }
 
@@ -77,7 +78,13 @@ void window::update()
     SDL_RenderPresent(_sdl_renderer);
 }
 
-SDL_Renderer* window::getContext() const
+void window::blit(image::texture* texture, int x, int y)
+{
+    SDL_Rect render_rect = {x, y, (int) texture->getWidth(), (int) texture->getHeight()};
+    SDL_RenderCopy(_sdl_renderer, texture->getSdlTexture(), NULL, &render_rect);
+}
+
+SDL_Renderer* window::getRenderer()
 {
     return _sdl_renderer;
 }
