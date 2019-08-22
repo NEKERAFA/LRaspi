@@ -22,3 +22,29 @@
  * 
  * lraspi.h - NEKERAFA - 26th july 2019
  */
+
+#ifndef LRASPI_H
+#define LRASPI_H
+
+#include <lua.hpp>
+
+namespace lraspi
+{
+
+/**
+ * @brief Push the version number in the lua stack
+ * 
+ * @return The version as a string
+ */
+const char* version(lua_State* L);
+
+/**
+ * @brief Loads all libraries Lua Raspi
+ * 
+ * @param L An lua_State object
+ */
+void openlibs(lua_State* L);
+
+} // namespace lraspi
+
+#endif // LRASPI_H

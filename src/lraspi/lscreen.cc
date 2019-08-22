@@ -4,97 +4,95 @@
     See Copyright Notice in lraspi.h 
  */
 
-#include <exception>
+#include <lua.hpp>
 
-#include <SDL2/SDL.h>
-
-#include "lraspi/lscreen.h"
-#include "modules/screen/window.h"
+#include "common/exception.h"
+#include "modules/color/color.h"
 #include "modules/image/texture.h"
+#include "modules/screen/screen_mod.h"
 
-static lraspi::screen::window _window;
-
-SDL_Renderer* lraspi_screen_getContext() {
-    return _window.getRenderer();
-}
+#include "lraspi/lauxlib.h"
+#include "lraspi/lscreen.h"
 
 extern "C" {
 
-    static int lraspi_screen_init(lua_State* L)
+static int lraspi_screen_init(lua_State* L)
+{
+    try {
+        lraspi::screen::init();
+    }
+    catch (lraspi::Exception& e)
     {
-        try {
-            _window.init();
-        }
-        catch (std::exception& e)
-        {
-            luaL_error(L, e.what());
-        }
-
-        return 0;
+        return luaL_error(L, e.what());
     }
 
-    static int lraspi_screen_close(lua_State* L)
-    {
-        try {
-            _window.close();
-        }
-        catch (std::exception &e)
-        {
-            luaL_error(L, e.what());
-        }
+    return 1;
+}
 
-        return 0;
+static int lraspi_screen_close(lua_State* L)
+{
+    try {
+        lraspi::screen::close();
+    }
+    catch (lraspi::Exception& e)
+    {
+        return luaL_error(L, e.what());
     }
 
-    static int lraspi_screen_clear(lua_State* L)
-    {
-        _window.clear();
-        return 0;
-    }
+    return 0;
+}
 
-    static int lraspi_screen_update(lua_State* L)
-    {
-        _window.update();
-        return 0;
-    }
+static int lraspi_screen_clear(lua_State* L)
+{
+    lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 1));
+    lraspi::screen::clear(color);
+    return 0;
+}
 
-    static int lraspi_screen_blit(lua_State* L)
-    {
-        lraspi::image::texture* texture = *static_cast<lraspi::image::texture**>(luaL_checkudata(L, 1, "tex_meta"));
-        int x = luaL_checknumber(L, 2);
-        int y = luaL_checknumber(L, 3);
+static int lraspi_screen_update(lua_State* L)
+{
+    bool quit = lraspi::screen::update();
+    lua_pushboolean(L, quit);
+    return 1;
+}
 
-        _window.blit(texture, x, y);
-    }
+static int lraspi_screen_blit(lua_State* L)
+{
+    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
+    int x = luaL_checkinteger(L, 2);
+    int y = luaL_checkinteger(L, 3);
 
-    static int lraspi_screen_getWidth(lua_State* L)
-    {
-        lua_pushinteger(L, _window.getWidth());
-        return 1;
-    }
+    lraspi::screen::blit(texture, x, y);
+}
 
-    static int lraspi_screen_getHeight(lua_State* L)
-    {
-        lua_pushinteger(L, _window.getHeight());
-        return 1;
-    }
+static int lraspi_screen_get_width(lua_State* L)
+{
+    lua_pushinteger(L, lraspi::screen::getWidth());
+    return 1;
+}
 
-    static const luaL_Reg lraspi_screen[] =
-    {
-        {"init",      lraspi_screen_init},
-        {"close",     lraspi_screen_close},
-        {"clear",     lraspi_screen_clear},
-        {"update",    lraspi_screen_update},
-        {"blit",      lraspi_screen_blit},
-        {"getWidth",  lraspi_screen_getWidth},
-        {"getHeight", lraspi_screen_getHeight},
-        {0, 0}
-    };
+static int lraspi_screen_get_height(lua_State* L)
+{
+    lua_pushinteger(L, lraspi::screen::getHeight());
+    return 1;
+}
 
-    int luaopen_screen(lua_State* L)
-    {
-        luaL_newlib(L, lraspi_screen);
-        return 1;
-    }
+static const luaL_Reg lraspi_screen[] =
+{
+    {"init",      lraspi_screen_init},
+    {"close",     lraspi_screen_close},
+    {"clear",     lraspi_screen_clear},
+    {"update",    lraspi_screen_update},
+    {"blit",      lraspi_screen_blit},
+    {"getWidth",  lraspi_screen_get_width},
+    {"getHeight", lraspi_screen_get_height},
+    {0, 0}
+};
+
+int luaopen_screen(lua_State* L)
+{
+    luaL_newlib(L, lraspi_screen);
+    return 1;
+}
 
 }

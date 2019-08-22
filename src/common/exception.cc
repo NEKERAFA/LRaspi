@@ -8,14 +8,12 @@
 #include <cstdio>
 #include <cstdarg>
 
-#include "common/exceptionf.h"
+#include "common/exception.h"
 
 namespace lraspi
 {
-namespace common
-{
 
-exceptionf::exceptionf(const char* fmt, ...)
+Exception::Exception(const char* fmt, ...)
 {
     /*
         See https://en.cppreference.com/w/cpp/io/c/vfprintf
@@ -37,5 +35,4 @@ exceptionf::exceptionf(const char* fmt, ...)
     delete[] buffer;
 }
 
-} // namespace common
 } // namespace lraspi

@@ -8,9 +8,41 @@
 
 #include <lua.hpp>
 
-#include "lraspi/lscreen.h"
-#include "lraspi/limage.h"
+#include "lraspi.h"
 
+int main(int argc, const char* argv[])
+{
+    // Create new virtual machine
+    lua_State *L = luaL_newstate();
+
+    // Load all libraryes
+    luaL_openlibs(L);
+    lraspi::openlibs(L);
+
+    // Open the file
+    int state = luaL_dofile(L, "script.lua");
+    if (state) {
+        std::cerr << "error: " << lua_tostring(L, -1) << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    // Close image module
+    lua_getglobal(L, "image");
+    lua_getfield(L, -1, "close");
+    lua_remove(L, -2);
+    lua_call(L, 0, 0);
+
+    // Close screen module
+    lua_getglobal(L, "screen");
+    lua_getfield(L, -1, "close");
+    lua_remove(L, -2); 
+    lua_call(L, 0, 0);
+
+    return EXIT_SUCCESS;
+}
+
+
+/*
 static void print_traceback (lua_State* L) 
 {
     lua_getglobal(L, "debug");
@@ -63,3 +95,4 @@ int main(int argc, char* const argv[])
 
     return EXIT_SUCCESS;
 }
+*/

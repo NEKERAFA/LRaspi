@@ -12,14 +12,12 @@
 
 namespace lraspi
 {
-namespace common
-{
 
 /**
  * @brief Represents a exception with a printf format error
  * 
  */
-class exceptionf : public std::exception
+class Exception : public std::exception
 {
 private:
     std::string _message;
@@ -31,7 +29,7 @@ public:
      * 
      * @param fmt The format string (see printf).
      */
-    exceptionf(const char* fmt, ...);
+    Exception(const char* fmt, ...);
 
     /**
      * @brief Returns a string containing reason for the exception.
@@ -44,7 +42,6 @@ public:
     }
 };
 
-} // namespace common
 } // namespace lraspi
 
 #endif // LRASPI_COMMON_EXCEPTION_H

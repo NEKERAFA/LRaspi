@@ -8,28 +8,40 @@ find_package(SDL2_image REQUIRED)
 find_package(Lua REQUIRED)
 
 set(LRASPI_SRC_LUA_MODULES
+        src/lraspi/lauxlib.cc
         src/lraspi/lscreen.cc
+        src/lraspi/lcolor.cc
         src/lraspi/limage.cc
+        src/modules/lraspi/lraspi.cc
     )
 
 set(LRASPI_SRC_COMMON
-        src/common/exceptionf.cc
+        src/common/exception.cc
+        src/common/type.cc
+        src/common/object.cc
     )
 
 set(LRASPI_SRC_SCREEN_MODULE
-        src/modules/screen/window.cc
+        src/modules/screen/screen_mod.cc
     )
 
 set(LRASPI_SRC_IMAGE_MODULE
     src/modules/image/texture.cc
     src/modules/image/image.cc
+    src/modules/image/image_mod.cc
+)
+
+set(LRASPI_SRC_COLOR_MODULE
+    src/modules/color/color.cc
+    src/modules/color/color_mod.cc
 )
 
 set(LRASPI_SRC
-        ${LRASPI_SRC_LUA_MODULES}
         ${LRASPI_SRC_COMMON}
-        ${LRASPI_SRC_SCREEN_MODULE}
+        ${LRASPI_SRC_LUA_MODULES}
+        ${LRASPI_SRC_COLOR_MODULE}
         ${LRASPI_SRC_IMAGE_MODULE}
+        ${LRASPI_SRC_SCREEN_MODULE}
     )
 
 include_directories(${PROJECT_SOURCE_DIR}/src/include)

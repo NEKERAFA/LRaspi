@@ -4,42 +4,39 @@
     See Copyright Notice in lraspi.h 
  */
 
-#ifndef LRASPI_WRAPPER_IMAGE_H
-#define LRASPI_WRAPPER_IMAGE_H
-
-#include <string>
+#ifndef LRASPI_OBJECT_IMAGE_H
+#define LRASPI_OBJECT_IMAGE_H
 
 #include <SDL2/SDL.h>
 
 #include "modules/image/texture.h"
 
+#define LRASPI_IMAGE_NAME "image"
+
 namespace lraspi
-{
-namespace image
 {
 
 /**
  * @brief Represents a wrapper between SDL Image library.
  * 
  */
-class image : public texture
+class Image : public Texture
 {
 private:
-    std::string   _path;
-    SDL_Renderer* _sdl_renderer;
+    const char* _path;
 
 public:
+    static Type type;
+
     /**
      * @brief Construct a new image object
-     * 
-     * @param path to the image
      */
-    image(SDL_Renderer* sdl_renderer);
+    Image();
 
     /**
      * @brief Destroy the image object
      */
-    ~image();
+    ~Image();
 
     /**
      * @brief Load a image file from disk
@@ -48,17 +45,23 @@ public:
      * 
      * @return true if the image was loaded.
      */
-    bool load(std::string path);
+    bool load(const char* path);
 
     /**
-     * @brief Get the path of the image
+     * @brief Check if an object is an instance of this type
      * 
-     * @return the path of the image 
+     * @return true if the object is an instance of
      */
-    std::string getPath();
+    bool isInstanceOf(Type& other);
+    
+    /**
+     * @brief Get the name of the object type
+     * 
+     * @return The name of the type
+     */
+    const char* name();
 };
 
-} // namespace image
 } // namespace lraspi
 
-#endif // LRASPI_WRAPPER_IMAGE_H
+#endif // LRASPI_OBJECT_IMAGE_H
