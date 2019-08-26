@@ -23,7 +23,7 @@ void init()
 {
     if (_loaded)
     {
-        throw Exception("Window submodule already loaded");
+        throw Exception("Image submodule already loaded");
     }
 
     int _img_flags = IMG_INIT_JPG | IMG_INIT_PNG;

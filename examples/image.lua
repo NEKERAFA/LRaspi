@@ -1,3 +1,5 @@
+--- Image Example
+
 -- Loads an image
 local img = image.load("res/logo.png")
 -- Sets the blend mode

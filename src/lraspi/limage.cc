@@ -18,14 +18,15 @@
 #include "lraspi/limage.h"
 
 /***
- * This module defines the image functions
+ * Image reading and manipulation and 2D accelerated rendering
  * @module Image
  */
 extern "C"
 {
 
 /***
- * Initializes the image subsystem. The interpreter calls this function internally, so should not be used explicitly.
+ * Initializes the image subsystem.<br>
+ * The interpreter calls this function internally, so you should not call explicitly.
  * @function image.init
  */
 static int lraspi_image_init(lua_State* L)
@@ -33,7 +34,7 @@ static int lraspi_image_init(lua_State* L)
     try {
         lraspi::image::init();
     }
-    catch (lraspi::Exception& e)
+    catch (lraspi::Exception e)
     {
         return luaL_error(L, e.what());
     }
@@ -50,9 +51,10 @@ static int lraspi_image_init(lua_State* L)
  */ 
 static int lraspi_image_new(lua_State* L)
 {
+    lua_Integer width = luaL_checkinteger(L, 1);
+    lua_Integer height = luaL_checkinteger(L, 2);
+
     try {
-        lua_Integer width = luaL_checkinteger(L, 1);
-        lua_Integer height = luaL_checkinteger(L, 2);
         lraspi::Texture* texture = lraspi::image::createBlankTexture(width, height);
         lraspi::lua::push(L, lraspi::Texture::type, texture);
     }
@@ -72,8 +74,9 @@ static int lraspi_image_new(lua_State* L)
  */ 
 static int lraspi_image_load(lua_State* L)
 {
+    const char* path = luaL_checkstring(L, 1);
+
     try {
-        const char* path = luaL_checkstring(L, 1);
         lraspi::Image* image = lraspi::image::loadImage(path);
         lraspi::lua::push(L, lraspi::Image::type, image);
     }
@@ -114,42 +117,49 @@ static int lraspi_image_tint(lua_State* L)
 }
 
 /***
- * Changes the blend mode of the textue
+ * Changes the blend mode of the texture
  * @function image.blendmode
  * @tparam texture texture A texture object
- * @string mode The blend mode. "add" for additive blending, "mod" for color modulation, "blend" for alpha blending and "none" for no blending.
+ * @string mode The blend mode as the following values:
+ * <ul>
+ * <li><span class='parameter'>add</span> for additive blending</li>
+ * <li><span class='parameter'>mod</span> for color modulation</li>
+ * <li><span class='parameter'>blend</span> for alpha blending</li>
+ * <li><span class='parameter'>none</span> for no blending</li>
+ * </ul>
  */
 static int lraspi_image_blend_mode(lua_State* L)
 {
     lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
     const char* mode = luaL_checkstring(L, 2);
 
-    if (!std::strcmp(mode, "add")) {
+    if (std::strcmp(mode, "add") == 0) {
         texture->setSdlBlendMode(SDL_BLENDMODE_ADD);
     }
-    else if (!std::strcmp(mode, "mod"))
+    else if (std::strcmp(mode, "mod") == 0)
     {
         texture->setSdlBlendMode(SDL_BLENDMODE_MOD);
     }
-    else if (!std::strcmp(mode, "blend"))
+    else if (std::strcmp(mode, "blend") == 0)
     {
         texture->setSdlBlendMode(SDL_BLENDMODE_BLEND);
     }
-    else if (!std::strcmp(mode, "none"))
+    else if (std::strcmp(mode, "none") == 0)
     {
         texture->setSdlBlendMode(SDL_BLENDMODE_NONE);
     }
     else
     {
         const char* msg = lua_pushfstring(L, "must be `add', `mod', `blend' or `none'");
-        luaL_argerror(L, 2, msg);
+        return luaL_argerror(L, 2, msg);
     }
 
     return 0;
 }
 
 /***
- * Changes the alpha value of the texture. The texture must have an blend mode established.
+ * Changes the alpha value of the texture. <br>
+ * The texture must have an blend mode established
  * @function image.alpha
  * @tparam texture texture A texture object
  * @int alpha The alpha value
@@ -273,9 +283,9 @@ static int lraspi_image_rotate(lua_State* L)
  */
 static int lraspi_image_center(lua_State* L)
 {
-    int ret, argc = 0;
-    
-    argc = lua_gettop(L);
+    int ret = 0;
+    int argc = lua_gettop(L);
+
     lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
     
     if (argc == 3)
@@ -360,7 +370,7 @@ static int lraspi_image_blit(lua_State* L)
 }
 
 /***
- * Destroy a texture object
+ * Destroys a texture object
  * @function image.free
  * @tparam texture texture A texture object
  */
@@ -373,7 +383,8 @@ static int lraspi_image__gc(lua_State* L)
 }
 
 /***
- * Closes the image subsystem. The interpreter calls this function internally, so should not be used explicitly.
+ * Closes the image subsystem.
+ * The interpreter calls this function internally, so you should not call explicitly.
  * @function image.close
  */
 static int lraspi_image_close(lua_State* L)
@@ -409,7 +420,13 @@ static int lraspi_image_close(lua_State* L)
 /***
  * Changes the blend mode of the textue
  * @function texture:blendmode
- * @string mode The blend mode. "add" for additive blending, "mod" for color modulation, "blend" for alpha blending and "none" for no blending.
+ * @string mode The blend mode as the following values:
+ * <ul>
+ * <li><pre>add</pre> for additive blending</li>
+ * <li><pre>mod</pre> for color modulation</li>
+ * <li><pre>blend</pre> for alpha blending</li>
+ * <li><pre>none</pre> for no blending</li>
+ * </ul>
  */
 
 /***

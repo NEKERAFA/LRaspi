@@ -18,13 +18,11 @@ namespace image
 
 /**
  * @brief Start the image module subsystem
- * 
- * @return 
  */
 void init();
 
 /**
- * @brief Load an image object
+ * @brief Load an image file
  * 
  * @param path The path to the image file
  * @return An lraspi::Image object

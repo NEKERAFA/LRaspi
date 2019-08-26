@@ -16,7 +16,7 @@
 #include "lraspi/lcolor.h"
 
 /***
- * This module defines the color functions
+ * Color creation and manipulation
  * @module Color
  */
 extern "C"
@@ -209,7 +209,7 @@ static int lraspi_color_green(lua_State* L)
     {
         lua_Integer r = color->green();
         lua_pushinteger(L, r);
-        ++ret;
+        ret = 1;
     }
 
     return ret;
@@ -244,7 +244,7 @@ static int lraspi_color_blue(lua_State* L)
     {
         lua_Integer r = color->blue();
         lua_pushinteger(L, r);
-        ++ret;
+        ret = 1;
     }
 
     return ret;
@@ -279,7 +279,7 @@ static int lraspi_color_alpha(lua_State* L)
     {
         lua_Integer r = color->alpha();
         lua_pushinteger(L, r);
-        ++ret;
+        ret = 1;
     }
 
     return ret;
@@ -351,6 +351,7 @@ static int lraspi_color__gc(lua_State* L)
  * @int alpha The alpha value
  */
 
+// Color methods
 static const luaL_Reg lraspi_color_object[] =
 {
     {"red",   lraspi_color_red},
@@ -361,6 +362,7 @@ static const luaL_Reg lraspi_color_object[] =
     {0, 0}
 };
 
+// Color module functions
 static const luaL_Reg lraspi_color[] =
 {
     {"new",        lraspi_color_new},

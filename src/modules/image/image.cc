@@ -23,7 +23,7 @@ Image::Image() {}
 
 Image::~Image() {}
 
-bool Image::load(const char* path)
+void Image::load(const char* path)
 {
     SDL_Surface* _sdl_surface;
     SDL_Texture* _sdl_texture = getSdlTexture();
@@ -54,11 +54,8 @@ bool Image::load(const char* path)
             setRealHeight(_sdl_surface->h);
             setWidth(_sdl_surface->w);
             setHeight(_sdl_surface->h);
-            _path = path;
         }
     }
-
-    return _sdl_texture != nullptr;
 }
 
 bool Image::isInstanceOf(Type& other)

@@ -9,6 +9,8 @@
 
 #include <SDL2/SDL.h>
 
+#include "common/type.h"
+#include "common/object.h"
 #include "modules/image/texture.h"
 
 #define LRASPI_IMAGE_NAME "image"
@@ -22,9 +24,6 @@ namespace lraspi
  */
 class Image : public Texture
 {
-private:
-    const char* _path;
-
 public:
     static Type type;
 
@@ -45,7 +44,7 @@ public:
      * 
      * @return true if the image was loaded.
      */
-    bool load(const char* path);
+    void load(const char* path);
 
     /**
      * @brief Check if an object is an instance of this type
