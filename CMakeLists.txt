@@ -30,6 +30,7 @@ set(LRASPI_SRC_SCREEN_MODULE
 set(LRASPI_SRC_IMAGE_MODULE
     src/modules/image/texture.cc
     src/modules/image/image.cc
+    src/modules/image/text.cc
     src/modules/image/image_mod.cc
 )
 

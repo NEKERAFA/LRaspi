@@ -6,6 +6,8 @@
 
 #include <cstdint>
 
+#include <SDL2/SDL_pixels.h>
+
 #include "common/type.h"
 #include "common/object.h"
 #include "modules/color/color.h"
@@ -65,6 +67,11 @@ uint8_t Color::alpha()
 void Color::alpha(uint8_t alpha)
 {
     _alpha = alpha; 
+}
+
+SDL_Color Color::getSdlColor()
+{
+    return {_red, _green, _blue, _alpha};
 }
 
 bool Color::isInstanceOf(Type& other)

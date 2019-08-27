@@ -19,7 +19,7 @@ namespace lraspi
 {
 
 /**
- * @brief Represents a wrapper between SDL Image library.
+ * @brief Represents a wrapper between the SDL IMG library.
  * 
  */
 class Image : public Texture

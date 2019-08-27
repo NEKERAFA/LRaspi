@@ -8,8 +8,10 @@
 #include <SDL2/SDL_image.h>
 
 #include "common/exception.h"
+#include "modules/font/font.h"
 #include "modules/image/texture.h"
 #include "modules/image/image.h"
+#include "modules/image/text.h"
 #include "modules/image/image_mod.h"
 
 namespace lraspi
@@ -45,6 +47,13 @@ Texture* createBlankTexture(int width, int height)
     Texture* texture = new Texture();
     texture->createBlank(width, height);
     return texture;
+}
+
+Text* createText(Font* font, const char* str)
+{
+    Text* text = new Text();
+    text->render(font, str);
+    return text;
 }
 
 void close()

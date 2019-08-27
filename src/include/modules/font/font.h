@@ -21,7 +21,7 @@ namespace lraspi
 {
 
 /**
- * @brief Represents a wrapper between SDL TTF font reader
+ * @brief Represents a wrapper between the SDL TTF library
  * 
  */
 class Font : public Object
@@ -63,10 +63,20 @@ public:
     bool load(const char* path, int size);
 
     /**
-    SDL_Surface getFastSdlSurface(const char* text);
+     * @brief Creates a texture with the text rendered
+     * 
+     * @param text The text to rendered
+     * @return A SDL Surface object with a fast rendered of the text
+     */
+    SDL_Surface* getFastSdlSurface(const char* text);
 
-    SDL_Surface getSdlSurface(const char* text);
-    **/
+    /**
+     * @brief Creates a texture with the text rendered
+     * 
+     * @param text The text to rendered
+     * @return A SDL Surface object with a rendered of the text
+     */
+    SDL_Surface* getSdlSurface(const char* text);
 
     /**
      * @brief Get the maximun height of the font

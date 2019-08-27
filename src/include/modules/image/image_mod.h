@@ -7,8 +7,10 @@
 #ifndef LRASPI_MODULE_IMAGE_H
 #define LRASPI_MODULE_IMAGE_H
 
+#include "modules/font/font.h"
 #include "modules/image/texture.h"
 #include "modules/image/image.h"
+#include "modules/image/text.h"
 
 namespace lraspi
 {
@@ -37,6 +39,15 @@ Image* loadImage(const char* path);
  * @return A lraspi::Texture object
  */
 Texture* createBlankTexture(int width, int height);
+
+/**
+ * @brief Create a text object
+ * 
+ * @param font A lraspi::Font object
+ * @param text The text to render
+ * @return A lraspi::Text object
+ */
+Text* createText(Font* font, const char* str);
 
 /**
  * @brief Close the image module subsystem

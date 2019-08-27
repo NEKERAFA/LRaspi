@@ -16,6 +16,7 @@
 #include "common/type.h"
 #include "common/object.h"
 #include "modules/font/font.h"
+#include "modules/color/color_mod.h"
 
 namespace lraspi
 {
@@ -50,6 +51,26 @@ bool Font::load(const char* path, int size)
     }
     
     return _font != nullptr;
+}
+
+SDL_Surface* Font::getFastSdlSurface(const char* text)
+{
+    SDL_Surface* surface;
+    
+    if (!(surface = TTF_RenderUTF8_Solid(_font, text, color::white->getSdlColor())))
+        throw Exception("Could not create renderer (%s)", TTF_GetError());
+
+    return surface;
+}
+
+SDL_Surface* Font::getSdlSurface(const char* text)
+{
+    SDL_Surface* surface;
+    
+    if (!(surface = TTF_RenderUTF8_Blended(_font, text, color::white->getSdlColor())))
+        throw Exception("Could not create renderer (%s)", TTF_GetError());
+
+    return surface;
 }
 
 int Font::getHeight()

@@ -11,13 +11,18 @@
 
 #include "common/type.h"
 #include "modules/font/font.h"
-#include "modules/color/color.h"
 #include "modules/image/texture.h"
 
 #define LRASPI_TEXT_NAME "name"
 
 namespace lraspi
 {
+
+enum TextQuality
+{
+    FAST,
+    NORMAL
+};
 
 /**
  * @brief Represents a rendered text to draw on screen
@@ -26,8 +31,14 @@ namespace lraspi
 class Text : public Texture
 {
 private:
-    std::string text;
-    Color* color;
+    std::string _text;
+    Font* _font;
+    TextQuality _quality;
+
+    /**
+     * @brief Render the setted text with the setted font
+     */
+    void render();
 
 public:
     static Type type;
@@ -51,25 +62,32 @@ public:
     void render(Font* font, const char* text);
 
     /**
-     * @brief Set the color to draw the text
-     * 
-     * @param color A lraspi::Color object
+     * @brief Set the quality to render text
+     *  
+     * @param quality The quality to render text
      */
-    void setColor(Color* color);
+    void setQuality(TextQuality quality);
+
+    /**
+     * @brief Get the quality of the render text
+     * 
+     * @return The quality to render text 
+     */
+    TextQuality getQuality();
 
     /**
      * @brief Replace the content with a new value
      * 
      * @param text The new text to render
      */
-    void setText(std::string text);
+    void setText(const char* text);
 
     /**
      * @brief Add a new text to the rendered text
      * 
-     * @param text 
+     * @param text The text to append
      */
-    void addText(std::string text);
+    void addText(const char* text);
 
     /**
      * @brief Crear all internal text

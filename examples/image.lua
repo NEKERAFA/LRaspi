@@ -50,5 +50,5 @@ repeat
     quit = screen.update()
 until quit
 
--- Destroys the image object
+-- Destroy the image object
 image.free(img)

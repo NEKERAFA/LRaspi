@@ -4,6 +4,7 @@
     See Copyright Notice in lraspi.h 
  */
 
+#include <iostream>
 #include <cstring>
 
 #include <SDL2/SDL_ttf.h>
@@ -86,9 +87,9 @@ static int lraspi_font_create(lua_State* L)
 
     lua_Integer size = LRASPI_FONT_SIZE;
 
-    if (argc == 2)
+    if (argc == 1)
     {
-        size = luaL_checkinteger(L, 2);
+        size = luaL_checkinteger(L, 1);
     }
 
     try
