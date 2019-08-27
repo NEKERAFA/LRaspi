@@ -17,7 +17,7 @@
 #include "lraspi/lscreen.h"
 
 /***
- * This module defines the screen functions
+ * Screen management and information
  * @module Screen
  */
 extern "C" {
@@ -125,6 +125,7 @@ static int lraspi_screen_close(lua_State* L)
     return 0;
 }
 
+// Screen module functions
 static const luaL_Reg lraspi_screen[] =
 {
     {"init",   lraspi_screen_init},

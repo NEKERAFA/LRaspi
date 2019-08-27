@@ -1,3 +1,5 @@
+--- Image Example
+
 -- Loads an image
 local img = image.load("res/logo.png")
 -- Sets the blend mode
@@ -48,5 +50,5 @@ repeat
     quit = screen.update()
 until quit
 
--- Destroys the image object
+-- Destroy the image object
 image.free(img)

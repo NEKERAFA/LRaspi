@@ -10,6 +10,7 @@
 
 #include "common/exception.h"
 #include "modules/color/color.h"
+#include "modules/font/font.h"
 #include "modules/image/texture.h"
 #include "modules/image/image.h"
 #include "modules/image/image_mod.h"
@@ -18,22 +19,24 @@
 #include "lraspi/limage.h"
 
 /***
- * This module defines the image functions
+ * Image reading and manipulation and 2D accelerated rendering
  * @module Image
  */
 extern "C"
 {
 
 /***
- * Initializes the image subsystem. The interpreter calls this function internally, so should not be used explicitly.
+ * Initializes the image subsystem.<br>
+ * The interpreter calls this function internally, so you should not call explicitly.
  * @function image.init
  */
 static int lraspi_image_init(lua_State* L)
 {
-    try {
+    try
+    {
         lraspi::image::init();
     }
-    catch (lraspi::Exception& e)
+    catch (lraspi::Exception e)
     {
         return luaL_error(L, e.what());
     }
@@ -50,9 +53,11 @@ static int lraspi_image_init(lua_State* L)
  */ 
 static int lraspi_image_new(lua_State* L)
 {
-    try {
-        lua_Integer width = luaL_checkinteger(L, 1);
-        lua_Integer height = luaL_checkinteger(L, 2);
+    lua_Integer width = luaL_checkinteger(L, 1);
+    lua_Integer height = luaL_checkinteger(L, 2);
+
+    try
+    {
         lraspi::Texture* texture = lraspi::image::createBlankTexture(width, height);
         lraspi::lua::push(L, lraspi::Texture::type, texture);
     }
@@ -72,12 +77,39 @@ static int lraspi_image_new(lua_State* L)
  */ 
 static int lraspi_image_load(lua_State* L)
 {
-    try {
-        const char* path = luaL_checkstring(L, 1);
+    const char* path = luaL_checkstring(L, 1);
+
+    try
+    {
         lraspi::Image* image = lraspi::image::loadImage(path);
         lraspi::lua::push(L, lraspi::Image::type, image);
     }
     catch (lraspi::Exception& e)
+    {
+        return luaL_error(L, e.what());
+    }
+
+    return 1;
+}
+
+/***
+ * Creates a text texture
+ * @function image.newtext
+ * @tparam font A font object
+ * @string text The text to render
+ * @treturn text An text object
+ */
+static int lraspi_image_new_text(lua_State* L)
+{
+    lraspi::Font* font = static_cast<lraspi::Font*>(lraspi::lua::check(L, lraspi::Font::type, 1));
+    const char* str = luaL_checkstring(L, 2);
+
+    try
+    {
+        lraspi::Text* text = lraspi::image::createText(font, str);
+        lraspi::lua::push(L, lraspi::Text::type, text);
+    }
+    catch (lraspi::Exception e)
     {
         return luaL_error(L, e.what());
     }
@@ -114,42 +146,49 @@ static int lraspi_image_tint(lua_State* L)
 }
 
 /***
- * Changes the blend mode of the textue
+ * Changes the blend mode of the texture
  * @function image.blendmode
  * @tparam texture texture A texture object
- * @string mode The blend mode. "add" for additive blending, "mod" for color modulation, "blend" for alpha blending and "none" for no blending.
+ * @string mode The blend mode as the following values:
+ * <ul>
+ * <li><span class='parameter'>add</span> for additive blending</li>
+ * <li><span class='parameter'>mod</span> for color modulation</li>
+ * <li><span class='parameter'>blend</span> for alpha blending</li>
+ * <li><span class='parameter'>none</span> for no blending</li>
+ * </ul>
  */
 static int lraspi_image_blend_mode(lua_State* L)
 {
     lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
     const char* mode = luaL_checkstring(L, 2);
 
-    if (!std::strcmp(mode, "add")) {
+    if (std::strcmp(mode, "add") == 0) {
         texture->setSdlBlendMode(SDL_BLENDMODE_ADD);
     }
-    else if (!std::strcmp(mode, "mod"))
+    else if (std::strcmp(mode, "mod") == 0)
     {
         texture->setSdlBlendMode(SDL_BLENDMODE_MOD);
     }
-    else if (!std::strcmp(mode, "blend"))
+    else if (std::strcmp(mode, "blend") == 0)
     {
         texture->setSdlBlendMode(SDL_BLENDMODE_BLEND);
     }
-    else if (!std::strcmp(mode, "none"))
+    else if (std::strcmp(mode, "none") == 0)
     {
         texture->setSdlBlendMode(SDL_BLENDMODE_NONE);
     }
     else
     {
         const char* msg = lua_pushfstring(L, "must be `add', `mod', `blend' or `none'");
-        luaL_argerror(L, 2, msg);
+        return luaL_argerror(L, 2, msg);
     }
 
     return 0;
 }
 
 /***
- * Changes the alpha value of the texture. The texture must have an blend mode established.
+ * Changes the alpha value of the texture. <br>
+ * The texture must have an blend mode established
  * @function image.alpha
  * @tparam texture texture A texture object
  * @int alpha The alpha value
@@ -273,9 +312,9 @@ static int lraspi_image_rotate(lua_State* L)
  */
 static int lraspi_image_center(lua_State* L)
 {
-    int ret, argc = 0;
-    
-    argc = lua_gettop(L);
+    int ret = 0;
+    int argc = lua_gettop(L);
+
     lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
     
     if (argc == 3)
@@ -360,7 +399,114 @@ static int lraspi_image_blit(lua_State* L)
 }
 
 /***
- * Destroy a texture object
+ * Sets the quality to render text
+ * @function image.textquality
+ * @tparam text text A text object
+ * @string quality A string as the following values:
+ * <ul>
+ * <li><span class='parameter'>fast</span> for fast and not smooth text</li>
+ * <li><span class='parameter'>normal</span> for slow and smooth text</li>
+ * </ul>
+ */
+
+
+/***
+ * Gets the quality to render text
+ * @function image.textquality
+ * @tparam text text A text object
+ * @treturn string A string as the following values:
+ * <ul>
+ * <li><span class='parameter'>fast</span> for fast and not smooth text</li>
+ * <li><span class='parameter'>normal</span> for slow and smooth text</li>
+ * </ul>
+ */
+static int lraspi_image_text_quality(lua_State* L)
+{
+    int argc = lua_gettop(L);
+    int ret = 0;
+
+    lraspi::Text* text = static_cast<lraspi::Text*>(lraspi::lua::check(L, lraspi::Text::type, 1));
+
+    if (argc == 2)
+    {
+        const char* quality = luaL_checkstring(L, 2);
+
+        if (std::strcmp(quality, "fast") == 0)
+        {
+            text->setQuality(lraspi::TextQuality::FAST);
+        }
+        else if (std::strcmp(quality, "normal") == 0)
+        {
+            text->setQuality(lraspi::TextQuality::NORMAL);
+        }
+        else
+        {
+            const char* msg = lua_pushfstring(L, "must be `fast' or `normal'");
+            luaL_argerror(L, 2, msg);
+        }
+    }
+    else
+    {
+        switch (text->getQuality())
+        {
+        case lraspi::TextQuality::FAST:
+            lua_pushliteral(L, "fast");
+            break;
+        case lraspi::TextQuality::NORMAL:
+            lua_pushliteral(L, "normal");
+            break;
+        }
+
+        ret = 1;
+    }
+    
+
+    return ret;
+}
+
+/***
+ * Replaces the content of the text with a new value
+ * @function image.set
+ * @tparam text text A text object
+ * @string textstring The new content
+ */
+static int lraspi_image_set_text(lua_State* L)
+{
+    lraspi::Text* text = static_cast<lraspi::Text*>(lraspi::lua::check(L, lraspi::Text::type, 1));
+    const char* str = luaL_checkstring(L, 2);
+    text->setText(str);
+    return 0;
+}
+
+/***
+ * Adds a new content to the rendered text
+ * @function image.add
+ * @tparam text text A text object
+ * @string textstring The text to append
+ */
+static int lraspi_image_add_text(lua_State* L)
+{
+    lraspi::Text* text = static_cast<lraspi::Text*>(lraspi::lua::check(L, lraspi::Text::type, 1));
+    const char* str = luaL_checkstring(L, 2);
+    text->addText(str);
+    return 0;
+}
+
+/***
+ * Clears the content of the rendered text
+ * @function image.clear
+ * @tparam text text A text object
+ */
+static int lraspi_image_clear_text(lua_State* L)
+{
+    lraspi::Text* text = static_cast<lraspi::Text*>(lraspi::lua::check(L, lraspi::Text::type, 1));
+    const char* str = luaL_checkstring(L, 2);
+    text->clear();
+    return 0;
+}
+
+/***
+ * Destroys a texture object
  * @function image.free
  * @tparam texture texture A texture object
  */
@@ -373,7 +519,8 @@ static int lraspi_image__gc(lua_State* L)
 }
 
 /***
- * Closes the image subsystem. The interpreter calls this function internally, so should not be used explicitly.
+ * Closes the image subsystem.
+ * The interpreter calls this function internally, so you should not call explicitly.
  * @function image.close
  */
 static int lraspi_image_close(lua_State* L)
@@ -409,7 +556,13 @@ static int lraspi_image_close(lua_State* L)
 /***
  * Changes the blend mode of the textue
  * @function texture:blendmode
- * @string mode The blend mode. "add" for additive blending, "mod" for color modulation, "blend" for alpha blending and "none" for no blending.
+ * @string mode The blend mode as the following values:
+ * <ul>
+ * <li><pre>add</pre> for additive blending</li>
+ * <li><pre>mod</pre> for color modulation</li>
+ * <li><pre>blend</pre> for alpha blending</li>
+ * <li><pre>none</pre> for no blending</li>
+ * </ul>
  */
 
 /***
@@ -513,10 +666,78 @@ static const luaL_Reg lraspi_texture_object[] =
     {0, 0}
 };
 
+/***
+ * This object represents a rendered text
+ * @type text
+ */
+
+/***
+ * Sets the quality to render text
+ * @function text:textquality
+ * @string quality A string as the following values:
+ * <ul>
+ * <li><span class='parameter'>fast</span> for fast and not smooth text</li>
+ * <li><span class='parameter'>normal</span> for slow and smooth text</li>
+ * </ul>
+ */
+
+
+/***
+ * Gets the quality to render text
+ * @function text:textquality
+ * @treturn string A string as the following values:
+ * <ul>
+ * <li><span class='parameter'>fast</span> for fast and not smooth text</li>
+ * <li><span class='parameter'>normal</span> for slow and smooth text</li>
+ * </ul>
+ */
+
+/***
+ * Replaces the content of the text with a new value
+ * @function text:set
+ * @string textstring The new content
+ */
+
+/***
+ * Adds a new content to the rendered text
+ * @function text:add
+ * @string textstring The text to append
+ */
+
+/***
+ * Clears the content of the rendered text
+ * @function text:clear
+ */
+static const luaL_Reg lraspi_text_object[] =
+{
+    {"textquality", lraspi_image_text_quality},
+    {"set",         lraspi_image_set_text},
+    {"add",         lraspi_image_add_text},
+    {"clear",       lraspi_image_clear_text},
+    {"reset",       lraspi_image_reset},
+    {"tint",        lraspi_image_tint},
+    {"alpha",       lraspi_image_alpha},
+    {"rotate",      lraspi_image_rotate},
+    {"center",      lraspi_image_center},
+    {"vflip",       lraspi_image_v_flip},
+    {"hflip",       lraspi_image_h_flip},
+    {"flip",        lraspi_image_flip},
+    {"width",       lraspi_image_width},
+    {"height",      lraspi_image_height},
+    {"realwidth",   lraspi_image_real_width},
+    {"realheight",  lraspi_image_real_height},
+    {"resize",      lraspi_image_resize},
+    {"blendmode",   lraspi_image_blend_mode},
+    {"blit",        lraspi_image_blit},
+    {"__gc",        lraspi_image__gc},
+    {0, 0}
+};
+
 static const luaL_Reg lraspi_image[] =
 {
     {"init",       lraspi_image_init},
     {"new",        lraspi_image_new},
+    {"newtext",    lraspi_image_new_text},
     {"load",       lraspi_image_load},
     {"reset",      lraspi_image_reset},
     {"tint",       lraspi_image_tint},
@@ -542,6 +763,7 @@ int luaopen_image(lua_State* L)
 {
     lraspi::lua::registerobject(L, lraspi::Texture::type, lraspi_texture_object);
     lraspi::lua::registerobject(L, lraspi::Image::type, lraspi_texture_object);
+    lraspi::lua::registerobject(L, lraspi::Text::type, lraspi_text_object);
     luaL_newlib(L, lraspi_image);
     return 1;
 }

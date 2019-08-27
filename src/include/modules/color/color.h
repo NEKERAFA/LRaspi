@@ -6,6 +6,8 @@
 
 #include <cstdint>
 
+#include <SDL2/SDL_pixels.h>
+
 #include "common/type.h"
 #include "common/object.h"
 
@@ -108,6 +110,13 @@ public:
      * @param alpha Alpha color as unsigned 8 bits interger
      */
     void alpha(uint8_t alpha);
+
+    /**
+     * @brief Get the color
+     * 
+     * @return A SDL_Color struct
+     */
+    SDL_Color getSdlColor();
 
     /**
      * @brief Check if an object is an instance of this type

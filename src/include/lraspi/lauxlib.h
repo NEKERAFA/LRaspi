@@ -16,6 +16,15 @@ namespace lua
 {
 
 /**
+ * @brief Call and function and print the stack traceback if there are an error
+ * 
+ * @param L A lua_State object
+ * @param narg The number of arguments
+ * @param nres The number of results
+ */
+void call(lua_State* L, int narg, int nres);
+
+/**
  * @brief Register a new type of object in Lua
  * 
  * @param L A lua_State object

@@ -4,95 +4,83 @@
  * See Copyright Notice in lraspi.h 
  */
 
+#include <cstdlib>
+#include <cstring>
 #include <iostream>
 
 #include <lua.hpp>
 
 #include "lraspi.h"
+#include "lraspi/lauxlib.h"
+
+namespace lraspi
+{
+
+/**
+ * @brief Loads the file and runs
+ * 
+ * @param L A lua_State object
+ * @param path The path of the file
+ */
+void dofile(lua_State* L, const char* path)
+{
+    if (luaL_loadfile(L, path) == LUA_OK)
+        lua::call(L, 0, LUA_MULTRET);
+    else
+        std::cerr << "error: " << lua_tostring(L, -1) << std::endl; 
+}
+
+const char* checkargs(int argc, const char* argv[])
+{
+    const char* path = nullptr;
+
+    // Read all the arguments
+    for (int arg = 1; arg < argc; arg++)
+    {
+        // Check arguments
+        if ((std::strncmp(argv[arg], "--", 2) == 0))
+        {
+            // Print Lua Raspi version
+            if ((std::strcmp(argv[arg]+2, "version") == 0))
+            {
+                std::cout << "Lua Raspi " << LRASPI_VERSION << std::endl;
+                std::exit(EXIT_SUCCESS);
+            }
+            else
+            {
+                std::cerr << "option " << argv[arg] << " not recognize" << std::endl;
+                std::exit(EXIT_FAILURE);
+            }
+        }
+        else if (path == nullptr)
+        {
+            path = argv[arg];
+        }
+    }
+
+    // If the user cannot enter a file path, loads "script.lua"
+   return path != nullptr ? path : "script.lua";
+}
+
+} // namespace lraspi
 
 int main(int argc, const char* argv[])
 {
+    // Check the arguments
+    const char* path = lraspi::checkargs(argc, argv);
+
     // Create new virtual machine
     lua_State *L = luaL_newstate();
 
-    // Load all libraryes
+    // Load all libraries
     luaL_openlibs(L);
     lraspi::openlibs(L);
 
     // Open the file
-    int state = luaL_dofile(L, "script.lua");
-    if (state) {
-        std::cerr << "error: " << lua_tostring(L, -1) << std::endl;
-        return EXIT_FAILURE;
-    }
+    lraspi::dofile(L, path);
 
-    // Close image module
-    lua_getglobal(L, "image");
-    lua_getfield(L, -1, "close");
-    lua_remove(L, -2);
-    lua_call(L, 0, 0);
-
-    // Close screen module
-    lua_getglobal(L, "screen");
-    lua_getfield(L, -1, "close");
-    lua_remove(L, -2); 
-    lua_call(L, 0, 0);
+    // Close all libraries
+    lraspi::closelibs(L);
 
     return EXIT_SUCCESS;
 }
-
-
-/*
-static void print_traceback (lua_State* L) 
-{
-    lua_getglobal(L, "debug");
-    lua_getfield(L, -1, "traceback");
-    lua_remove(L, -2);
-    lua_pushvalue(L, 1);
-    lua_pushinteger(L, 2);
-    lua_pcall(L, 2, 1, 0);
-
-    std::cerr << lua_tostring(L, -1) << std::endl;
-}
-
-int main(int argc, char* const argv[])
-{
-    int state;
-
-    // Create new virtual machine
-    lua_State *L = luaL_newstate();
-    // luaL_openlibs(L);
-    luaL_requiref(L, "", luaopen_base, 1);
-    luaL_requiref(L, "screen", luaopen_screen, 1);
-    luaL_requiref(L, "image", luaopen_image, 1);
-
-    lua_getglobal(L, "screen");
-    lua_getfield(L, -1, "init");
-    lua_remove(L, -2);
-    lua_pushinteger(L, 600);
-    lua_pushinteger(L, 200);
-    if(lua_pcall(L, 2, 0, 0) != LUA_OK) {
-        std::cerr << "error: [C] " << lua_tostring(L, -1) << std::endl;
-        return EXIT_FAILURE;
-    }
-
-    // Open the file
-    state = luaL_dofile(L, "script.lua");
-    if (state) {
-        std::cerr << "error: " << lua_tostring(L, -1) << std::endl;
-        luaL_requiref(L, "debug", luaopen_debug, 1);
-        print_traceback(L);
-        return EXIT_FAILURE;
-    }
-
-    lua_getglobal(L, "screen");
-    lua_getfield(L, -1, "close");
-    lua_remove(L, -2);
-    if(lua_pcall(L, 0, 0, 0) != LUA_OK) {
-        std::cerr << "error: [C] " << lua_tostring(L, -1) << std::endl;
-        return EXIT_FAILURE;
-    }
-
-    return EXIT_SUCCESS;
-}
-*/

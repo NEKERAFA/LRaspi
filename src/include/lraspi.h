@@ -26,24 +26,27 @@
 #ifndef LRASPI_H
 #define LRASPI_H
 
+#define LRASPI_VERSION "0.0.1"
+
 #include <lua.hpp>
 
 namespace lraspi
 {
 
 /**
- * @brief Push the version number in the lua stack
+ * @brief Loads all libraries
  * 
- * @return The version as a string
+ * @param L An lua_State object
+ * @return 0 if the libraries are loaded correctly
  */
-const char* version(lua_State* L);
+int openlibs(lua_State* L);
 
 /**
- * @brief Loads all libraries Lua Raspi
+ * @brief Close all libraries
  * 
  * @param L An lua_State object
  */
-void openlibs(lua_State* L);
+void closelibs(lua_State* L);
 
 } // namespace lraspi
 
