@@ -5,6 +5,7 @@
  */
 
 #include <iostream>
+#include <cstdlib>
 
 #include <lua.hpp>
 
@@ -30,7 +31,8 @@ static int printtraceback(lua_State* L)
     const char* msg = lua_tostring(L, 1);
     luaL_traceback(L, L, msg, 0);
     std::cerr << "error: " << lua_tostring(L, -1) << std::endl;
-    return EXIT_FAILURE;
+    exit(EXIT_FAILURE);
+    return 0;
 }
 
 void call(lua_State* L, int narg, int nres)

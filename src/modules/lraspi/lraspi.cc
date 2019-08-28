@@ -36,14 +36,7 @@ static int lraspi_version(lua_State* L)
 }
 
 int openlibs(lua_State* L)
-{
-    // Loads screen library
-    luaL_requiref(L, "screen", luaopen_screen, 1);
-    lua_getglobal(L, "screen");
-    lua_getfield(L, -1, "init");
-    lua_remove(L, -2);
-    lua::call(L, 0, 0);
-    
+{   
     // Loads image library
     luaL_requiref(L, "image", luaopen_image, 1);
     lua_getglobal(L, "image");
@@ -61,8 +54,15 @@ int openlibs(lua_State* L)
     // Loads color library
     luaL_requiref(L, "color", luaopen_color, 1);
 
+    // Loads screen library
+    luaL_requiref(L, "screen", luaopen_screen, 1);
+    lua_getglobal(L, "screen");
+    lua_getfield(L, -1, "init");
+    lua_remove(L, -2);
+    lua::call(L, 0, 0);
+
     // Adds a function that returns the lraspi version
-    lua_register(L, "_LRASPI_VERSION", lraspi_version);
+    lua_register(L, "lraspiversion", lraspi_version);
 
     return 0;
 }

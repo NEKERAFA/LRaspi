@@ -55,7 +55,7 @@ bool Font::load(const char* path, int size)
 
 SDL_Surface* Font::getFastSdlSurface(const char* text)
 {
-    SDL_Surface* surface;
+    SDL_Surface* surface = nullptr;
     
     if (!(surface = TTF_RenderUTF8_Solid(_font, text, color::white->getSdlColor())))
         throw Exception("Could not create renderer (%s)", TTF_GetError());
@@ -65,7 +65,7 @@ SDL_Surface* Font::getFastSdlSurface(const char* text)
 
 SDL_Surface* Font::getSdlSurface(const char* text)
 {
-    SDL_Surface* surface;
+    SDL_Surface* surface = nullptr;
     
     if (!(surface = TTF_RenderUTF8_Blended(_font, text, color::white->getSdlColor())))
         throw Exception("Could not create renderer (%s)", TTF_GetError());

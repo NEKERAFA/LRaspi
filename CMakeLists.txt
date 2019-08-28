@@ -53,9 +53,14 @@ set(LRASPI_SRC
         ${LRASPI_SRC_SCREEN_MODULE}
     )
 
+set(LRASPI_SRC_EXECUTABLE
+        src/interface/explorer.cc
+        src/lraspi.cc
+    )
+
 include_directories(${PROJECT_SOURCE_DIR}/src/include)
 
 add_library("lraspi.${PROJECT_VERSION}" SHARED ${LRASPI_SRC})
 
-add_executable(lraspi src/lraspi.cc)
+add_executable(lraspi ${LRASPI_SRC_EXECUTABLE})
 target_link_libraries(lraspi "lraspi.${PROJECT_VERSION}" SDL2::Main SDL2::Image SDL2::TTF ${LUA_LIBRARIES})

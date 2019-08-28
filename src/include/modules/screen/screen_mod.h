@@ -11,6 +11,7 @@
 
 #include <SDL2/SDL.h>
 
+#include "modules/font/font.h"
 #include "modules/color/color.h"
 #include "modules/image/texture.h"
 
@@ -59,6 +60,30 @@ void setTarget(SDL_Texture* texture);
  * @param y The y-axis position to draw the drawable
  */
 void blit(Texture* texture, int x, int y);
+
+/**
+ * @brief Print a text in the screen
+ * 
+ * @param x The x-axis position to draw the drawable
+ * @param y The y-axis position to draw the drawable
+ * @param textstring The string to print
+ * @param color A lraspi::color object
+ */
+void print(int x, int y, const char* textstring, Color* color);
+
+/**
+ * @brief Set the default font
+ * 
+ * @param font A lraspi::font object 
+ */
+void setFont(Font* font);
+
+/**
+ * @brief Get the default font
+ * 
+ * @return A lraspi::font object 
+ */
+Font* getFont();
 
 /**
  * @brief Update the screen

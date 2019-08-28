@@ -10,6 +10,7 @@
 
 #include "common/exception.h"
 #include "modules/color/color.h"
+#include "modules/font/font.h"
 #include "modules/image/texture.h"
 #include "modules/screen/screen_mod.h"
 
@@ -84,6 +85,57 @@ static int lraspi_screen_blit(lua_State* L)
     SDL_Point center = texture->getSdlCenterPoint();
 
     lraspi::screen::blit(texture, x-center.x, y-center.y);
+    return 0;
+}
+
+/***
+ * Prints a text onto the screen
+ * @function screen.print
+ * @int x The x-axis position to draw the texture
+ * @int y The y-axis position to draw the texture
+ * @string textstring The text to print
+ * @tparam color A color object
+ */
+static int lraspi_screen_print(lua_State* L)
+{
+    int x = luaL_checkinteger(L, 1);
+    int y = luaL_checkinteger(L, 2);
+    const char* str = luaL_checkstring(L, 3);
+    lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 1));
+
+    lraspi::screen::print(x, y, str, color);
+    return 0;
+}
+
+/*** Gets the current default font to print in the screen
+ * @function screen.defaultfont
+ * @treturn font A font object
+ */
+
+/*** Sets a font as the current default font to print in the screen
+ * @function screen.defaultfont
+ * @tparam font font A font object
+ */
+
+static int lraspi_screen_default_font(lua_State* L)
+{
+    int argc = lua_gettop(L);
+    int ret = 0;
+
+    if (argc == 1)
+    {
+        lraspi::Font* font = static_cast<lraspi::Font*>(lraspi::lua::check(L, lraspi::Font::type, 1));
+        lraspi::screen::setFont(font);
+    }
+    else
+    {
+        lraspi::Font* font = lraspi::screen::getFont();
+        lraspi::lua::push(L, lraspi::Font::type, font);
+        ret = 1;
+    }
+    
+
+    return ret;
 }
 
 /***
