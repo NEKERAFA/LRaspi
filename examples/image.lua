@@ -1,7 +1,7 @@
 --- Image Example
 
 -- Loads an image
-local img = image.load("res/logo.png")
+local img = image.load("res/lua.png")
 -- Sets the blend mode
 img:blendmode("blend")
 -- Sets the center of the image to rotate in the center

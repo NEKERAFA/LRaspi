@@ -20,8 +20,10 @@ void load();
 
 /**
  * @brief Update controls
+ * 
+ * @return the path to the file or nullptr otherwise
  */
-void update();
+const char* update();
 
 /**
  * @brief Draw the explorer

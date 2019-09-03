@@ -130,7 +130,7 @@ static int lraspi_screen_default_font(lua_State* L)
     else
     {
         lraspi::Font* font = lraspi::screen::getFont();
-        lraspi::lua::push(L, lraspi::Font::type, font);
+        lraspi::lua::push(L, font);
         ret = 1;
     }
     

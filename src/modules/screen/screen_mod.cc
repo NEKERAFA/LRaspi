@@ -73,7 +73,6 @@ void close()
     delete _default_font;
     SDL_DestroyRenderer(_sdl_renderer);
     SDL_DestroyWindow(_sdl_window);
-    SDL_Quit();
 }
 
 void clear(Color* color)
