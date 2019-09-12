@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['image',['Image',['../classlraspi_1_1_image.html',1,'lraspi']]]
+  ['object',['Object',['../classlraspi_1_1_object.html',1,'lraspi']]]
 ];

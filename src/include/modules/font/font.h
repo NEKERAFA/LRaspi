@@ -10,11 +10,12 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
+#include "lraspi.h"
 #include "common/type.h"
 #include "common/object.h"
 
 #define LRASPI_FONT_NAME "font"
-#define LRASPI_FONT_DEFAULT "dejavu.ttf"
+#define LRASPI_FONT_DEFAULT LRASPI_RES_FOLDER "/dejavu.ttf"
 #define LRASPI_FONT_SIZE 12
 
 namespace lraspi

@@ -84,7 +84,6 @@ $(document).ready(function(){initNavTree('namespacelraspi.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">lraspi Namespace Reference</div>  </div>
@@ -93,8 +92,6 @@ $(document).ready(function(){initNavTree('namespacelraspi.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_color.html">Color</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_exception.html">Exception</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a exception with a printf format error.  <a href="classlraspi_1_1_exception.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,13 +114,6 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represent a object type.  <a href="classlraspi_1_1_type.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a47b277f585958a12834f57dd8887cd77"><td class="memItemLeft" align="right" valign="top"><a id="a47b277f585958a12834f57dd8887cd77"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>TextQuality</b> { <b>FAST</b>, 
-<b>NORMAL</b>
- }</td></tr>
-<tr class="separator:a47b277f585958a12834f57dd8887cd77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af071ad991c337b3c1661e466cc377f38"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelraspi.html#af071ad991c337b3c1661e466cc377f38">openlibs</a> (lua_State *L)</td></tr>
@@ -135,14 +125,40 @@ Functions</h2></td></tr>
 <tr class="memitem:a1ce3a7b7b27a9a380dbe5d78e8f01f69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelraspi.html#a1ce3a7b7b27a9a380dbe5d78e8f01f69">dofile</a> (lua_State *L, const char *path)</td></tr>
 <tr class="memdesc:a1ce3a7b7b27a9a380dbe5d78e8f01f69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the file and runs.  <a href="#a1ce3a7b7b27a9a380dbe5d78e8f01f69">More...</a><br /></td></tr>
 <tr class="separator:a1ce3a7b7b27a9a380dbe5d78e8f01f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf518739a1e4c74dec4668c01e8031ab"><td class="memItemLeft" align="right" valign="top"><a id="acf518739a1e4c74dec4668c01e8031ab"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>checkargs</b> (int argc, const char *argv[])</td></tr>
-<tr class="separator:acf518739a1e4c74dec4668c01e8031ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>lua-raspi.cc - NEKERAFA - 25th july 2019</p>
+<div class="textblock"><p><a class="el" href="explorer_8h_source.html">interface/explorer.h</a> - NEKERAFA - 28th aug 2019</p>
+<p>See Copyright Notice in <a class="el" href="lraspi_8h_source.html">lraspi.h</a></p>
+<p>lua-raspi.cc - NEKERAFA - 25th july 2019</p>
 <p>See Copyright Notice in <a class="el" href="lraspi_8h_source.html">lraspi.h</a> </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="af071ad991c337b3c1661e466cc377f38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af071ad991c337b3c1661e466cc377f38">&#9670;&nbsp;</a></span>openlibs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lraspi::openlibs </td>
+          <td>(</td>
+          <td class="paramtype">lua_State *&#160;</td>
+          <td class="paramname"><em>L</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads all libraries. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>An lua_State object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if the libraries are loaded correctly </dd></dl>
+
+</div>
+</div>
 <a id="a8c6ccbca316030270aa1699d0163452d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c6ccbca316030270aa1699d0163452d">&#9670;&nbsp;</a></span>closelibs()</h2>
 
@@ -203,33 +219,6 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>checkargs</b>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="af071ad991c337b3c1661e466cc377f38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af071ad991c337b3c1661e466cc377f38">&#9670;&nbsp;</a></span>openlibs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int lraspi::openlibs </td>
-          <td>(</td>
-          <td class="paramtype">lua_State *&#160;</td>
-          <td class="paramname"><em>L</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Loads all libraries. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">L</td><td>An lua_State object </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if the libraries are loaded correctly </dd></dl>
 
 </div>
 </div>

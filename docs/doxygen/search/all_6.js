@@ -16,13 +16,11 @@ var searchData=
   ['getrealwidth',['getRealWidth',['../classlraspi_1_1_texture.html#a2941af9889ee7a6d130ad5724c1e035c',1,'lraspi::Texture']]],
   ['getsdlblendmode',['getSdlBlendMode',['../classlraspi_1_1_texture.html#af2a317e4dc6afdec489bb0be3316ca45',1,'lraspi::Texture']]],
   ['getsdlcenterpoint',['getSdlCenterPoint',['../classlraspi_1_1_texture.html#a72f9a21e8e831bdfd2f502319cbc66a1',1,'lraspi::Texture']]],
-  ['getsdlcolor',['getSdlColor',['../classlraspi_1_1_color.html#a31aab3a6f17adc6524721f23f79c31b4',1,'lraspi::Color']]],
   ['getsdlflipstatus',['getSdlFlipStatus',['../classlraspi_1_1_texture.html#a304d3c26940dbc9c0a509b29e2b86c04',1,'lraspi::Texture']]],
   ['getsdlsurface',['getSdlSurface',['../classlraspi_1_1_font.html#a3de817fca12a964680ac431ddba43177',1,'lraspi::Font']]],
   ['getsdltexture',['getSdlTexture',['../classlraspi_1_1_texture.html#afa351cd3c01782db46689ccc8e810da0',1,'lraspi::Texture']]],
   ['getstyle',['getStyle',['../classlraspi_1_1_font.html#aecbb92b22646eddb4cf6b1ea8061a36b',1,'lraspi::Font']]],
   ['gettintcolor',['getTintColor',['../classlraspi_1_1_texture.html#ab81809e7786722ef91bacb6a280b8320',1,'lraspi::Texture']]],
   ['getwidth',['getWidth',['../classlraspi_1_1_font.html#aee4ac6053c61a5c8284b9b12a223df9b',1,'lraspi::Font::getWidth()'],['../classlraspi_1_1_texture.html#ad0c9b8ce688f12307084c98156bda45a',1,'lraspi::Texture::getWidth()']]],
-  ['getwrap',['getWrap',['../classlraspi_1_1_font.html#a5b4c14c826fe3f79368af3cede89dd30',1,'lraspi::Font']]],
-  ['green',['green',['../classlraspi_1_1_color.html#ab61d4920d22f11cda5d60c7429b4b01f',1,'lraspi::Color::green()'],['../classlraspi_1_1_color.html#a0802a0169df94733fb443ba52b63a2a4',1,'lraspi::Color::green(uint8_t green)']]]
+  ['getwrap',['getWrap',['../classlraspi_1_1_font.html#a5b4c14c826fe3f79368af3cede89dd30',1,'lraspi::Font']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['color',['Color',['../classlraspi_1_1_color.html',1,'lraspi']]]
+  ['exception',['Exception',['../classlraspi_1_1_exception.html',1,'lraspi']]]
 ];

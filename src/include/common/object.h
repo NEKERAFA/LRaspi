@@ -24,9 +24,6 @@ public:
 
     /**
      * @brief Construct a new object
-     * 
-     * @param name Name of the object
-     * @param parent Parent type
      */
     Object();
 

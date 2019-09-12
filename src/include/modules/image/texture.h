@@ -37,21 +37,21 @@ protected:
     /**
      * @brief Set the texture object
      * 
-     * @param A SDL_Texture object
+     * @param sdl_texture A SDL_Texture object
      */
     void setSdlTexture(SDL_Texture* sdl_texture);
 
     /**
      * @brief Set the real width of the texture
      * 
-     * @param real_width 
+     * @param real_width The real width of the texture
      */
     void setRealWidth(int real_width);
 
     /**
      * @brief Set the real height of the texture
      * 
-     * @param real_height 
+     * @param real_height The real height of the texture
      */
     void setRealHeight(int real_height);
 

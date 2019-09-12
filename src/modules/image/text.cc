@@ -23,7 +23,7 @@ namespace lraspi
 Type Text::type(LRASPI_TEXT_NAME, &Texture::type);
 
 Text::Text() : _font(nullptr),
-               _quality(FAST)
+               _quality(NORMAL)
 {}
 
 Text::~Text() {}

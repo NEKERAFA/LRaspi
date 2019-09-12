@@ -18,6 +18,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#include "lraspi.h"
 #include "common/exception.h"
 #include "modules/color/color.h"
 #include "modules/color/color_mod.h"
@@ -33,7 +34,6 @@ namespace lraspi
 namespace explorer
 {
 
-Image*   _bg[4] {nullptr, nullptr, nullptr, nullptr};
 Image*   _logo = nullptr;
 Text*    _title = nullptr;
 Color*   _color_title = nullptr;
@@ -47,11 +47,8 @@ char _str_time[32] = "";
 
 std::vector<std::string> _file_list;
 
-int _current_bg = 0;
 int _current_file = 0;
 
-int _bg_x = 0;
-int _bg_y = 0;
 int _logo_x = 0;
 int _logo_y = 0;
 
@@ -66,45 +63,12 @@ uint16_t _selector_width = 0;
 bool _old_up = false;
 bool _old_down = false;
 
-void loadbg()
-{
-    for (int i = 0; i < 4; i++)
-    {
-        // Loads the background
-        try
-        {
-            _bg[i] = image::loadImage(std::string("res/bg" + std::to_string(i+1) + ".jpg").c_str());
-        }
-        catch(lraspi::Exception e)
-        {
-            std::cerr << e.what() << std::endl;
-            exit(EXIT_FAILURE);
-        }
-
-        // Calculates the ratio
-        double x_ratio = (double) _screen_width / (double) _bg[i]->getRealWidth();
-        double y_ratio = (double) _screen_height / (double) _bg[i]->getRealHeight();
-
-        // Checks the size of the image to resize proportionaly
-        if (x_ratio*_bg[i]->getRealHeight() > _screen_height)
-        {
-            _bg[i]->setWidth(_screen_width);
-            _bg[i]->setHeight(x_ratio*_bg[i]->getRealHeight());
-        }
-        else
-        {
-            _bg[i]->setWidth(y_ratio*_bg[i]->getRealWidth());
-            _bg[i]->setHeight(_screen_height);
-        }
-    }
-}
-
 void loadlogo()
 {
     // Loads the logo
     try
     {
-        _logo = image::loadImage("res/logo.png");
+        _logo = image::loadImage((std::string(LRASPI_RES_FOLDER) + std::string("/logo.png")).c_str());
     }
     catch(lraspi::Exception e)
     {
@@ -180,15 +144,11 @@ void load()
     _selector_width = _default_font->getWidth(">");
     _explorer_bg = {40, 60, _screen_width - 80, _screen_height - 100};
 
-    loadbg();
     loadlogo();
     rendertitle();
 
     _logo_x = ((double) (_screen_width-_logo->getWidth()))/2;
     _logo_y = ((double) (_screen_height-_logo->getHeight()))/2;
-
-    _bg_x = ((double) (_screen_width-_bg[_current_bg]->getWidth()))/2;
-    _bg_y = ((double) (_screen_height-_bg[_current_bg]->getHeight()))/2;
 
     listdir();
 
@@ -239,11 +199,6 @@ const char* update()
     return changefile();
 }
 
-void drawbg()
-{
-    //screen::blit(_bg[_current_bg], _bg_x, _bg_y);
-}
-
 void drawtitle()
 {
     int _time_x = _screen_width-_default_font->getWidth(_str_time)-3;
@@ -268,7 +223,8 @@ void drawtitle()
     screen::blit(_title, 3, 3);
 
     // Draw hour
-    //screen::print(_time_x, 3, _str_time, _color_title);
+    if (std::strlen(_str_time) > 0)
+        screen::print(_time_x, 3, _str_time, _color_title);
 }
 
 void drawexplorer()
@@ -314,17 +270,12 @@ void drawexplorer()
 void draw()
 {
     screen::clear(color::white);
-    drawbg();
     drawtitle();
     drawexplorer();
 }
 
 void close()
 {
-    for (int i = 0; i < 4; i++)
-    {
-        delete _bg[i];
-    }
     delete _logo;
     delete _title;
     delete _color_title;

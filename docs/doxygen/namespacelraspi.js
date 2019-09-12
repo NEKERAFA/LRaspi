@@ -3,7 +3,6 @@ var namespacelraspi =
     [ "lua", null, [
       [ "ref_Object", "structlraspi_1_1lua_1_1ref___object.html", "structlraspi_1_1lua_1_1ref___object" ]
     ] ],
-    [ "Color", "classlraspi_1_1_color.html", "classlraspi_1_1_color" ],
     [ "Exception", "classlraspi_1_1_exception.html", "classlraspi_1_1_exception" ],
     [ "Font", "classlraspi_1_1_font.html", "classlraspi_1_1_font" ],
     [ "Image", "classlraspi_1_1_image.html", "classlraspi_1_1_image" ],
