@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exception',['Exception',['../classlraspi_1_1_exception.html',1,'lraspi']]]
+  ['font',['Font',['../classlraspi_1_1_font.html',1,'lraspi']]]
 ];

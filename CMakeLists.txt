@@ -58,7 +58,7 @@ set(LRASPI_SRC_EXECUTABLE
         src/lraspi.cc
     )
 
-include_directories(${PROJECT_SOURCE_DIR}/src/include)
+include_directories(${PROJECT_SOURCE_DIR}/src/include ${LUA_INCLUDE_DIR})
 
 add_library("lraspi.${PROJECT_VERSION}" SHARED ${LRASPI_SRC})
 

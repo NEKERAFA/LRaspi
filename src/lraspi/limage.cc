@@ -59,7 +59,7 @@ static int lraspi_image_new(lua_State* L)
     try
     {
         lraspi::Texture* texture = lraspi::image::createBlankTexture(width, height);
-        lraspi::lua::push(L, lraspi::Texture::type, texture);
+        lraspi::lua::push(L, texture);
     }
     catch (lraspi::Exception& e)
     {
@@ -82,7 +82,7 @@ static int lraspi_image_load(lua_State* L)
     try
     {
         lraspi::Image* image = lraspi::image::loadImage(path);
-        lraspi::lua::push(L, lraspi::Image::type, image);
+        lraspi::lua::push(L, image);
     }
     catch (lraspi::Exception& e)
     {
@@ -107,7 +107,7 @@ static int lraspi_image_new_text(lua_State* L)
     try
     {
         lraspi::Text* text = lraspi::image::createText(font, str);
-        lraspi::lua::push(L, lraspi::Text::type, text);
+        lraspi::lua::push(L, text);
     }
     catch (lraspi::Exception e)
     {

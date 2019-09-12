@@ -48,8 +48,8 @@ void init()
         throw Exception("Could not get display bounds (%s)", SDL_GetError());
     }
 
-    _width  = 720; //_display_bounds.w;
-    _height = 480; //_display_bounds.h;
+    _width  = _display_bounds.w;
+    _height = _display_bounds.h;
 
     if (SDL_CreateWindowAndRenderer(_width, _height, SDL_WINDOW_BORDERLESS | SDL_WINDOW_SHOWN, &_sdl_window, &_sdl_renderer))
     {
@@ -73,7 +73,6 @@ void close()
     delete _default_font;
     SDL_DestroyRenderer(_sdl_renderer);
     SDL_DestroyWindow(_sdl_window);
-    SDL_Quit();
 }
 
 void clear(Color* color)
@@ -109,7 +108,6 @@ void blit(Texture* texture, int x, int y)
 void print(int x, int y, const char* textstring, Color* color)
 {
     Text* text = new Text();
-    text->setQuality(TextQuality::NORMAL);
     text->render(_current_font, textstring);
     text->tint(color);
     blit(text, x, y);

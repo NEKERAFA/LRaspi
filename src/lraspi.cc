@@ -83,23 +83,37 @@ int main(int argc, const char* argv[])
         // Load the explorer
         lraspi::explorer::load();
 
+        static int i = 0;
+        const char* file;
+
         // Draw the explorer
         do
         {
-            lraspi::explorer::update();
             lraspi::explorer::draw();
-        } while (!lraspi::screen::update());
+            file = lraspi::explorer::update();
+
+            i++;
+            if (i == 60)
+            {
+                lua_getglobal(L, "collectgarbage");
+                lraspi::lua::call(L, 0, 0);
+                i = 0;
+            }
+        } while (!lraspi::screen::update() && file == nullptr);
 
         lraspi::explorer::close();
+
+        // Enter the code
+        lraspi::dofile(L, file);
     }
     else
     {
         // Open the file
         lraspi::dofile(L, path);
-
-        // Close all libraries
-        lraspi::closelibs(L); 
     }
+
+    // Close all libraries
+    lraspi::closelibs(L);
 
     return EXIT_SUCCESS;
 }

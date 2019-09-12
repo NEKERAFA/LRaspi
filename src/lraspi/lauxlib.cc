@@ -56,16 +56,16 @@ void registerobject(lua_State* L, lraspi::Type& type, const luaL_Reg* methods)
     }
 }
 
-void push(lua_State* L, lraspi::Type& type, lraspi::Object* object)
+void push(lua_State* L, lraspi::Object* object)
 {
     // Creates a userdata with the ref_Object struct
     ref_Object* ref = (ref_Object*) lua_newuserdata(L, sizeof(ref_Object));
     // Defines the struct
-    ref->type = &type;
+    ref->type = &object->type;
     ref->object = object;
     // Sets the metatable of the userdata
     // stack = {userdata, meta}
-    luaL_getmetatable(L, type.name());
+    luaL_getmetatable(L, object->name());
     // stack = {userdata = {meta}}
     lua_setmetatable(L, -2);
 }

@@ -10,12 +10,15 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include <ctime>
 #include <cstring>
+#include <cinttypes>
 #include <dirent.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#include "lraspi.h"
 #include "common/exception.h"
 #include "modules/color/color.h"
 #include "modules/color/color_mod.h"
@@ -31,77 +34,48 @@ namespace lraspi
 namespace explorer
 {
 
-Image* _bg[4];
-Image* _logo;
-Text*  _title;
-Color* _color_title;
+Image*   _logo = nullptr;
+Text*    _title = nullptr;
+Color*   _color_title = nullptr;
+Font*    _default_font = nullptr;
+
+SDL_Renderer* _sdl_renderer = nullptr;
+
+SDL_Rect _explorer_bg;
+
+char _str_time[32] = "";
 
 std::vector<std::string> _file_list;
 
-int _current_bg = 0;
 int _current_file = 0;
 
-std::string gettime()
-{
-    time_t rawtime;
-    struct tm* tminfo;
-    char buffer[64];
+int _logo_x = 0;
+int _logo_y = 0;
 
-    // Gets the time
-    time(&rawtime);
-    tminfo = localtime(&rawtime);
+uint16_t _page_max = 0;
+uint16_t _item_per_page = 0;
 
-    std:strftime(buffer, sizeof(buffer), "%a, %b %0e %b, %R", tminfo);
+uint16_t _screen_width = 0;
+uint16_t _screen_height = 0;
 
-    return std::string(buffer);
-}
+uint16_t _selector_width = 0;
 
-void loadbg()
-{
-    for (int i = 0; i < 4; i++)
-    {
-        // Loads the background
-        try
-        {
-            _bg[i] = image::loadImage(std::string("res/bg" + std::to_string(i+1) + ".jpg").c_str());
-        }
-        catch(lraspi::Exception e)
-        {
-            std::cerr << e.what() << std::endl;
-            exit(EXIT_FAILURE);
-        }
-
-        // Calculates the ratio
-        double x_ratio = (double) screen::getWidth() / (double) _bg[i]->getRealWidth();
-        double y_ratio = (double) screen::getHeight() / (double) _bg[i]->getRealHeight();
-
-        // Checks the size of the image to resize proportionaly
-        if (x_ratio*_bg[i]->getRealHeight() > screen::getHeight())
-        {
-            _bg[i]->setWidth((int) screen::getWidth());
-            _bg[i]->setHeight(x_ratio*_bg[i]->getRealHeight());
-        }
-        else
-        {
-            _bg[i]->setWidth(y_ratio*_bg[i]->getRealWidth());
-            _bg[i]->setHeight((int) screen::getHeight());
-        }
-    }
-
-}
+bool _old_up = false;
+bool _old_down = false;
 
 void loadlogo()
 {
     // Loads the logo
     try
     {
-        _logo = image::loadImage("res/logo.png");
+        _logo = image::loadImage((std::string(LRASPI_RES_FOLDER) + std::string("/logo.png")).c_str());
     }
     catch(lraspi::Exception e)
     {
         std::cerr << e.what() << std::endl;
         exit(EXIT_FAILURE);
     }
+
     _logo->setSdlBlendMode(SDL_BLENDMODE_BLEND);
     _logo->setAlpha(100);
     _logo->setWidth(256);
@@ -110,10 +84,10 @@ void loadlogo()
 
 void rendertitle()
 {
-    // Render title
     try
     {
-        _title = image::createText(screen::getFont(), "Lua Raspi");
+        // Render title text
+        _title = image::createText(_default_font, "Lua Raspi");
         _title->setQuality(TextQuality::NORMAL);
         _title->tint(_color_title);
     }
@@ -126,8 +100,8 @@ void rendertitle()
 
 void listdir()
 {
-    DIR* _pdir;
-    struct dirent* _sdir;
+    DIR* _pdir = nullptr;
+    struct dirent* _sdir = nullptr;
 
     // Checks the directory
     if (!(_pdir = opendir(".")))
@@ -145,7 +119,7 @@ void listdir()
             // Checks the file
             if (lstat(_sdir->d_name, &_file_info) == -1)
             {
-                std::cerr << "Could not open file" << _sdir->d_name << strerror(errno) << std::endl;
+                std::cerr << "Could not open file '" << _sdir->d_name << "' (" << strerror(errno) << ")" << std::endl;
                 exit(EXIT_FAILURE);
             }
             // Checks the extension
@@ -163,90 +137,145 @@ void listdir()
 void load()
 {
     _color_title = new Color(32, 32, 32);
+    _sdl_renderer = screen::getRenderer();
+    _screen_width = screen::getWidth();
+    _screen_height = screen::getHeight();
+    _default_font = screen::getFont();
+    _selector_width = _default_font->getWidth(">");
+    _explorer_bg = {40, 60, _screen_width - 80, _screen_height - 100};
 
-    loadbg();
     loadlogo();
     rendertitle();
+
+    _logo_x = ((double) (_screen_width-_logo->getWidth()))/2;
+    _logo_y = ((double) (_screen_height-_logo->getHeight()))/2;
+
     listdir();
+
+    _page_max = (_file_list.size()*(_default_font->getHeight()+2)) / (_explorer_bg.h-40);
+    _item_per_page = (_explorer_bg.h-40) / (_default_font->getHeight()+2);
 }
 
-void update()
+void gettime()
 {
+    time_t rawtime;
+    struct tm* tminfo = nullptr;
 
+    // Gets the time info
+    time(&rawtime);
+    tminfo = localtime(&rawtime);
+
+    // Gets the time string
+    std::strftime(_str_time, sizeof(_str_time), "%a, %b %0e %Y, %R", tminfo);
 }
 
-void drawbg()
+const char* changefile()
 {
-    int x = ((double) (screen::getWidth()-_bg[_current_bg]->getWidth()))/2;
-    int y = ((double) (screen::getHeight()-_bg[_current_bg]->getHeight()))/2;
-    screen::blit(_bg[_current_bg], x, y);
+    const Uint8* _current_keystates = SDL_GetKeyboardState(nullptr);
+
+    // Checks the enter button
+    if (_current_keystates[SDL_SCANCODE_RETURN])
+        return _file_list[_current_file].c_str();
+
+    // Checks the up arrow button
+    if ((_current_keystates[SDL_SCANCODE_UP]) && (_current_keystates[SDL_SCANCODE_UP] != _old_up))
+        if (_current_file > 0)
+            _current_file--;
+
+    // Checks the down arrow button
+    if ((_current_keystates[SDL_SCANCODE_DOWN]) && (_current_keystates[SDL_SCANCODE_DOWN] != _old_down))
+        if (_current_file < _file_list.size()-1)
+            _current_file++;
+
+    _old_up = _current_keystates[SDL_SCANCODE_UP];
+    _old_down = _current_keystates[SDL_SCANCODE_DOWN];
+
+    return nullptr;
 }
 
-void drawhub()
+const char* update()
 {
-    // Draw title
+    gettime();
+    return changefile();
+}
+
+void drawtitle()
+{
+    int _time_x = _screen_width-_default_font->getWidth(_str_time)-3;
+    Uint8 r, g, b, a;
+
+    SDL_GetRenderDrawColor(_sdl_renderer, &r, &g, &b, &a);
+
+    // Draw title bg
     for (int i = 0; i < 20; i++)
     {
         Uint8 color = 255-i*55/20;
-        SDL_SetRenderDrawColor(screen::getRenderer(), color, color, color, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawLine(screen::getRenderer(), 0, i, screen::getWidth(), i);
+        SDL_SetRenderDrawColor(_sdl_renderer, color, color, color, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawLine(_sdl_renderer, 0, i, _screen_width, i);
     }
 
-    std::string _str_time = gettime();
-    int _time_x = screen::getWidth()-screen::getFont()->getWidth(_str_time.c_str())-3;
+    SDL_SetRenderDrawColor(_sdl_renderer, 128, 128, 128, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawLine(_sdl_renderer, 0, 20, _screen_width, 20);
+    SDL_RenderDrawLine(_sdl_renderer, _time_x-4, 0, _time_x-4, 19);
+    SDL_SetRenderDrawColor(_sdl_renderer, r, g, b, a);
 
-    SDL_SetRenderDrawColor(screen::getRenderer(), 128, 128, 128, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawLine(screen::getRenderer(), 0, 20, screen::getWidth(), 20);
-    SDL_RenderDrawLine(screen::getRenderer(), _time_x-4, 0, _time_x-4, 19);
-    SDL_SetRenderDrawColor(screen::getRenderer(), 255, 255, 255, SDL_ALPHA_OPAQUE);
-
+    // Draw title
     screen::blit(_title, 3, 3);
-    screen::print(_time_x, 3, _str_time.c_str(), _color_title);
+
+    // Draw hour
+    if (std::strlen(_str_time) > 0)
+        screen::print(_time_x, 3, _str_time, _color_title);
 }
 
 void drawexplorer()
 {
-    SDL_SetRenderDrawColor(screen::getRenderer(), 255, 255, 255, 128);
-    SDL_SetRenderDrawBlendMode(screen::getRenderer(), SDL_BLENDMODE_BLEND);
-    SDL_Rect r = {40, 60, screen::getWidth() - 80, screen::getHeight() - 100};
-    SDL_RenderFillRect(screen::getRenderer(), &r);
-    SDL_SetRenderDrawColor(screen::getRenderer(), 255, 255, 255, SDL_ALPHA_OPAQUE);
-    SDL_SetRenderDrawBlendMode(screen::getRenderer(), SDL_BLENDMODE_NONE);
-
-    int x = ((double) (screen::getWidth()-_logo->getWidth()))/2;
-    int y = ((double) (screen::getHeight()-_logo->getHeight()))/2;
-    screen::blit(_logo, x, y);
-
     int pos = 0;
-    int width = screen::getFont()->getWidth(">");
-    int height = screen::getFont()->getHeight();
+    Uint8 r, g, b, a;
+    SDL_BlendMode mode;
 
-    for (auto it = _file_list.begin(); it != _file_list.end(); it++)
+    SDL_GetRenderDrawColor(_sdl_renderer, &r, &g, &b, &a);
+    SDL_GetRenderDrawBlendMode(_sdl_renderer, &mode);
+
+    // Draw background
+    SDL_SetRenderDrawColor(_sdl_renderer, 128, 128, 128, 128);
+    SDL_SetRenderDrawBlendMode(_sdl_renderer, SDL_BLENDMODE_BLEND);
+    SDL_RenderFillRect(_sdl_renderer, &_explorer_bg);
+    SDL_SetRenderDrawColor(_sdl_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+
+    // Draw logo
+    screen::blit(_logo, _logo_x, _logo_y);
+
+    uint16_t _current_page = (_current_file*(_default_font->getHeight()+2)) / (_explorer_bg.h-40);
+
+    for (int i = _current_page*_item_per_page; i < std::min((_current_page+1)*_item_per_page, (int) _file_list.size()); i++)
     {
-        if (pos == _current_file)
+        uint16_t pos = i - _current_page*_item_per_page;
+
+        // Draw selector
+        if (i == _current_file)
         {
-            SDL_Rect r = {40, 80+pos*(height+2), screen::getWidth()-80, height};
-            SDL_RenderFillRect(screen::getRenderer(), &r);
-            screen::print(60, 80+pos*(height+2), ">", _color_title);
+            SDL_Rect selector = {50, 80+pos*(_default_font->getHeight()+2), _screen_width-100, _default_font->getHeight()};
+            SDL_RenderFillRect(_sdl_renderer, &selector);
+            screen::print(60, 80+pos*(_default_font->getHeight()+2), ">", _color_title);
         }
-        screen::print(60+width+5, 80+pos*(height+2), (*it).c_str(), _color_title);
-        pos++;
+
+        // Draw file
+        screen::print(60+_selector_width+5, 80+pos*(_default_font->getHeight()+2), _file_list[i].c_str(), _color_title);
     }
+
+    SDL_SetRenderDrawColor(_sdl_renderer, r, g, b, a);
+    SDL_SetRenderDrawBlendMode(_sdl_renderer, mode);
 }
 
 void draw()
 {
-    drawbg();
-    drawhub();
+    screen::clear(color::white);
+    drawtitle();
     drawexplorer();
 }
 
 void close()
 {
-    for (int i = 0; i < 4; i++)
-    {
-        delete _bg[i];
-    }
     delete _logo;
     delete _title;
     delete _color_title;

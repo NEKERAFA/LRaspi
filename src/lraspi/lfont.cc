@@ -65,7 +65,7 @@ static int lraspi_font_load(lua_State* L)
     try
     {
         lraspi::Font* font = lraspi::font::loadFont(path, size);
-        lraspi::lua::push(L, lraspi::Font::type, font);
+        lraspi::lua::push(L, font);
     }
     catch(lraspi::Exception e)
     {
@@ -95,7 +95,7 @@ static int lraspi_font_create(lua_State* L)
     try
     {
         lraspi::Font* font = lraspi::font::createDefault(size);
-        lraspi::lua::push(L, lraspi::Font::type, font);
+        lraspi::lua::push(L, font);
     }
     catch(lraspi::Exception e)
     {

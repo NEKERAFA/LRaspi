@@ -6,6 +6,7 @@
 
 #include <iostream>
 
+#include <SDL2/SDL.h>
 #include <lua.hpp>
 
 #include "lraspi.h"
@@ -69,6 +70,11 @@ int openlibs(lua_State* L)
 
 void closelibs(lua_State* L)
 {
+    lua_getglobal(L, "screen");
+    lua_getfield(L, -1, "close");
+    lua_remove(L, -2);
+    lua::call(L, 0, 0);
+
     lua_getglobal(L, "font");
     lua_getfield(L, -1, "close");
     lua_remove(L, -2);
@@ -79,10 +85,7 @@ void closelibs(lua_State* L)
     lua_remove(L, -2);
     lua::call(L, 0, 0);
 
-    lua_getglobal(L, "screen");
-    lua_getfield(L, -1, "close");
-    lua_remove(L, -2);
-    lua::call(L, 0, 0);
+    SDL_Quit();
 }
 
 } // namespace lraspi

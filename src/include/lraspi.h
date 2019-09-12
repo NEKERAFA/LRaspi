@@ -27,6 +27,7 @@
 #define LRASPI_H
 
 #define LRASPI_VERSION "0.0.1"
+#define LRASPI_RES_FOLDER "usr/local/share/lraspi"
 
 #include <lua.hpp>
 

@@ -40,7 +40,7 @@ void registerobject(lua_State* L, lraspi::Type& type, const luaL_Reg* methods);
  * @param T The type of the object to push
  * @param object The object to push
  */
-void push(lua_State* L, lraspi::Type& type, lraspi::Object* object);
+void push(lua_State* L, lraspi::Object* object);
 
 /**
  * @brief Checks if the object in the Lua stack is a type

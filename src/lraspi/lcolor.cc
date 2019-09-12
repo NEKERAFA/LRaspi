@@ -51,7 +51,7 @@ static int lraspi_color_new(lua_State* L)
         color = lraspi::color::create(r, g, b, 255);
     }
     
-    lraspi::lua::push(L, lraspi::Color::type, color);
+    lraspi::lua::push(L,  color);
 
     return 1;
 }
@@ -83,63 +83,63 @@ static int lraspi_color_get_palette(lua_State* L)
     lua_newtable(L);
 
     lua_pushstring(L, "white");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::white);
+    lraspi::lua::push(L,  lraspi::color::white);
     lua_settable(L, -3);
 
     lua_pushstring(L, "black");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::black);
+    lraspi::lua::push(L,  lraspi::color::black);
     lua_settable(L, -3);
 
     lua_pushstring(L, "red");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::red);
+    lraspi::lua::push(L,  lraspi::color::red);
     lua_settable(L, -3);
 
     lua_pushstring(L, "green");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::green);
+    lraspi::lua::push(L,  lraspi::color::green);
     lua_settable(L, -3);
 
     lua_pushstring(L, "blue");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::blue);
+    lraspi::lua::push(L,  lraspi::color::blue);
     lua_settable(L, -3);
 
     lua_pushstring(L, "yellow");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::yellow);
+    lraspi::lua::push(L,  lraspi::color::yellow);
     lua_settable(L, -3);
 
     lua_pushstring(L, "cyan");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::cyan);
+    lraspi::lua::push(L,  lraspi::color::cyan);
     lua_settable(L, -3);
 
     lua_pushstring(L, "magenta");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::magenta);
+    lraspi::lua::push(L,  lraspi::color::magenta);
     lua_settable(L, -3);
 
     lua_pushstring(L, "marron");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::marron);
+    lraspi::lua::push(L,  lraspi::color::marron);
     lua_settable(L, -3);
 
     lua_pushstring(L, "grass");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::grass);
+    lraspi::lua::push(L,  lraspi::color::grass);
     lua_settable(L, -3);
 
     lua_pushstring(L, "navy");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::navy);
+    lraspi::lua::push(L,  lraspi::color::navy);
     lua_settable(L, -3);
 
     lua_pushstring(L, "turquoise");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::turquoise);
+    lraspi::lua::push(L,  lraspi::color::turquoise);
     lua_settable(L, -3);
 
     lua_pushstring(L, "olive");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::olive);
+    lraspi::lua::push(L,  lraspi::color::olive);
     lua_settable(L, -3);
 
     lua_pushstring(L, "violet");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::violet);
+    lraspi::lua::push(L,  lraspi::color::violet);
     lua_settable(L, -3);
 
     lua_pushstring(L, "gray");
-    lraspi::lua::push(L, lraspi::Color::type, lraspi::color::gray);
+    lraspi::lua::push(L,  lraspi::color::gray);
     lua_settable(L, -3);
 
     return 1;
