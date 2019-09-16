@@ -12,7 +12,7 @@
 
 #include "lraspi.h"
 #include "lraspi/lauxlib.h"
-#include "modules/screen/screen_mod.h"
+#include "modules/screen/module.h"
 #include "interface/explorer.h"
 
 namespace lraspi

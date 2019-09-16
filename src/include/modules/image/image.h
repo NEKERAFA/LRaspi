@@ -11,7 +11,7 @@
 
 #include "common/type.h"
 #include "common/object.h"
-#include "modules/image/texture.h"
+#include "modules/draw/texture.h"
 
 #define LRASPI_IMAGE_NAME "image"
 

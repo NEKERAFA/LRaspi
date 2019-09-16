@@ -1,11 +1,11 @@
 --- Image Example
 
 -- Loads an image
-local img = image.load("res/lua.png")
+local img = image.new("res/lua.png")
 -- Sets the blend mode
-img:blendmode("blend")
+img:getblendmode("blend")
 -- Sets the center of the image to rotate in the center
-img:center(img:width()/2, img:height()/2)
+img:setcenter(img:getwidth()/2, img:getheight()/2)
 -- Tints the image as blue
 img:tint(color.new(0,0,255))
 
@@ -23,7 +23,7 @@ repeat
     screen.clear(blue)
 
     -- Blits the image
-    screen.blit(img, screen.width()/2, screen.height()/2)
+    screen.blit(img, screen.getwidth()/2, screen.getheight()/2)
 
     -- Rotates the image
     rot = rot+0.1
@@ -44,11 +44,8 @@ repeat
         alp_inc = -alp_inc
     end
 
-    img:alpha(alp)
+    img:setalpha(alp)
 
     -- Updates the screen and check if the program was exited
     quit = screen.update()
 until quit
-
--- Destroy the image object
-image.free(img)

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(LuaRaspi VERSION 0.0.1)
+project(LuaRaspi VERSION 0.0.3)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/sdl2)
 
@@ -10,10 +10,14 @@ find_package(Lua REQUIRED)
 
 set(LRASPI_SRC_LUA_MODULES
         src/lraspi/lauxlib.cc
-        src/lraspi/lscreen.cc
+        src/lraspi/lcanvas.cc
         src/lraspi/lcolor.cc
+        src/lraspi/ldraw.cc
         src/lraspi/lfont.cc
         src/lraspi/limage.cc
+        src/lraspi/lscreen.cc
+        src/lraspi/ltext.cc
+        src/lraspi/ltexture.cc
         src/modules/lraspi/lraspi.cc
     )
 
@@ -24,24 +28,29 @@ set(LRASPI_SRC_COMMON
     )
 
 set(LRASPI_SRC_SCREEN_MODULE
-        src/modules/screen/screen_mod.cc
+        src/modules/screen/module.cc
     )
 
 set(LRASPI_SRC_IMAGE_MODULE
-    src/modules/image/texture.cc
     src/modules/image/image.cc
-    src/modules/image/text.cc
-    src/modules/image/image_mod.cc
+    src/modules/image/module.cc
 )
 
 set(LRASPI_SRC_COLOR_MODULE
     src/modules/color/color.cc
-    src/modules/color/color_mod.cc
+    src/modules/color/module.cc
 )
 
 set(LRASPI_SRC_FONT_MODULE
     src/modules/font/font.cc
-    src/modules/font/font_mod.cc
+    src/modules/font/module.cc
+)
+
+set(LRASPI_SRC_DRAW_MODULE
+    src/modules/draw/canvas.cc
+    src/modules/draw/text.cc
+    src/modules/draw/texture.cc
+    src/modules/draw/module.cc
 )
 
 set(LRASPI_SRC
@@ -51,6 +60,7 @@ set(LRASPI_SRC
         ${LRASPI_SRC_FONT_MODULE}
         ${LRASPI_SRC_IMAGE_MODULE}
         ${LRASPI_SRC_SCREEN_MODULE}
+        ${LRASPI_SRC_DRAW_MODULE}
     )
 
 set(LRASPI_SRC_EXECUTABLE

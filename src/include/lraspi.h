@@ -26,8 +26,13 @@
 #ifndef LRASPI_H
 #define LRASPI_H
 
-#define LRASPI_VERSION "0.0.1"
+#define LRASPI_VERSION "0.0.3"
+
+#ifdef NDEBUG
 #define LRASPI_RES_FOLDER "usr/local/share/lraspi"
+#else
+#define LRASPI_RES_FOLDER "./res/"
+#endif
 
 #include <lua.hpp>
 

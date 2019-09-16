@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua Raspi</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/canvas.html">canvas</a></li>
+  <li><strong>text</strong></li>
+  <li><a href="../classes/texture.html">texture</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Color.html">Color</a></li>
+  <li><a href="../modules/Draw.html">Draw</a></li>
+  <li><a href="../modules/Font.html">Font</a></li>
+  <li><a href="../modules/Image.html">Image</a></li>
+  <li><a href="../modules/Screen.html">Screen</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/font.lua.html">font.lua</a></li>
+  <li><a href="../examples/image.lua.html">image.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>text</code></h1>
+<p>This object represents a rendered text</p>
+<p></p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="../classes/texture.html#">texture</a>
+    </ul>
+
+
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#text:setquality">text:setquality (text, quality)</a></td>
+	<td class="summary">Sets the quality to render text</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:getquality">text:getquality (text)</a></td>
+	<td class="summary">Gets the quality to render text</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:set">text:set (text, textstring)</a></td>
+	<td class="summary">Replaces the content of the text with a new value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:add">text:add (text, textstring)</a></td>
+	<td class="summary">Adds a new content to the rendered text</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:clear">text:clear (text)</a></td>
+	<td class="summary">Clears the content of the rendered text</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "text:setquality"></a>
+    <strong>text:setquality (text, quality)</strong>
+    </dt>
+    <dd>
+    Sets the quality to render text
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
+         A text object
+        </li>
+        <li><span class="parameter">quality</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         A string as the following values:
+ <ul>
+ <li><span class='parameter'>fast</span> for fast and not smooth text</li>
+ <li><span class='parameter'>normal</span> for slow and smooth text</li>
+ </ul>
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:getquality"></a>
+    <strong>text:getquality (text)</strong>
+    </dt>
+    <dd>
+    Gets the quality to render text
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
+         A text object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         A string as the following values:
+ <ul>
+ <li><span class='parameter'>fast</span> for fast and not smooth text</li>
+ <li><span class='parameter'>normal</span> for slow and smooth text</li>
+ </ul>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:set"></a>
+    <strong>text:set (text, textstring)</strong>
+    </dt>
+    <dd>
+    Replaces the content of the text with a new value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
+         A text object
+        </li>
+        <li><span class="parameter">textstring</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The new content
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:add"></a>
+    <strong>text:add (text, textstring)</strong>
+    </dt>
+    <dd>
+    Adds a new content to the rendered text
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
+         A text object
+        </li>
+        <li><span class="parameter">textstring</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The text to append
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:clear"></a>
+    <strong>text:clear (text)</strong>
+    </dt>
+    <dd>
+    Clears the content of the rendered text
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
+         A text object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-09-16 13:19:45 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

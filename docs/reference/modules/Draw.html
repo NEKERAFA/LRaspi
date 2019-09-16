@@ -39,9 +39,9 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Color.html">Color</a></li>
-  <li><a href="../modules/Draw.html">Draw</a></li>
+  <li><strong>Draw</strong></li>
   <li><a href="../modules/Font.html">Font</a></li>
-  <li><strong>Image</strong></li>
+  <li><a href="../modules/Image.html">Image</a></li>
   <li><a href="../modules/Screen.html">Screen</a></li>
 </ul>
 <h2>Classes</h2>
@@ -60,26 +60,20 @@
 
 <div id="content">
 
-<h1>Module <code>Image</code></h1>
-<p>Image reading and manipulation and 2D accelerated rendering</p>
+<h1>Module <code>Draw</code></h1>
+<p>2D simple drawing rendering</p>
 <p></p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#image.init">image.init ()</a></td>
-	<td class="summary">Initializes the image subsystem.<br>
- The interpreter calls this function internally, so you should not call explicitly.</td>
+	<td class="name" nowrap><a href="#draw.newcanvas">draw.newcanvas (width, height)</a></td>
+	<td class="summary">Creates new canvas</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.new">image.new (path)</a></td>
-	<td class="summary">Loads an image from the disk onto the memory</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image.close">image.close ()</a></td>
-	<td class="summary">Closes the image subsystem.<br>
- The interpreter calls this function internally, so you should not call explicitly.</td>
+	<td class="name" nowrap><a href="#draw.newtext">draw.newtext (font, text)</a></td>
+	<td class="summary">Creates new text</td>
 	</tr>
 </table>
 
@@ -91,41 +85,30 @@
 
     <dl class="function">
     <dt>
-    <a name = "image.init"></a>
-    <strong>image.init ()</strong>
+    <a name = "draw.newcanvas"></a>
+    <strong>draw.newcanvas (width, height)</strong>
     </dt>
     <dd>
-    Initializes the image subsystem.<br>
- The interpreter calls this function internally, so you should not call explicitly.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image.new"></a>
-    <strong>image.new (path)</strong>
-    </dt>
-    <dd>
-    Loads an image from the disk onto the memory
+    Creates new canvas
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">path</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The path of the image file
+        <li><span class="parameter">width</span>
+            <span class="types"><span class="type">int</span></span>
+         The width of the new canvas
+        </li>
+        <li><span class="parameter">height</span>
+            <span class="types"><span class="type">int</span></span>
+         The height of the new canvas
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">image</span></span>
-        A new image object
+           <span class="types"><a class="type" href="../classes/canvas.html#">canvas</a></span>
+        A new canvas objext
     </ol>
 
 
@@ -133,15 +116,31 @@
 
 </dd>
     <dt>
-    <a name = "image.close"></a>
-    <strong>image.close ()</strong>
+    <a name = "draw.newtext"></a>
+    <strong>draw.newtext (font, text)</strong>
     </dt>
     <dd>
-    Closes the image subsystem.<br>
- The interpreter calls this function internally, so you should not call explicitly.
+    Creates new text
 
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">font</span>
+            <span class="types"><span class="type">font</span></span>
+         A font object
+        </li>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The text to render
+        </li>
+    </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
+        A new text objext
+    </ol>
 
 
 

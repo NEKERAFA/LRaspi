@@ -16,7 +16,7 @@
 #include "common/type.h"
 #include "common/object.h"
 #include "modules/font/font.h"
-#include "modules/color/color_mod.h"
+#include "modules/color/module.h"
 
 namespace lraspi
 {

@@ -21,10 +21,11 @@
 #include "lraspi.h"
 #include "common/exception.h"
 #include "modules/color/color.h"
-#include "modules/color/color_mod.h"
+#include "modules/color/module.h"
 #include "modules/image/image.h"
-#include "modules/image/image_mod.h"
-#include "modules/screen/screen_mod.h"
+#include "modules/image/module.h"
+#include "modules/draw/module.h"
+#include "modules/screen/module.h"
 
 #include "explorer.h"
 
@@ -68,7 +69,7 @@ void loadlogo()
     // Loads the logo
     try
     {
-        _logo = image::loadImage((std::string(LRASPI_RES_FOLDER) + std::string("/logo.png")).c_str());
+        _logo = image::newImage((std::string(LRASPI_RES_FOLDER) + std::string("/logo.png")).c_str());
     }
     catch(lraspi::Exception e)
     {
@@ -87,7 +88,7 @@ void rendertitle()
     try
     {
         // Render title text
-        _title = image::createText(_default_font, "Lua Raspi");
+        _title = draw::newText(_default_font, "Lua Raspi");
         _title->setQuality(TextQuality::NORMAL);
         _title->tint(_color_title);
     }

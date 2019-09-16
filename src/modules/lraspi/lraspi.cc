@@ -11,10 +11,14 @@
 
 #include "lraspi.h"
 #include "lraspi/lauxlib.h"
+#include "lraspi/lcanvas.h"
 #include "lraspi/lcolor.h"
-#include "lraspi/lscreen.h"
-#include "lraspi/limage.h"
+#include "lraspi/ldraw.h"
 #include "lraspi/lfont.h"
+#include "lraspi/limage.h"
+#include "lraspi/lscreen.h"
+#include "lraspi/ltext.h"
+#include "lraspi/ltexture.h"
 
 /***
  * Non specified functions
@@ -38,6 +42,10 @@ static int lraspi_version(lua_State* L)
 
 int openlibs(lua_State* L)
 {   
+    luaopen_canvas(L);
+    luaopen_text(L);
+    luaopen_texture(L);
+
     // Loads image library
     luaL_requiref(L, "image", luaopen_image, 1);
     lua_getglobal(L, "image");
@@ -54,6 +62,9 @@ int openlibs(lua_State* L)
 
     // Loads color library
     luaL_requiref(L, "color", luaopen_color, 1);
+
+    // Loads draw library
+    luaL_requiref(L, "draw", luaopen_draw, 1);
 
     // Loads screen library
     luaL_requiref(L, "screen", luaopen_screen, 1);

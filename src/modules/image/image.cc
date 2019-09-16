@@ -12,8 +12,8 @@
 #include "common/exception.h"
 #include "common/type.h"
 #include "common/object.h"
-#include "modules/screen/screen_mod.h"
-#include "modules/image/texture.h"
+#include "modules/screen/module.h"
+#include "modules/draw/texture.h"
 #include "modules/image/image.h"
 
 namespace lraspi
@@ -42,19 +42,8 @@ void Image::load(const char* path)
     }
     else
     {
-        // Checks to convert the surface in a 2d acelerate texture
-        if (!(_sdl_texture = SDL_CreateTextureFromSurface(screen::getRenderer(), _sdl_surface)))
-        {
-            throw Exception("Could not create texture from '%s' (%s)", path, SDL_GetError());
-        }
-        else
-        {
-            setSdlTexture(_sdl_texture);
-            setRealWidth(_sdl_surface->w);
-            setRealHeight(_sdl_surface->h);
-            setWidth(_sdl_surface->w);
-            setHeight(_sdl_surface->h);
-        }
+        setSdlSurface(_sdl_surface);
+        SDL_FreeSurface(_sdl_surface);
     }
 }
 

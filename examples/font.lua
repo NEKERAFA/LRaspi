@@ -1,15 +1,15 @@
 --- Font Example
 
 -- Creates a new font using default
-local fnt = font.create(24)
+local fnt = font.newdefault(24)
 
 -- Black color
 local black = color.new(0, 0, 0)
 
-local quit = false
-
 -- Creates a text
-local hello = image.newtext(fnt, "hello world")
+local hello = draw.newtext(fnt, "hello world")
+
+local quit = false
 
 repeat
     -- Clears the text
@@ -21,8 +21,3 @@ repeat
     -- Updates the screen and check if the program was exited
     quit = screen.update()
 until quit
-
--- Destroys the objects
-image.free(hello)
-font.free(fnt)
-color.free(black)
