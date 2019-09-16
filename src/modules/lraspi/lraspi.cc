@@ -18,7 +18,6 @@
 #include "lraspi/limage.h"
 #include "lraspi/lscreen.h"
 #include "lraspi/ltext.h"
-#include "lraspi/ltexture.h"
 
 /***
  * Non specified functions
@@ -44,7 +43,6 @@ int openlibs(lua_State* L)
 {   
     luaopen_canvas(L);
     luaopen_text(L);
-    luaopen_texture(L);
 
     // Loads image library
     luaL_requiref(L, "image", luaopen_image, 1);

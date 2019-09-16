@@ -17,7 +17,6 @@ set(LRASPI_SRC_LUA_MODULES
         src/lraspi/limage.cc
         src/lraspi/lscreen.cc
         src/lraspi/ltext.cc
-        src/lraspi/ltexture.cc
         src/modules/lraspi/lraspi.cc
     )
 

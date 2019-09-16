@@ -17,7 +17,6 @@ namespace lraspi
 namespace lua
 {
 
-
 struct ref_Object
 {
     Type* type;

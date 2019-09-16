@@ -13,14 +13,12 @@
  * TrueType font reading and text rendering
  * @module Font
  */
-extern "C" {
 
 /***
- * Initializes the font submodule.<br>
+ * Initializes the font submodule. <br>
  * The interpreter calls this function internally, so you should not call explicitly.
  * @function font.init
  */
-int lraspi_font_init(lua_State* L);
 
 /***
  * Loads a font from the disk onto the memory
@@ -29,7 +27,6 @@ int lraspi_font_init(lua_State* L);
  * @int[opt=12] size The size of the font in pixels
  * @treturn font A font object
  */
-int lraspi_font_new(lua_State* L);
 
 /***
  * Create a font using the default font (DejaVu) with a custom size
@@ -37,7 +34,6 @@ int lraspi_font_new(lua_State* L);
  * @int[opt=12] size The size of the font in pixels
  * @treturn font A font object
  */
-int lraspi_font_new_default(lua_State* L);
 
 /***
  * Get the maximun height of the font
@@ -45,7 +41,6 @@ int lraspi_font_new_default(lua_State* L);
  * @tparam font font A font object
  * @treturn int The height of the font in pixels
  */
-int lraspi_font_get_height(lua_State* L);
 
 /***
  * Calculates the size of the text using font
@@ -54,10 +49,9 @@ int lraspi_font_get_height(lua_State* L);
  * @string text The string to calculate the font
  * @treturn int The size in pixels of the resulting texture if the text was rendered using the font
  */
-int lraspi_font_get_width(lua_State* L);
 
 /***
- * Formats the text with a maximun text width size.<br>
+ * Formats the text with a maximun text width size. <br>
  * This functions add new lines if the text width size reachs the given wrap limit
  * @function font.wrap
  * @tparam font font A font object
@@ -65,7 +59,6 @@ int lraspi_font_get_width(lua_State* L);
  * @int width The maximun width in pixels of each line
  * @treturn string The text wrapped
  */
-int lraspi_font_wrap(lua_State* L);
 
 /***
  * Sets the rendering style of the text
@@ -79,7 +72,6 @@ int lraspi_font_wrap(lua_State* L);
  * <li><span class='parameter'>strikethrough</span> Displays the font with a line through the text</li>
  * </ul>
  */
-int lraspi_font_set_style(lua_State* L);
 
 /***
  * Gets the rendering style of the text
@@ -94,7 +86,6 @@ int lraspi_font_set_style(lua_State* L);
  * <li><span class='parameter'>strikethrough</span> Displays the font with a line through the text</li>
  * </ul>
  */
-int lraspi_font_get_style(lua_State* L);
 
 /***
  * Sets the outline size of the font
@@ -102,7 +93,6 @@ int lraspi_font_get_style(lua_State* L);
  * @tparam font font A font object
  * @treturn int The size of the outline in pixels
  */
-int lraspi_font_set_outline(lua_State* L);
 
 /***
  * Gets the outline size of the font
@@ -110,7 +100,6 @@ int lraspi_font_set_outline(lua_State* L);
  * @tparam font font A font object
  * @int size The size of the outline in pixels
  */
-int lraspi_font_get_outline(lua_State* L);
 
 /***
  * Sets the hinting mode of the font
@@ -124,7 +113,6 @@ int lraspi_font_get_outline(lua_State* L);
  * <li><span class='parameter'>none</span> For no hinting</li>
  * </ul>
  */
-int lraspi_font_set_hinting_mode(lua_State* L);
 
 /***
  * Gets the maximun ascent size of all glyphs of the font
@@ -132,7 +120,6 @@ int lraspi_font_set_hinting_mode(lua_State* L);
  * @tparam font font A font object
  * @treturn int The maximun ascent in pixels
  */
-int lraspi_font_get_ascent(lua_State* L);
 
 /***
  * Gets the maximun descent size of all glyphs of the font
@@ -140,25 +127,22 @@ int lraspi_font_get_ascent(lua_State* L);
  * @tparam font font A font object
  * @treturn int The maximun descent in pixels
  */
-int lraspi_font_get_descent(lua_State* L);
 
 /***
- * Gets the recomended height of a rendered line of text of the font.<br>
+ * Gets the recomended height of a rendered line of text of the font. <br>
  * This value is usually larger than the font height
  * @function font.lineskip
  * @tparam font font A font object
  * @treturn int The maximun height of all glyphs in the font in pixels
  */
-int lraspi_font_get_line_skip(lua_State* L);
 
 /***
- * Sets the line height of the font.<br>
+ * Sets the line height of the font. <br>
  * The space between lines is determined by the line height multiplied by the height of the font.
  * @function font.setlineheight
  * @tparam font font A font object
  * @number height The space between lines when the text is rendered. The default value is 1.0
  */
-int lraspi_font_set_line_height(lua_State* L);
 
 /***
  * Gets the line height of the font
@@ -166,7 +150,6 @@ int lraspi_font_set_line_height(lua_State* L);
  * @tparam font font A font object
  * @treturn number The space between lines when the text is rendered
  */
-int lraspi_font_get_line_height(lua_State* L);
 
 /***
  * Get the current family name of the font
@@ -174,21 +157,20 @@ int lraspi_font_get_line_height(lua_State* L);
  * @tparam font font A font object
  * @return A string with the family name of the font or nil if the information is not avaliable
  */
-int lraspi_font_get_family_name(lua_State* L);
 
 /***
  * Destroys a font object
  * @function font.free
  * @tparam font font A font object
  */
-int lraspi_font_free(lua_State* L);
 
 /***
- * Closes the font subsystem.
+ * Closes the font subsystem. <br>
  * The interpreter calls this function internally, so you should not call explicitly.
  * @function font.close
  */
-int lraspi_font_close(lua_State* L);
+
+extern "C" {
 
 int luaopen_font(lua_State* L);
 

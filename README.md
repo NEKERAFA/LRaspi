@@ -15,7 +15,7 @@ Lua Raspi is a Lua script embedded interpreter for the Raspberry Pi. If you are 
 * A proyect explorer to launch lua scripts
 * Function to load and draw/manipulate images
 
-*work in progress...*
+![Main menu](docs/image/main.png)
 
 ## Reference
 
@@ -29,5 +29,5 @@ You can see all releases in [GitHub Repository](https://github.com/NEKERAFA/Lua-
 
 **Last Release - 0.0.2-alpha**
 
-*[2019-09-lraspi-0.0.2r.tar.xz](https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.tar.xz)
-*[2019-09-lraspi-0.0.2r.zip](https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.zip)
+* [2019-09-lraspi-0.0.2r.tar.xz](https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.tar.xz)
+* [2019-09-lraspi-0.0.2r.zip](https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.zip)

@@ -39,8 +39,10 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/canvas.html">canvas</a></li>
+  <li><a href="../classes/color.html">color</a></li>
+  <li><a href="../classes/font.html">font</a></li>
+  <li><a href="../classes/image.html">image</a></li>
   <li><strong>text</strong></li>
-  <li><a href="../classes/texture.html">texture</a></li>
 </ul>
 <h2>Modules</h2>
 <ul class="nowrap">
@@ -65,7 +67,7 @@
 <p></p>
     <h3>See also:</h3>
     <ul>
-         <a href="../classes/texture.html#">texture</a>
+         <a href="../modules/Draw.html#">Draw</a>
     </ul>
 
 
@@ -90,6 +92,90 @@
 	<tr>
 	<td class="name" nowrap><a href="#text:clear">text:clear (text)</a></td>
 	<td class="summary">Clears the content of the rendered text</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:reset">text:reset (image)</a></td>
+	<td class="summary">Resets the internal values (rotation, flip, resize, &hellip;) of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:tint">text:tint (image, color)</a></td>
+	<td class="summary">Changes the color modulation of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:tintcolor">text:tintcolor (image)</a></td>
+	<td class="summary">Gets the color modulation of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:setblendmode">text:setblendmode (image, mode)</a></td>
+	<td class="summary">Changes the blend mode of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:getblendmode">text:getblendmode (image)</a></td>
+	<td class="summary">Gets the current the blend mode of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:setalpha">text:setalpha (image, alpha)</a></td>
+	<td class="summary">Changes the alpha value of the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:getalpha">text:getalpha (image)</a></td>
+	<td class="summary">Gets the current alpha value of the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:getwidth">text:getwidth (image)</a></td>
+	<td class="summary">Gets the current width dimension of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:getheight">text:getheight (image)</a></td>
+	<td class="summary">Gets the current height dimension of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:getrealwidth">text:getrealwidth (image)</a></td>
+	<td class="summary">Gets the real width dimension of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:getrealheight">text:getrealheight (image)</a></td>
+	<td class="summary">Gets the real width dimension of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:resize">text:resize (image, width, height)</a></td>
+	<td class="summary">Resizes the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:rotate">text:rotate (image, angle)</a></td>
+	<td class="summary">Rotates the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:setcenter">text:setcenter (image, x, y)</a></td>
+	<td class="summary">Sets the center of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:getcenter">text:getcenter (image)</a></td>
+	<td class="summary">Gets the center of the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:vflip">text:vflip (image)</a></td>
+	<td class="summary">Flips a image vertically</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:hflip">text:hflip (image)</a></td>
+	<td class="summary">Flips a image horizontally</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:isflipped">text:isflipped (image)</a></td>
+	<td class="summary">Checks if the image is flipped</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:setpixel">text:setpixel (image, x, y, color)</a></td>
+	<td class="summary">Changes the color of the pixel in the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:getpixel">text:getpixel (image, x, y)</a></td>
+	<td class="summary">Gets the color of the pixel in the image</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#text:free">text:free (image)</a></td>
+	<td class="summary">Destroys a image object</td>
 	</tr>
 </table>
 
@@ -231,6 +317,569 @@
 
 
 </dd>
+    <dt>
+    <a name = "text:reset"></a>
+    <strong>text:reset (image)</strong>
+    </dt>
+    <dd>
+    Resets the internal values (rotation, flip, resize, &hellip;) of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:tint"></a>
+    <strong>text:tint (image, color)</strong>
+    </dt>
+    <dd>
+    Changes the color modulation of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         A color object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:tintcolor"></a>
+    <strong>text:tintcolor (image)</strong>
+    </dt>
+    <dd>
+    Gets the color modulation of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+        A color object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:setblendmode"></a>
+    <strong>text:setblendmode (image, mode)</strong>
+    </dt>
+    <dd>
+    Changes the blend mode of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The blend mode as the following values:
+ <ul>
+ <li><span class='parameter'>add</span> for additive blending</li>
+ <li><span class='parameter'>mod</span> for color modulation</li>
+ <li><span class='parameter'>blend</span> for alpha blending</li>
+ <li><span class='parameter'>none</span> for no blending</li>
+ </ul>
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:getblendmode"></a>
+    <strong>text:getblendmode (image)</strong>
+    </dt>
+    <dd>
+    Gets the current the blend mode of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+ @ŧreturn string The blend mode as the following values:
+ <ul>
+ <li><span class='parameter'>add</span> for additive blending</li>
+ <li><span class='parameter'>mod</span> for color modulation</li>
+ <li><span class='parameter'>blend</span> for alpha blending</li>
+ <li><span class='parameter'>none</span> for no blending</li>
+ </ul>
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:setalpha"></a>
+    <strong>text:setalpha (image, alpha)</strong>
+    </dt>
+    <dd>
+    Changes the alpha value of the image.  <br>
+ The image must have an blend mode established
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+        <li><span class="parameter">alpha</span>
+            <span class="types"><span class="type">int</span></span>
+         The alpha value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:getalpha"></a>
+    <strong>text:getalpha (image)</strong>
+    </dt>
+    <dd>
+    Gets the current alpha value of the image.  <br>
+ The image must have an blend mode established
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+ @ŧreturn int The alpha value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:getwidth"></a>
+    <strong>text:getwidth (image)</strong>
+    </dt>
+    <dd>
+    Gets the current width dimension of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The current width dimension in pixels
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:getheight"></a>
+    <strong>text:getheight (image)</strong>
+    </dt>
+    <dd>
+    Gets the current height dimension of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The current height dimension in pixels
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:getrealwidth"></a>
+    <strong>text:getrealwidth (image)</strong>
+    </dt>
+    <dd>
+    Gets the real width dimension of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The real width dimension in pixels
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:getrealheight"></a>
+    <strong>text:getrealheight (image)</strong>
+    </dt>
+    <dd>
+    Gets the real width dimension of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The real width dimension in pixels
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:resize"></a>
+    <strong>text:resize (image, width, height)</strong>
+    </dt>
+    <dd>
+    Resizes the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+        <li><span class="parameter">width</span>
+            <span class="types"><span class="type">int</span></span>
+         The new width dimension in pixels
+        </li>
+        <li><span class="parameter">height</span>
+            <span class="types"><span class="type">int</span></span>
+         The new height dimension in pixels
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:rotate"></a>
+    <strong>text:rotate (image, angle)</strong>
+    </dt>
+    <dd>
+    Rotates the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+        <li><span class="parameter">angle</span>
+            <span class="types"><span class="type">number</span></span>
+         The angle in degrees
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:setcenter"></a>
+    <strong>text:setcenter (image, x, y)</strong>
+    </dt>
+    <dd>
+    Sets the center of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">int</span></span>
+         The x-axis position of the center
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">int</span></span>
+         The y-axis position of the center
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:getcenter"></a>
+    <strong>text:getcenter (image)</strong>
+    </dt>
+    <dd>
+    Gets the center of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">int</span></span>
+        The x-axis position of the center</li>
+        <li>
+           <span class="types"><span class="type">int</span></span>
+        The y-axis position of the center</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:vflip"></a>
+    <strong>text:vflip (image)</strong>
+    </dt>
+    <dd>
+    Flips a image vertically
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:hflip"></a>
+    <strong>text:hflip (image)</strong>
+    </dt>
+    <dd>
+    Flips a image horizontally
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:isflipped"></a>
+    <strong>text:isflipped (image)</strong>
+    </dt>
+    <dd>
+    Checks if the image is flipped
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">boolean</span></span>
+        true if the image is flipped vertically</li>
+        <li>
+           <span class="types"><span class="type">boolean</span></span>
+        true if the image if flipped horizontally</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:setpixel"></a>
+    <strong>text:setpixel (image, x, y, color)</strong>
+    </dt>
+    <dd>
+    Changes the color of the pixel in the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">int</span></span>
+         The x-axis position of the pixel in the image
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">int</span></span>
+         The y-axis position of the pixel in the image
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         A color object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:getpixel"></a>
+    <strong>text:getpixel (image, x, y)</strong>
+    </dt>
+    <dd>
+    Gets the color of the pixel in the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">int</span></span>
+         The x-axis position of the pixel in the image
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">int</span></span>
+         The y-axis position of the pixel in the image
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+        A color object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "text:free"></a>
+    <strong>text:free (image)</strong>
+    </dt>
+    <dd>
+    Destroys a image object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
 </dl>
 
 
@@ -238,7 +887,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-09-16 13:19:45 </i>
+<i style="float:right;">Last updated 2019-09-16 18:45:52 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

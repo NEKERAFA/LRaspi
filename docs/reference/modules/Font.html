@@ -47,8 +47,10 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/canvas.html">canvas</a></li>
+  <li><a href="../classes/color.html">color</a></li>
+  <li><a href="../classes/font.html">font</a></li>
+  <li><a href="../classes/image.html">image</a></li>
   <li><a href="../classes/text.html">text</a></li>
-  <li><a href="../classes/texture.html">texture</a></li>
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
@@ -69,8 +71,7 @@
 <table class="function_list">
 	<tr>
 	<td class="name" nowrap><a href="#font.init">font.init ()</a></td>
-	<td class="summary">Initializes the font submodule.<br>
- The interpreter calls this function internally, so you should not call explicitly.</td>
+	<td class="summary">Initializes the font submodule.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#font.new">font.new (path[, size=12])</a></td>
@@ -90,8 +91,7 @@
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#font.wrap">font.wrap (font, text, width)</a></td>
-	<td class="summary">Formats the text with a maximun text width size.<br>
- This functions add new lines if the text width size reachs the given wrap limit</td>
+	<td class="summary">Formats the text with a maximun text width size.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#font.setstyle">font.setstyle (font[, style='normal'])</a></td>
@@ -123,13 +123,11 @@
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#font.lineskip">font.lineskip (font)</a></td>
-	<td class="summary">Gets the recomended height of a rendered line of text of the font.<br>
- This value is usually larger than the font height</td>
+	<td class="summary">Gets the recomended height of a rendered line of text of the font.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#font.setlineheight">font.setlineheight (font, height)</a></td>
-	<td class="summary">Sets the line height of the font.<br>
- The space between lines is determined by the line height multiplied by the height of the font.</td>
+	<td class="summary">Sets the line height of the font.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#font.getlineheight">font.getlineheight (font)</a></td>
@@ -161,7 +159,7 @@
     <strong>font.init ()</strong>
     </dt>
     <dd>
-    Initializes the font submodule.<br>
+    Initializes the font submodule.  <br>
  The interpreter calls this function internally, so you should not call explicitly.
 
 
@@ -195,7 +193,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">font</span></span>
+           <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
         A font object
     </ol>
 
@@ -223,7 +221,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">font</span></span>
+           <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
         A font object
     </ol>
 
@@ -242,7 +240,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -269,7 +267,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
         <li><span class="parameter">text</span>
@@ -294,14 +292,14 @@
     <strong>font.wrap (font, text, width)</strong>
     </dt>
     <dd>
-    Formats the text with a maximun text width size.<br>
+    Formats the text with a maximun text width size.  <br>
  This functions add new lines if the text width size reachs the given wrap limit
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
         <li><span class="parameter">text</span>
@@ -336,7 +334,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
         <li><span class="parameter">style</span>
@@ -368,7 +366,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -402,7 +400,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -429,7 +427,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
         <li><span class="parameter">size</span>
@@ -454,7 +452,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
         <li><span class="parameter">mode</span>
@@ -485,7 +483,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -512,7 +510,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -533,14 +531,14 @@
     <strong>font.lineskip (font)</strong>
     </dt>
     <dd>
-    Gets the recomended height of a rendered line of text of the font.<br>
+    Gets the recomended height of a rendered line of text of the font.  <br>
  This value is usually larger than the font height
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -561,14 +559,14 @@
     <strong>font.setlineheight (font, height)</strong>
     </dt>
     <dd>
-    Sets the line height of the font.<br>
+    Sets the line height of the font.  <br>
  The space between lines is determined by the line height multiplied by the height of the font.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
         <li><span class="parameter">height</span>
@@ -593,7 +591,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -620,7 +618,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -646,7 +644,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -661,7 +659,7 @@
     <strong>font.close ()</strong>
     </dt>
     <dd>
-    Closes the font subsystem.
+    Closes the font subsystem.  <br>
  The interpreter calls this function internally, so you should not call explicitly.
 
 
@@ -678,7 +676,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-09-16 13:19:45 </i>
+<i style="float:right;">Last updated 2019-09-16 18:45:52 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

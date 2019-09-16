@@ -1,4 +1,4 @@
-add_language_extension('cc', 'c')
+add_language_extension('clss', 'c')
 project='Lua Raspi'
 full_description=[[# Lua Raspi
 A Lua Player for Rasberry Pi]]
