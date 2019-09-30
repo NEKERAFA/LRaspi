@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="lua-logo-label.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Lua Raspi
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.0.4</span>
    </div>
    <div id="projectbrief">A Lua Player for Raspberry Pi</div>
   </td>
@@ -83,15 +83,28 @@ $(document).ready(function(){initNavTree('namespacelraspi.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">lraspi Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacelraspi_1_1chrcache"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelraspi_1_1chrcache.html">chrcache</a></td></tr>
+<tr class="memdesc:namespacelraspi_1_1chrcache"><td class="mdescLeft">&#160;</td><td class="mdescRight">This represents a glyph cache to render inmediate text onto the screen. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_char.html">Char</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a rendered char to draw on screen.  <a href="classlraspi_1_1_char.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_color.html">Color</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_exception.html">Exception</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a exception with a printf format error.  <a href="classlraspi_1_1_exception.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,14 +135,59 @@ Functions</h2></td></tr>
 <tr class="memitem:a8c6ccbca316030270aa1699d0163452d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelraspi.html#a8c6ccbca316030270aa1699d0163452d">closelibs</a> (lua_State *L)</td></tr>
 <tr class="memdesc:a8c6ccbca316030270aa1699d0163452d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close all libraries.  <a href="#a8c6ccbca316030270aa1699d0163452d">More...</a><br /></td></tr>
 <tr class="separator:a8c6ccbca316030270aa1699d0163452d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acec21c4e7a702d1fdd98ec18d5adc887"><td class="memItemLeft" align="right" valign="top"><a id="acec21c4e7a702d1fdd98ec18d5adc887"></a>
+static int&#160;</td><td class="memItemRight" valign="bottom"><b>lraspi_version</b> (lua_State *L)</td></tr>
+<tr class="separator:acec21c4e7a702d1fdd98ec18d5adc887"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ce3a7b7b27a9a380dbe5d78e8f01f69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelraspi.html#a1ce3a7b7b27a9a380dbe5d78e8f01f69">dofile</a> (lua_State *L, const char *path)</td></tr>
 <tr class="memdesc:a1ce3a7b7b27a9a380dbe5d78e8f01f69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the file and runs.  <a href="#a1ce3a7b7b27a9a380dbe5d78e8f01f69">More...</a><br /></td></tr>
 <tr class="separator:a1ce3a7b7b27a9a380dbe5d78e8f01f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf518739a1e4c74dec4668c01e8031ab"><td class="memItemLeft" align="right" valign="top"><a id="acf518739a1e4c74dec4668c01e8031ab"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><b>checkargs</b> (int argc, const char *argv[])</td></tr>
+<tr class="separator:acf518739a1e4c74dec4668c01e8031ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aced4d95b4c20f96dcb56f25de7c3aab2"><td class="memItemLeft" align="right" valign="top"><a id="aced4d95b4c20f96dcb56f25de7c3aab2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_video</b> ()</td></tr>
+<tr class="separator:aced4d95b4c20f96dcb56f25de7c3aab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e1174840d1a838eda61524d8d0f3fb"><td class="memItemLeft" align="right" valign="top"><a id="a45e1174840d1a838eda61524d8d0f3fb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_gl</b> ()</td></tr>
+<tr class="separator:a45e1174840d1a838eda61524d8d0f3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af485731487c8ad89b73f8eb590fe2aae"><td class="memItemLeft" align="right" valign="top"><a id="af485731487c8ad89b73f8eb590fe2aae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_media</b> ()</td></tr>
+<tr class="separator:af485731487c8ad89b73f8eb590fe2aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a0ddd8e2ee6ca2f0431b92e673f540be4"><td class="memItemLeft" align="right" valign="top"><a id="a0ddd8e2ee6ca2f0431b92e673f540be4"></a>
+std::unordered_map&lt; char16_t, <a class="el" href="classlraspi_1_1_char.html">Char</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_char_cache</b></td></tr>
+<tr class="separator:a0ddd8e2ee6ca2f0431b92e673f540be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9245ddd6c28ee0979c4c0e444233e444"><td class="memItemLeft" align="right" valign="top"><a id="a9245ddd6c28ee0979c4c0e444233e444"></a>
+<a class="el" href="classlraspi_1_1_font.html">Font</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_current_font</b></td></tr>
+<tr class="separator:a9245ddd6c28ee0979c4c0e444233e444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa140fb865cb4b41a63f734530ea85ab1"><td class="memItemLeft" align="right" valign="top"><a id="aa140fb865cb4b41a63f734530ea85ab1"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>_loaded</b> = false</td></tr>
+<tr class="separator:aa140fb865cb4b41a63f734530ea85ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1e1809f6c88a874cd109098ad68995d"><td class="memItemLeft" align="right" valign="top"><a id="aa1e1809f6c88a874cd109098ad68995d"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>_height</b> = 0</td></tr>
+<tr class="separator:aa1e1809f6c88a874cd109098ad68995d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a460c0ec0241f9dd934ea477d040d1a40"><td class="memItemLeft" align="right" valign="top"><a id="a460c0ec0241f9dd934ea477d040d1a40"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>_width</b> = 0</td></tr>
+<tr class="separator:a460c0ec0241f9dd934ea477d040d1a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe9e011833dd145b1a23ce8758c94d72"><td class="memItemLeft" align="right" valign="top"><a id="abe9e011833dd145b1a23ce8758c94d72"></a>
+std::wstring_convert&lt; std::codecvt_utf8_utf16&lt; char16_t &gt;, char16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_converter</b></td></tr>
+<tr class="separator:abe9e011833dd145b1a23ce8758c94d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06ba7319573061c9f3d38c8c3c6bd4cd"><td class="memItemLeft" align="right" valign="top"><a id="a06ba7319573061c9f3d38c8c3c6bd4cd"></a>
+<a class="el" href="classlraspi_1_1_font.html">Font</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_default_font</b> = nullptr</td></tr>
+<tr class="separator:a06ba7319573061c9f3d38c8c3c6bd4cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05bc331193a0cd2e94bba425a2a0045a"><td class="memItemLeft" align="right" valign="top"><a id="a05bc331193a0cd2e94bba425a2a0045a"></a>
+SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><b>_sdl_window</b> = nullptr</td></tr>
+<tr class="separator:a05bc331193a0cd2e94bba425a2a0045a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe617847e5bced93aff6e41dc427af72"><td class="memItemLeft" align="right" valign="top"><a id="afe617847e5bced93aff6e41dc427af72"></a>
+SDL_GLContext&#160;</td><td class="memItemRight" valign="bottom"><b>_sdl_gl_context</b></td></tr>
+<tr class="separator:afe617847e5bced93aff6e41dc427af72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="explorer_8h_source.html">interface/explorer.h</a> - NEKERAFA - 28th aug 2019</p>
 <p>See Copyright Notice in <a class="el" href="lraspi_8h_source.html">lraspi.h</a></p>
-<p>lua-raspi.cc - NEKERAFA - 25th july 2019</p>
+<p>main.cc - NEKERAFA - 25th july 2019</p>
 <p>See Copyright Notice in <a class="el" href="lraspi_8h_source.html">lraspi.h</a> </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="af071ad991c337b3c1661e466cc377f38"></a>
@@ -147,8 +205,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Loads all libraries. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">L</td><td>An lua_State object </td></tr>
@@ -174,8 +230,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Close all libraries. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">L</td><td>An lua_State object </td></tr>
@@ -210,8 +264,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Loads the file and runs. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">L</td><td>A lua_State object </td></tr>

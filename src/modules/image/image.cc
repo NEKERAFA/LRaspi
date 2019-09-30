@@ -5,14 +5,13 @@
  */
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_surface.h>
-#include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
+#include <GL/glu.h>
 
-#include "common/exception.h"
-#include "common/type.h"
-#include "common/object.h"
-#include "modules/screen/screen_mod.h"
+#include "modules/common/exception.h"
+#include "modules/common/type.h"
+#include "modules/common/object.h"
+#include "modules/screen/module.h"
 #include "modules/image/texture.h"
 #include "modules/image/image.h"
 
@@ -21,42 +20,21 @@ namespace lraspi
 
 Type Image::type(LRASPI_IMAGE_NAME, &Texture::type);
 
-Image::Image() {}
-
-Image::~Image() {}
-
-void Image::load(const char* path)
+Image::Image(const char* path)
 {
-    SDL_Surface* _sdl_surface;
-    SDL_Texture* _sdl_texture = getSdlTexture();
-
     // Checks if a texture was loaded to remove it
-    if (!_sdl_texture)
-        SDL_DestroyTexture(_sdl_texture);
+    glDestroy();
 
     // Loads the surface
-    _sdl_surface = IMG_Load(path);
-    if (!_sdl_surface)
-    {
+    SDL_Surface* _sdl_surface = IMG_Load(path);
+    if (_sdl_surface == nullptr)
         throw Exception("Could not load image '%s' (%s)", path, IMG_GetError());
-    }
-    else
-    {
-        // Checks to convert the surface in a 2d acelerate texture
-        if (!(_sdl_texture = SDL_CreateTextureFromSurface(screen::getRenderer(), _sdl_surface)))
-        {
-            throw Exception("Could not create texture from '%s' (%s)", path, SDL_GetError());
-        }
-        else
-        {
-            setSdlTexture(_sdl_texture);
-            setRealWidth(_sdl_surface->w);
-            setRealHeight(_sdl_surface->h);
-            setWidth(_sdl_surface->w);
-            setHeight(_sdl_surface->h);
-        }
-    }
+    
+    setSdlSurface(_sdl_surface);
+    SDL_FreeSurface(_sdl_surface);
 }
+
+Image::~Image() {}
 
 bool Image::isInstanceOf(Type& other)
 {

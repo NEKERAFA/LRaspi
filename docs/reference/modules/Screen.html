@@ -39,12 +39,22 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Color.html">Color</a></li>
+  <li><a href="../modules/Draw.html">Draw</a></li>
   <li><a href="../modules/Font.html">Font</a></li>
   <li><a href="../modules/Image.html">Image</a></li>
+  <li><a href="../modules/LRaspi.html">LRaspi</a></li>
   <li><strong>Screen</strong></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/color.html">color</a></li>
+  <li><a href="../classes/font.html">font</a></li>
+  <li><a href="../classes/image.html">image</a></li>
+  <li><a href="../classes/text.html">text</a></li>
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
+  <li><a href="../examples/draw.lua.html">draw.lua</a></li>
   <li><a href="../examples/font.lua.html">font.lua</a></li>
   <li><a href="../examples/image.lua.html">image.lua</a></li>
 </ul>
@@ -61,10 +71,6 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#screen.init">screen.init ()</a></td>
-	<td class="summary">Initializes the screen subsystem.</td>
-	</tr>
-	<tr>
 	<td class="name" nowrap><a href="#screen.clear">screen.clear (color)</a></td>
 	<td class="summary">Clears the screen with an specified color</td>
 	</tr>
@@ -73,32 +79,28 @@
 	<td class="summary">Updates the screen and returns if the program was running</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#screen.blit">screen.blit (texture, x, y)</a></td>
+	<td class="name" nowrap><a href="#screen.blit">screen.blit (x, y, texture)</a></td>
 	<td class="summary">Blits an texture onto the screen</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#screen.print">screen.print (x, y, textstring, A)</a></td>
+	<td class="name" nowrap><a href="#screen.print">screen.print (x, y, textstring, color)</a></td>
 	<td class="summary">Prints a text onto the screen</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#screen.defaultfont">screen.defaultfont ()</a></td>
+	<td class="name" nowrap><a href="#screen.getdefaultfont">screen.getdefaultfont ()</a></td>
 	<td class="summary">Gets the current default font to print in the screen</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#screen.defaultfont">screen.defaultfont (font)</a></td>
+	<td class="name" nowrap><a href="#screen.setdefaultfont">screen.setdefaultfont (font)</a></td>
 	<td class="summary">Sets a font as the current default font to print in the screen</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#screen.width">screen.width ()</a></td>
+	<td class="name" nowrap><a href="#screen.getwidth">screen.getwidth ()</a></td>
 	<td class="summary">Gets the screen width</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#screen.height">screen.height ()</a></td>
+	<td class="name" nowrap><a href="#screen.getheight">screen.getheight ()</a></td>
 	<td class="summary">Gets the screen height</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#screen.close">screen.close ()</a></td>
-	<td class="summary">Closes the screen subsystem.</td>
 	</tr>
 </table>
 
@@ -110,20 +112,6 @@
 
     <dl class="function">
     <dt>
-    <a name = "screen.init"></a>
-    <strong>screen.init ()</strong>
-    </dt>
-    <dd>
-    Initializes the screen subsystem.  The interpreter calls this function internally, so should not be used explicitly.
-
-
-
-
-
-
-
-</dd>
-    <dt>
     <a name = "screen.clear"></a>
     <strong>screen.clear (color)</strong>
     </dt>
@@ -134,7 +122,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><span class="type">color</span></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
     </ul>
@@ -174,7 +162,7 @@
 </dd>
     <dt>
     <a name = "screen.blit"></a>
-    <strong>screen.blit (texture, x, y)</strong>
+    <strong>screen.blit (x, y, texture)</strong>
     </dt>
     <dd>
     Blits an texture onto the screen
@@ -182,17 +170,17 @@
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object to blit
-        </li>
         <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The x-axis position to draw the texture
         </li>
         <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The y-axis position to draw the texture
+        </li>
+        <li><span class="parameter">texture</span>
+            <span class="types"><span class="type">texture</span></span>
+         A texture object to blit
         </li>
     </ul>
 
@@ -203,7 +191,7 @@
 </dd>
     <dt>
     <a name = "screen.print"></a>
-    <strong>screen.print (x, y, textstring, A)</strong>
+    <strong>screen.print (x, y, textstring, color)</strong>
     </dt>
     <dd>
     Prints a text onto the screen
@@ -212,20 +200,20 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The x-axis position to draw the texture
         </li>
         <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The y-axis position to draw the texture
         </li>
         <li><span class="parameter">textstring</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The text to print
         </li>
-        <li><span class="parameter">A</span>
-            <span class="types"><span class="type">color</span></span>
-         color object
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         A color object
         </li>
     </ul>
 
@@ -235,8 +223,8 @@
 
 </dd>
     <dt>
-    <a name = "screen.defaultfont"></a>
-    <strong>screen.defaultfont ()</strong>
+    <a name = "screen.getdefaultfont"></a>
+    <strong>screen.getdefaultfont ()</strong>
     </dt>
     <dd>
     Gets the current default font to print in the screen
@@ -246,7 +234,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">font</span></span>
+           <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
         A font object
     </ol>
 
@@ -255,8 +243,8 @@
 
 </dd>
     <dt>
-    <a name = "screen.defaultfont"></a>
-    <strong>screen.defaultfont (font)</strong>
+    <a name = "screen.setdefaultfont"></a>
+    <strong>screen.setdefaultfont (font)</strong>
     </dt>
     <dd>
     Sets a font as the current default font to print in the screen
@@ -265,7 +253,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">font</span>
-            <span class="types"><span class="type">font</span></span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
          A font object
         </li>
     </ul>
@@ -276,8 +264,8 @@
 
 </dd>
     <dt>
-    <a name = "screen.width"></a>
-    <strong>screen.width ()</strong>
+    <a name = "screen.getwidth"></a>
+    <strong>screen.getwidth ()</strong>
     </dt>
     <dd>
     Gets the screen width
@@ -287,7 +275,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The screen width dimension in pixels
     </ol>
 
@@ -296,8 +284,8 @@
 
 </dd>
     <dt>
-    <a name = "screen.height"></a>
-    <strong>screen.height ()</strong>
+    <a name = "screen.getheight"></a>
+    <strong>screen.getheight ()</strong>
     </dt>
     <dd>
     Gets the screen height
@@ -307,23 +295,9 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The screen height dimension in pixels
     </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "screen.close"></a>
-    <strong>screen.close ()</strong>
-    </dt>
-    <dd>
-    Closes the screen subsystem.  The interpreter calls this function internally, so should not be used explicitly.
-
-
-
 
 
 
@@ -336,7 +310,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-09-12 11:49:42 </i>
+<i style="float:right;">Last updated 2019-10-01 01:00:10 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

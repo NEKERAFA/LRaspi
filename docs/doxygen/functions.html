@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="lua-logo-label.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Lua Raspi
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.0.4</span>
    </div>
    <div id="projectbrief">A Lua Player for Raspberry Pi</div>
   </td>
@@ -88,25 +88,34 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>addText()
 : <a class="el" href="classlraspi_1_1_text.html#ad59d8b59d0295cc18e01a4baa80ea11e">lraspi::Text</a>
 </li>
+<li>af()
+: <a class="el" href="classlraspi_1_1_color.html#a6951c5660c91be0002730144714c2092">lraspi::Color</a>
+</li>
+<li>alpha()
+: <a class="el" href="classlraspi_1_1_color.html#a8780a63bab1d099ea5dcd98ec76c195a">lraspi::Color</a>
+</li>
 </ul>
 
 
 <h3><a id="index_b"></a>- b -</h3><ul>
-<li>blit()
-: <a class="el" href="classlraspi_1_1_texture.html#a01846c6b106d2f13674db5f8a04c9f30">lraspi::Texture</a>
+<li>bf()
+: <a class="el" href="classlraspi_1_1_color.html#ad3e221cfee68830d980897ce52d43818">lraspi::Color</a>
+</li>
+<li>blue()
+: <a class="el" href="classlraspi_1_1_color.html#a492d9a70c5c1d762233d6c7d310ee17a">lraspi::Color</a>
 </li>
 </ul>
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>Char()
+: <a class="el" href="classlraspi_1_1_char.html#a658455cef2ab7a0f3ba1057f3c461f4f">lraspi::Char</a>
+</li>
 <li>clear()
 : <a class="el" href="classlraspi_1_1_text.html#a2670cfd7d9ae9b9402ee98c691f624d7">lraspi::Text</a>
 </li>
-<li>create()
-: <a class="el" href="classlraspi_1_1_font.html#aa29cef1fcdc98b21cc1f7a300d337124">lraspi::Font</a>
-</li>
-<li>createBlank()
-: <a class="el" href="classlraspi_1_1_texture.html#ae7accffb765ceb659ae3bb3fe7acefc4">lraspi::Texture</a>
+<li>Color()
+: <a class="el" href="classlraspi_1_1_color.html#a17ede7b03e7fe1e498db86f86835481c">lraspi::Color</a>
 </li>
 </ul>
 
@@ -120,7 +129,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <h3><a id="index_f"></a>- f -</h3><ul>
 <li>Font()
-: <a class="el" href="classlraspi_1_1_font.html#a941e0c1a428efceb4b66af5559dddd6c">lraspi::Font</a>
+: <a class="el" href="classlraspi_1_1_font.html#af5cdc73116b9ebab026de77370d76439">lraspi::Font</a>
 </li>
 </ul>
 
@@ -135,14 +144,17 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>getAscent()
 : <a class="el" href="classlraspi_1_1_font.html#ad64d338a8e7187e0d45407889f1672e0">lraspi::Font</a>
 </li>
+<li>getCenter()
+: <a class="el" href="classlraspi_1_1_texture.html#aa590d6ae7a327500f6851ac4263c539a">lraspi::Texture</a>
+</li>
 <li>getDescent()
 : <a class="el" href="classlraspi_1_1_font.html#a0a0b8b69a65a8541467c7a558febe7ea">lraspi::Font</a>
 </li>
 <li>getFamilyName()
 : <a class="el" href="classlraspi_1_1_font.html#a3fd7febecea5633b8e7076c95997b889">lraspi::Font</a>
 </li>
-<li>getFastSdlSurface()
-: <a class="el" href="classlraspi_1_1_font.html#a08ed1bec52cd21c9f6d3b4b41a41ae1c">lraspi::Font</a>
+<li>getFlip()
+: <a class="el" href="classlraspi_1_1_texture.html#a3e0a65b64806ce181ca433f8a4a3312b">lraspi::Texture</a>
 </li>
 <li>getHeight()
 : <a class="el" href="classlraspi_1_1_font.html#a6d2c550a513c7d157e4ca90bb0e8a384">lraspi::Font</a>
@@ -160,8 +172,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>getOutline()
 : <a class="el" href="classlraspi_1_1_font.html#a0f6c65673717da0f41b27ab9e830955d">lraspi::Font</a>
 </li>
-<li>getQuality()
-: <a class="el" href="classlraspi_1_1_text.html#a8b1349edfccb42bbe4b1260c608a3bd2">lraspi::Text</a>
+<li>getPixel()
+: <a class="el" href="classlraspi_1_1_texture.html#ae8912777260b433cc33e9c0a7d2d516e">lraspi::Texture</a>
 </li>
 <li>getRealHeight()
 : <a class="el" href="classlraspi_1_1_texture.html#a7a58a50f11cc5ea906b427c5d54accd9">lraspi::Texture</a>
@@ -169,20 +181,11 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>getRealWidth()
 : <a class="el" href="classlraspi_1_1_texture.html#a2941af9889ee7a6d130ad5724c1e035c">lraspi::Texture</a>
 </li>
-<li>getSdlBlendMode()
-: <a class="el" href="classlraspi_1_1_texture.html#af2a317e4dc6afdec489bb0be3316ca45">lraspi::Texture</a>
-</li>
-<li>getSdlCenterPoint()
-: <a class="el" href="classlraspi_1_1_texture.html#a72f9a21e8e831bdfd2f502319cbc66a1">lraspi::Texture</a>
-</li>
-<li>getSdlFlipStatus()
-: <a class="el" href="classlraspi_1_1_texture.html#a304d3c26940dbc9c0a509b29e2b86c04">lraspi::Texture</a>
+<li>getSdlColor()
+: <a class="el" href="classlraspi_1_1_color.html#a31aab3a6f17adc6524721f23f79c31b4">lraspi::Color</a>
 </li>
 <li>getSdlSurface()
 : <a class="el" href="classlraspi_1_1_font.html#a3de817fca12a964680ac431ddba43177">lraspi::Font</a>
-</li>
-<li>getSdlTexture()
-: <a class="el" href="classlraspi_1_1_texture.html#afa351cd3c01782db46689ccc8e810da0">lraspi::Texture</a>
 </li>
 <li>getStyle()
 : <a class="el" href="classlraspi_1_1_font.html#aecbb92b22646eddb4cf6b1ea8061a36b">lraspi::Font</a>
@@ -197,38 +200,43 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>getWrap()
 : <a class="el" href="classlraspi_1_1_font.html#a5b4c14c826fe3f79368af3cede89dd30">lraspi::Font</a>
 </li>
+<li>gf()
+: <a class="el" href="classlraspi_1_1_color.html#a6b1a6bb68c023c0fb8985a90995b5807">lraspi::Color</a>
+</li>
+<li>glDestroy()
+: <a class="el" href="classlraspi_1_1_texture.html#ac103e05839a0886cf2c0558e56b3b52a">lraspi::Texture</a>
+</li>
+<li>glIdTexture()
+: <a class="el" href="classlraspi_1_1_texture.html#ad7dc470e2e2b253029e1d9e4ecb8a33a">lraspi::Texture</a>
+</li>
+<li>green()
+: <a class="el" href="classlraspi_1_1_color.html#ab61d4920d22f11cda5d60c7429b4b01f">lraspi::Color</a>
+</li>
 </ul>
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>Image()
-: <a class="el" href="classlraspi_1_1_image.html#acc79fe1b414a888933185b454ac9d30f">lraspi::Image</a>
+: <a class="el" href="classlraspi_1_1_image.html#a6e7b765055cbacca0ee1c504c39d9b98">lraspi::Image</a>
 </li>
 <li>isInstanceOf()
-: <a class="el" href="classlraspi_1_1_font.html#a314c6de8b11ca0d50285ecc20e37bc63">lraspi::Font</a>
+: <a class="el" href="classlraspi_1_1_char.html#a1c4a862d5b47dd98f2a5a5478a7c4845">lraspi::Char</a>
+, <a class="el" href="classlraspi_1_1_color.html#ab9de1e603dff37dc74b4cc3a53b4f212">lraspi::Color</a>
+, <a class="el" href="classlraspi_1_1_font.html#a314c6de8b11ca0d50285ecc20e37bc63">lraspi::Font</a>
 , <a class="el" href="classlraspi_1_1_image.html#a6eab3c04025852aae18e30e2eae7c0ee">lraspi::Image</a>
 , <a class="el" href="classlraspi_1_1_object.html#a82f4911fc89a42d57157b43dd5cc1664">lraspi::Object</a>
 , <a class="el" href="classlraspi_1_1_text.html#ade54e12315a9aaac8298429b2932c7cb">lraspi::Text</a>
 , <a class="el" href="classlraspi_1_1_texture.html#a77bfa4d4f78e4207d413a761383b20fc">lraspi::Texture</a>
 , <a class="el" href="classlraspi_1_1_type.html#a9acb95dc00c964deb7784ee9b230b381">lraspi::Type</a>
 </li>
-<li>isTargetAccess()
-: <a class="el" href="classlraspi_1_1_texture.html#ae5130409602b444a6b2f9375556e8bc4">lraspi::Texture</a>
-</li>
-</ul>
-
-
-<h3><a id="index_l"></a>- l -</h3><ul>
-<li>load()
-: <a class="el" href="classlraspi_1_1_font.html#a3c79da62fd794ea480ec167e5a6169c5">lraspi::Font</a>
-, <a class="el" href="classlraspi_1_1_image.html#a16f7588007ecb4912979485bf071cb47">lraspi::Image</a>
-</li>
 </ul>
 
 
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>name()
-: <a class="el" href="classlraspi_1_1_font.html#a8d90899ed527aaea4418e16d6f4131f5">lraspi::Font</a>
+: <a class="el" href="classlraspi_1_1_char.html#a9213fc1fa231a8c4701f84475e1936ac">lraspi::Char</a>
+, <a class="el" href="classlraspi_1_1_color.html#a150f5f9f8ded6640fbb345e960cfe256">lraspi::Color</a>
+, <a class="el" href="classlraspi_1_1_font.html#a8d90899ed527aaea4418e16d6f4131f5">lraspi::Font</a>
 , <a class="el" href="classlraspi_1_1_image.html#a9cfe080d89994ca489b9302d50e5542a">lraspi::Image</a>
 , <a class="el" href="classlraspi_1_1_object.html#a6bba50cf1700759059c051c31b44651b">lraspi::Object</a>
 , <a class="el" href="classlraspi_1_1_text.html#a5aa15fbca1fd30ddb99281f2feb64e4c">lraspi::Text</a>
@@ -239,9 +247,6 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a id="index_o"></a>- o -</h3><ul>
-<li>object
-: <a class="el" href="structlraspi_1_1lua_1_1ref___object.html#a15e426792489f83f7e3a687ab82011e8">lraspi::lua::ref_Object</a>
-</li>
 <li>Object()
 : <a class="el" href="classlraspi_1_1_object.html#a70422fee8a09a19d202ac3476fcdac76">lraspi::Object</a>
 </li>
@@ -249,11 +254,17 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>red()
+: <a class="el" href="classlraspi_1_1_color.html#ae93c07ee06908d2d4b8b0d6c8dd26233">lraspi::Color</a>
+</li>
 <li>render()
 : <a class="el" href="classlraspi_1_1_text.html#a25493eee85a366d58c13b894335e4a39">lraspi::Text</a>
 </li>
 <li>reset()
 : <a class="el" href="classlraspi_1_1_texture.html#a8efd39070d2e6c1b1cc844ae9c9978e2">lraspi::Texture</a>
+</li>
+<li>rf()
+: <a class="el" href="classlraspi_1_1_color.html#ab5b8776de42d2b47a3cfd6fdcd68c8d9">lraspi::Color</a>
 </li>
 </ul>
 
@@ -286,8 +297,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>setOutline()
 : <a class="el" href="classlraspi_1_1_font.html#acb25c2f97cddf2fae7da3c0ba9683398">lraspi::Font</a>
 </li>
-<li>setQuality()
-: <a class="el" href="classlraspi_1_1_text.html#a28a5d503e335c9a6eaa2f185eddd5f5f">lraspi::Text</a>
+<li>setPixel()
+: <a class="el" href="classlraspi_1_1_texture.html#a06014a9e18a8f9ad36fb7d4ffa54e279">lraspi::Texture</a>
 </li>
 <li>setRealHeight()
 : <a class="el" href="classlraspi_1_1_texture.html#a59b9f7c37b5deacbf93cdcc949bdfb20">lraspi::Texture</a>
@@ -295,17 +306,11 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>setRealWidth()
 : <a class="el" href="classlraspi_1_1_texture.html#a98a96414c4400afa7ab6910c48f721c4">lraspi::Texture</a>
 </li>
-<li>setSdlBlendMode()
-: <a class="el" href="classlraspi_1_1_texture.html#af23162b4ee68edf7c151127a83d5ee46">lraspi::Texture</a>
-</li>
-<li>setSdlTexture()
-: <a class="el" href="classlraspi_1_1_texture.html#a0de71a8ea08c1452c9b80cb4c27de6a3">lraspi::Texture</a>
+<li>setSdlSurface()
+: <a class="el" href="classlraspi_1_1_texture.html#afcc0ff9aef739506f56782a1e3fc1e15">lraspi::Texture</a>
 </li>
 <li>setStyle()
 : <a class="el" href="classlraspi_1_1_font.html#abe5aa32d7dc17b866cd15f1d07953875">lraspi::Font</a>
-</li>
-<li>setTargetAccess()
-: <a class="el" href="classlraspi_1_1_texture.html#a172d9a19f1d030cf2b2a400f6f116ddf">lraspi::Texture</a>
 </li>
 <li>setText()
 : <a class="el" href="classlraspi_1_1_text.html#ad6e123a549bd830acd06df30b0e1b5b5">lraspi::Text</a>
@@ -321,7 +326,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <h3><a id="index_t"></a>- t -</h3><ul>
 <li>Text()
-: <a class="el" href="classlraspi_1_1_text.html#aeea2850c81ab985c853c23378a02b761">lraspi::Text</a>
+: <a class="el" href="classlraspi_1_1_text.html#ae9a73e61125a4a2633285fbbf7d66df8">lraspi::Text</a>
 </li>
 <li>Texture()
 : <a class="el" href="classlraspi_1_1_texture.html#a1a5b9ba3c62f92b8a691522b80ddd7e1">lraspi::Texture</a>
@@ -329,11 +334,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>tint()
 : <a class="el" href="classlraspi_1_1_texture.html#a0cf2b34dafe344d9c1e1b6cd3a77b497">lraspi::Texture</a>
 </li>
-<li>type
-: <a class="el" href="structlraspi_1_1lua_1_1ref___object.html#a18c1388c3e5f9b2958e344a7bcfdd477">lraspi::lua::ref_Object</a>
-</li>
 <li>Type()
-: <a class="el" href="classlraspi_1_1_type.html#abff29ef20961d1edbb8c64b5d5019932">lraspi::Type</a>
+: <a class="el" href="classlraspi_1_1_type.html#a2def201337e95b39efa05637c77fa6ff">lraspi::Type</a>
 </li>
 </ul>
 
@@ -346,6 +348,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a id="index_0x7e"></a>- ~ -</h3><ul>
+<li>~Char()
+: <a class="el" href="classlraspi_1_1_char.html#a881c290a35543b131fc7cabfdb7e65bd">lraspi::Char</a>
+</li>
+<li>~Color()
+: <a class="el" href="classlraspi_1_1_color.html#a58700b7e8448a88ae658c997fa3f204d">lraspi::Color</a>
+</li>
 <li>~Font()
 : <a class="el" href="classlraspi_1_1_font.html#a3f8581884ee6d9a85586382a9543fe44">lraspi::Font</a>
 </li>
@@ -359,7 +367,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classlraspi_1_1_text.html#a954ee9f6becbf957f09dee6908eba003">lraspi::Text</a>
 </li>
 <li>~Texture()
-: <a class="el" href="classlraspi_1_1_texture.html#a8b64240accb9ebeb07582e7d090c8fba">lraspi::Texture</a>
+: <a class="el" href="classlraspi_1_1_texture.html#a1f1d453fec4011791ed8d42a57318b10">lraspi::Texture</a>
 </li>
 <li>~Type()
 : <a class="el" href="classlraspi_1_1_type.html#a6482bbc3de2fd365677c7574575baf7e">lraspi::Type</a>

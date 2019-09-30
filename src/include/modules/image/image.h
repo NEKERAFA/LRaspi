@@ -9,8 +9,8 @@
 
 #include <SDL2/SDL.h>
 
-#include "common/type.h"
-#include "common/object.h"
+#include "modules/common/type.h"
+#include "modules/common/object.h"
 #include "modules/image/texture.h"
 
 #define LRASPI_IMAGE_NAME "image"
@@ -28,23 +28,16 @@ public:
     static Type type;
 
     /**
-     * @brief Construct a new image object
+     * @brief Load a image file from disk
+     * 
+     * @param path to the image
      */
-    Image();
+    Image(const char* path);
 
     /**
      * @brief Destroy the image object
      */
     ~Image();
-
-    /**
-     * @brief Load a image file from disk
-     * 
-     * @param path to the image
-     * 
-     * @return true if the image was loaded.
-     */
-    void load(const char* path);
 
     /**
      * @brief Check if an object is an instance of this type

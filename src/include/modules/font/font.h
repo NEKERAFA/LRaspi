@@ -11,8 +11,8 @@
 #include <SDL2/SDL_ttf.h>
 
 #include "lraspi.h"
-#include "common/type.h"
-#include "common/object.h"
+#include "modules/common/type.h"
+#include "modules/common/object.h"
 
 #define LRASPI_FONT_NAME "font"
 #define LRASPI_FONT_DEFAULT LRASPI_RES_FOLDER "/dejavu.ttf"
@@ -36,7 +36,21 @@ public:
     static Type type;
 
     /**
-     * @brief Construct a new font object
+     * @brief Load the default font (DejaVu) with a custom size
+     * 
+     * @param size The size of the font in pixels
+     */
+    Font(const char* path, int size);
+
+    /**
+     * @brief Load the default font (DejaVu) with a custom size
+     * 
+     * @param size The size of the font in pixels
+     */
+    Font(int size);
+
+    /**
+     * @brief Load the default font (DejaVu) with the default size
      */
     Font();
 
@@ -46,38 +60,20 @@ public:
     ~Font();
 
     /**
-     * @brief Load the default font (DejaVu) with a custom size
-     * 
-     * @param size The size of the font in pixels
-     * @return true if the font was loaded or false otherwise
-     */
-    bool create(int size);
-
-    /**
-     * @brief Load a font file from the disk
-     * 
-     * @param path Path to the font file
-     * @param size The sie of the font in pixels
-     * 
-     * @return true if the font was loaded or false otherwise
-     */
-    bool load(const char* path, int size);
-
-    /**
-     * @brief Creates a texture with the text rendered
-     * 
-     * @param text The text to rendered
-     * @return A SDL Surface object with a fast rendered of the text
-     */
-    SDL_Surface* getFastSdlSurface(const char* text);
-
-    /**
      * @brief Creates a texture with the text rendered
      * 
      * @param text The text to rendered
      * @return A SDL Surface object with a rendered of the text
      */
     SDL_Surface* getSdlSurface(const char* text);
+
+    /**
+     * @brief Creates a texture with the glyph rendered
+     * 
+     * @param glyph The unicode character to render
+     * @return A SDL_Surface object with a rendered of the glyph
+     */
+    SDL_Surface* getSdlSurface(char16_t glyph);
 
     /**
      * @brief Get the maximun height of the font

@@ -8,8 +8,8 @@
 
 #include <SDL2/SDL_pixels.h>
 
-#include "common/type.h"
-#include "common/object.h"
+#include "modules/common/type.h"
+#include "modules/common/object.h"
 
 #ifndef LRASPI_OBJECT_COLOR_H
 #define LRASPI_OBJECT_COLOR_H
@@ -70,6 +70,13 @@ public:
     void red(uint8_t red);
 
     /**
+     * @brief Gets the red color as float color
+     * 
+     * @return Red color as float value between 0 and 1 
+     */
+    float rf();
+
+    /**
      * @brief Gets the green color
      * 
      * @return Green color as unsigned 8 bits interger
@@ -82,6 +89,13 @@ public:
      * @param green Green color as unsigned 8 bits interger
      */
     void green(uint8_t green);
+
+    /**
+     * @brief Gets the green color as float color
+     * 
+     * @return Green color as float value between 0 and 1 
+     */
+    float gf();
 
     /**
      * @brief Gets the blue color
@@ -98,6 +112,13 @@ public:
     void blue(uint8_t blue);
 
     /**
+     * @brief Gets the blue color as float color
+     * 
+     * @return Blue color as float value between 0 and 1 
+     */
+    float bf();
+
+    /**
      * @brief Gets the alpha color
      * 
      * @return Alpha color as unsigned 8 bits interger
@@ -110,6 +131,13 @@ public:
      * @param alpha Alpha color as unsigned 8 bits interger
      */
     void alpha(uint8_t alpha);
+
+    /**
+     * @brief Gets the alpha color as float color
+     * 
+     * @return Alpha color as float value between 0 and 1 
+     */
+    float af();
 
     /**
      * @brief Get the color

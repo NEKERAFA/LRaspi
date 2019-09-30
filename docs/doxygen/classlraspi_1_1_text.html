@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="lua-logo-label.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Lua Raspi
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.0.4</span>
    </div>
    <div id="projectbrief">A Lua Player for Raspberry Pi</div>
   </td>
@@ -84,7 +84,9 @@ $(document).ready(function(){initNavTree('classlraspi_1_1_text.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classlraspi_1_1_text-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">lraspi::Text Class Reference</div>  </div>
@@ -92,29 +94,19 @@ $(document).ready(function(){initNavTree('classlraspi_1_1_text.html','');});
 <div class="contents">
 
 <p>Represents a rendered text to draw on screen.  
- <a href="classlraspi_1_1_text.html#details">More...</a></p>
+</p>
 
 <p>Inherits <a class="el" href="classlraspi_1_1_texture.html">lraspi::Texture</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aeea2850c81ab985c853c23378a02b761"><td class="memItemLeft" align="right" valign="top"><a id="aeea2850c81ab985c853c23378a02b761"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_text.html#aeea2850c81ab985c853c23378a02b761">Text</a> ()</td></tr>
-<tr class="memdesc:aeea2850c81ab985c853c23378a02b761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new text object. <br /></td></tr>
-<tr class="separator:aeea2850c81ab985c853c23378a02b761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9a73e61125a4a2633285fbbf7d66df8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_text.html#ae9a73e61125a4a2633285fbbf7d66df8">Text</a> (<a class="el" href="classlraspi_1_1_font.html">Font</a> *font, const char *text)</td></tr>
+<tr class="memdesc:ae9a73e61125a4a2633285fbbf7d66df8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render a text with a font.  <a href="#ae9a73e61125a4a2633285fbbf7d66df8">More...</a><br /></td></tr>
+<tr class="separator:ae9a73e61125a4a2633285fbbf7d66df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a954ee9f6becbf957f09dee6908eba003"><td class="memItemLeft" align="right" valign="top"><a id="a954ee9f6becbf957f09dee6908eba003"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_text.html#a954ee9f6becbf957f09dee6908eba003">~Text</a> ()</td></tr>
 <tr class="memdesc:a954ee9f6becbf957f09dee6908eba003"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the text object. <br /></td></tr>
 <tr class="separator:a954ee9f6becbf957f09dee6908eba003"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac80d7f170b5cd222be4c08aaeb5f1fe2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_text.html#ac80d7f170b5cd222be4c08aaeb5f1fe2">render</a> (<a class="el" href="classlraspi_1_1_font.html">Font</a> *font, const char *text)</td></tr>
-<tr class="memdesc:ac80d7f170b5cd222be4c08aaeb5f1fe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render a text with a font.  <a href="#ac80d7f170b5cd222be4c08aaeb5f1fe2">More...</a><br /></td></tr>
-<tr class="separator:ac80d7f170b5cd222be4c08aaeb5f1fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28a5d503e335c9a6eaa2f185eddd5f5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_text.html#a28a5d503e335c9a6eaa2f185eddd5f5f">setQuality</a> (TextQuality quality)</td></tr>
-<tr class="memdesc:a28a5d503e335c9a6eaa2f185eddd5f5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the quality to render text.  <a href="#a28a5d503e335c9a6eaa2f185eddd5f5f">More...</a><br /></td></tr>
-<tr class="separator:a28a5d503e335c9a6eaa2f185eddd5f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b1349edfccb42bbe4b1260c608a3bd2"><td class="memItemLeft" align="right" valign="top">TextQuality&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_text.html#a8b1349edfccb42bbe4b1260c608a3bd2">getQuality</a> ()</td></tr>
-<tr class="memdesc:a8b1349edfccb42bbe4b1260c608a3bd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the quality of the render text.  <a href="#a8b1349edfccb42bbe4b1260c608a3bd2">More...</a><br /></td></tr>
-<tr class="separator:a8b1349edfccb42bbe4b1260c608a3bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6e123a549bd830acd06df30b0e1b5b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_text.html#ad6e123a549bd830acd06df30b0e1b5b5">setText</a> (const char *text)</td></tr>
 <tr class="memdesc:ad6e123a549bd830acd06df30b0e1b5b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the content with a new value.  <a href="#ad6e123a549bd830acd06df30b0e1b5b5">More...</a><br /></td></tr>
 <tr class="separator:ad6e123a549bd830acd06df30b0e1b5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,35 +128,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a1a5b9ba3c62f92b8a691522b80ddd7e1">Texture</a> ()</td></tr>
 <tr class="memdesc:a1a5b9ba3c62f92b8a691522b80ddd7e1 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new texture object. <br /></td></tr>
 <tr class="separator:a1a5b9ba3c62f92b8a691522b80ddd7e1 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b64240accb9ebeb07582e7d090c8fba inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a id="a8b64240accb9ebeb07582e7d090c8fba"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a8b64240accb9ebeb07582e7d090c8fba">~Texture</a> ()</td></tr>
-<tr class="memdesc:a8b64240accb9ebeb07582e7d090c8fba inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the texture object. <br /></td></tr>
-<tr class="separator:a8b64240accb9ebeb07582e7d090c8fba inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7accffb765ceb659ae3bb3fe7acefc4 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ae7accffb765ceb659ae3bb3fe7acefc4">createBlank</a> (int width, int height)</td></tr>
-<tr class="memdesc:ae7accffb765ceb659ae3bb3fe7acefc4 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a blank texture.  <a href="classlraspi_1_1_texture.html#ae7accffb765ceb659ae3bb3fe7acefc4">More...</a><br /></td></tr>
-<tr class="separator:ae7accffb765ceb659ae3bb3fe7acefc4 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f1d453fec4011791ed8d42a57318b10 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a id="a1f1d453fec4011791ed8d42a57318b10"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a1f1d453fec4011791ed8d42a57318b10">~Texture</a> ()=0</td></tr>
+<tr class="memdesc:a1f1d453fec4011791ed8d42a57318b10 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the texture object. <br /></td></tr>
+<tr class="separator:a1f1d453fec4011791ed8d42a57318b10 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7dc470e2e2b253029e1d9e4ecb8a33a inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ad7dc470e2e2b253029e1d9e4ecb8a33a">glIdTexture</a> ()</td></tr>
+<tr class="memdesc:ad7dc470e2e2b253029e1d9e4ecb8a33a inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id texture.  <a href="classlraspi_1_1_texture.html#ad7dc470e2e2b253029e1d9e4ecb8a33a">More...</a><br /></td></tr>
+<tr class="separator:ad7dc470e2e2b253029e1d9e4ecb8a33a inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8efd39070d2e6c1b1cc844ae9c9978e2 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a id="a8efd39070d2e6c1b1cc844ae9c9978e2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a8efd39070d2e6c1b1cc844ae9c9978e2">reset</a> ()</td></tr>
 <tr class="memdesc:a8efd39070d2e6c1b1cc844ae9c9978e2 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset al values to default. <br /></td></tr>
 <tr class="separator:a8efd39070d2e6c1b1cc844ae9c9978e2 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cf2b34dafe344d9c1e1b6cd3a77b497 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a0cf2b34dafe344d9c1e1b6cd3a77b497">tint</a> (Color *color)</td></tr>
+<tr class="memitem:a0cf2b34dafe344d9c1e1b6cd3a77b497 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a0cf2b34dafe344d9c1e1b6cd3a77b497">tint</a> (<a class="el" href="classlraspi_1_1_color.html">Color</a> *color)</td></tr>
 <tr class="memdesc:a0cf2b34dafe344d9c1e1b6cd3a77b497 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the color modulation of the texture.  <a href="classlraspi_1_1_texture.html#a0cf2b34dafe344d9c1e1b6cd3a77b497">More...</a><br /></td></tr>
 <tr class="separator:a0cf2b34dafe344d9c1e1b6cd3a77b497 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af23162b4ee68edf7c151127a83d5ee46 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#af23162b4ee68edf7c151127a83d5ee46">setSdlBlendMode</a> (SDL_BlendMode bleding)</td></tr>
-<tr class="memdesc:af23162b4ee68edf7c151127a83d5ee46 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the blending mode.  <a href="classlraspi_1_1_texture.html#af23162b4ee68edf7c151127a83d5ee46">More...</a><br /></td></tr>
-<tr class="separator:af23162b4ee68edf7c151127a83d5ee46 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab81809e7786722ef91bacb6a280b8320 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlraspi_1_1_color.html">Color</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ab81809e7786722ef91bacb6a280b8320">getTintColor</a> ()</td></tr>
+<tr class="memdesc:ab81809e7786722ef91bacb6a280b8320 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the color modulation of the texture.  <a href="classlraspi_1_1_texture.html#ab81809e7786722ef91bacb6a280b8320">More...</a><br /></td></tr>
+<tr class="separator:ab81809e7786722ef91bacb6a280b8320 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac285eaf5a6c99825591dee40fe3f974e inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ac285eaf5a6c99825591dee40fe3f974e">setAlpha</a> (uint8_t alpha)</td></tr>
 <tr class="memdesc:ac285eaf5a6c99825591dee40fe3f974e inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the alpha modulation.  <a href="classlraspi_1_1_texture.html#ac285eaf5a6c99825591dee40fe3f974e">More...</a><br /></td></tr>
 <tr class="separator:ac285eaf5a6c99825591dee40fe3f974e inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa351cd3c01782db46689ccc8e810da0 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#afa351cd3c01782db46689ccc8e810da0">getSdlTexture</a> ()</td></tr>
-<tr class="memdesc:afa351cd3c01782db46689ccc8e810da0 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the texture object.  <a href="classlraspi_1_1_texture.html#afa351cd3c01782db46689ccc8e810da0">More...</a><br /></td></tr>
-<tr class="separator:afa351cd3c01782db46689ccc8e810da0 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72f9a21e8e831bdfd2f502319cbc66a1 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">SDL_Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a72f9a21e8e831bdfd2f502319cbc66a1">getSdlCenterPoint</a> ()</td></tr>
-<tr class="memdesc:a72f9a21e8e831bdfd2f502319cbc66a1 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the texture center point.  <a href="classlraspi_1_1_texture.html#a72f9a21e8e831bdfd2f502319cbc66a1">More...</a><br /></td></tr>
-<tr class="separator:a72f9a21e8e831bdfd2f502319cbc66a1 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a304d3c26940dbc9c0a509b29e2b86c04 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">SDL_RendererFlip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a304d3c26940dbc9c0a509b29e2b86c04">getSdlFlipStatus</a> ()</td></tr>
-<tr class="memdesc:a304d3c26940dbc9c0a509b29e2b86c04 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the renderer flip.  <a href="classlraspi_1_1_texture.html#a304d3c26940dbc9c0a509b29e2b86c04">More...</a><br /></td></tr>
-<tr class="separator:a304d3c26940dbc9c0a509b29e2b86c04 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1b4b85ad7fff33e531221d00277f87c inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#af1b4b85ad7fff33e531221d00277f87c">getAlpha</a> ()</td></tr>
+<tr class="memdesc:af1b4b85ad7fff33e531221d00277f87c inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alpha value.  <a href="classlraspi_1_1_texture.html#af1b4b85ad7fff33e531221d00277f87c">More...</a><br /></td></tr>
+<tr class="separator:af1b4b85ad7fff33e531221d00277f87c inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92b924c4fbcd63a3dd9c3c7c10544f14 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a92b924c4fbcd63a3dd9c3c7c10544f14">setWidth</a> (int width)</td></tr>
 <tr class="memdesc:a92b924c4fbcd63a3dd9c3c7c10544f14 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the width of the texture.  <a href="classlraspi_1_1_texture.html#a92b924c4fbcd63a3dd9c3c7c10544f14">More...</a><br /></td></tr>
 <tr class="separator:a92b924c4fbcd63a3dd9c3c7c10544f14 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,6 +178,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ae8bbe809b72261a85e31950059d83898 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ae8bbe809b72261a85e31950059d83898">setCenter</a> (int x, int y)</td></tr>
 <tr class="memdesc:ae8bbe809b72261a85e31950059d83898 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the center of the texture.  <a href="classlraspi_1_1_texture.html#ae8bbe809b72261a85e31950059d83898">More...</a><br /></td></tr>
 <tr class="separator:ae8bbe809b72261a85e31950059d83898 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878c1be299726b8ae0741e5bf978513d inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a id="a878c1be299726b8ae0741e5bf978513d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a878c1be299726b8ae0741e5bf978513d">setCenter</a> ()</td></tr>
+<tr class="memdesc:a878c1be299726b8ae0741e5bf978513d inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the center point of the texture in the middle. <br /></td></tr>
+<tr class="separator:a878c1be299726b8ae0741e5bf978513d inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa590d6ae7a327500f6851ac4263c539a inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#aa590d6ae7a327500f6851ac4263c539a">getCenter</a> (int *x, int *y)</td></tr>
+<tr class="memdesc:aa590d6ae7a327500f6851ac4263c539a inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the center of the texture.  <a href="classlraspi_1_1_texture.html#aa590d6ae7a327500f6851ac4263c539a">More...</a><br /></td></tr>
+<tr class="separator:aa590d6ae7a327500f6851ac4263c539a inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c0a887fa33567227c3483d48158dbb5 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a id="a3c0a887fa33567227c3483d48158dbb5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a3c0a887fa33567227c3483d48158dbb5">setVFlip</a> ()</td></tr>
 <tr class="memdesc:a3c0a887fa33567227c3483d48158dbb5 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the vertical flip. <br /></td></tr>
@@ -200,9 +193,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a74a3f7115ac46e2f3c561577504551d9">setHFlip</a> ()</td></tr>
 <tr class="memdesc:a74a3f7115ac46e2f3c561577504551d9 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the horizontal flip. <br /></td></tr>
 <tr class="separator:a74a3f7115ac46e2f3c561577504551d9 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01846c6b106d2f13674db5f8a04c9f30 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a01846c6b106d2f13674db5f8a04c9f30">blit</a> (<a class="el" href="classlraspi_1_1_texture.html">Texture</a> *texture, int x, int y)</td></tr>
-<tr class="memdesc:a01846c6b106d2f13674db5f8a04c9f30 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws another texture in this texture.  <a href="classlraspi_1_1_texture.html#a01846c6b106d2f13674db5f8a04c9f30">More...</a><br /></td></tr>
-<tr class="separator:a01846c6b106d2f13674db5f8a04c9f30 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e0a65b64806ce181ca433f8a4a3312b inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a3e0a65b64806ce181ca433f8a4a3312b">getFlip</a> (bool *h, bool *v)</td></tr>
+<tr class="memdesc:a3e0a65b64806ce181ca433f8a4a3312b inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the texture flip.  <a href="classlraspi_1_1_texture.html#a3e0a65b64806ce181ca433f8a4a3312b">More...</a><br /></td></tr>
+<tr class="separator:a3e0a65b64806ce181ca433f8a4a3312b inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8912777260b433cc33e9c0a7d2d516e inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlraspi_1_1_color.html">Color</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ae8912777260b433cc33e9c0a7d2d516e">getPixel</a> (uint16_t x, uint16_t y)</td></tr>
+<tr class="memdesc:ae8912777260b433cc33e9c0a7d2d516e inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the color of the pixel in the texture.  <a href="classlraspi_1_1_texture.html#ae8912777260b433cc33e9c0a7d2d516e">More...</a><br /></td></tr>
+<tr class="separator:ae8912777260b433cc33e9c0a7d2d516e inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06014a9e18a8f9ad36fb7d4ffa54e279 inherit pub_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a06014a9e18a8f9ad36fb7d4ffa54e279">setPixel</a> (uint16_t x, uint16_t y, <a class="el" href="classlraspi_1_1_color.html">Color</a> *col)</td></tr>
+<tr class="memdesc:a06014a9e18a8f9ad36fb7d4ffa54e279 inherit pub_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the color of the pixel in the texture.  <a href="classlraspi_1_1_texture.html#a06014a9e18a8f9ad36fb7d4ffa54e279">More...</a><br /></td></tr>
+<tr class="separator:a06014a9e18a8f9ad36fb7d4ffa54e279 inherit pub_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classlraspi_1_1_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classlraspi_1_1_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classlraspi_1_1_object.html">lraspi::Object</a></td></tr>
 <tr class="memitem:a70422fee8a09a19d202ac3476fcdac76 inherit pub_methods_classlraspi_1_1_object"><td class="memItemLeft" align="right" valign="top"><a id="a70422fee8a09a19d202ac3476fcdac76"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_object.html#a70422fee8a09a19d202ac3476fcdac76">Object</a> ()</td></tr>
@@ -213,6 +212,20 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memdesc:a6cd6670877dd50d9bd30be45a40f90ab inherit pub_methods_classlraspi_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the object object. <br /></td></tr>
 <tr class="separator:a6cd6670877dd50d9bd30be45a40f90ab inherit pub_methods_classlraspi_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a4f2670b37359b9935a402090489fe62c"><td class="memItemLeft" align="right" valign="top"><a id="a4f2670b37359b9935a402090489fe62c"></a>
+static <a class="el" href="classlraspi_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a4f2670b37359b9935a402090489fe62c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_attribs_classlraspi_1_1_texture"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classlraspi_1_1_texture')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classlraspi_1_1_texture.html">lraspi::Texture</a></td></tr>
+<tr class="memitem:ad79d5b9a15594a270cc389a3733e0656 inherit pub_static_attribs_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a id="ad79d5b9a15594a270cc389a3733e0656"></a>
+static <a class="el" href="classlraspi_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:ad79d5b9a15594a270cc389a3733e0656 inherit pub_static_attribs_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_attribs_classlraspi_1_1_object"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classlraspi_1_1_object')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classlraspi_1_1_object.html">lraspi::Object</a></td></tr>
+<tr class="memitem:a3d4f4b51e64ce3f9563613df9b3776f8 inherit pub_static_attribs_classlraspi_1_1_object"><td class="memItemLeft" align="right" valign="top"><a id="a3d4f4b51e64ce3f9563613df9b3776f8"></a>
+static <a class="el" href="classlraspi_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a3d4f4b51e64ce3f9563613df9b3776f8 inherit pub_static_attribs_classlraspi_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a25493eee85a366d58c13b894335e4a39"><td class="memItemLeft" align="right" valign="top"><a id="a25493eee85a366d58c13b894335e4a39"></a>
@@ -220,49 +233,44 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a25493eee85a366d58c13b894335e4a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render the setted text with the setted font. <br /></td></tr>
 <tr class="separator:a25493eee85a366d58c13b894335e4a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab89bdbb6724a067aa2054069ed38b983"><td class="memItemLeft" align="right" valign="top"><a id="ab89bdbb6724a067aa2054069ed38b983"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_text</b></td></tr>
+<tr class="separator:ab89bdbb6724a067aa2054069ed38b983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f96e4182fd276fd9b03c65af0265d30"><td class="memItemLeft" align="right" valign="top"><a id="a9f96e4182fd276fd9b03c65af0265d30"></a>
+<a class="el" href="classlraspi_1_1_font.html">Font</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_font</b></td></tr>
+<tr class="separator:a9f96e4182fd276fd9b03c65af0265d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classlraspi_1_1_texture"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classlraspi_1_1_texture')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classlraspi_1_1_texture.html">lraspi::Texture</a></td></tr>
-<tr class="memitem:a0de71a8ea08c1452c9b80cb4c27de6a3 inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a0de71a8ea08c1452c9b80cb4c27de6a3">setSdlTexture</a> (SDL_Texture *sdl_texture)</td></tr>
-<tr class="memdesc:a0de71a8ea08c1452c9b80cb4c27de6a3 inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the texture object.  <a href="classlraspi_1_1_texture.html#a0de71a8ea08c1452c9b80cb4c27de6a3">More...</a><br /></td></tr>
-<tr class="separator:a0de71a8ea08c1452c9b80cb4c27de6a3 inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcc0ff9aef739506f56782a1e3fc1e15 inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#afcc0ff9aef739506f56782a1e3fc1e15">setSdlSurface</a> (SDL_Surface *sdl_surface)</td></tr>
+<tr class="memdesc:afcc0ff9aef739506f56782a1e3fc1e15 inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the surface object.  <a href="classlraspi_1_1_texture.html#afcc0ff9aef739506f56782a1e3fc1e15">More...</a><br /></td></tr>
+<tr class="separator:afcc0ff9aef739506f56782a1e3fc1e15 inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98a96414c4400afa7ab6910c48f721c4 inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a98a96414c4400afa7ab6910c48f721c4">setRealWidth</a> (int real_width)</td></tr>
 <tr class="memdesc:a98a96414c4400afa7ab6910c48f721c4 inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the real width of the texture.  <a href="classlraspi_1_1_texture.html#a98a96414c4400afa7ab6910c48f721c4">More...</a><br /></td></tr>
 <tr class="separator:a98a96414c4400afa7ab6910c48f721c4 inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59b9f7c37b5deacbf93cdcc949bdfb20 inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a59b9f7c37b5deacbf93cdcc949bdfb20">setRealHeight</a> (int real_height)</td></tr>
 <tr class="memdesc:a59b9f7c37b5deacbf93cdcc949bdfb20 inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the real height of the texture.  <a href="classlraspi_1_1_texture.html#a59b9f7c37b5deacbf93cdcc949bdfb20">More...</a><br /></td></tr>
 <tr class="separator:a59b9f7c37b5deacbf93cdcc949bdfb20 inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1b4b85ad7fff33e531221d00277f87c inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#af1b4b85ad7fff33e531221d00277f87c">getAlpha</a> ()</td></tr>
-<tr class="memdesc:af1b4b85ad7fff33e531221d00277f87c inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alpha value.  <a href="classlraspi_1_1_texture.html#af1b4b85ad7fff33e531221d00277f87c">More...</a><br /></td></tr>
-<tr class="separator:af1b4b85ad7fff33e531221d00277f87c inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2a317e4dc6afdec489bb0be3316ca45 inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">SDL_BlendMode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#af2a317e4dc6afdec489bb0be3316ca45">getSdlBlendMode</a> ()</td></tr>
-<tr class="memdesc:af2a317e4dc6afdec489bb0be3316ca45 inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the blending mode.  <a href="classlraspi_1_1_texture.html#af2a317e4dc6afdec489bb0be3316ca45">More...</a><br /></td></tr>
-<tr class="separator:af2a317e4dc6afdec489bb0be3316ca45 inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab81809e7786722ef91bacb6a280b8320 inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">Color *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ab81809e7786722ef91bacb6a280b8320">getTintColor</a> ()</td></tr>
-<tr class="memdesc:ab81809e7786722ef91bacb6a280b8320 inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the color modulation of the texture.  <a href="classlraspi_1_1_texture.html#ab81809e7786722ef91bacb6a280b8320">More...</a><br /></td></tr>
-<tr class="separator:ab81809e7786722ef91bacb6a280b8320 inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e9e097e975d68750a6bc9333ff553ea inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a3e9e097e975d68750a6bc9333ff553ea">setFlip</a> (bool v, bool h)</td></tr>
 <tr class="memdesc:a3e9e097e975d68750a6bc9333ff553ea inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the flip of the texture.  <a href="classlraspi_1_1_texture.html#a3e9e097e975d68750a6bc9333ff553ea">More...</a><br /></td></tr>
 <tr class="separator:a3e9e097e975d68750a6bc9333ff553ea inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a172d9a19f1d030cf2b2a400f6f116ddf inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a id="a172d9a19f1d030cf2b2a400f6f116ddf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a172d9a19f1d030cf2b2a400f6f116ddf">setTargetAccess</a> ()</td></tr>
-<tr class="memdesc:a172d9a19f1d030cf2b2a400f6f116ddf inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the texture access as SDL_TEXTUREACCESS_TARGET. <br /></td></tr>
-<tr class="separator:a172d9a19f1d030cf2b2a400f6f116ddf inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5130409602b444a6b2f9375556e8bc4 inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ae5130409602b444a6b2f9375556e8bc4">isTargetAccess</a> ()</td></tr>
-<tr class="memdesc:ae5130409602b444a6b2f9375556e8bc4 inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the texture has target access.  <a href="classlraspi_1_1_texture.html#ae5130409602b444a6b2f9375556e8bc4">More...</a><br /></td></tr>
-<tr class="separator:ae5130409602b444a6b2f9375556e8bc4 inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac103e05839a0886cf2c0558e56b3b52a inherit pro_methods_classlraspi_1_1_texture"><td class="memItemLeft" align="right" valign="top"><a id="ac103e05839a0886cf2c0558e56b3b52a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ac103e05839a0886cf2c0558e56b3b52a">glDestroy</a> ()</td></tr>
+<tr class="memdesc:ac103e05839a0886cf2c0558e56b3b52a inherit pro_methods_classlraspi_1_1_texture"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the texture loaded. <br /></td></tr>
+<tr class="separator:ac103e05839a0886cf2c0558e56b3b52a inherit pro_methods_classlraspi_1_1_texture"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents a rendered text to draw on screen. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac80d7f170b5cd222be4c08aaeb5f1fe2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac80d7f170b5cd222be4c08aaeb5f1fe2">&#9670;&nbsp;</a></span>render()</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae9a73e61125a4a2633285fbbf7d66df8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9a73e61125a4a2633285fbbf7d66df8">&#9670;&nbsp;</a></span>Text()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void lraspi::Text::render </td>
+          <td class="memname">lraspi::Text::Text </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classlraspi_1_1_font.html">Font</a> *&#160;</td>
           <td class="paramname"><em>font</em>, </td>
@@ -280,8 +288,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Render a text with a font. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">font</td><td>The font to render the text </td></tr>
@@ -292,52 +298,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="a28a5d503e335c9a6eaa2f185eddd5f5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28a5d503e335c9a6eaa2f185eddd5f5f">&#9670;&nbsp;</a></span>setQuality()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void lraspi::Text::setQuality </td>
-          <td>(</td>
-          <td class="paramtype">TextQuality&#160;</td>
-          <td class="paramname"><em>quality</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the quality to render text. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">quality</td><td>The quality to render text </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a8b1349edfccb42bbe4b1260c608a3bd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b1349edfccb42bbe4b1260c608a3bd2">&#9670;&nbsp;</a></span>getQuality()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TextQuality lraspi::Text::getQuality </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the quality of the render text. </p>
-<dl class="section return"><dt>Returns</dt><dd>The quality to render text </dd></dl>
-
-</div>
-</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad6e123a549bd830acd06df30b0e1b5b5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad6e123a549bd830acd06df30b0e1b5b5">&#9670;&nbsp;</a></span>setText()</h2>
 
@@ -353,8 +314,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Replace the content with a new value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">text</td><td>The new text to render </td></tr>
@@ -379,8 +338,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Add a new text to the rendered text. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">text</td><td>The text to append </td></tr>
@@ -413,8 +370,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Check if an object is an instance of this type. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if the object is an instance of </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classlraspi_1_1_texture.html#a77bfa4d4f78e4207d413a761383b20fc">lraspi::Texture</a>.</p>
@@ -443,8 +398,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Get the name of the object type. </p>
 <dl class="section return"><dt>Returns</dt><dd>The name of the type </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classlraspi_1_1_texture.html#aa810a71f40073c867a09f386fd2444df">lraspi::Texture</a>.</p>

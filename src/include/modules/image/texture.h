@@ -7,11 +7,13 @@
 #ifndef LRASPI_OBJECT_TEXTURE_H
 #define LRASPI_OBJECT_TEXTURE_H
 
+#include <atomic>
 #include <cstdint>
 
 #include <SDL2/SDL.h>
+#include <GL/glu.h>
 
-#include "common/type.h"
+#include "modules/common/type.h"
 #include "modules/color/color.h"
 
 #define LRASPI_TEXTURE_NAME "texture"
@@ -25,21 +27,27 @@ namespace lraspi
  */
 class Texture : public Object {
 private:
-    SDL_Texture*    _sdl_texture;
-    bool            _target_access;
-    int             _width, _height;
-    int             _tex_width, _tex_height;
-    double          _tex_angle;
-    int             _tex_center_x, _tex_center_y;
-    bool            _tex_flip_h, _tex_flip_v;
+    GLuint _gl_id_texture;
+    Color* _tint;
+    int    _width;
+    int    _height;
+    int    _real_width;
+    int    _real_height;
+    double _angle;
+    int    _center_x;
+    int    _center_y;
+    bool   _flip_h;
+    bool   _flip_v;
+    bool   _loaded;
 
 protected:
     /**
-     * @brief Set the texture object
+     * @brief Set the surface object
      * 
-     * @param sdl_texture A SDL_Texture object
+     * @param sdl_surface A SDL_Surface object 
+     * @param access A SDL_TextureAccess value
      */
-    void setSdlTexture(SDL_Texture* sdl_texture);
+    void setSdlSurface(SDL_Surface* sdl_surface);
 
     /**
      * @brief Set the real width of the texture
@@ -56,27 +64,6 @@ protected:
     void setRealHeight(int real_height);
 
     /**
-     * @brief Get the alpha value
-     * 
-     * @return The alpha value 
-     */
-    uint8_t getAlpha();
-
-    /**
-     * @brief Get the blending mode
-     * 
-     * @return A SDL_BlendMode struct 
-     */
-    SDL_BlendMode getSdlBlendMode();
-
-    /**
-     * @brief Get the color modulation of the texture
-     * 
-     * @return The lraspi::Color object that represents the color modulation
-     */
-    Color* getTintColor();
-
-    /**
      * @brief Set the flip of the texture
      * 
      * @param v True if the texture has vertical flip
@@ -85,16 +72,9 @@ protected:
     void setFlip(bool v, bool h);
 
     /**
-     * @brief Set the texture access as SDL_TEXTUREACCESS_TARGET
+     * @brief Destroy the texture loaded
      */
-    void setTargetAccess();
-
-    /**
-     * @brief Checks if the texture has target access
-     * 
-     * @return true if the texture has target access
-     */
-    bool isTargetAccess();
+    void glDestroy();
 
 public:
     static Type type;
@@ -107,15 +87,14 @@ public:
     /**
      * @brief Destroy the texture object
      */
-    ~Texture();
+    virtual ~Texture() = 0;
 
     /**
-     * @brief Create a blank texture
+     * @brief Get the id texture
      * 
-     * @param width The width of the new texture
-     * @param height The height of the new texture
+     * @return the id texture
      */
-    void createBlank(int width, int height);
+    GLuint glIdTexture();
 
     /**
      * @brief Reset al values to default
@@ -130,11 +109,11 @@ public:
     void tint(Color* color);
 
     /**
-     * @brief Set the blending mode
+     * @brief Get the color modulation of the texture
      * 
-     * @param bleding An SDL_BlendMode struct
+     * @return The lraspi::Color object that represents the color modulation
      */
-    void setSdlBlendMode(SDL_BlendMode bleding);
+    Color* getTintColor();
 
     /**
      * @brief Set the alpha modulation
@@ -144,25 +123,11 @@ public:
     void setAlpha(uint8_t alpha);
 
     /**
-     * @brief Get the texture object
+     * @brief Get the alpha value
      * 
-     * @return A SDL_Texture object
+     * @return The alpha value 
      */
-    SDL_Texture* getSdlTexture();
-
-    /**
-     * @brief Get the texture center point
-     * 
-     * @return A SDL_Point object
-     */
-    SDL_Point getSdlCenterPoint();
-
-    /**
-     * @brief Get the renderer flip
-     * 
-     * @return A SDL_RendererFlip object
-     */
-    SDL_RendererFlip getSdlFlipStatus();
+    uint8_t getAlpha();
 
     /**
      * @brief Set the width of the texture
@@ -229,25 +194,53 @@ public:
     void setCenter(int x, int y);
 
     /**
-     * @brief Set the vertical flip
+     * @brief Set the center point of the texture in the middle
+     */
+    void setCenter();
+
+    /**
+     * @brief Get the center of the texture
      * 
+     * @param x the x-axis position to set the center of the texture
+     * @param y the y-axis position to set the center of the texture
+     */
+    void getCenter(int* x, int* y);
+
+    /**
+     * @brief Set the vertical flip
      */
     void setVFlip();
 
     /**
      * @brief Set the horizontal flip
-     * 
      */
     void setHFlip();
 
     /**
-     * @brief Draws another texture in this texture
+     * @brief Get the texture flip
      * 
-     * @param texture Another texture object
-     * @param x the x-axis position to draw the texture
-     * @param y the y-axis position to draw the texture
+     * @param h the horizontal flip
+     * @param v the vertical flip
      */
-    virtual void blit(Texture* texture, int x, int y);
+    void getFlip(bool* h, bool* v);
+
+    /**
+     * @brief Get the color of the pixel in the texture
+     * 
+     * @param x The x-axis position of the pixel in the texture
+     * @param y The y-axis position of the pixel in the texture
+     * @return A lraspi::Color object
+     */
+    Color* getPixel(uint16_t x, uint16_t y);
+
+    /**
+     * @brief Set the color of the pixel in the texture
+     * 
+     * @param x The x-axis position of the pixel in the texture
+     * @param y The y-axis position of the pixel in the texture
+     * @param col A lraspi::Color object
+     */
+    void setPixel(uint16_t x, uint16_t y, Color* col);
 
     /**
      * @brief Check if an object is an instance of this type

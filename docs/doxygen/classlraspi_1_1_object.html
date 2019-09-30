@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="lua-logo-label.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Lua Raspi
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.0.4</span>
    </div>
    <div id="projectbrief">A Lua Player for Raspberry Pi</div>
   </td>
@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('classlraspi_1_1_object.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classlraspi_1_1_object-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">lraspi::Object Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -91,9 +92,9 @@ $(document).ready(function(){initNavTree('classlraspi_1_1_object.html','');});
 <div class="contents">
 
 <p>Basic object of Lua Raspi userdata.  
- <a href="classlraspi_1_1_object.html#details">More...</a></p>
+</p>
 
-<p>Inherited by lraspi::Color, <a class="el" href="classlraspi_1_1_font.html">lraspi::Font</a>, and <a class="el" href="classlraspi_1_1_texture.html">lraspi::Texture</a>.</p>
+<p>Inherited by <a class="el" href="classlraspi_1_1_color.html">lraspi::Color</a>, <a class="el" href="classlraspi_1_1_font.html">lraspi::Font</a>, and <a class="el" href="classlraspi_1_1_texture.html">lraspi::Texture</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -111,10 +112,14 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memitem:a6bba50cf1700759059c051c31b44651b"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_object.html#a6bba50cf1700759059c051c31b44651b">name</a> ()</td></tr>
 <tr class="memdesc:a6bba50cf1700759059c051c31b44651b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of the object type.  <a href="#a6bba50cf1700759059c051c31b44651b">More...</a><br /></td></tr>
 <tr class="separator:a6bba50cf1700759059c051c31b44651b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a3d4f4b51e64ce3f9563613df9b3776f8"><td class="memItemLeft" align="right" valign="top"><a id="a3d4f4b51e64ce3f9563613df9b3776f8"></a>
+static <a class="el" href="classlraspi_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a3d4f4b51e64ce3f9563613df9b3776f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Basic object of Lua Raspi userdata. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a82f4911fc89a42d57157b43dd5cc1664"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a82f4911fc89a42d57157b43dd5cc1664">&#9670;&nbsp;</a></span>isInstanceOf()</h2>
 
@@ -138,11 +143,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Check if an object is an instance of this type. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if the object is an instance of </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classlraspi_1_1_texture.html#a77bfa4d4f78e4207d413a761383b20fc">lraspi::Texture</a>, <a class="el" href="classlraspi_1_1_font.html#a314c6de8b11ca0d50285ecc20e37bc63">lraspi::Font</a>, <a class="el" href="classlraspi_1_1_text.html#ade54e12315a9aaac8298429b2932c7cb">lraspi::Text</a>, and <a class="el" href="classlraspi_1_1_image.html#a6eab3c04025852aae18e30e2eae7c0ee">lraspi::Image</a>.</p>
+<p>Reimplemented in <a class="el" href="classlraspi_1_1_texture.html#a77bfa4d4f78e4207d413a761383b20fc">lraspi::Texture</a>, <a class="el" href="classlraspi_1_1_font.html#a314c6de8b11ca0d50285ecc20e37bc63">lraspi::Font</a>, <a class="el" href="classlraspi_1_1_color.html#ab9de1e603dff37dc74b4cc3a53b4f212">lraspi::Color</a>, <a class="el" href="classlraspi_1_1_text.html#ade54e12315a9aaac8298429b2932c7cb">lraspi::Text</a>, <a class="el" href="classlraspi_1_1_image.html#a6eab3c04025852aae18e30e2eae7c0ee">lraspi::Image</a>, and <a class="el" href="classlraspi_1_1_char.html#a1c4a862d5b47dd98f2a5a5478a7c4845">lraspi::Char</a>.</p>
 
 </div>
 </div>
@@ -168,11 +171,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Get the name of the object type. </p>
 <dl class="section return"><dt>Returns</dt><dd>The name of the type </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classlraspi_1_1_texture.html#aa810a71f40073c867a09f386fd2444df">lraspi::Texture</a>, <a class="el" href="classlraspi_1_1_font.html#a8d90899ed527aaea4418e16d6f4131f5">lraspi::Font</a>, <a class="el" href="classlraspi_1_1_text.html#a5aa15fbca1fd30ddb99281f2feb64e4c">lraspi::Text</a>, and <a class="el" href="classlraspi_1_1_image.html#a9cfe080d89994ca489b9302d50e5542a">lraspi::Image</a>.</p>
+<p>Reimplemented in <a class="el" href="classlraspi_1_1_texture.html#aa810a71f40073c867a09f386fd2444df">lraspi::Texture</a>, <a class="el" href="classlraspi_1_1_font.html#a8d90899ed527aaea4418e16d6f4131f5">lraspi::Font</a>, <a class="el" href="classlraspi_1_1_color.html#a150f5f9f8ded6640fbb345e960cfe256">lraspi::Color</a>, <a class="el" href="classlraspi_1_1_text.html#a5aa15fbca1fd30ddb99281f2feb64e4c">lraspi::Text</a>, <a class="el" href="classlraspi_1_1_image.html#a9cfe080d89994ca489b9302d50e5542a">lraspi::Image</a>, and <a class="el" href="classlraspi_1_1_char.html#a9213fc1fa231a8c4701f84475e1936ac">lraspi::Char</a>.</p>
 
 </div>
 </div>

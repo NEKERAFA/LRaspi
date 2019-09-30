@@ -33,20 +33,28 @@
 <h2>Contents</h2>
 <ul>
 <li><a href="#Functions">Functions</a></li>
-<li><a href="#Class_texture">Class texture </a></li>
-<li><a href="#Class_text">Class text </a></li>
 </ul>
 
 
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Color.html">Color</a></li>
+  <li><a href="../modules/Draw.html">Draw</a></li>
   <li><a href="../modules/Font.html">Font</a></li>
   <li><strong>Image</strong></li>
+  <li><a href="../modules/LRaspi.html">LRaspi</a></li>
   <li><a href="../modules/Screen.html">Screen</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/color.html">color</a></li>
+  <li><a href="../classes/font.html">font</a></li>
+  <li><a href="../classes/image.html">image</a></li>
+  <li><a href="../classes/text.html">text</a></li>
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
+  <li><a href="../examples/draw.lua.html">draw.lua</a></li>
   <li><a href="../examples/font.lua.html">font.lua</a></li>
   <li><a href="../examples/image.lua.html">image.lua</a></li>
 </ul>
@@ -58,208 +66,101 @@
 <h1>Module <code>Image</code></h1>
 <p>Image reading and manipulation and 2D accelerated rendering</p>
 <p></p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/Draw.html#">Draw</a>
+    </ul>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#image.init">image.init ()</a></td>
-	<td class="summary">Initializes the image subsystem.<br>
- The interpreter calls this function internally, so you should not call explicitly.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image.new">image.new (width, height)</a></td>
-	<td class="summary">Creates a blank texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image.load">image.load (path)</a></td>
+	<td class="name" nowrap><a href="#image.new">image.new (path)</a></td>
 	<td class="summary">Loads an image from the disk onto the memory</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.newtext">image.newtext (A, text)</a></td>
-	<td class="summary">Creates a text texture</td>
+	<td class="name" nowrap><a href="#draw.newtext">draw.newtext (font, text)</a></td>
+	<td class="summary">Creates new text</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.reset">image.reset (texture)</a></td>
-	<td class="summary">Resets the internal values (rotation, flip, resize, &hellip;) of the texture</td>
+	<td class="name" nowrap><a href="#image.reset">image.reset (image)</a></td>
+	<td class="summary">Resets the internal values (rotation, flip, resize, &hellip;) of the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.tint">image.tint (texture, color)</a></td>
-	<td class="summary">Changes the color modulation of the texture</td>
+	<td class="name" nowrap><a href="#image.tint">image.tint (image, color)</a></td>
+	<td class="summary">Changes the color modulation of the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.blendmode">image.blendmode (texture, mode)</a></td>
-	<td class="summary">Changes the blend mode of the texture</td>
+	<td class="name" nowrap><a href="#image.gettintcolor">image.gettintcolor (image)</a></td>
+	<td class="summary">Gets the color modulation of the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.alpha">image.alpha (texture, alpha)</a></td>
-	<td class="summary">Changes the alpha value of the texture.</td>
+	<td class="name" nowrap><a href="#image.setalpha">image.setalpha (image, alpha)</a></td>
+	<td class="summary">Changes the alpha value of the image.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.width">image.width (texture)</a></td>
-	<td class="summary">Gets the current width dimension of the texture</td>
+	<td class="name" nowrap><a href="#image.getalpha">image.getalpha (image)</a></td>
+	<td class="summary">Gets the current alpha value of the image.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.height">image.height (texture)</a></td>
-	<td class="summary">Gets the current height dimension of the texture</td>
+	<td class="name" nowrap><a href="#image.getwidth">image.getwidth (image)</a></td>
+	<td class="summary">Gets the current width dimension of the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.realwidth">image.realwidth (texture)</a></td>
-	<td class="summary">Gets the real width dimension of the texture</td>
+	<td class="name" nowrap><a href="#image.getheight">image.getheight (image)</a></td>
+	<td class="summary">Gets the current height dimension of the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.realheight">image.realheight (texture)</a></td>
-	<td class="summary">Gets the real width dimension of the texture</td>
+	<td class="name" nowrap><a href="#image.getrealwidth">image.getrealwidth (image)</a></td>
+	<td class="summary">Gets the real width dimension of the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.resize">image.resize (texture, width, height)</a></td>
-	<td class="summary">Resizes the texture</td>
+	<td class="name" nowrap><a href="#image.getrealheight">image.getrealheight (image)</a></td>
+	<td class="summary">Gets the real width dimension of the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.rotate">image.rotate (texture, angle)</a></td>
-	<td class="summary">Rotates the texture</td>
+	<td class="name" nowrap><a href="#image.resize">image.resize (image, width, height)</a></td>
+	<td class="summary">Resizes the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.center">image.center (texture, x, y)</a></td>
-	<td class="summary">Sets the center of the texture</td>
+	<td class="name" nowrap><a href="#image.rotate">image.rotate (image, angle)</a></td>
+	<td class="summary">Rotates the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.center">image.center (texture)</a></td>
-	<td class="summary">Gets the center of the texture</td>
+	<td class="name" nowrap><a href="#image.setcenter">image.setcenter (image, x, y)</a></td>
+	<td class="summary">Sets the center of the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.vflip">image.vflip (texture)</a></td>
-	<td class="summary">Flips a texture vertically</td>
+	<td class="name" nowrap><a href="#image.getcenter">image.getcenter (image)</a></td>
+	<td class="summary">Gets the center of the image</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.hflip">image.hflip (texture)</a></td>
-	<td class="summary">Flips a texture horizontally</td>
+	<td class="name" nowrap><a href="#image.vflip">image.vflip (image)</a></td>
+	<td class="summary">Flips a image vertically</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.flip">image.flip (texture)</a></td>
-	<td class="summary">Checks if the texture is flipped</td>
+	<td class="name" nowrap><a href="#image.hflip">image.hflip (image)</a></td>
+	<td class="summary">Flips a image horizontally</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.blit">image.blit (texture, origin, x, y)</a></td>
-	<td class="summary">Blits the texture onto another texture</td>
+	<td class="name" nowrap><a href="#image.isflipped">image.isflipped (image)</a></td>
+	<td class="summary">Checks if the image is flipped</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.textquality">image.textquality (text, quality)</a></td>
-	<td class="summary">Sets the quality to render text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image.textquality">image.textquality (text)</a></td>
-	<td class="summary">Gets the quality to render text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image.set">image.set (text, textstring)</a></td>
+	<td class="name" nowrap><a href="#image.settext">image.settext (text, textstring)</a></td>
 	<td class="summary">Replaces the content of the text with a new value</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.add">image.add (text, textstring)</a></td>
+	<td class="name" nowrap><a href="#image.addtext">image.addtext (text, textstring)</a></td>
 	<td class="summary">Adds a new content to the rendered text</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.clear">image.clear (text)</a></td>
+	<td class="name" nowrap><a href="#image.cleartext">image.cleartext (text)</a></td>
 	<td class="summary">Clears the content of the rendered text</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#image.free">image.free (texture)</a></td>
-	<td class="summary">Destroys a texture object</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image.close">image.close ()</a></td>
-	<td class="summary">Closes the image subsystem.</td>
-	</tr>
-</table>
-<h2><a href="#Class_texture">Class texture </a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name" nowrap><a href="#texture:reset">texture:reset ()</a></td>
-	<td class="summary">Resets the internal values (rotation, flip, resize, &hellip;) of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:tint">texture:tint (color)</a></td>
-	<td class="summary">Changes the color modulation of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:blendmode">texture:blendmode (mode)</a></td>
-	<td class="summary">Changes the blend mode of the textue</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:alpha">texture:alpha (alpha)</a></td>
-	<td class="summary">Changes the alpha value of the texture.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:width">texture:width ()</a></td>
-	<td class="summary">Gets the current width dimension of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:height">texture:height ()</a></td>
-	<td class="summary">Gets the current height dimension of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:realwidth">texture:realwidth ()</a></td>
-	<td class="summary">Gets the real width dimension of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:realheight">texture:realheight ()</a></td>
-	<td class="summary">Gets the real height dimension of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:resize">texture:resize (width, height)</a></td>
-	<td class="summary">Resizes the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:rotate">texture:rotate (angle)</a></td>
-	<td class="summary">Rotates the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:center">texture:center (x, y)</a></td>
-	<td class="summary">Sets the center of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:center">texture:center ()</a></td>
-	<td class="summary">Gets the center of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:vflip">texture:vflip ()</a></td>
-	<td class="summary">Flips a texture vertically</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:hflip">texture:hflip ()</a></td>
-	<td class="summary">Flips a texture horizontally</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:flip">texture:flip ()</a></td>
-	<td class="summary">Checks if the texture is flipped</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#texture:blit">texture:blit (x, y)</a></td>
-	<td class="summary">Blits the texture onto another texture</td>
-	</tr>
-</table>
-<h2><a href="#Class_text">Class text </a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name" nowrap><a href="#text:textquality">text:textquality (quality)</a></td>
-	<td class="summary">Sets the quality to render text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#text:textquality">text:textquality ()</a></td>
-	<td class="summary">Gets the quality to render text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#text:set">text:set (textstring)</a></td>
-	<td class="summary">Replaces the content of the text with a new value</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#text:add">text:add (textstring)</a></td>
-	<td class="summary">Adds a new content to the rendered text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#text:clear">text:clear ()</a></td>
-	<td class="summary">Clears the content of the rendered text</td>
+	<td class="name" nowrap><a href="#image.free">image.free (image)</a></td>
+	<td class="summary">Destroys a image object</td>
 	</tr>
 </table>
 
@@ -271,54 +172,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "image.init"></a>
-    <strong>image.init ()</strong>
-    </dt>
-    <dd>
-    Initializes the image subsystem.<br>
- The interpreter calls this function internally, so you should not call explicitly.
-
-
-
-
-
-
-
-</dd>
-    <dt>
     <a name = "image.new"></a>
-    <strong>image.new (width, height)</strong>
-    </dt>
-    <dd>
-    Creates a blank texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">width</span>
-            <span class="types"><span class="type">int</span></span>
-         The width dimension of the new texture in pixels
-        </li>
-        <li><span class="parameter">height</span>
-            <span class="types"><span class="type">int</span></span>
-         The height dimension of the new texture in pixels
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-        A texture object
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image.load"></a>
-    <strong>image.load (path)</strong>
+    <strong>image.new (path)</strong>
     </dt>
     <dd>
     Loads an image from the disk onto the memory
@@ -328,15 +183,15 @@
     <ul>
         <li><span class="parameter">path</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The path of the image file.
+         The path of the image file
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">image</span></span>
-        An image object
+           <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+        A new image object
     </ol>
 
 
@@ -344,18 +199,18 @@
 
 </dd>
     <dt>
-    <a name = "image.newtext"></a>
-    <strong>image.newtext (A, text)</strong>
+    <a name = "draw.newtext"></a>
+    <strong>draw.newtext (font, text)</strong>
     </dt>
     <dd>
-    Creates a text texture
+    Creates new text
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">A</span>
-            <span class="types"><span class="type">font</span></span>
-         font object
+        <li><span class="parameter">font</span>
+            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
+         A font object
         </li>
         <li><span class="parameter">text</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
@@ -366,8 +221,8 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="../modules/Image.html#text">text</a></span>
-        An text object
+           <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
+        A new text objext
     </ol>
 
 
@@ -376,17 +231,17 @@
 </dd>
     <dt>
     <a name = "image.reset"></a>
-    <strong>image.reset (texture)</strong>
+    <strong>image.reset (image)</strong>
     </dt>
     <dd>
-    Resets the internal values (rotation, flip, resize, &hellip;) of the texture
+    Resets the internal values (rotation, flip, resize, &hellip;) of the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
@@ -397,20 +252,20 @@
 </dd>
     <dt>
     <a name = "image.tint"></a>
-    <strong>image.tint (texture, color)</strong>
+    <strong>image.tint (image, color)</strong>
     </dt>
     <dd>
-    Changes the color modulation of the texture
+    Changes the color modulation of the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
         <li><span class="parameter">color</span>
-            <span class="types"><span class="type">color</span></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
     </ul>
@@ -421,53 +276,49 @@
 
 </dd>
     <dt>
-    <a name = "image.blendmode"></a>
-    <strong>image.blendmode (texture, mode)</strong>
+    <a name = "image.gettintcolor"></a>
+    <strong>image.gettintcolor (image)</strong>
     </dt>
     <dd>
-    Changes the blend mode of the texture
+    Gets the color modulation of the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
-        </li>
-        <li><span class="parameter">mode</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The blend mode as the following values:
- <ul>
- <li><span class='parameter'>add</span> for additive blending</li>
- <li><span class='parameter'>mod</span> for color modulation</li>
- <li><span class='parameter'>blend</span> for alpha blending</li>
- <li><span class='parameter'>none</span> for no blending</li>
- </ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+        A color object
+    </ol>
 
 
 
 
 </dd>
     <dt>
-    <a name = "image.alpha"></a>
-    <strong>image.alpha (texture, alpha)</strong>
+    <a name = "image.setalpha"></a>
+    <strong>image.setalpha (image, alpha)</strong>
     </dt>
     <dd>
-    Changes the alpha value of the texture.  <br>
- The texture must have an blend mode established
+    Changes the alpha value of the image.  <br>
+ The image must have an blend mode established
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
         <li><span class="parameter">alpha</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The alpha value
         </li>
     </ul>
@@ -478,25 +329,48 @@
 
 </dd>
     <dt>
-    <a name = "image.width"></a>
-    <strong>image.width (texture)</strong>
+    <a name = "image.getalpha"></a>
+    <strong>image.getalpha (image)</strong>
     </dt>
     <dd>
-    Gets the current width dimension of the texture
+    Gets the current alpha value of the image.  <br>
+ The image must have an blend mode established
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
+ @ŧreturn number The alpha value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "image.getwidth"></a>
+    <strong>image.getwidth (image)</strong>
+    </dt>
+    <dd>
+    Gets the current width dimension of the image
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The current width dimension in pixels
     </ol>
 
@@ -505,25 +379,25 @@
 
 </dd>
     <dt>
-    <a name = "image.height"></a>
-    <strong>image.height (texture)</strong>
+    <a name = "image.getheight"></a>
+    <strong>image.getheight (image)</strong>
     </dt>
     <dd>
-    Gets the current height dimension of the texture
+    Gets the current height dimension of the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The current height dimension in pixels
     </ol>
 
@@ -532,25 +406,25 @@
 
 </dd>
     <dt>
-    <a name = "image.realwidth"></a>
-    <strong>image.realwidth (texture)</strong>
+    <a name = "image.getrealwidth"></a>
+    <strong>image.getrealwidth (image)</strong>
     </dt>
     <dd>
-    Gets the real width dimension of the texture
+    Gets the real width dimension of the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The real width dimension in pixels
     </ol>
 
@@ -559,25 +433,25 @@
 
 </dd>
     <dt>
-    <a name = "image.realheight"></a>
-    <strong>image.realheight (texture)</strong>
+    <a name = "image.getrealheight"></a>
+    <strong>image.getrealheight (image)</strong>
     </dt>
     <dd>
-    Gets the real width dimension of the texture
+    Gets the real width dimension of the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The real width dimension in pixels
     </ol>
 
@@ -587,24 +461,24 @@
 </dd>
     <dt>
     <a name = "image.resize"></a>
-    <strong>image.resize (texture, width, height)</strong>
+    <strong>image.resize (image, width, height)</strong>
     </dt>
     <dd>
-    Resizes the texture
+    Resizes the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
         <li><span class="parameter">width</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The new width dimension in pixels
         </li>
         <li><span class="parameter">height</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The new height dimension in pixels
         </li>
     </ul>
@@ -616,17 +490,17 @@
 </dd>
     <dt>
     <a name = "image.rotate"></a>
-    <strong>image.rotate (texture, angle)</strong>
+    <strong>image.rotate (image, angle)</strong>
     </dt>
     <dd>
-    Rotates the texture
+    Rotates the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
         <li><span class="parameter">angle</span>
             <span class="types"><span class="type">number</span></span>
@@ -640,25 +514,25 @@
 
 </dd>
     <dt>
-    <a name = "image.center"></a>
-    <strong>image.center (texture, x, y)</strong>
+    <a name = "image.setcenter"></a>
+    <strong>image.setcenter (image, x, y)</strong>
     </dt>
     <dd>
-    Sets the center of the texture
+    Sets the center of the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
         <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The x-axis position of the center
         </li>
         <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The y-axis position of the center
         </li>
     </ul>
@@ -669,28 +543,28 @@
 
 </dd>
     <dt>
-    <a name = "image.center"></a>
-    <strong>image.center (texture)</strong>
+    <a name = "image.getcenter"></a>
+    <strong>image.getcenter (image)</strong>
     </dt>
     <dd>
-    Gets the center of the texture
+    Gets the center of the image
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The x-axis position of the center</li>
         <li>
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The y-axis position of the center</li>
     </ol>
 
@@ -700,17 +574,17 @@
 </dd>
     <dt>
     <a name = "image.vflip"></a>
-    <strong>image.vflip (texture)</strong>
+    <strong>image.vflip (image)</strong>
     </dt>
     <dd>
-    Flips a texture vertically
+    Flips a image vertically
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
@@ -721,17 +595,17 @@
 </dd>
     <dt>
     <a name = "image.hflip"></a>
-    <strong>image.hflip (texture)</strong>
+    <strong>image.hflip (image)</strong>
     </dt>
     <dd>
-    Flips a texture horizontally
+    Flips a image horizontally
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
@@ -741,18 +615,18 @@
 
 </dd>
     <dt>
-    <a name = "image.flip"></a>
-    <strong>image.flip (texture)</strong>
+    <a name = "image.isflipped"></a>
+    <strong>image.isflipped (image)</strong>
     </dt>
     <dd>
-    Checks if the texture is flipped
+    Checks if the image is flipped
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
 
@@ -760,10 +634,10 @@
     <ol>
         <li>
            <span class="types"><span class="type">boolean</span></span>
-        true if the texture is flipped vertically</li>
+        true if the image is flipped vertically</li>
         <li>
            <span class="types"><span class="type">boolean</span></span>
-        true if the texture if flipped horizontally</li>
+        true if the image if flipped horizontally</li>
     </ol>
 
 
@@ -771,101 +645,8 @@
 
 </dd>
     <dt>
-    <a name = "image.blit"></a>
-    <strong>image.blit (texture, origin, x, y)</strong>
-    </dt>
-    <dd>
-    Blits the texture onto another texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
-        </li>
-        <li><span class="parameter">origin</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         The texture to blit
-        </li>
-        <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
-         The x-axis position to draw the texture
-        </li>
-        <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
-         The y-axis position to draw the texture
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image.textquality"></a>
-    <strong>image.textquality (text, quality)</strong>
-    </dt>
-    <dd>
-    Sets the quality to render text
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../modules/Image.html#text">text</a></span>
-         A text object
-        </li>
-        <li><span class="parameter">quality</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         A string as the following values:
- <ul>
- <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- <li><span class='parameter'>normal</span> for slow and smooth text</li>
- </ul>
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image.textquality"></a>
-    <strong>image.textquality (text)</strong>
-    </dt>
-    <dd>
-    Gets the quality to render text
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../modules/Image.html#text">text</a></span>
-         A text object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         A string as the following values:
- <ul>
- <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- <li><span class='parameter'>normal</span> for slow and smooth text</li>
- </ul>
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image.set"></a>
-    <strong>image.set (text, textstring)</strong>
+    <a name = "image.settext"></a>
+    <strong>image.settext (text, textstring)</strong>
     </dt>
     <dd>
     Replaces the content of the text with a new value
@@ -874,7 +655,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../modules/Image.html#text">text</a></span>
+            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
          A text object
         </li>
         <li><span class="parameter">textstring</span>
@@ -889,8 +670,8 @@
 
 </dd>
     <dt>
-    <a name = "image.add"></a>
-    <strong>image.add (text, textstring)</strong>
+    <a name = "image.addtext"></a>
+    <strong>image.addtext (text, textstring)</strong>
     </dt>
     <dd>
     Adds a new content to the rendered text
@@ -899,7 +680,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../modules/Image.html#text">text</a></span>
+            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
          A text object
         </li>
         <li><span class="parameter">textstring</span>
@@ -914,8 +695,8 @@
 
 </dd>
     <dt>
-    <a name = "image.clear"></a>
-    <strong>image.clear (text)</strong>
+    <a name = "image.cleartext"></a>
+    <strong>image.cleartext (text)</strong>
     </dt>
     <dd>
     Clears the content of the rendered text
@@ -924,7 +705,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../modules/Image.html#text">text</a></span>
+            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
          A text object
         </li>
     </ul>
@@ -936,486 +717,19 @@
 </dd>
     <dt>
     <a name = "image.free"></a>
-    <strong>image.free (texture)</strong>
+    <strong>image.free (image)</strong>
     </dt>
     <dd>
-    Destroys a texture object
+    Destroys a image object
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><a class="type" href="../modules/Image.html#texture">texture</a></span>
-         A texture object
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
+         A image object
         </li>
     </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image.close"></a>
-    <strong>image.close ()</strong>
-    </dt>
-    <dd>
-    Closes the image subsystem.
- The interpreter calls this function internally, so you should not call explicitly.
-
-
-
-
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header has-description"><a name="Class_texture"></a>Class texture </h2>
-
-          <div class="section-description">
-          This object represents a texture
-          </div>
-    <dl class="function">
-    <dt>
-    <a name = "texture:reset"></a>
-    <strong>texture:reset ()</strong>
-    </dt>
-    <dd>
-    Resets the internal values (rotation, flip, resize, &hellip;) of the texture
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:tint"></a>
-    <strong>texture:tint (color)</strong>
-    </dt>
-    <dd>
-    Changes the color modulation of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">color</span>
-            <span class="types"><span class="type">color</span></span>
-         A color object
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:blendmode"></a>
-    <strong>texture:blendmode (mode)</strong>
-    </dt>
-    <dd>
-    Changes the blend mode of the textue
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">mode</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The blend mode as the following values:
- <ul>
- <li><pre>add</pre> for additive blending</li>
- <li><pre>mod</pre> for color modulation</li>
- <li><pre>blend</pre> for alpha blending</li>
- <li><pre>none</pre> for no blending</li>
- </ul>
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:alpha"></a>
-    <strong>texture:alpha (alpha)</strong>
-    </dt>
-    <dd>
-    Changes the alpha value of the texture.  The texture must have an blend mode established.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">alpha</span>
-            <span class="types"><span class="type">int</span></span>
-         The alpha value
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:width"></a>
-    <strong>texture:width ()</strong>
-    </dt>
-    <dd>
-    Gets the current width dimension of the texture
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The current width dimension in pixels
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:height"></a>
-    <strong>texture:height ()</strong>
-    </dt>
-    <dd>
-    Gets the current height dimension of the texture
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The current height dimension in pixels
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:realwidth"></a>
-    <strong>texture:realwidth ()</strong>
-    </dt>
-    <dd>
-    Gets the real width dimension of the texture
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The real width dimension in pixels
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:realheight"></a>
-    <strong>texture:realheight ()</strong>
-    </dt>
-    <dd>
-    Gets the real height dimension of the texture
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The real height dimension in pixels
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:resize"></a>
-    <strong>texture:resize (width, height)</strong>
-    </dt>
-    <dd>
-    Resizes the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">width</span>
-            <span class="types"><span class="type">int</span></span>
-         The new width dimension in pixels
-        </li>
-        <li><span class="parameter">height</span>
-            <span class="types"><span class="type">int</span></span>
-         The new height dimension in pixels
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:rotate"></a>
-    <strong>texture:rotate (angle)</strong>
-    </dt>
-    <dd>
-    Rotates the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">angle</span>
-            <span class="types"><span class="type">number</span></span>
-         The angle in degrees
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:center"></a>
-    <strong>texture:center (x, y)</strong>
-    </dt>
-    <dd>
-    Sets the center of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
-         The x-axis position of the center
-        </li>
-        <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
-         The y-axis position of the center
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:center"></a>
-    <strong>texture:center ()</strong>
-    </dt>
-    <dd>
-    Gets the center of the texture
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-        <li>
-           <span class="types"><span class="type">int</span></span>
-        The x-axis position of the center</li>
-        <li>
-           <span class="types"><span class="type">int</span></span>
-        The y-axis position of the center</li>
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:vflip"></a>
-    <strong>texture:vflip ()</strong>
-    </dt>
-    <dd>
-    Flips a texture vertically
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:hflip"></a>
-    <strong>texture:hflip ()</strong>
-    </dt>
-    <dd>
-    Flips a texture horizontally
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:flip"></a>
-    <strong>texture:flip ()</strong>
-    </dt>
-    <dd>
-    Checks if the texture is flipped
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-        <li>
-           <span class="types"><span class="type">boolean</span></span>
-        true if the texture is flipped vertically</li>
-        <li>
-           <span class="types"><span class="type">boolean</span></span>
-        true if the texture if flipped horizontally</li>
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "texture:blit"></a>
-    <strong>texture:blit (x, y)</strong>
-    </dt>
-    <dd>
-    Blits the texture onto another texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
-         The x-axis position to draw the texture
-        </li>
-        <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
-         The y-axis position to draw the texture
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header has-description"><a name="Class_text"></a>Class text </h2>
-
-          <div class="section-description">
-          This object represents a rendered text
-          </div>
-    <dl class="function">
-    <dt>
-    <a name = "text:textquality"></a>
-    <strong>text:textquality (quality)</strong>
-    </dt>
-    <dd>
-    Sets the quality to render text
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">quality</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         A string as the following values:
- <ul>
- <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- <li><span class='parameter'>normal</span> for slow and smooth text</li>
- </ul>
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "text:textquality"></a>
-    <strong>text:textquality ()</strong>
-    </dt>
-    <dd>
-    Gets the quality to render text
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         A string as the following values:
- <ul>
- <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- <li><span class='parameter'>normal</span> for slow and smooth text</li>
- </ul>
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "text:set"></a>
-    <strong>text:set (textstring)</strong>
-    </dt>
-    <dd>
-    Replaces the content of the text with a new value
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">textstring</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The new content
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "text:add"></a>
-    <strong>text:add (textstring)</strong>
-    </dt>
-    <dd>
-    Adds a new content to the rendered text
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">textstring</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The text to append
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "text:clear"></a>
-    <strong>text:clear ()</strong>
-    </dt>
-    <dd>
-    Clears the content of the rendered text
-
-
 
 
 
@@ -1429,7 +743,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-09-12 11:49:42 </i>
+<i style="float:right;">Last updated 2019-10-01 01:00:10 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

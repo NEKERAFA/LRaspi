@@ -4,10 +4,13 @@
     See Copyright Notice in lraspi.h
  */
 
+#ifndef LRASPI_AUX_H
+#define LRASPI_AUX_H
+
 #include <lua.hpp>
 
-#include "common/type.h"
-#include "common/object.h"
+#include "modules/common/type.h"
+#include "modules/common/object.h"
 
 namespace lraspi
 {
@@ -75,3 +78,5 @@ lraspi::Object* check(lua_State* L, lraspi::Type& type, int arg);
 } // namespace lua
 
 } // namespace lraspi
+
+#endif // LRASPI_AUX_H

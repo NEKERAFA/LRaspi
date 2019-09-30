@@ -12,20 +12,29 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
-#include "common/exception.h"
-#include "common/type.h"
-#include "common/object.h"
+#include "modules/common/exception.h"
+#include "modules/common/type.h"
+#include "modules/common/object.h"
 #include "modules/font/font.h"
-#include "modules/color/color_mod.h"
+#include "modules/color/module.h"
 
 namespace lraspi
 {
 
 Type Font::type(LRASPI_FONT_NAME, &Object::type);
 
-Font::Font() : _font(nullptr),
-               _size(0),
-               _line_height(1.0)
+Font::Font(const char* path, int size) : _size(size),
+                                         _line_height(1.0)
+{
+    _font = TTF_OpenFont(path, size);
+    if (!_font)
+        throw Exception("Could not load font `%s' (%s)", path, TTF_GetError());
+}
+
+Font::Font(int size) : Font(LRASPI_FONT_DEFAULT, size)
+{}
+
+Font::Font() : Font(LRASPI_FONT_SIZE)
 {}
 
 Font::~Font()
@@ -33,41 +42,21 @@ Font::~Font()
     TTF_CloseFont(_font);
 }
 
-bool Font::create(int size)
+SDL_Surface* Font::getSdlSurface(const char* text)
 {
-    return load(LRASPI_FONT_DEFAULT, size);
-}
-
-bool Font::load(const char* path, int size)
-{
-    _font = TTF_OpenFont(path, size);
-    if (!_font)
-    {
-        throw Exception("Could not load font `%s' (%s)", path, TTF_GetError());
-    }
-    else
-    {
-        _size = size;
-    }
+    SDL_Surface* surface = TTF_RenderUTF8_Blended(_font, text, color::white->getSdlColor());
     
-    return _font != nullptr;
-}
-
-SDL_Surface* Font::getFastSdlSurface(const char* text)
-{
-    SDL_Surface* surface = nullptr;
-    
-    if (!(surface = TTF_RenderUTF8_Solid(_font, text, color::white->getSdlColor())))
+    if (surface == nullptr)
         throw Exception("Could not create renderer (%s)", TTF_GetError());
 
     return surface;
 }
 
-SDL_Surface* Font::getSdlSurface(const char* text)
+SDL_Surface* Font::getSdlSurface(char16_t glyph)
 {
-    SDL_Surface* surface = nullptr;
+    SDL_Surface* surface = TTF_RenderGlyph_Blended(_font, glyph, color::white->getSdlColor());
     
-    if (!(surface = TTF_RenderUTF8_Blended(_font, text, color::white->getSdlColor())))
+    if (surface == nullptr)
         throw Exception("Could not create renderer (%s)", TTF_GetError());
 
     return surface;
@@ -81,10 +70,8 @@ int Font::getHeight()
 int Font::getWidth(const char* text)
 {
     int width;
-    if (TTF_SizeUTF8(_font, text, &width, nullptr))
-    {
+    if (TTF_SizeUTF8(_font, text, &width, nullptr) != 0)
         throw Exception("Could not calculate width of `%s' (%s)", text, TTF_GetError());
-    }
     
     return width;
 }

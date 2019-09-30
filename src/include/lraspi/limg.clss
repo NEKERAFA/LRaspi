@@ -1,0 +1,126 @@
+/***
+ * This object represents a image file that you can draw onto the screen
+ * @classmod image
+ * @see Draw
+ */
+
+/***
+ * Resets the internal values (rotation, flip, resize, ...) of the image
+ * @function reset
+ * @tparam image image A image object
+ */
+
+/***
+ * Changes the color modulation of the image
+ * @function tint
+ * @tparam image image A image object
+ * @tparam color color A color object
+ */
+
+/***
+ * Gets the color modulation of the image
+ * @function tintcolor
+ * @tparam image image A image object
+ * @treturn color A color object
+ */
+
+/***
+ * Changes the alpha value of the image. <br>
+ * The image must have an blend mode established
+ * @function setalpha
+ * @tparam image image A image object
+ * @int alpha The alpha value
+ */
+
+/***
+ * Gets the current alpha value of the image. <br>
+ * The image must have an blend mode established
+ * @function getalpha
+ * @tparam image image A image object
+ * @ŧreturn int The alpha value
+ */
+
+/***
+ * Gets the current width dimension of the image
+ * @function getwidth
+ * @tparam image image A image object
+ * @treturn int The current width dimension in pixels
+ */
+
+/***
+ * Gets the current height dimension of the image
+ * @function getheight
+ * @tparam image image A image object
+ * @treturn int The current height dimension in pixels
+ */
+
+/***
+ * Gets the real width dimension of the image
+ * @function getrealwidth
+ * @tparam image image A image object
+ * @treturn int The real width dimension in pixels
+ */
+
+/***
+ * Gets the real width dimension of the image
+ * @function getrealheight
+ * @tparam image image A image object
+ * @treturn int The real width dimension in pixels
+ */
+
+/***
+ * Resizes the image
+ * @function resize
+ * @tparam image image A image object
+ * @int width The new width dimension in pixels
+ * @int height The new height dimension in pixels
+ */
+
+/***
+ * Rotates the image
+ * @function rotate
+ * @tparam image image A image object
+ * @number angle The angle in degrees
+ */
+
+/***
+ * Sets the center of the image
+ * @function setcenter
+ * @tparam image image A image object
+ * @int x The x-axis position of the center
+ * @int y The y-axis position of the center
+ */
+
+/***
+ * Gets the center of the image
+ * @function getcenter
+ * @tparam image image A image object
+ * @treturn int The x-axis position of the center
+ * @treturn int The y-axis position of the center
+ */
+
+/***
+ * Flips a image vertically
+ * @tparam image image A image object
+ * @function vflip
+ */
+
+/***
+ * Flips a image horizontally
+ * @tparam image image A image object
+ * @function hflip
+ */
+
+/***
+ * Checks if the image is flipped
+ * @function isflipped
+ * @tparam image image A image object
+ * @treturn boolean true if the image is flipped vertically
+ * @treturn boolean true if the image if flipped horizontally
+ */
+
+/***
+ * Destroys a image object
+ * @function free
+ * @tparam image image A image object
+ */

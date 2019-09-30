@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="lua-logo-label.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Lua Raspi
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.0.4</span>
    </div>
    <div id="projectbrief">A Lua Player for Raspberry Pi</div>
   </td>
@@ -84,19 +84,21 @@ $(document).ready(function(){initNavTree('classlraspi_1_1_texture.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classlraspi_1_1_texture-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">lraspi::Texture Class Reference</div>  </div>
+<div class="title">lraspi::Texture Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Represents a wrapper between SDL_Texture type.  
- <a href="classlraspi_1_1_texture.html#details">More...</a></p>
+</p>
 
 <p>Inherits <a class="el" href="classlraspi_1_1_object.html">lraspi::Object</a>.</p>
 
-<p>Inherited by <a class="el" href="classlraspi_1_1_image.html">lraspi::Image</a>, and <a class="el" href="classlraspi_1_1_text.html">lraspi::Text</a>.</p>
+<p>Inherited by <a class="el" href="classlraspi_1_1_char.html">lraspi::Char</a>, <a class="el" href="classlraspi_1_1_image.html">lraspi::Image</a>, and <a class="el" href="classlraspi_1_1_text.html">lraspi::Text</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -104,35 +106,29 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a1a5b9ba3c62f92b8a691522b80ddd7e1">Texture</a> ()</td></tr>
 <tr class="memdesc:a1a5b9ba3c62f92b8a691522b80ddd7e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new texture object. <br /></td></tr>
 <tr class="separator:a1a5b9ba3c62f92b8a691522b80ddd7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b64240accb9ebeb07582e7d090c8fba"><td class="memItemLeft" align="right" valign="top"><a id="a8b64240accb9ebeb07582e7d090c8fba"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a8b64240accb9ebeb07582e7d090c8fba">~Texture</a> ()</td></tr>
-<tr class="memdesc:a8b64240accb9ebeb07582e7d090c8fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the texture object. <br /></td></tr>
-<tr class="separator:a8b64240accb9ebeb07582e7d090c8fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7accffb765ceb659ae3bb3fe7acefc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ae7accffb765ceb659ae3bb3fe7acefc4">createBlank</a> (int width, int height)</td></tr>
-<tr class="memdesc:ae7accffb765ceb659ae3bb3fe7acefc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a blank texture.  <a href="#ae7accffb765ceb659ae3bb3fe7acefc4">More...</a><br /></td></tr>
-<tr class="separator:ae7accffb765ceb659ae3bb3fe7acefc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f1d453fec4011791ed8d42a57318b10"><td class="memItemLeft" align="right" valign="top"><a id="a1f1d453fec4011791ed8d42a57318b10"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a1f1d453fec4011791ed8d42a57318b10">~Texture</a> ()=0</td></tr>
+<tr class="memdesc:a1f1d453fec4011791ed8d42a57318b10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the texture object. <br /></td></tr>
+<tr class="separator:a1f1d453fec4011791ed8d42a57318b10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7dc470e2e2b253029e1d9e4ecb8a33a"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ad7dc470e2e2b253029e1d9e4ecb8a33a">glIdTexture</a> ()</td></tr>
+<tr class="memdesc:ad7dc470e2e2b253029e1d9e4ecb8a33a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id texture.  <a href="#ad7dc470e2e2b253029e1d9e4ecb8a33a">More...</a><br /></td></tr>
+<tr class="separator:ad7dc470e2e2b253029e1d9e4ecb8a33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8efd39070d2e6c1b1cc844ae9c9978e2"><td class="memItemLeft" align="right" valign="top"><a id="a8efd39070d2e6c1b1cc844ae9c9978e2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a8efd39070d2e6c1b1cc844ae9c9978e2">reset</a> ()</td></tr>
 <tr class="memdesc:a8efd39070d2e6c1b1cc844ae9c9978e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset al values to default. <br /></td></tr>
 <tr class="separator:a8efd39070d2e6c1b1cc844ae9c9978e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cf2b34dafe344d9c1e1b6cd3a77b497"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a0cf2b34dafe344d9c1e1b6cd3a77b497">tint</a> (Color *color)</td></tr>
+<tr class="memitem:a0cf2b34dafe344d9c1e1b6cd3a77b497"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a0cf2b34dafe344d9c1e1b6cd3a77b497">tint</a> (<a class="el" href="classlraspi_1_1_color.html">Color</a> *color)</td></tr>
 <tr class="memdesc:a0cf2b34dafe344d9c1e1b6cd3a77b497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the color modulation of the texture.  <a href="#a0cf2b34dafe344d9c1e1b6cd3a77b497">More...</a><br /></td></tr>
 <tr class="separator:a0cf2b34dafe344d9c1e1b6cd3a77b497"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af23162b4ee68edf7c151127a83d5ee46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#af23162b4ee68edf7c151127a83d5ee46">setSdlBlendMode</a> (SDL_BlendMode bleding)</td></tr>
-<tr class="memdesc:af23162b4ee68edf7c151127a83d5ee46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the blending mode.  <a href="#af23162b4ee68edf7c151127a83d5ee46">More...</a><br /></td></tr>
-<tr class="separator:af23162b4ee68edf7c151127a83d5ee46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab81809e7786722ef91bacb6a280b8320"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlraspi_1_1_color.html">Color</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ab81809e7786722ef91bacb6a280b8320">getTintColor</a> ()</td></tr>
+<tr class="memdesc:ab81809e7786722ef91bacb6a280b8320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the color modulation of the texture.  <a href="#ab81809e7786722ef91bacb6a280b8320">More...</a><br /></td></tr>
+<tr class="separator:ab81809e7786722ef91bacb6a280b8320"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac285eaf5a6c99825591dee40fe3f974e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ac285eaf5a6c99825591dee40fe3f974e">setAlpha</a> (uint8_t alpha)</td></tr>
 <tr class="memdesc:ac285eaf5a6c99825591dee40fe3f974e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the alpha modulation.  <a href="#ac285eaf5a6c99825591dee40fe3f974e">More...</a><br /></td></tr>
 <tr class="separator:ac285eaf5a6c99825591dee40fe3f974e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa351cd3c01782db46689ccc8e810da0"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#afa351cd3c01782db46689ccc8e810da0">getSdlTexture</a> ()</td></tr>
-<tr class="memdesc:afa351cd3c01782db46689ccc8e810da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the texture object.  <a href="#afa351cd3c01782db46689ccc8e810da0">More...</a><br /></td></tr>
-<tr class="separator:afa351cd3c01782db46689ccc8e810da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72f9a21e8e831bdfd2f502319cbc66a1"><td class="memItemLeft" align="right" valign="top">SDL_Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a72f9a21e8e831bdfd2f502319cbc66a1">getSdlCenterPoint</a> ()</td></tr>
-<tr class="memdesc:a72f9a21e8e831bdfd2f502319cbc66a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the texture center point.  <a href="#a72f9a21e8e831bdfd2f502319cbc66a1">More...</a><br /></td></tr>
-<tr class="separator:a72f9a21e8e831bdfd2f502319cbc66a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a304d3c26940dbc9c0a509b29e2b86c04"><td class="memItemLeft" align="right" valign="top">SDL_RendererFlip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a304d3c26940dbc9c0a509b29e2b86c04">getSdlFlipStatus</a> ()</td></tr>
-<tr class="memdesc:a304d3c26940dbc9c0a509b29e2b86c04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the renderer flip.  <a href="#a304d3c26940dbc9c0a509b29e2b86c04">More...</a><br /></td></tr>
-<tr class="separator:a304d3c26940dbc9c0a509b29e2b86c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1b4b85ad7fff33e531221d00277f87c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#af1b4b85ad7fff33e531221d00277f87c">getAlpha</a> ()</td></tr>
+<tr class="memdesc:af1b4b85ad7fff33e531221d00277f87c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alpha value.  <a href="#af1b4b85ad7fff33e531221d00277f87c">More...</a><br /></td></tr>
+<tr class="separator:af1b4b85ad7fff33e531221d00277f87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92b924c4fbcd63a3dd9c3c7c10544f14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a92b924c4fbcd63a3dd9c3c7c10544f14">setWidth</a> (int width)</td></tr>
 <tr class="memdesc:a92b924c4fbcd63a3dd9c3c7c10544f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the width of the texture.  <a href="#a92b924c4fbcd63a3dd9c3c7c10544f14">More...</a><br /></td></tr>
 <tr class="separator:a92b924c4fbcd63a3dd9c3c7c10544f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,6 +156,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ae8bbe809b72261a85e31950059d83898"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ae8bbe809b72261a85e31950059d83898">setCenter</a> (int x, int y)</td></tr>
 <tr class="memdesc:ae8bbe809b72261a85e31950059d83898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the center of the texture.  <a href="#ae8bbe809b72261a85e31950059d83898">More...</a><br /></td></tr>
 <tr class="separator:ae8bbe809b72261a85e31950059d83898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878c1be299726b8ae0741e5bf978513d"><td class="memItemLeft" align="right" valign="top"><a id="a878c1be299726b8ae0741e5bf978513d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a878c1be299726b8ae0741e5bf978513d">setCenter</a> ()</td></tr>
+<tr class="memdesc:a878c1be299726b8ae0741e5bf978513d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the center point of the texture in the middle. <br /></td></tr>
+<tr class="separator:a878c1be299726b8ae0741e5bf978513d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa590d6ae7a327500f6851ac4263c539a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#aa590d6ae7a327500f6851ac4263c539a">getCenter</a> (int *x, int *y)</td></tr>
+<tr class="memdesc:aa590d6ae7a327500f6851ac4263c539a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the center of the texture.  <a href="#aa590d6ae7a327500f6851ac4263c539a">More...</a><br /></td></tr>
+<tr class="separator:aa590d6ae7a327500f6851ac4263c539a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c0a887fa33567227c3483d48158dbb5"><td class="memItemLeft" align="right" valign="top"><a id="a3c0a887fa33567227c3483d48158dbb5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a3c0a887fa33567227c3483d48158dbb5">setVFlip</a> ()</td></tr>
 <tr class="memdesc:a3c0a887fa33567227c3483d48158dbb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the vertical flip. <br /></td></tr>
@@ -168,9 +171,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a74a3f7115ac46e2f3c561577504551d9">setHFlip</a> ()</td></tr>
 <tr class="memdesc:a74a3f7115ac46e2f3c561577504551d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the horizontal flip. <br /></td></tr>
 <tr class="separator:a74a3f7115ac46e2f3c561577504551d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01846c6b106d2f13674db5f8a04c9f30"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a01846c6b106d2f13674db5f8a04c9f30">blit</a> (<a class="el" href="classlraspi_1_1_texture.html">Texture</a> *texture, int x, int y)</td></tr>
-<tr class="memdesc:a01846c6b106d2f13674db5f8a04c9f30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws another texture in this texture.  <a href="#a01846c6b106d2f13674db5f8a04c9f30">More...</a><br /></td></tr>
-<tr class="separator:a01846c6b106d2f13674db5f8a04c9f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e0a65b64806ce181ca433f8a4a3312b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a3e0a65b64806ce181ca433f8a4a3312b">getFlip</a> (bool *h, bool *v)</td></tr>
+<tr class="memdesc:a3e0a65b64806ce181ca433f8a4a3312b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the texture flip.  <a href="#a3e0a65b64806ce181ca433f8a4a3312b">More...</a><br /></td></tr>
+<tr class="separator:a3e0a65b64806ce181ca433f8a4a3312b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8912777260b433cc33e9c0a7d2d516e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classlraspi_1_1_color.html">Color</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ae8912777260b433cc33e9c0a7d2d516e">getPixel</a> (uint16_t x, uint16_t y)</td></tr>
+<tr class="memdesc:ae8912777260b433cc33e9c0a7d2d516e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the color of the pixel in the texture.  <a href="#ae8912777260b433cc33e9c0a7d2d516e">More...</a><br /></td></tr>
+<tr class="separator:ae8912777260b433cc33e9c0a7d2d516e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06014a9e18a8f9ad36fb7d4ffa54e279"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a06014a9e18a8f9ad36fb7d4ffa54e279">setPixel</a> (uint16_t x, uint16_t y, <a class="el" href="classlraspi_1_1_color.html">Color</a> *col)</td></tr>
+<tr class="memdesc:a06014a9e18a8f9ad36fb7d4ffa54e279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the color of the pixel in the texture.  <a href="#a06014a9e18a8f9ad36fb7d4ffa54e279">More...</a><br /></td></tr>
+<tr class="separator:a06014a9e18a8f9ad36fb7d4ffa54e279"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77bfa4d4f78e4207d413a761383b20fc"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a77bfa4d4f78e4207d413a761383b20fc">isInstanceOf</a> (<a class="el" href="classlraspi_1_1_type.html">Type</a> &amp;other)</td></tr>
 <tr class="memdesc:a77bfa4d4f78e4207d413a761383b20fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an object is an instance of this type.  <a href="#a77bfa4d4f78e4207d413a761383b20fc">More...</a><br /></td></tr>
 <tr class="separator:a77bfa4d4f78e4207d413a761383b20fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,42 +196,77 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memdesc:a6cd6670877dd50d9bd30be45a40f90ab inherit pub_methods_classlraspi_1_1_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the object object. <br /></td></tr>
 <tr class="separator:a6cd6670877dd50d9bd30be45a40f90ab inherit pub_methods_classlraspi_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ad79d5b9a15594a270cc389a3733e0656"><td class="memItemLeft" align="right" valign="top"><a id="ad79d5b9a15594a270cc389a3733e0656"></a>
+static <a class="el" href="classlraspi_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:ad79d5b9a15594a270cc389a3733e0656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_attribs_classlraspi_1_1_object"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classlraspi_1_1_object')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classlraspi_1_1_object.html">lraspi::Object</a></td></tr>
+<tr class="memitem:a3d4f4b51e64ce3f9563613df9b3776f8 inherit pub_static_attribs_classlraspi_1_1_object"><td class="memItemLeft" align="right" valign="top"><a id="a3d4f4b51e64ce3f9563613df9b3776f8"></a>
+static <a class="el" href="classlraspi_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a3d4f4b51e64ce3f9563613df9b3776f8 inherit pub_static_attribs_classlraspi_1_1_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a0de71a8ea08c1452c9b80cb4c27de6a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a0de71a8ea08c1452c9b80cb4c27de6a3">setSdlTexture</a> (SDL_Texture *sdl_texture)</td></tr>
-<tr class="memdesc:a0de71a8ea08c1452c9b80cb4c27de6a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the texture object.  <a href="#a0de71a8ea08c1452c9b80cb4c27de6a3">More...</a><br /></td></tr>
-<tr class="separator:a0de71a8ea08c1452c9b80cb4c27de6a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcc0ff9aef739506f56782a1e3fc1e15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#afcc0ff9aef739506f56782a1e3fc1e15">setSdlSurface</a> (SDL_Surface *sdl_surface)</td></tr>
+<tr class="memdesc:afcc0ff9aef739506f56782a1e3fc1e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the surface object.  <a href="#afcc0ff9aef739506f56782a1e3fc1e15">More...</a><br /></td></tr>
+<tr class="separator:afcc0ff9aef739506f56782a1e3fc1e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98a96414c4400afa7ab6910c48f721c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a98a96414c4400afa7ab6910c48f721c4">setRealWidth</a> (int real_width)</td></tr>
 <tr class="memdesc:a98a96414c4400afa7ab6910c48f721c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the real width of the texture.  <a href="#a98a96414c4400afa7ab6910c48f721c4">More...</a><br /></td></tr>
 <tr class="separator:a98a96414c4400afa7ab6910c48f721c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59b9f7c37b5deacbf93cdcc949bdfb20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a59b9f7c37b5deacbf93cdcc949bdfb20">setRealHeight</a> (int real_height)</td></tr>
 <tr class="memdesc:a59b9f7c37b5deacbf93cdcc949bdfb20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the real height of the texture.  <a href="#a59b9f7c37b5deacbf93cdcc949bdfb20">More...</a><br /></td></tr>
 <tr class="separator:a59b9f7c37b5deacbf93cdcc949bdfb20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1b4b85ad7fff33e531221d00277f87c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#af1b4b85ad7fff33e531221d00277f87c">getAlpha</a> ()</td></tr>
-<tr class="memdesc:af1b4b85ad7fff33e531221d00277f87c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alpha value.  <a href="#af1b4b85ad7fff33e531221d00277f87c">More...</a><br /></td></tr>
-<tr class="separator:af1b4b85ad7fff33e531221d00277f87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2a317e4dc6afdec489bb0be3316ca45"><td class="memItemLeft" align="right" valign="top">SDL_BlendMode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#af2a317e4dc6afdec489bb0be3316ca45">getSdlBlendMode</a> ()</td></tr>
-<tr class="memdesc:af2a317e4dc6afdec489bb0be3316ca45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the blending mode.  <a href="#af2a317e4dc6afdec489bb0be3316ca45">More...</a><br /></td></tr>
-<tr class="separator:af2a317e4dc6afdec489bb0be3316ca45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab81809e7786722ef91bacb6a280b8320"><td class="memItemLeft" align="right" valign="top">Color *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ab81809e7786722ef91bacb6a280b8320">getTintColor</a> ()</td></tr>
-<tr class="memdesc:ab81809e7786722ef91bacb6a280b8320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the color modulation of the texture.  <a href="#ab81809e7786722ef91bacb6a280b8320">More...</a><br /></td></tr>
-<tr class="separator:ab81809e7786722ef91bacb6a280b8320"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e9e097e975d68750a6bc9333ff553ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a3e9e097e975d68750a6bc9333ff553ea">setFlip</a> (bool v, bool h)</td></tr>
 <tr class="memdesc:a3e9e097e975d68750a6bc9333ff553ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the flip of the texture.  <a href="#a3e9e097e975d68750a6bc9333ff553ea">More...</a><br /></td></tr>
 <tr class="separator:a3e9e097e975d68750a6bc9333ff553ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a172d9a19f1d030cf2b2a400f6f116ddf"><td class="memItemLeft" align="right" valign="top"><a id="a172d9a19f1d030cf2b2a400f6f116ddf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#a172d9a19f1d030cf2b2a400f6f116ddf">setTargetAccess</a> ()</td></tr>
-<tr class="memdesc:a172d9a19f1d030cf2b2a400f6f116ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the texture access as SDL_TEXTUREACCESS_TARGET. <br /></td></tr>
-<tr class="separator:a172d9a19f1d030cf2b2a400f6f116ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5130409602b444a6b2f9375556e8bc4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ae5130409602b444a6b2f9375556e8bc4">isTargetAccess</a> ()</td></tr>
-<tr class="memdesc:ae5130409602b444a6b2f9375556e8bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the texture has target access.  <a href="#ae5130409602b444a6b2f9375556e8bc4">More...</a><br /></td></tr>
-<tr class="separator:ae5130409602b444a6b2f9375556e8bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac103e05839a0886cf2c0558e56b3b52a"><td class="memItemLeft" align="right" valign="top"><a id="ac103e05839a0886cf2c0558e56b3b52a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_texture.html#ac103e05839a0886cf2c0558e56b3b52a">glDestroy</a> ()</td></tr>
+<tr class="memdesc:ac103e05839a0886cf2c0558e56b3b52a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the texture loaded. <br /></td></tr>
+<tr class="separator:ac103e05839a0886cf2c0558e56b3b52a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a17990332f60dbb6e1df13d146862de9c"><td class="memItemLeft" align="right" valign="top"><a id="a17990332f60dbb6e1df13d146862de9c"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_gl_id_texture</b></td></tr>
+<tr class="separator:a17990332f60dbb6e1df13d146862de9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a922c10d3c843e9006e3772a1fabedc83"><td class="memItemLeft" align="right" valign="top"><a id="a922c10d3c843e9006e3772a1fabedc83"></a>
+<a class="el" href="classlraspi_1_1_color.html">Color</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_tint</b></td></tr>
+<tr class="separator:a922c10d3c843e9006e3772a1fabedc83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572d47178e843a982efcb727da2ec67a"><td class="memItemLeft" align="right" valign="top"><a id="a572d47178e843a982efcb727da2ec67a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_width</b></td></tr>
+<tr class="separator:a572d47178e843a982efcb727da2ec67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98c381fba059c92ad8bc6107535f60aa"><td class="memItemLeft" align="right" valign="top"><a id="a98c381fba059c92ad8bc6107535f60aa"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_height</b></td></tr>
+<tr class="separator:a98c381fba059c92ad8bc6107535f60aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a4a8208e3ad9d1378389e3845865089"><td class="memItemLeft" align="right" valign="top"><a id="a7a4a8208e3ad9d1378389e3845865089"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_real_width</b></td></tr>
+<tr class="separator:a7a4a8208e3ad9d1378389e3845865089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006ccd0c512baf136591f2cb2ed63762"><td class="memItemLeft" align="right" valign="top"><a id="a006ccd0c512baf136591f2cb2ed63762"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_real_height</b></td></tr>
+<tr class="separator:a006ccd0c512baf136591f2cb2ed63762"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a911274a6151d1bc062eef3130a8fa686"><td class="memItemLeft" align="right" valign="top"><a id="a911274a6151d1bc062eef3130a8fa686"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>_angle</b></td></tr>
+<tr class="separator:a911274a6151d1bc062eef3130a8fa686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae04896a14b3655dc351345403dc74017"><td class="memItemLeft" align="right" valign="top"><a id="ae04896a14b3655dc351345403dc74017"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_center_x</b></td></tr>
+<tr class="separator:ae04896a14b3655dc351345403dc74017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace924e79f820a85bea4f003c82a55156"><td class="memItemLeft" align="right" valign="top"><a id="ace924e79f820a85bea4f003c82a55156"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_center_y</b></td></tr>
+<tr class="separator:ace924e79f820a85bea4f003c82a55156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e2d147ddf9f62eda72ecf98361384e"><td class="memItemLeft" align="right" valign="top"><a id="a72e2d147ddf9f62eda72ecf98361384e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_flip_h</b></td></tr>
+<tr class="separator:a72e2d147ddf9f62eda72ecf98361384e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3dd2242faa1d2c86960eca2c672b4ae"><td class="memItemLeft" align="right" valign="top"><a id="ac3dd2242faa1d2c86960eca2c672b4ae"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_flip_v</b></td></tr>
+<tr class="separator:ac3dd2242faa1d2c86960eca2c672b4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5c515a16144c08832f4e8c3cad3c1ba"><td class="memItemLeft" align="right" valign="top"><a id="ab5c515a16144c08832f4e8c3cad3c1ba"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_loaded</b></td></tr>
+<tr class="separator:ab5c515a16144c08832f4e8c3cad3c1ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents a wrapper between SDL_Texture type. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0de71a8ea08c1452c9b80cb4c27de6a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0de71a8ea08c1452c9b80cb4c27de6a3">&#9670;&nbsp;</a></span>setSdlTexture()</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="afcc0ff9aef739506f56782a1e3fc1e15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcc0ff9aef739506f56782a1e3fc1e15">&#9670;&nbsp;</a></span>setSdlSurface()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,10 +275,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void lraspi::Texture::setSdlTexture </td>
+          <td class="memname">void lraspi::Texture::setSdlSurface </td>
           <td>(</td>
-          <td class="paramtype">SDL_Texture *&#160;</td>
-          <td class="paramname"><em>sdl_texture</em></td><td>)</td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>sdl_surface</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -244,11 +288,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Set the texture object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sdl_texture</td><td>A SDL_Texture object </td></tr>
+    <tr><td class="paramname">sdl_surface</td><td>A SDL_Surface object </td></tr>
+    <tr><td class="paramname">access</td><td>A SDL_TextureAccess value </td></tr>
   </table>
   </dd>
 </dl>
@@ -278,8 +321,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Set the real width of the texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">real_width</td><td>The real width of the texture </td></tr>
@@ -312,98 +353,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Set the real height of the texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">real_height</td><td>The real height of the texture </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="af1b4b85ad7fff33e531221d00277f87c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1b4b85ad7fff33e531221d00277f87c">&#9670;&nbsp;</a></span>getAlpha()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t lraspi::Texture::getAlpha </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the alpha value. </p>
-<dl class="section return"><dt>Returns</dt><dd>The alpha value </dd></dl>
-
-</div>
-</div>
-<a id="af2a317e4dc6afdec489bb0be3316ca45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2a317e4dc6afdec489bb0be3316ca45">&#9670;&nbsp;</a></span>getSdlBlendMode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_BlendMode lraspi::Texture::getSdlBlendMode </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the blending mode. </p>
-<dl class="section return"><dt>Returns</dt><dd>A SDL_BlendMode struct </dd></dl>
-
-</div>
-</div>
-<a id="ab81809e7786722ef91bacb6a280b8320"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab81809e7786722ef91bacb6a280b8320">&#9670;&nbsp;</a></span>getTintColor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Color * lraspi::Texture::getTintColor </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the color modulation of the texture. </p>
-<dl class="section return"><dt>Returns</dt><dd>The lraspi::Color object that represents the color modulation </dd></dl>
 
 </div>
 </div>
@@ -440,8 +395,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Set the flip of the texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>True if the texture has vertical flip </td></tr>
@@ -452,68 +405,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="ae5130409602b444a6b2f9375556e8bc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5130409602b444a6b2f9375556e8bc4">&#9670;&nbsp;</a></span>isTargetAccess()</h2>
+<a id="ad7dc470e2e2b253029e1d9e4ecb8a33a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7dc470e2e2b253029e1d9e4ecb8a33a">&#9670;&nbsp;</a></span>glIdTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool lraspi::Texture::isTargetAccess </td>
+          <td class="memname">GLuint lraspi::Texture::glIdTexture </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-
-<p>Checks if the texture has target access. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if the texture has target access </dd></dl>
-
-</div>
-</div>
-<a id="ae7accffb765ceb659ae3bb3fe7acefc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7accffb765ceb659ae3bb3fe7acefc4">&#9670;&nbsp;</a></span>createBlank()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void lraspi::Texture::createBlank </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>height</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Create a blank texture. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">width</td><td>The width of the new texture </td></tr>
-    <tr><td class="paramname">height</td><td>The height of the new texture </td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd>the id texture </dd></dl>
 
 </div>
 </div>
@@ -526,46 +432,36 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="memname">void lraspi::Texture::tint </td>
           <td>(</td>
-          <td class="paramtype">Color *&#160;</td>
+          <td class="paramtype"><a class="el" href="classlraspi_1_1_color.html">Color</a> *&#160;</td>
           <td class="paramname"><em>color</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Set the color modulation of the texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">color</td><td>A lraspi::Color object to set the color modulation </td></tr>
+    <tr><td class="paramname">color</td><td>A <a class="el" href="classlraspi_1_1_color.html">lraspi::Color</a> object to set the color modulation </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="af23162b4ee68edf7c151127a83d5ee46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af23162b4ee68edf7c151127a83d5ee46">&#9670;&nbsp;</a></span>setSdlBlendMode()</h2>
+<a id="ab81809e7786722ef91bacb6a280b8320"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab81809e7786722ef91bacb6a280b8320">&#9670;&nbsp;</a></span>getTintColor()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void lraspi::Texture::setSdlBlendMode </td>
+          <td class="memname"><a class="el" href="classlraspi_1_1_color.html">Color</a> * lraspi::Texture::getTintColor </td>
           <td>(</td>
-          <td class="paramtype">SDL_BlendMode&#160;</td>
-          <td class="paramname"><em>bleding</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Set the blending mode. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bleding</td><td>An SDL_BlendMode struct </td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classlraspi_1_1_color.html">lraspi::Color</a> object that represents the color modulation </dd></dl>
 
 </div>
 </div>
@@ -584,8 +480,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Set the alpha modulation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">alpha</td><td>The alpha value </td></tr>
@@ -595,63 +489,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="afa351cd3c01782db46689ccc8e810da0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa351cd3c01782db46689ccc8e810da0">&#9670;&nbsp;</a></span>getSdlTexture()</h2>
+<a id="af1b4b85ad7fff33e531221d00277f87c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1b4b85ad7fff33e531221d00277f87c">&#9670;&nbsp;</a></span>getAlpha()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SDL_Texture * lraspi::Texture::getSdlTexture </td>
+          <td class="memname">uint8_t lraspi::Texture::getAlpha </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Get the texture object. </p>
-<dl class="section return"><dt>Returns</dt><dd>A SDL_Texture object </dd></dl>
-
-</div>
-</div>
-<a id="a72f9a21e8e831bdfd2f502319cbc66a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72f9a21e8e831bdfd2f502319cbc66a1">&#9670;&nbsp;</a></span>getSdlCenterPoint()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_Point lraspi::Texture::getSdlCenterPoint </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the texture center point. </p>
-<dl class="section return"><dt>Returns</dt><dd>A SDL_Point object </dd></dl>
-
-</div>
-</div>
-<a id="a304d3c26940dbc9c0a509b29e2b86c04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a304d3c26940dbc9c0a509b29e2b86c04">&#9670;&nbsp;</a></span>getSdlFlipStatus()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_RendererFlip lraspi::Texture::getSdlFlipStatus </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the renderer flip. </p>
-<dl class="section return"><dt>Returns</dt><dd>A SDL_RendererFlip object </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The alpha value </dd></dl>
 
 </div>
 </div>
@@ -670,8 +522,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Set the width of the texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">width</td><td>New width of texture </td></tr>
@@ -696,8 +546,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Set the height of the texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">height</td><td>New height of texture </td></tr>
@@ -721,8 +569,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Get the width of the texture. </p>
 <dl class="section return"><dt>Returns</dt><dd>Width of texture </dd></dl>
 
 </div>
@@ -741,8 +587,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Get the height of the texture. </p>
 <dl class="section return"><dt>Returns</dt><dd>Height of texture </dd></dl>
 
 </div>
@@ -761,8 +605,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Get the real width of the texture. </p>
 <dl class="section return"><dt>Returns</dt><dd>Real width of texture </dd></dl>
 
 </div>
@@ -781,8 +623,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Get the real height of the texture. </p>
 <dl class="section return"><dt>Returns</dt><dd>Real height of texture </dd></dl>
 
 </div>
@@ -802,8 +642,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Set the angle of the texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">angle</td><td>An angle in degrees, rotating it in a clockwise direction </td></tr>
@@ -827,8 +665,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Get the angle of the texture. </p>
 <dl class="section return"><dt>Returns</dt><dd>The angle in degress </dd></dl>
 
 </div>
@@ -858,8 +694,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Set the center of the texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>the x-axis position to set the center of the texture </td></tr>
@@ -870,31 +704,22 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="a01846c6b106d2f13674db5f8a04c9f30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01846c6b106d2f13674db5f8a04c9f30">&#9670;&nbsp;</a></span>blit()</h2>
+<a id="aa590d6ae7a327500f6851ac4263c539a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa590d6ae7a327500f6851ac4263c539a">&#9670;&nbsp;</a></span>getCenter()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void lraspi::Texture::blit </td>
+          <td class="memname">void lraspi::Texture::getCenter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classlraspi_1_1_texture.html">Texture</a> *&#160;</td>
-          <td class="paramname"><em>texture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>y</em>&#160;</td>
         </tr>
         <tr>
@@ -903,19 +728,124 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-
-<p>Draws another texture in this texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">texture</td><td>Another texture object </td></tr>
-    <tr><td class="paramname">x</td><td>the x-axis position to draw the texture </td></tr>
-    <tr><td class="paramname">y</td><td>the y-axis position to draw the texture </td></tr>
+    <tr><td class="paramname">x</td><td>the x-axis position to set the center of the texture </td></tr>
+    <tr><td class="paramname">y</td><td>the y-axis position to set the center of the texture </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3e0a65b64806ce181ca433f8a4a3312b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e0a65b64806ce181ca433f8a4a3312b">&#9670;&nbsp;</a></span>getFlip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lraspi::Texture::getFlip </td>
+          <td>(</td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>the horizontal flip </td></tr>
+    <tr><td class="paramname">v</td><td>the vertical flip </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae8912777260b433cc33e9c0a7d2d516e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8912777260b433cc33e9c0a7d2d516e">&#9670;&nbsp;</a></span>getPixel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classlraspi_1_1_color.html">Color</a> * lraspi::Texture::getPixel </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The x-axis position of the pixel in the texture </td></tr>
+    <tr><td class="paramname">y</td><td>The y-axis position of the pixel in the texture </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classlraspi_1_1_color.html">lraspi::Color</a> object </dd></dl>
+
+</div>
+</div>
+<a id="a06014a9e18a8f9ad36fb7d4ffa54e279"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06014a9e18a8f9ad36fb7d4ffa54e279">&#9670;&nbsp;</a></span>setPixel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lraspi::Texture::setPixel </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classlraspi_1_1_color.html">Color</a> *&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The x-axis position of the pixel in the texture </td></tr>
+    <tr><td class="paramname">y</td><td>The y-axis position of the pixel in the texture </td></tr>
+    <tr><td class="paramname">col</td><td>A <a class="el" href="classlraspi_1_1_color.html">lraspi::Color</a> object </td></tr>
   </table>
   </dd>
 </dl>
@@ -945,13 +875,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Check if an object is an instance of this type. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if the object is an instance of </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classlraspi_1_1_object.html#a82f4911fc89a42d57157b43dd5cc1664">lraspi::Object</a>.</p>
 
-<p>Reimplemented in <a class="el" href="classlraspi_1_1_text.html#ade54e12315a9aaac8298429b2932c7cb">lraspi::Text</a>, and <a class="el" href="classlraspi_1_1_image.html#a6eab3c04025852aae18e30e2eae7c0ee">lraspi::Image</a>.</p>
+<p>Reimplemented in <a class="el" href="classlraspi_1_1_text.html#ade54e12315a9aaac8298429b2932c7cb">lraspi::Text</a>, <a class="el" href="classlraspi_1_1_image.html#a6eab3c04025852aae18e30e2eae7c0ee">lraspi::Image</a>, and <a class="el" href="classlraspi_1_1_char.html#a1c4a862d5b47dd98f2a5a5478a7c4845">lraspi::Char</a>.</p>
 
 </div>
 </div>
@@ -977,13 +905,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Get the name of the object type. </p>
 <dl class="section return"><dt>Returns</dt><dd>The name of the type </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classlraspi_1_1_object.html#a6bba50cf1700759059c051c31b44651b">lraspi::Object</a>.</p>
 
-<p>Reimplemented in <a class="el" href="classlraspi_1_1_text.html#a5aa15fbca1fd30ddb99281f2feb64e4c">lraspi::Text</a>, and <a class="el" href="classlraspi_1_1_image.html#a9cfe080d89994ca489b9302d50e5542a">lraspi::Image</a>.</p>
+<p>Reimplemented in <a class="el" href="classlraspi_1_1_text.html#a5aa15fbca1fd30ddb99281f2feb64e4c">lraspi::Text</a>, <a class="el" href="classlraspi_1_1_image.html#a9cfe080d89994ca489b9302d50e5542a">lraspi::Image</a>, and <a class="el" href="classlraspi_1_1_char.html#a9213fc1fa231a8c4701f84475e1936ac">lraspi::Char</a>.</p>
 
 </div>
 </div>

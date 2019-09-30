@@ -9,20 +9,15 @@
 
 #include <string>
 
-#include "common/type.h"
+#include "modules/common/type.h"
+#include "modules/common/object.h"
 #include "modules/font/font.h"
 #include "modules/image/texture.h"
 
-#define LRASPI_TEXT_NAME "name"
+#define LRASPI_TEXT_NAME "text"
 
 namespace lraspi
 {
-
-enum TextQuality
-{
-    FAST,
-    NORMAL
-};
 
 /**
  * @brief Represents a rendered text to draw on screen
@@ -33,7 +28,6 @@ class Text : public Texture
 private:
     std::string _text;
     Font* _font;
-    TextQuality _quality;
 
     /**
      * @brief Render the setted text with the setted font
@@ -44,36 +38,17 @@ public:
     static Type type;
 
     /**
-     * @brief Construct a new text object
-     */
-    Text();
-
-    /**
-     * @brief Destroy the text object
-     */
-    ~Text();
-
-    /**
      * @brief Render a text with a font
      * 
      * @param font The font to render the text
      * @param text The text to render
      */
-    void render(Font* font, const char* text);
+    Text(Font* font, const char* text);
 
     /**
-     * @brief Set the quality to render text
-     *  
-     * @param quality The quality to render text
+     * @brief Destroy the text object
      */
-    void setQuality(TextQuality quality);
-
-    /**
-     * @brief Get the quality of the render text
-     * 
-     * @return The quality to render text 
-     */
-    TextQuality getQuality();
+    ~Text();
 
     /**
      * @brief Replace the content with a new value

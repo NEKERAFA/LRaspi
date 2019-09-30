@@ -17,13 +17,10 @@ namespace lraspi
 namespace lua
 {
 
-/**
- * @brief Internal representation of lraspi reference
- */
 struct ref_Object
 {
-    Type* type; /**< The type of the object */
-    Object* object; /**< A pointer to the object */
+    Type* type;
+    Object* object;
 };
 
 static int printtraceback(lua_State* L)

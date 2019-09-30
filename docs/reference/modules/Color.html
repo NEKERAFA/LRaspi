@@ -33,19 +33,28 @@
 <h2>Contents</h2>
 <ul>
 <li><a href="#Functions">Functions</a></li>
-<li><a href="#Class_color">Class color </a></li>
 </ul>
 
 
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><strong>Color</strong></li>
+  <li><a href="../modules/Draw.html">Draw</a></li>
   <li><a href="../modules/Font.html">Font</a></li>
   <li><a href="../modules/Image.html">Image</a></li>
+  <li><a href="../modules/LRaspi.html">LRaspi</a></li>
   <li><a href="../modules/Screen.html">Screen</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/color.html">color</a></li>
+  <li><a href="../classes/font.html">font</a></li>
+  <li><a href="../classes/image.html">image</a></li>
+  <li><a href="../classes/text.html">text</a></li>
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
+  <li><a href="../examples/draw.lua.html">draw.lua</a></li>
   <li><a href="../examples/font.lua.html">font.lua</a></li>
   <li><a href="../examples/image.lua.html">image.lua</a></li>
 </ul>
@@ -106,41 +115,6 @@
 	<td class="summary">Destroys a color object</td>
 	</tr>
 </table>
-<h2><a href="#Class_color">Class color </a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name" nowrap><a href="#color:red">color:red ()</a></td>
-	<td class="summary">Gets the red channel value of the color</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#color:red">color:red (red)</a></td>
-	<td class="summary">Sets the red channel value of the color</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#color:green">color:green ()</a></td>
-	<td class="summary">Gets the green channel value of the color</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#color:green">color:green (green)</a></td>
-	<td class="summary">Sets the green channel value of the color</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#color:blue">color:blue ()</a></td>
-	<td class="summary">Gets the blue channel value of the color</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#color:blue">color:blue (blue)</a></td>
-	<td class="summary">Sets the blue channel value of the color</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#color:alpha">color:alpha ()</a></td>
-	<td class="summary">Gets the alpha channel value of the color</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#color:alpha">color:alpha (alpha)</a></td>
-	<td class="summary">Sets the alpha channel value of the color</td>
-	</tr>
-</table>
 
 <br/>
 <br/>
@@ -160,19 +134,19 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">red</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The red channel value
         </li>
         <li><span class="parameter">blue</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The blue channel value
         </li>
         <li><span class="parameter">green</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The green channel value
         </li>
         <li><span class="parameter">alpha</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The alpha channel value
          (<em>default</em> 0)
         </li>
@@ -181,7 +155,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+           <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
         A color object
     </ol>
 
@@ -237,7 +211,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
     </ul>
@@ -245,7 +219,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The red value
     </ol>
 
@@ -264,11 +238,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
         <li><span class="parameter">red</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The red value
         </li>
     </ul>
@@ -289,7 +263,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
     </ul>
@@ -297,7 +271,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The green value
     </ol>
 
@@ -316,11 +290,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
         <li><span class="parameter">green</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The green value
         </li>
     </ul>
@@ -341,7 +315,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
     </ul>
@@ -349,7 +323,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The blue value
     </ol>
 
@@ -368,11 +342,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
         <li><span class="parameter">blue</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The blue value
         </li>
     </ul>
@@ -393,7 +367,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
     </ul>
@@ -401,7 +375,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The alpha value
     </ol>
 
@@ -420,11 +394,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object
         </li>
         <li><span class="parameter">alpha</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The alpha value
         </li>
     </ul>
@@ -445,179 +419,8 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../modules/Color.html#color">color</a></span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
          A color object to free
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header has-description"><a name="Class_color"></a>Class color </h2>
-
-          <div class="section-description">
-          This object represents a color
-          </div>
-    <dl class="function">
-    <dt>
-    <a name = "color:red"></a>
-    <strong>color:red ()</strong>
-    </dt>
-    <dd>
-    Gets the red channel value of the color
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The red value
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "color:red"></a>
-    <strong>color:red (red)</strong>
-    </dt>
-    <dd>
-    Sets the red channel value of the color
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">red</span>
-            <span class="types"><span class="type">int</span></span>
-         The red value
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "color:green"></a>
-    <strong>color:green ()</strong>
-    </dt>
-    <dd>
-    Gets the green channel value of the color
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The green value
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "color:green"></a>
-    <strong>color:green (green)</strong>
-    </dt>
-    <dd>
-    Sets the green channel value of the color
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">green</span>
-            <span class="types"><span class="type">int</span></span>
-         The green value
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "color:blue"></a>
-    <strong>color:blue ()</strong>
-    </dt>
-    <dd>
-    Gets the blue channel value of the color
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The blue value
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "color:blue"></a>
-    <strong>color:blue (blue)</strong>
-    </dt>
-    <dd>
-    Sets the blue channel value of the color
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">blue</span>
-            <span class="types"><span class="type">int</span></span>
-         The blue value
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "color:alpha"></a>
-    <strong>color:alpha ()</strong>
-    </dt>
-    <dd>
-    Gets the alpha channel value of the color
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The alpha value
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "color:alpha"></a>
-    <strong>color:alpha (alpha)</strong>
-    </dt>
-    <dd>
-    Sets the alpha channel value of the color
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">alpha</span>
-            <span class="types"><span class="type">int</span></span>
-         The alpha value
         </li>
     </ul>
 
@@ -633,7 +436,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-09-12 11:49:42 </i>
+<i style="float:right;">Last updated 2019-10-01 01:00:10 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

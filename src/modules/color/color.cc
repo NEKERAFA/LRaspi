@@ -8,8 +8,8 @@
 
 #include <SDL2/SDL_pixels.h>
 
-#include "common/type.h"
-#include "common/object.h"
+#include "modules/common/type.h"
+#include "modules/common/object.h"
 #include "modules/color/color.h"
 
 namespace lraspi
@@ -39,6 +39,11 @@ void Color::red(uint8_t red)
     _red = red;
 }
 
+float Color::rf()
+{
+    return ((float) _red) / 255.0f;
+}
+
 uint8_t Color::green()
 {
     return _green;
@@ -47,6 +52,11 @@ uint8_t Color::green()
 void Color::green(uint8_t green)
 {
     _green = green; 
+}
+
+float Color::gf()
+{
+    return ((float) _green) / 255.0f;
 }
 
 uint8_t Color::blue()
@@ -59,6 +69,11 @@ void Color::blue(uint8_t blue)
     _blue = blue;
 }
 
+float Color::bf()
+{
+    return ((float) _blue) / 255.0f;
+}
+
 uint8_t Color::alpha()
 {
     return _alpha;
@@ -67,6 +82,11 @@ uint8_t Color::alpha()
 void Color::alpha(uint8_t alpha)
 {
     _alpha = alpha; 
+}
+
+float Color::af()
+{
+    return ((float) _alpha) / 255.0f;
 }
 
 SDL_Color Color::getSdlColor()

@@ -4,8 +4,10 @@ var hierarchy =
       [ "lraspi::Exception", "classlraspi_1_1_exception.html", null ]
     ] ],
     [ "lraspi::Object", "classlraspi_1_1_object.html", [
+      [ "lraspi::Color", "classlraspi_1_1_color.html", null ],
       [ "lraspi::Font", "classlraspi_1_1_font.html", null ],
       [ "lraspi::Texture", "classlraspi_1_1_texture.html", [
+        [ "lraspi::Char", "classlraspi_1_1_char.html", null ],
         [ "lraspi::Image", "classlraspi_1_1_image.html", null ],
         [ "lraspi::Text", "classlraspi_1_1_text.html", null ]
       ] ]

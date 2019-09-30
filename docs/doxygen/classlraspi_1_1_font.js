@@ -1,11 +1,11 @@
 var classlraspi_1_1_font =
 [
+    [ "Font", "classlraspi_1_1_font.html#af5cdc73116b9ebab026de77370d76439", null ],
+    [ "Font", "classlraspi_1_1_font.html#a5445de2fcf496ad8bc8b56086aec747c", null ],
     [ "Font", "classlraspi_1_1_font.html#a941e0c1a428efceb4b66af5559dddd6c", null ],
     [ "~Font", "classlraspi_1_1_font.html#a3f8581884ee6d9a85586382a9543fe44", null ],
-    [ "create", "classlraspi_1_1_font.html#aa29cef1fcdc98b21cc1f7a300d337124", null ],
-    [ "load", "classlraspi_1_1_font.html#a3c79da62fd794ea480ec167e5a6169c5", null ],
-    [ "getFastSdlSurface", "classlraspi_1_1_font.html#a08ed1bec52cd21c9f6d3b4b41a41ae1c", null ],
     [ "getSdlSurface", "classlraspi_1_1_font.html#a3de817fca12a964680ac431ddba43177", null ],
+    [ "getSdlSurface", "classlraspi_1_1_font.html#abc323e609499f968f9b5a5e7b69a77eb", null ],
     [ "getHeight", "classlraspi_1_1_font.html#a6d2c550a513c7d157e4ca90bb0e8a384", null ],
     [ "getWidth", "classlraspi_1_1_font.html#aee4ac6053c61a5c8284b9b12a223df9b", null ],
     [ "getWrap", "classlraspi_1_1_font.html#a5b4c14c826fe3f79368af3cede89dd30", null ],
@@ -22,5 +22,9 @@ var classlraspi_1_1_font =
     [ "getLineHeight", "classlraspi_1_1_font.html#a7758b685a4b908bcb7e4467c8cbac6d0", null ],
     [ "getFamilyName", "classlraspi_1_1_font.html#a3fd7febecea5633b8e7076c95997b889", null ],
     [ "isInstanceOf", "classlraspi_1_1_font.html#a314c6de8b11ca0d50285ecc20e37bc63", null ],
-    [ "name", "classlraspi_1_1_font.html#a8d90899ed527aaea4418e16d6f4131f5", null ]
+    [ "name", "classlraspi_1_1_font.html#a8d90899ed527aaea4418e16d6f4131f5", null ],
+    [ "_size", "classlraspi_1_1_font.html#afd31d9d2876be896ae5236ee443a72f5", null ],
+    [ "_line_height", "classlraspi_1_1_font.html#ae8298e2184ae77644dd287457b36ad59", null ],
+    [ "_font", "classlraspi_1_1_font.html#a26bde1257d14f502452605ad937d4d6d", null ],
+    [ "type", "classlraspi_1_1_font.html#a4f974bdf94ef4aaead99da49b8331c01", null ]
 ];

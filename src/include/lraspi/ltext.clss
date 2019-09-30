@@ -1,0 +1,168 @@
+/***
+ * This object represents a rendered text
+ * @classmod text
+ * @see Draw
+ */
+
+/***
+ * Replaces the content of the text with a new value
+ * @function set
+ * @tparam text text A text object
+ * @string textstring The new content
+ */
+
+/***
+ * Adds a new content to the rendered text
+ * @function add
+ * @tparam text text A text object
+ * @string textstring The text to append
+ */
+
+/***
+ * Clears the content of the rendered text
+ * @function clear
+ * @tparam text text A text object
+ */
+
+/***
+ * Resets the internal values (rotation, flip, resize, ...) of the image
+ * @function reset
+ * @tparam image image A image object
+ */
+
+/***
+ * Changes the color modulation of the image
+ * @function tint
+ * @tparam image image A image object
+ * @tparam color color A color object
+ */
+
+/***
+ * Gets the color modulation of the image
+ * @function tintcolor
+ * @tparam image image A image object
+ * @treturn color A color object
+ */
+
+/***
+ * Changes the alpha value of the image. <br>
+ * The image must have an blend mode established
+ * @function setalpha
+ * @tparam image image A image object
+ * @number alpha The alpha value
+ */
+
+/***
+ * Gets the current alpha value of the image. <br>
+ * The image must have an blend mode established
+ * @function getalpha
+ * @tparam image image A image object
+ * @ŧreturn number The alpha value
+ */
+
+/***
+ * Gets the current width dimension of the image
+ * @function getwidth
+ * @tparam image image A image object
+ * @treturn number The current width dimension in pixels
+ */
+
+/***
+ * Gets the current height dimension of the image
+ * @function getheight
+ * @tparam image image A image object
+ * @treturn number The current height dimension in pixels
+ */
+
+/***
+ * Gets the real width dimension of the image
+ * @function getrealwidth
+ * @tparam image image A image object
+ * @treturn number The real width dimension in pixels
+ */
+
+/***
+ * Gets the real width dimension of the image
+ * @function getrealheight
+ * @tparam image image A image object
+ * @treturn number The real width dimension in pixels
+ */
+
+/***
+ * Resizes the image
+ * @function resize
+ * @tparam image image A image object
+ * @number width The new width dimension in pixels
+ * @number height The new height dimension in pixels
+ */
+
+/***
+ * Rotates the image
+ * @function rotate
+ * @tparam image image A image object
+ * @number angle The angle in degrees
+ */
+
+/***
+ * Sets the center of the image
+ * @function setcenter
+ * @tparam image image A image object
+ * @number x The x-axis position of the center
+ * @number y The y-axis position of the center
+ */
+
+/***
+ * Gets the center of the image
+ * @function getcenter
+ * @tparam image image A image object
+ * @treturn number The x-axis position of the center
+ * @treturn number The y-axis position of the center
+ */
+
+/***
+ * Flips a image vertically
+ * @tparam image image A image object
+ * @function vflip
+ */
+
+/***
+ * Flips a image horizontally
+ * @tparam image image A image object
+ * @function hflip
+ */
+
+/***
+ * Checks if the image is flipped
+ * @function isflipped
+ * @tparam image image A image object
+ * @treturn boolean true if the image is flipped vertically
+ * @treturn boolean true if the image if flipped horizontally
+ */
+
+/***
+ * Replaces the content of the text with a new value
+ * @function settext
+ * @tparam text text A text object
+ * @string textstring The new content
+ */
+int lraspi_image_set_text(lua_State* L);
+
+/***
+ * Adds a new content to the rendered text
+ * @function addtext
+ * @tparam text text A text object
+ * @string textstring The text to append
+ */
+int lraspi_image_add_text(lua_State* L);
+
+/***
+ * Clears the content of the rendered text
+ * @function cleartext
+ * @tparam text text A text object
+ */
+
+/***
+ * Destroys a image object
+ * @function free
+ * @tparam image image A image object
+ */

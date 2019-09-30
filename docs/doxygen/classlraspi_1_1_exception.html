@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="lua-logo-label.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Lua Raspi
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.0.4</span>
    </div>
    <div id="projectbrief">A Lua Player for Raspberry Pi</div>
   </td>
@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('classlraspi_1_1_exception.html','');})
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classlraspi_1_1_exception-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">lraspi::Exception Class Reference</div>  </div>
@@ -91,7 +92,7 @@ $(document).ready(function(){initNavTree('classlraspi_1_1_exception.html','');})
 <div class="contents">
 
 <p>Represents a exception with a printf format error.  
- <a href="classlraspi_1_1_exception.html#details">More...</a></p>
+</p>
 
 <p>Inherits std::exception.</p>
 <table class="memberdecls">
@@ -103,10 +104,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6597ea4750543a45d23d6025c4d103c7"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlraspi_1_1_exception.html#a6597ea4750543a45d23d6025c4d103c7">what</a> () const  throw ()</td></tr>
 <tr class="memdesc:a6597ea4750543a45d23d6025c4d103c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string containing reason for the exception.  <a href="#a6597ea4750543a45d23d6025c4d103c7">More...</a><br /></td></tr>
 <tr class="separator:a6597ea4750543a45d23d6025c4d103c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a450d0b0448cdffb8a6104e28fe3cd8d6"><td class="memItemLeft" align="right" valign="top"><a id="a450d0b0448cdffb8a6104e28fe3cd8d6"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_message</b></td></tr>
+<tr class="separator:a450d0b0448cdffb8a6104e28fe3cd8d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents a exception with a printf format error. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a22b84f7350e4dc2144e7085c310080f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a22b84f7350e4dc2144e7085c310080f4">&#9670;&nbsp;</a></span>Exception()</h2>
 
@@ -132,8 +137,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Construct a new exceptionf object. </p>
 <p>See: <a href="http://www.cplusplus.com/reference/clibrary/cstdio/printf/">http://www.cplusplus.com/reference/clibrary/cstdio/printf/</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -173,8 +176,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Returns a string containing reason for the exception. </p>
 <dl class="section return"><dt>Returns</dt><dd>The description of the exception </dd></dl>
 
 </div>

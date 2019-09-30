@@ -1,119 +1,85 @@
-/**
- * lua-raspi.cc - NEKERAFA - 25th july 2019
- * 
- * See Copyright Notice in lraspi.h 
+/*
+    module/lraspi/lraspi.cc - NEKERAFA - 14th aug 2019
+
+    See Copyright Notice in lraspi.h 
  */
 
-#include <cstdlib>
-#include <cstring>
 #include <iostream>
+
+#include <SDL2/SDL.h>
 
 #include <lua.hpp>
 
 #include "lraspi.h"
 #include "lraspi/lauxlib.h"
-#include "modules/screen/screen_mod.h"
-#include "interface/explorer.h"
+#include "lraspi/lcolor.h"
+#include "lraspi/ldraw.h"
+#include "lraspi/lfont.h"
+#include "lraspi/limage.h"
+#include "lraspi/lscreen.h"
+
+#include "modules/image/module.h"
+#include "modules/font/module.h"
+#include "modules/screen/module.h"
+
+/***
+ * Non specified functions
+ * @module LRaspi
+ */
 
 namespace lraspi
 {
 
-/**
- * @brief Loads the file and runs
+/***
+ * Gets the version number of Lua Raspi
+ * @function _LRASPI_VERSION
  * 
- * @param L A lua_State object
- * @param path The path of the file
+ * @treturn string The version
  */
-void dofile(lua_State* L, const char* path)
+static int lraspi_version(lua_State* L)
 {
-    if (luaL_loadfile(L, path) == LUA_OK)
-        lua::call(L, 0, LUA_MULTRET);
-    else
-        std::cerr << "error: " << lua_tostring(L, -1) << std::endl;
+    lua_pushliteral(L, LRASPI_VERSION);
+    return 1;
 }
 
-const char* checkargs(int argc, const char* argv[])
+int openlibs(lua_State* L)
+{   
+    // Loads image library
+    luaL_requiref(L, "image", luaopen_image, 1);
+
+    // Loads font library
+    luaL_requiref(L, "font", luaopen_font, 1);
+
+    // Loads color library
+    luaL_requiref(L, "color", luaopen_color, 1);
+
+    // Loads draw library
+    luaL_requiref(L, "draw", luaopen_draw, 1);
+
+    // Loads screen library
+    luaL_requiref(L, "screen", luaopen_screen, 1);
+
+    // Adds a function that returns the lraspi version
+    lua_newtable(L);                            // stack = {{}}
+    lua_pushcfunction(L, lraspi_version);       // stack = {{}, version}
+    lua_setfield(L, -2, "version");             // stack = {{version}}
+    lua_setglobal(L, "lraspi");                 // global = {lraspi = {version}}; stack = {}
+
+    // Starts modules
+    lraspi::font::init();
+    lraspi::screen::init();
+    lraspi::image::init();
+
+    return 0;
+}
+
+void closelibs(lua_State* L)
 {
-    const char* path = nullptr;
+    lraspi::image::close();
+    lraspi::screen::close();
+    lraspi::font::close();
 
-    // Read all the arguments
-    for (int arg = 1; arg < argc; arg++)
-    {
-        // Check arguments
-        if ((std::strncmp(argv[arg], "--", 2) == 0))
-        {
-            // Print Lua Raspi version
-            if ((std::strcmp(argv[arg]+2, "version") == 0))
-            {
-                std::cout << "Lua Raspi " << LRASPI_VERSION << std::endl;
-                std::exit(EXIT_SUCCESS);
-            }
-            else
-            {
-                std::cerr << "option " << argv[arg] << " not recognize" << std::endl;
-                std::exit(EXIT_FAILURE);
-            }
-        }
-        else if (path == nullptr)
-        {
-            path = argv[arg];
-        }
-    }
-
-    // If the user cannot enter a file path, loads "script.lua"
-   return path;
+    SDL_Quit();
 }
 
 } // namespace lraspi
-
-int main(int argc, const char* argv[])
-{
-    // Check the arguments
-    const char* path = lraspi::checkargs(argc, argv);
-
-    // Create new virtual machine
-    lua_State *L = luaL_newstate();
-
-    // Load all libraries
-    luaL_openlibs(L);
-    lraspi::openlibs(L);
-
-    if (path == nullptr)
-    {
-        // Load the explorer
-        lraspi::explorer::load();
-
-        static int i = 0;
-        const char* file;
-
-        // Draw the explorer
-        do
-        {
-            lraspi::explorer::draw();
-            file = lraspi::explorer::update();
-
-            i++;
-            if (i == 60)
-            {
-                lua_getglobal(L, "collectgarbage");
-                lraspi::lua::call(L, 0, 0);
-                i = 0;
-            }
-        } while (!lraspi::screen::update() && file == nullptr);
-
-        lraspi::explorer::close();
-
-        // Enter the code
-        lraspi::dofile(L, file);
-    }
-    else
-    {
-        // Open the file
-        lraspi::dofile(L, path);
-    }
-
-    // Close all libraries
-    lraspi::closelibs(L);
-
-    return EXIT_SUCCESS;
-}
