@@ -6,7 +6,9 @@
 
 #include <SDL2/SDL_ttf.h>
 
-#include "common/exception.h"
+#include <iostream>
+
+#include "modules/common/exception.h"
 #include "modules/font/font.h"
 #include "modules/font/module.h"
 
@@ -16,33 +18,27 @@ namespace lraspi
 namespace font
 {
 
-static bool _loaded = false;
+bool _loaded = false;
 
 void init()
 {
     if (_loaded)
-    {
         throw Exception("Font submodule already loaded");
-    }
 
     if(TTF_Init() == -1)
-    {
         throw Exception("Could not initialize font subsytem (%s)", TTF_GetError());
-    }
+
+    _loaded = true;
 }
 
 Font* loadFont(const char* path, int size)
 {
-    Font* font = new Font();
-    font->load(path, size);
-    return font;
+    return new Font(path, size);
 }
 
 Font* createDefault(int size)
 {
-    Font* font = new Font();
-    font->create(size);
-    return font;
+    return new Font(size);
 }
 
 void close()

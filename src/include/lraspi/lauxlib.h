@@ -9,8 +9,8 @@
 
 #include <lua.hpp>
 
-#include "common/type.h"
-#include "common/object.h"
+#include "modules/common/type.h"
+#include "modules/common/object.h"
 
 namespace lraspi
 {

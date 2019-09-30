@@ -25,32 +25,6 @@
  */
 
 /***
- * Changes the blend mode of the image
- * @function setblendmode
- * @tparam image image A image object
- * @string mode The blend mode as the following values:
- * <ul>
- * <li><span class='parameter'>add</span> for additive blending</li>
- * <li><span class='parameter'>mod</span> for color modulation</li>
- * <li><span class='parameter'>blend</span> for alpha blending</li>
- * <li><span class='parameter'>none</span> for no blending</li>
- * </ul>
- */
-
-/***
- * Gets the current the blend mode of the image
- * @function getblendmode
- * @tparam image image A image object
- * @ŧreturn string The blend mode as the following values:
- * <ul>
- * <li><span class='parameter'>add</span> for additive blending</li>
- * <li><span class='parameter'>mod</span> for color modulation</li>
- * <li><span class='parameter'>blend</span> for alpha blending</li>
- * <li><span class='parameter'>none</span> for no blending</li>
- * </ul>
- */
-
-/***
  * Changes the alpha value of the image. <br>
  * The image must have an blend mode established
  * @function setalpha
@@ -143,66 +117,6 @@
  * @tparam image image A image object
  * @treturn boolean true if the image is flipped vertically
  * @treturn boolean true if the image if flipped horizontally
- */
-
-/***
- * Changes the color of the pixel in the image
- * @function setpixel
- * @tparam image image A image object
- * @int x The x-axis position of the pixel in the image
- * @int y The y-axis position of the pixel in the image
- * @tparam color color A color object
- */
-
-/***
- * Gets the color of the pixel in the image
- * @function getpixel
- * @tparam image image A image object
- * @int x The x-axis position of the pixel in the image
- * @int y The y-axis position of the pixel in the image
- * @treturn color A color object
- */
-
-/***
- * Sets the quality to render text
- * @function setquality
- * @tparam text text A text object
- * @string quality A string as the following values:
- * <ul>
- * <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- * <li><span class='parameter'>normal</span> for slow and smooth text</li>
- * </ul>
- */
-
-/***
- * Gets the quality to render text
- * @function getquality
- * @tparam text text A text object
- * @treturn string A string as the following values:
- * <ul>
- * <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- * <li><span class='parameter'>normal</span> for slow and smooth text</li>
- * </ul>
- */
-
-/***
- * Replaces the content of the text with a new value
- * @function set
- * @tparam text text A text object
- * @string textstring The new content
- */
-
-/***
- * Adds a new content to the rendered text
- * @function add
- * @tparam text text A text object
- * @string textstring The text to append
- */
-
-/***
- * Clears the content of the rendered text
- * @function clear
- * @tparam text text A text object
  */
 
 /***

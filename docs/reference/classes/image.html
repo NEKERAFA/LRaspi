@@ -38,7 +38,6 @@
 
 <h2>Classes</h2>
 <ul class="nowrap">
-  <li><a href="../classes/canvas.html">canvas</a></li>
   <li><a href="../classes/color.html">color</a></li>
   <li><a href="../classes/font.html">font</a></li>
   <li><strong>image</strong></li>
@@ -50,10 +49,12 @@
   <li><a href="../modules/Draw.html">Draw</a></li>
   <li><a href="../modules/Font.html">Font</a></li>
   <li><a href="../modules/Image.html">Image</a></li>
+  <li><a href="../modules/LRaspi.html">LRaspi</a></li>
   <li><a href="../modules/Screen.html">Screen</a></li>
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
+  <li><a href="../examples/draw.lua.html">draw.lua</a></li>
   <li><a href="../examples/font.lua.html">font.lua</a></li>
   <li><a href="../examples/image.lua.html">image.lua</a></li>
 </ul>
@@ -84,14 +85,6 @@
 	<tr>
 	<td class="name" nowrap><a href="#image:tintcolor">image:tintcolor (image)</a></td>
 	<td class="summary">Gets the color modulation of the image</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image:setblendmode">image:setblendmode (image, mode)</a></td>
-	<td class="summary">Changes the blend mode of the image</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image:getblendmode">image:getblendmode (image)</a></td>
-	<td class="summary">Gets the current the blend mode of the image</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#image:setalpha">image:setalpha (image, alpha)</a></td>
@@ -144,34 +137,6 @@
 	<tr>
 	<td class="name" nowrap><a href="#image:isflipped">image:isflipped (image)</a></td>
 	<td class="summary">Checks if the image is flipped</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image:setpixel">image:setpixel (image, x, y, color)</a></td>
-	<td class="summary">Changes the color of the pixel in the image</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image:getpixel">image:getpixel (image, x, y)</a></td>
-	<td class="summary">Gets the color of the pixel in the image</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image:setquality">image:setquality (text, quality)</a></td>
-	<td class="summary">Sets the quality to render text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image:getquality">image:getquality (text)</a></td>
-	<td class="summary">Gets the quality to render text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image:set">image:set (text, textstring)</a></td>
-	<td class="summary">Replaces the content of the text with a new value</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image:add">image:add (text, textstring)</a></td>
-	<td class="summary">Adds a new content to the rendered text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#image:clear">image:clear (text)</a></td>
-	<td class="summary">Clears the content of the rendered text</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#image:free">image:free (image)</a></td>
@@ -254,65 +219,6 @@
            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
         A color object
     </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image:setblendmode"></a>
-    <strong>image:setblendmode (image, mode)</strong>
-    </dt>
-    <dd>
-    Changes the blend mode of the image
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">image</span>
-            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
-         A image object
-        </li>
-        <li><span class="parameter">mode</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The blend mode as the following values:
- <ul>
- <li><span class='parameter'>add</span> for additive blending</li>
- <li><span class='parameter'>mod</span> for color modulation</li>
- <li><span class='parameter'>blend</span> for alpha blending</li>
- <li><span class='parameter'>none</span> for no blending</li>
- </ul>
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image:getblendmode"></a>
-    <strong>image:getblendmode (image)</strong>
-    </dt>
-    <dd>
-    Gets the current the blend mode of the image
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">image</span>
-            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
-         A image object
- @ŧreturn string The blend mode as the following values:
- <ul>
- <li><span class='parameter'>add</span> for additive blending</li>
- <li><span class='parameter'>mod</span> for color modulation</li>
- <li><span class='parameter'>blend</span> for alpha blending</li>
- <li><span class='parameter'>none</span> for no blending</li>
- </ul>
-        </li>
-    </ul>
-
 
 
 
@@ -661,205 +567,6 @@
 
 </dd>
     <dt>
-    <a name = "image:setpixel"></a>
-    <strong>image:setpixel (image, x, y, color)</strong>
-    </dt>
-    <dd>
-    Changes the color of the pixel in the image
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">image</span>
-            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
-         A image object
-        </li>
-        <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
-         The x-axis position of the pixel in the image
-        </li>
-        <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
-         The y-axis position of the pixel in the image
-        </li>
-        <li><span class="parameter">color</span>
-            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
-         A color object
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image:getpixel"></a>
-    <strong>image:getpixel (image, x, y)</strong>
-    </dt>
-    <dd>
-    Gets the color of the pixel in the image
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">image</span>
-            <span class="types"><a class="type" href="../classes/image.html#">image</a></span>
-         A image object
-        </li>
-        <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
-         The x-axis position of the pixel in the image
-        </li>
-        <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
-         The y-axis position of the pixel in the image
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
-        A color object
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image:setquality"></a>
-    <strong>image:setquality (text, quality)</strong>
-    </dt>
-    <dd>
-    Sets the quality to render text
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
-        </li>
-        <li><span class="parameter">quality</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         A string as the following values:
- <ul>
- <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- <li><span class='parameter'>normal</span> for slow and smooth text</li>
- </ul>
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image:getquality"></a>
-    <strong>image:getquality (text)</strong>
-    </dt>
-    <dd>
-    Gets the quality to render text
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         A string as the following values:
- <ul>
- <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- <li><span class='parameter'>normal</span> for slow and smooth text</li>
- </ul>
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image:set"></a>
-    <strong>image:set (text, textstring)</strong>
-    </dt>
-    <dd>
-    Replaces the content of the text with a new value
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
-        </li>
-        <li><span class="parameter">textstring</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The new content
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image:add"></a>
-    <strong>image:add (text, textstring)</strong>
-    </dt>
-    <dd>
-    Adds a new content to the rendered text
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
-        </li>
-        <li><span class="parameter">textstring</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The text to append
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "image:clear"></a>
-    <strong>image:clear (text)</strong>
-    </dt>
-    <dd>
-    Clears the content of the rendered text
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
     <a name = "image:free"></a>
     <strong>image:free (image)</strong>
     </dt>
@@ -887,7 +594,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-09-16 18:45:52 </i>
+<i style="float:right;">Last updated 2019-10-01 01:00:10 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

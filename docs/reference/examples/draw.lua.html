@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua Raspi</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+
+
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><strong>draw.lua</strong></li>
+  <li><a href="../examples/font.lua.html">font.lua</a></li>
+  <li><a href="../examples/image.lua.html">image.lua</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Color.html">Color</a></li>
+  <li><a href="../modules/Draw.html">Draw</a></li>
+  <li><a href="../modules/Font.html">Font</a></li>
+  <li><a href="../modules/Image.html">Image</a></li>
+  <li><a href="../modules/LRaspi.html">LRaspi</a></li>
+  <li><a href="../modules/Screen.html">Screen</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/color.html">color</a></li>
+  <li><a href="../classes/font.html">font</a></li>
+  <li><a href="../classes/image.html">image</a></li>
+  <li><a href="../classes/text.html">text</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+    <h2>draw.lua</h2>
+<pre>
+<span class="comment">-- Drawing example
+</span>
+<span class="comment">-- Loads the palette
+</span>colors = color.getpalette()
+
+arc = <span class="number">0</span>
+
+<span class="comment">-- This function draws all arcs types
+</span><span class="keyword">function</span> drawArcs(x, y)
+    draw.rectangle(<span class="string">'outline'</span>, x, y, <span class="number">180</span>, <span class="number">100</span>, colors.black)
+    screen.<span class="global">print</span>(x, y, <span class="string">"Mode: Outline, Type: Pie"</span>, colors.white)
+    draw.gradarc(<span class="string">'outline'</span>, <span class="string">'pie'</span>, x+<span class="number">75</span>, y+<span class="number">55</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="global">math</span>.rad(arc), colors.yellow, colors.green, <span class="number">16</span>)
+
+    draw.rectangle(<span class="string">'outline'</span>, x+<span class="number">190</span>, y, <span class="number">180</span>, <span class="number">100</span>, colors.black)
+    screen.<span class="global">print</span>(x+<span class="number">190</span>, y, <span class="string">"Mode: Outline, Type: Open"</span>, colors.white)
+    draw.gradarc(<span class="string">'outline'</span>, <span class="string">'open'</span>, x+<span class="number">75</span>+<span class="number">190</span>, y+<span class="number">55</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="global">math</span>.rad(arc), colors.blue, colors.violet, <span class="number">16</span>)
+
+    draw.rectangle(<span class="string">'outline'</span>, x+<span class="number">190</span>+<span class="number">190</span>, y, <span class="number">180</span>, <span class="number">100</span>, colors.black)
+    screen.<span class="global">print</span>(x+<span class="number">190</span>+<span class="number">190</span>, y, <span class="string">"Mode: Outline, Type: Closed"</span>, colors.white)
+    draw.gradarc(<span class="string">'outline'</span>, <span class="string">'closed'</span>, x+<span class="number">75</span>+<span class="number">190</span>+<span class="number">190</span>, y+<span class="number">55</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="global">math</span>.rad(arc), colors.red, colors.yellow, <span class="number">16</span>)
+
+    draw.rectangle(<span class="string">'outline'</span>, x, y+<span class="number">110</span>, <span class="number">180</span>, <span class="number">100</span>, colors.black)
+    screen.<span class="global">print</span>(x, y+<span class="number">110</span>, <span class="string">"Mode: Fill, Type: Pie"</span>, colors.white)
+    draw.gradarc(<span class="string">'fill'</span>, <span class="string">'pie'</span>, x+<span class="number">75</span>, y+<span class="number">55</span>+<span class="number">110</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="global">math</span>.rad(arc), colors.yellow, colors.green, <span class="number">16</span>)
+
+    draw.rectangle(<span class="string">'outline'</span>, x+<span class="number">190</span>, y+<span class="number">110</span>, <span class="number">180</span>, <span class="number">100</span>, colors.black)
+    screen.<span class="global">print</span>(x+<span class="number">190</span>, y+<span class="number">110</span>, <span class="string">"Mode: Fill, Type: Open"</span>, colors.white)
+    draw.gradarc(<span class="string">'fill'</span>, <span class="string">'open'</span>, x+<span class="number">75</span>+<span class="number">190</span>, y+<span class="number">55</span>+<span class="number">110</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="global">math</span>.rad(arc), colors.blue, colors.violet, <span class="number">16</span>)
+
+    draw.rectangle(<span class="string">'outline'</span>, x+<span class="number">190</span>+<span class="number">190</span>, y+<span class="number">110</span>, <span class="number">180</span>, <span class="number">100</span>, colors.black)
+    screen.<span class="global">print</span>(x+<span class="number">190</span>+<span class="number">190</span>, y+<span class="number">110</span>, <span class="string">"Mode: Fill, Type: Closed"</span>, colors.white)
+    draw.gradarc(<span class="string">'fill'</span>, <span class="string">'closed'</span>, x+<span class="number">75</span>+<span class="number">190</span>+<span class="number">190</span>, y+<span class="number">55</span>+<span class="number">110</span>, <span class="number">35</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="global">math</span>.rad(arc), colors.red, colors.yellow, <span class="number">16</span>)
+
+    arc = arc + <span class="number">1</span>
+    <span class="keyword">if</span> arc &gt; <span class="number">360</span> <span class="keyword">then</span>
+        arc = arc - <span class="number">360</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> caculateSecArrow(x, y, sec)
+    <span class="keyword">return</span> {
+        <span class="comment">-- Calculates the maximun position of the seconds arrow
+</span>        a = {
+            x = x + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">6</span>*t.sec - <span class="number">90</span>)) * <span class="number">100</span>,
+            y = y + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">6</span>*t.sec - <span class="number">90</span>)) * <span class="number">100</span>
+        },
+
+        <span class="comment">-- Calculates the base of the arrow
+</span>        b = {
+            x = x + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">6</span>*t.sec)) * <span class="number">5</span>,
+            y = y + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">6</span>*t.sec)) * <span class="number">5</span>
+        },
+
+        c = {
+            x = x + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">6</span>*t.sec + <span class="number">180</span>)) * <span class="number">5</span>,
+            y = y + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">6</span>*t.sec + <span class="number">180</span>)) * <span class="number">5</span>
+        }
+    }
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> caculateMinArrow(x, y, min, sec)
+    <span class="keyword">return</span> {
+        <span class="comment">-- Calculates the maximun position of the minutes arrow
+</span>        a = {
+            x = x + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">6</span>*t.min + <span class="number">0.1</span>*t.sec - <span class="number">90</span>)) * <span class="number">100</span>,
+            y = y + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">6</span>*t.min + <span class="number">0.1</span>*t.sec - <span class="number">90</span>)) * <span class="number">100</span>
+        },
+
+        <span class="comment">-- Calculates the base of the arrow
+</span>        b = {
+            x = x + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">6</span>*t.min + <span class="number">0.1</span>*t.sec)) * <span class="number">5</span>,
+            y = y + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">6</span>*t.min + <span class="number">0.1</span>*t.sec)) * <span class="number">5</span>
+        },
+
+        c = {
+            x = x + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">6</span>*t.min + <span class="number">0.1</span>*t.sec + <span class="number">180</span>)) * <span class="number">5</span>,
+            y = y + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">6</span>*t.min + <span class="number">0.1</span>*t.sec + <span class="number">180</span>)) * <span class="number">5</span>
+        }
+    }
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> caculateHourArrow(x, y, hour, min)
+    <span class="keyword">return</span> {
+        <span class="comment">-- Calculates the maximun position of the hours arrow
+</span>        a = {
+            x = x + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">30</span>*t.hour + <span class="number">0.5</span>*t.min - <span class="number">90</span>)) * <span class="number">50</span>,
+            y = y + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">30</span>*t.hour + <span class="number">0.5</span>*t.min - <span class="number">90</span>)) * <span class="number">50</span>
+        },
+
+        <span class="comment">-- Calculates the base of the arrow
+</span>        b = {
+            x = x + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">30</span>*t.hour + <span class="number">0.5</span>*t.min)) * <span class="number">5</span>,
+            y = y + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">30</span>*t.hour + <span class="number">0.5</span>*t.min)) * <span class="number">5</span>
+        },
+
+        c = {
+            x = x + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">30</span>*t.hour + <span class="number">0.5</span>*t.min + <span class="number">180</span>)) * <span class="number">5</span>,
+            y = y + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">30</span>*t.hour + <span class="number">0.5</span>*t.min + <span class="number">180</span>)) * <span class="number">5</span>
+        }
+    }
+<span class="keyword">end</span>
+
+<span class="comment">-- This functions draws a clock
+</span><span class="keyword">function</span> drawClock(x, y)
+    screen.<span class="global">print</span>(x, y, <span class="global">os</span>.date(), colors.white)
+    t = <span class="global">os</span>.date(<span class="string">"*t"</span>)
+
+    <span class="comment">-- Draws the background
+</span>    draw.gradellipse(<span class="string">'fill'</span>, x+<span class="number">100</span>, y+<span class="number">125</span>, <span class="number">100</span>, <span class="number">100</span>, colors.white, colors.gray, <span class="number">32</span>)
+
+    <span class="keyword">for</span> div = <span class="number">0</span>, <span class="number">60</span> <span class="keyword">do</span>
+        xmax = x+<span class="number">100</span> + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">6</span>*div - <span class="number">90</span>)) * <span class="number">100</span>
+        ymax = y+<span class="number">125</span> + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">6</span>*div - <span class="number">90</span>)) * <span class="number">100</span>
+
+        <span class="keyword">if</span> (div % <span class="number">5</span>) == <span class="number">0</span> <span class="keyword">then</span>
+            xmin = x+<span class="number">100</span> + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">6</span>*div - <span class="number">90</span>)) * <span class="number">90</span>
+            ymin = y+<span class="number">125</span> + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">6</span>*div - <span class="number">90</span>)) * <span class="number">90</span>
+
+            draw.line(xmin, ymin, xmax, ymax, colors.blue)
+        <span class="keyword">else</span>
+            xmin = x+<span class="number">100</span> + <span class="global">math</span>.cos(<span class="global">math</span>.rad(<span class="number">6</span>*div - <span class="number">90</span>)) * <span class="number">95</span>
+            ymin = y+<span class="number">125</span> + <span class="global">math</span>.sin(<span class="global">math</span>.rad(<span class="number">6</span>*div - <span class="number">90</span>)) * <span class="number">95</span>
+
+            draw.line(xmin, ymin, xmax, ymax, colors.red)
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    draw.ellipse(<span class="string">'outline'</span>, x+<span class="number">100</span>, y+<span class="number">125</span>, <span class="number">100</span>, <span class="number">100</span>, colors.black, <span class="number">32</span>)
+
+    <span class="comment">-- Draws seconds arrow
+</span>    secArrow = caculateSecArrow(x+<span class="number">100</span>, y+<span class="number">125</span>, t.sec)
+    draw.gradtriangle(<span class="string">'fill'</span>, secArrow.a.x, secArrow.a.y, secArrow.b.x, secArrow.b.y, secArrow.c.x, secArrow.c.y, colors.marron, colors.red, colors.red)
+
+    <span class="comment">-- Draws minutes arrow
+</span>    minArrow = caculateMinArrow(x+<span class="number">100</span>, y+<span class="number">125</span>, t.min, t.sec)
+    draw.triangle(<span class="string">'outline'</span>, minArrow.a.x, minArrow.a.y, minArrow.b.x, minArrow.b.y, minArrow.c.x, minArrow.c.y, colors.black)
+
+    <span class="comment">-- Draws hours arrow
+</span>    hourArrow = caculateHourArrow(x+<span class="number">100</span>, y+<span class="number">125</span>, t.hour, t.min)
+    draw.gradtriangle(<span class="string">'outline'</span>, hourArrow.a.x, hourArrow.a.y, hourArrow.b.x, hourArrow.b.y, hourArrow.c.x, hourArrow.c.y, colors.blue, colors.navy, colors.navy)
+
+    <span class="comment">-- Draws center circle
+</span>    draw.ellipse(<span class="string">'fill'</span>, x+<span class="number">100</span>, y+<span class="number">125</span>, <span class="number">5</span>, <span class="number">5</span>, colors.red, <span class="number">8</span>)
+    draw.ellipse(<span class="string">'outline'</span>, x+<span class="number">100</span>, y+<span class="number">125</span>, <span class="number">5</span>, <span class="number">5</span>, colors.black, <span class="number">8</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> main()
+    quit = <span class="keyword">false</span>
+    bg = color.new(<span class="number">32</span>, <span class="number">128</span>, <span class="number">255</span>)
+
+    <span class="keyword">while</span> <span class="keyword">not</span> quit <span class="keyword">do</span>
+        screen.clear(bg)
+        drawArcs(<span class="number">10</span>, <span class="number">10</span>)
+        draw.line(<span class="number">0</span>, <span class="number">230</span>, screen.getwidth(), <span class="number">230</span>, colors.white)
+        drawClock(<span class="number">10</span>, <span class="number">240</span>)
+        quit = screen.update()
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+main()</pre>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-10-01 01:00:10 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

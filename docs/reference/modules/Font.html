@@ -42,11 +42,11 @@
   <li><a href="../modules/Draw.html">Draw</a></li>
   <li><strong>Font</strong></li>
   <li><a href="../modules/Image.html">Image</a></li>
+  <li><a href="../modules/LRaspi.html">LRaspi</a></li>
   <li><a href="../modules/Screen.html">Screen</a></li>
 </ul>
 <h2>Classes</h2>
 <ul class="nowrap">
-  <li><a href="../classes/canvas.html">canvas</a></li>
   <li><a href="../classes/color.html">color</a></li>
   <li><a href="../classes/font.html">font</a></li>
   <li><a href="../classes/image.html">image</a></li>
@@ -54,6 +54,7 @@
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
+  <li><a href="../examples/draw.lua.html">draw.lua</a></li>
   <li><a href="../examples/font.lua.html">font.lua</a></li>
   <li><a href="../examples/image.lua.html">image.lua</a></li>
 </ul>
@@ -69,10 +70,6 @@
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
-	<tr>
-	<td class="name" nowrap><a href="#font.init">font.init ()</a></td>
-	<td class="summary">Initializes the font submodule.</td>
-	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#font.new">font.new (path[, size=12])</a></td>
 	<td class="summary">Loads a font from the disk onto the memory</td>
@@ -141,10 +138,6 @@
 	<td class="name" nowrap><a href="#font.free">font.free (font)</a></td>
 	<td class="summary">Destroys a font object</td>
 	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#font.close">font.close ()</a></td>
-	<td class="summary">Closes the font subsystem.</td>
-	</tr>
 </table>
 
 <br/>
@@ -154,21 +147,6 @@
     <h2 class="section-header "><a name="Functions"></a>Functions</h2>
 
     <dl class="function">
-    <dt>
-    <a name = "font.init"></a>
-    <strong>font.init ()</strong>
-    </dt>
-    <dd>
-    Initializes the font submodule.  <br>
- The interpreter calls this function internally, so you should not call explicitly.
-
-
-
-
-
-
-
-</dd>
     <dt>
     <a name = "font.new"></a>
     <strong>font.new (path[, size=12])</strong>
@@ -184,7 +162,7 @@
          The path of the font file
         </li>
         <li><span class="parameter">size</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The size of the font in pixels
          (<em>default</em> 12)
         </li>
@@ -212,7 +190,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">size</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The size of the font in pixels
          (<em>default</em> 12)
         </li>
@@ -248,7 +226,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The height of the font in pixels
     </ol>
 
@@ -279,7 +257,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The size in pixels of the resulting texture if the text was rendered using the font
     </ol>
 
@@ -307,7 +285,7 @@
          The text that will be wrapped
         </li>
         <li><span class="parameter">width</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The maximun width in pixels of each line
         </li>
     </ul>
@@ -408,7 +386,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The size of the outline in pixels
     </ol>
 
@@ -431,7 +409,7 @@
          A font object
         </li>
         <li><span class="parameter">size</span>
-            <span class="types"><span class="type">int</span></span>
+            <span class="types"><span class="type">number</span></span>
          The size of the outline in pixels
         </li>
     </ul>
@@ -491,7 +469,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The maximun ascent in pixels
     </ol>
 
@@ -518,7 +496,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The maximun descent in pixels
     </ol>
 
@@ -546,7 +524,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">int</span></span>
+           <span class="types"><span class="type">number</span></span>
         The maximun height of all glyphs in the font in pixels
     </ol>
 
@@ -654,21 +632,6 @@
 
 
 </dd>
-    <dt>
-    <a name = "font.close"></a>
-    <strong>font.close ()</strong>
-    </dt>
-    <dd>
-    Closes the font subsystem.  <br>
- The interpreter calls this function internally, so you should not call explicitly.
-
-
-
-
-
-
-
-</dd>
 </dl>
 
 
@@ -676,7 +639,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-09-16 18:45:52 </i>
+<i style="float:right;">Last updated 2019-10-01 01:00:10 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

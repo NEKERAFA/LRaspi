@@ -4,51 +4,105 @@
     See Copyright Notice in lraspi.h 
 */
 
-#include <cstdint>
+#include <iostream>
+#include <codecvt>
+#include <locale>
+#include <string>
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
+#include <GL/glu.h>
 
-#include "common/exception.h"
+#include "modules/common/exception.h"
+#include "modules/common/cache/chrcache.h"
 #include "modules/font/font.h"
 #include "modules/color/color.h"
-#include "modules/draw/canvas.h"
-#include "modules/draw/text.h"
+#include "modules/image/char.h"
 #include "modules/screen/module.h"
 
 namespace lraspi
 {
-namespace screen
+uint16_t _height = 0;
+uint16_t _width  = 0;
+bool     _loaded = false;
+
+std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> _converter;
+
+Font*   _default_font = nullptr;
+//Canvas* _current_canvas = nullptr;
+
+SDL_Window*   _sdl_window = nullptr;
+SDL_GLContext _sdl_gl_context;
+
+void init_video()
 {
+    // Starts video subsystem
+    if (SDL_Init(SDL_INIT_VIDEO) != 0)
+        throw Exception("Could not initialize video subsytem (%s)", SDL_GetError());
+}
 
-static uint16_t  _height = 0;
-static uint16_t  _width  = 0;
-static bool _loaded = false;
+void init_gl()
+{
+// Uses OpenGL 2.1
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
-static Font* _default_font;
-static Font* _current_font;
-static SDL_Window*   _sdl_window   = nullptr;
-static SDL_Renderer* _sdl_renderer = nullptr;
-static Canvas*       _default_canvas = nullptr;
-static Canvas*       _current_canvas = nullptr;
+    // Create window
+    _sdl_window = SDL_CreateWindow("lraspi", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, _width, _height, SDL_WINDOW_OPENGL | SDL_WINDOW_BORDERLESS | SDL_WINDOW_SHOWN);
 
-void init()
+    if (_sdl_window == nullptr)
+        throw Exception("Could not create window (%s)", SDL_GetError());
+
+    // Create OpenGL Context
+    _sdl_gl_context = SDL_GL_CreateContext(_sdl_window);
+
+    if (_sdl_gl_context == nullptr)
+        throw Exception("Could not create OpenGL context (%s)", SDL_GetError());
+
+    // Enables VSync
+    if (SDL_GL_SetSwapInterval(1) != 0)
+        std::cerr << "Warning: Could not enable vsync (%s)" << SDL_GetError() << std::endl;
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // Enables blend color
+    GLenum error = GL_NO_ERROR;
+
+    // Initialize Project Matrix
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0, _width, _height, 0);
+
+    error = glGetError();
+    if (error != GL_NO_ERROR)
+        throw Exception("Could not initializing OpenGL projection matrix (%s)", gluErrorString(error));
+
+    // Initialize ModelView Matrix
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    error = glGetError();
+    if (error != GL_NO_ERROR)
+        throw Exception("Could not initializing OpenGL model view matrix (%s)", gluErrorString(error));
+}
+
+void init_media()
+{
+    _default_font = new Font();
+    chrcache::setDefaultFont(_default_font);
+}
+
+void screen::init()
 {
     if (_loaded)
-    {
         throw Exception("Window submodule already loaded");
-    }
 
+    init_video();
+
+    // Gets display bounds
     SDL_Rect _display_bounds;
-
-    if (SDL_Init(SDL_INIT_VIDEO))
-    {
-        throw Exception("Could not initialize video subsytem (%s)", SDL_GetError());
-    }
-
     if (SDL_GetDisplayBounds(0, &_display_bounds))
-    {
         throw Exception("Could not get display bounds (%s)", SDL_GetError());
-    }
 
 #ifdef NDEBUG
     _width  = _display_bounds.w;
@@ -58,104 +112,115 @@ void init()
     _height = 480;
 #endif
 
-    if (SDL_CreateWindowAndRenderer(_width, _height, SDL_WINDOW_BORDERLESS | SDL_WINDOW_SHOWN, &_sdl_window, &_sdl_renderer))
-    {
-        throw Exception("Could not create window (%s)", SDL_GetError());
-    }
-
-    _default_font = new Font();
-    _default_font->create(LRASPI_FONT_SIZE);
-    _current_font = _default_font;
-
-    _default_canvas = new Canvas();
-    _default_canvas->create(_width, _height);
-    _current_canvas = _default_canvas;
+    init_gl();
+    init_media();
 
     _loaded = true;
 }
 
-void close()
+void screen::close()
 {
     if (!_loaded)
-    {
         throw Exception("Window submodule not loaded");
-    }
 
-    delete _default_canvas;
     delete _default_font;
-    SDL_DestroyRenderer(_sdl_renderer);
     SDL_DestroyWindow(_sdl_window);
 }
 
-void clear(Color* color)
+void screen::clear(Color* color)
 {
-    uint8_t r, g, b, a;
-    SDL_GetRenderDrawColor(_sdl_renderer, &r, &g, &b, &a);
-    SDL_SetRenderDrawColor(_sdl_renderer, color->red(), color->green(), color->blue(), color->alpha());
-    SDL_RenderClear(_sdl_renderer);
-    SDL_SetRenderDrawColor(_sdl_renderer, r, g, b, a);
+    // Sets the background color
+    glClearColor(color->rf(), color->gf(), color->bf(), color->af());
+    // Clears the buffers
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-SDL_Renderer* getRenderer()
+void screen::blit(float x, float y, Texture* texture)
 {
-    return _sdl_renderer;
+    int cx, cy;
+    texture->getCenter(&cx, &cy);
+
+    // Remove previus transformations
+    glPushMatrix();
+
+    // Move to rendering point
+    glTranslatef(x + cx, y + cy, 0.f);
+    glRotatef(texture->getAngle(), 0.f, 0.f, 1.f);
+
+    // Bind texture
+    glBindTexture(GL_TEXTURE_2D, texture->glIdTexture());
+
+    // Sets the tint color
+    glColor4f(texture->getTintColor()->rf(), texture->getTintColor()->gf(), texture->getTintColor()->bf(), texture->getTintColor()->af());
+
+    // Draw the texture
+    glEnable(GL_TEXTURE_2D);
+    glBegin(GL_QUADS);
+
+    glTexCoord2i(0, 0);
+    glVertex2f(-cx, -cy);
+    glTexCoord2i(1, 0);
+    glVertex2f(-cx + texture->getWidth(), -cy);
+    glTexCoord2i(1, 1);
+    glVertex2f(-cx + texture->getWidth(), -cy + texture->getHeight());
+    glTexCoord2i(0, 1);
+    glVertex2f(-cx, -cx + texture->getHeight());
+    
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
+
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR)
+        throw Exception("Could not render texture (%s)", gluErrorString(error));
+
+    glPopMatrix();
 }
 
-void setCanvas(Canvas* canvas)
+void screen::print(float x, float y, const char* textstring, Color* color)
 {
-    if (canvas != nullptr)
+    std::u16string u16textstring = _converter.from_bytes(textstring);
+    float dx = 0;
+    float dy = 0;
+
+    for (char16_t glyph : u16textstring)
     {
-        SDL_SetRenderTarget(_sdl_renderer, canvas->getSdlTexture());
-        _current_canvas = canvas;
+        if (glyph == '\n')
+        {
+            dx = 0;
+            dy = chrcache::getDefaultFont()->getHeight() * chrcache::getDefaultFont()->getLineHeight();
+        }
+        else if (glyph > 31)
+        {
+            Char* chr = chrcache::getChar(glyph);
+            Color* tint = chr->getTintColor();
+            chr->tint(color);
+            blit(x + dx, y + dy, chr);
+            chr->tint(tint);
+            dx += chr->getWidth();
+        }
     }
+}
+
+void screen::setFont(Font* font)
+{
+    if (font == nullptr)
+        chrcache::setDefaultFont(_default_font);
     else
-    {
-        SDL_SetRenderTarget(_sdl_renderer, _default_canvas->getSdlTexture());
-        _current_canvas = _default_canvas;
-    }
+        chrcache::setDefaultFont(font);
 }
 
-Canvas* getCanvas()
+Font* screen::getFont()
 {
-    return _current_canvas;
+    return chrcache::getDefaultFont();
 }
 
-void blit(Texture* texture, int x, int y)
-{
-    SDL_Texture* _sdl_texture = texture->getSdlTexture();
-    SDL_Rect _pos = {x, y, texture->getWidth(), texture->getHeight()};
-    double _angle = texture->getAngle();
-    SDL_Point _center = texture->getSdlCenterPoint();
-    SDL_RendererFlip _flip = texture->getSdlFlipStatus();
-
-    SDL_RenderCopyEx(_sdl_renderer, _sdl_texture, nullptr, &_pos, _angle, &_center, _flip);
-}
-
-void print(int x, int y, const char* textstring, Color* color)
-{
-    Text* text = new Text();
-    text->render(_current_font, textstring);
-    text->tint(color);
-    blit(text, x, y);
-    delete text;
-}
-
-void setFont(Font* font)
-{
-    _current_font = font;
-}
-
-Font* getFont()
-{
-    return _current_font;
-}
-
-bool update()
+bool screen::update()
 {
     bool quit = false;
     SDL_Event e;
 
-    while(SDL_PollEvent(&e) != 0)
+    // Updates all events
+    while (SDL_PollEvent(&e) != 0)
     {
         switch (e.type)
         {
@@ -170,26 +235,21 @@ bool update()
         }
     }
 
+    // Swap draw buffer to window buffer
     if (!quit)
-    {
-        SDL_SetRenderTarget(_sdl_renderer, nullptr);
-        SDL_RenderCopy(_sdl_renderer, _default_canvas->getSdlTexture(), nullptr, nullptr);
-        SDL_RenderPresent(_sdl_renderer);
-        SDL_SetRenderTarget(_sdl_renderer, _current_canvas->getSdlTexture());
-    }
+        SDL_GL_SwapWindow(_sdl_window);
 
     return quit;
 }
 
-uint16_t getWidth()
+uint16_t screen::getWidth()
 {
     return _width;
 }
 
-uint16_t getHeight()
+uint16_t screen::getHeight()
 {
     return _height;
 }
 
-} // namespace screen
 } // namespace lraspi

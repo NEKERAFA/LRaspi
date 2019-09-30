@@ -17,10 +17,10 @@
 /***
  * Create a new color
  * @function color.new
- * @int red The red channel value
- * @int blue The blue channel value
- * @int green The green channel value
- * @int[opt=0] alpha The alpha channel value
+ * @number red The red channel value
+ * @number blue The blue channel value
+ * @number green The green channel value
+ * @number[opt=0] alpha The alpha channel value
  * @treturn color A color object
  */
 
@@ -51,56 +51,56 @@
  * Gets the red channel value of the color
  * @function color.red
  * @tparam color color A color object
- * @treturn int The red value
+ * @treturn number The red value
  */
 
 /***
  * Sets the red channel value of the color
  * @function color.red
  * @tparam color color A color object
- * @int red The red value
+ * @number red The red value
  */
 
 /***
  * Gets the green channel value of the color
  * @function color.green
  * @tparam color color A color object
- * @treturn int The green value
+ * @treturn number The green value
  */
 
 /***
  * Sets the green channel value of the color
  * @function color.green
  * @tparam color color A color object
- * @int green The green value
+ * @number green The green value
  */
 
 /***
  * Gets the blue channel value of the color
  * @function color.blue
  * @tparam color color A color object
- * @treturn int The blue value
+ * @treturn number The blue value
  */
 
 /***
  * Sets the blue channel value of the color
  * @function color.blue
  * @tparam color color A color object
- * @int blue The blue value
+ * @number blue The blue value
  */
 
 /***
  * Gets the alpha channel value of the color
  * @function color.alpha
  * @tparam color color A color object
- * @treturn int The alpha value
+ * @treturn number The alpha value
  */
 
 /***
  * Sets the alpha channel value of the color
  * @function color.alpha
  * @tparam color color A color object
- * @int alpha The alpha value
+ * @number alpha The alpha value
  */
 
 /***

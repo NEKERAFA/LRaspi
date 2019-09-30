@@ -10,7 +10,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <lua.hpp>
 
-#include "common/exception.h"
+#include "modules/common/exception.h"
 #include "modules/font/font.h"
 #include "modules/font/module.h"
 
@@ -39,12 +39,10 @@ int lraspi_font_new(lua_State* L)
     int argc = lua_gettop(L);
     
     const char* path = luaL_checkstring(L, 1);
-    lua_Integer size = LRASPI_FONT_SIZE;
+    int size = LRASPI_FONT_SIZE;
 
     if (argc == 2)
-    {
-        size = luaL_checkinteger(L, 2);
-    }
+        size = luaL_checknumber(L, 2);
 
     try
     {
@@ -62,13 +60,10 @@ int lraspi_font_new(lua_State* L)
 int lraspi_font_new_default(lua_State* L)
 {
     int argc = lua_gettop(L);
-
-    lua_Integer size = LRASPI_FONT_SIZE;
+    int size = LRASPI_FONT_SIZE;
 
     if (argc == 1)
-    {
-        size = luaL_checkinteger(L, 1);
-    }
+        size = luaL_checknumber(L, 1);
 
     try
     {
@@ -86,7 +81,7 @@ int lraspi_font_new_default(lua_State* L)
 int lraspi_font_get_height(lua_State* L)
 {
     lraspi::Font* font = static_cast<lraspi::Font*>(lraspi::lua::check(L, lraspi::Font::type, 1));
-    lua_Integer height = font->getHeight();
+    int height = font->getHeight();
     lua_pushinteger(L, height);
     
     return 1;
@@ -99,7 +94,7 @@ int lraspi_font_get_width(lua_State* L)
 
     try
     {
-        lua_Integer width = font->getWidth(text);
+        int width = font->getWidth(text);
         lua_pushinteger(L, width);
     }
     catch(lraspi::Exception e)
@@ -114,7 +109,7 @@ int lraspi_font_wrap(lua_State* L)
 {
     lraspi::Font* font = static_cast<lraspi::Font*>(lraspi::lua::check(L, lraspi::Font::type, 1));
     const char* text = luaL_checkstring(L, 2);
-    lua_Integer width = luaL_checkinteger(L, 3);
+    int width = luaL_checknumber(L, 3);
 
     try
     {
@@ -151,26 +146,31 @@ int lraspi_font_set_style(lua_State* L)
     // font.style(fnt, {...})
     else if (lua_istable(L, 2))
     {
+        lua_pushvalue(L, 2); // stack = {tbl, ...}
+        lua_pushnil(L);      // stack = {nil, tbl, ...}
+
         int style = 0;
 
-        while (lua_next(L, 2))
+        while (lua_next(L, -2))
         {
-            if (lua_isstring(L, -1))
+            lua_pushvalue(L, -2); // stack = {key, value, key, tbl, ...}
+
+            if (lua_isstring(L, -2))
             {
-                const char* style_mod = lua_tostring(L, -1);
-                if (std::strcmp(style_mod, "italic")  == 0)
+                const char* style_mod = lua_tostring(L, -2);
+                if (std::strcmp(style_mod, "italic") == 0)
                 {
                     style |= TTF_STYLE_ITALIC;
                 }
-                else if (std::strcmp(style_mod, "bold")  == 0)
+                else if (std::strcmp(style_mod, "bold") == 0)
                 {
                     style |= TTF_STYLE_BOLD;
                 }
-                else if (std::strcmp(style_mod, "underline")  == 0)
+                else if (std::strcmp(style_mod, "underline") == 0)
                 {
                     style |= TTF_STYLE_UNDERLINE;
                 }
-                else if (std::strcmp(style_mod, "strikethrough")  == 0)
+                else if (std::strcmp(style_mod, "strikethrough") == 0)
                 {
                     style |= TTF_STYLE_STRIKETHROUGH;
                 }
@@ -187,9 +187,10 @@ int lraspi_font_set_style(lua_State* L)
                 return luaL_argerror(L, 2, msg);
             }
             
-            lua_remove(L, -1);
+            lua_pop(L, 2); // stack = {key, tbl, ...}
         }
-        lua_remove(L, -2);
+
+        lua_pop(L, 1); // stack = {tbl, ...}
 
         font->setStyle(style);
     }
@@ -246,7 +247,7 @@ int lraspi_font_get_style(lua_State* L)
 int lraspi_font_get_outline(lua_State* L)
 {
     lraspi::Font* font = static_cast<lraspi::Font*>(lraspi::lua::check(L, lraspi::Font::type, 1));
-    lua_Integer outline = font->getOutline();
+    int outline = font->getOutline();
     lua_pushinteger(L, outline);
 
     return 1;
@@ -255,7 +256,7 @@ int lraspi_font_get_outline(lua_State* L)
 int lraspi_font_set_outline(lua_State* L)
 {
     lraspi::Font* font = static_cast<lraspi::Font*>(lraspi::lua::check(L, lraspi::Font::type, 1));
-    lua_Integer outline = luaL_checkinteger(L, 2);
+    int outline = luaL_checknumber(L, 2);
     font->setOutline(outline);
 
     return 0;

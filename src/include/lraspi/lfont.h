@@ -15,23 +15,17 @@
  */
 
 /***
- * Initializes the font submodule. <br>
- * The interpreter calls this function internally, so you should not call explicitly.
- * @function font.init
- */
-
-/***
  * Loads a font from the disk onto the memory
  * @function font.new
  * @string path The path of the font file
- * @int[opt=12] size The size of the font in pixels
+ * @number[opt=12] size The size of the font in pixels
  * @treturn font A font object
  */
 
 /***
  * Create a font using the default font (DejaVu) with a custom size
  * @function font.newdefault
- * @int[opt=12] size The size of the font in pixels
+ * @number[opt=12] size The size of the font in pixels
  * @treturn font A font object
  */
 
@@ -39,7 +33,7 @@
  * Get the maximun height of the font
  * @function font.getheight
  * @tparam font font A font object
- * @treturn int The height of the font in pixels
+ * @treturn number The height of the font in pixels
  */
 
 /***
@@ -47,7 +41,7 @@
  * @function font.getwidth
  * @tparam font font A font object
  * @string text The string to calculate the font
- * @treturn int The size in pixels of the resulting texture if the text was rendered using the font
+ * @treturn number The size in pixels of the resulting texture if the text was rendered using the font
  */
 
 /***
@@ -56,7 +50,7 @@
  * @function font.wrap
  * @tparam font font A font object
  * @string text The text that will be wrapped
- * @int width The maximun width in pixels of each line
+ * @number width The maximun width in pixels of each line
  * @treturn string The text wrapped
  */
 
@@ -91,14 +85,14 @@
  * Sets the outline size of the font
  * @function font.outline
  * @tparam font font A font object
- * @treturn int The size of the outline in pixels
+ * @treturn number The size of the outline in pixels
  */
 
 /***
  * Gets the outline size of the font
  * @function font.outline
  * @tparam font font A font object
- * @int size The size of the outline in pixels
+ * @number size The size of the outline in pixels
  */
 
 /***
@@ -118,14 +112,14 @@
  * Gets the maximun ascent size of all glyphs of the font
  * @function font.ascent
  * @tparam font font A font object
- * @treturn int The maximun ascent in pixels
+ * @treturn number The maximun ascent in pixels
  */
 
 /***
  * Gets the maximun descent size of all glyphs of the font
  * @function font.descent
  * @tparam font font A font object
- * @treturn int The maximun descent in pixels
+ * @treturn number The maximun descent in pixels
  */
 
 /***
@@ -133,7 +127,7 @@
  * This value is usually larger than the font height
  * @function font.lineskip
  * @tparam font font A font object
- * @treturn int The maximun height of all glyphs in the font in pixels
+ * @treturn number The maximun height of all glyphs in the font in pixels
  */
 
 /***
@@ -162,12 +156,6 @@
  * Destroys a font object
  * @function font.free
  * @tparam font font A font object
- */
-
-/***
- * Closes the font subsystem. <br>
- * The interpreter calls this function internally, so you should not call explicitly.
- * @function font.close
  */
 
 extern "C" {

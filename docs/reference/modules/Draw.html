@@ -42,11 +42,11 @@
   <li><strong>Draw</strong></li>
   <li><a href="../modules/Font.html">Font</a></li>
   <li><a href="../modules/Image.html">Image</a></li>
+  <li><a href="../modules/LRaspi.html">LRaspi</a></li>
   <li><a href="../modules/Screen.html">Screen</a></li>
 </ul>
 <h2>Classes</h2>
 <ul class="nowrap">
-  <li><a href="../classes/canvas.html">canvas</a></li>
   <li><a href="../classes/color.html">color</a></li>
   <li><a href="../classes/font.html">font</a></li>
   <li><a href="../classes/image.html">image</a></li>
@@ -54,6 +54,7 @@
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
+  <li><a href="../examples/draw.lua.html">draw.lua</a></li>
   <li><a href="../examples/font.lua.html">font.lua</a></li>
   <li><a href="../examples/image.lua.html">image.lua</a></li>
 </ul>
@@ -70,116 +71,48 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#draw.newcanvas">draw.newcanvas (width, height)</a></td>
-	<td class="summary">Creates new canvas</td>
+	<td class="name" nowrap><a href="#draw.point">draw.point (x, y, color)</a></td>
+	<td class="summary">Draws a point</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.newtext">draw.newtext (font, text)</a></td>
-	<td class="summary">Creates new text</td>
+	<td class="name" nowrap><a href="#draw.line">draw.line (x1, y1, x2, y2, color)</a></td>
+	<td class="summary">Draws a line</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.reset">draw.reset (texture)</a></td>
-	<td class="summary">Resets the internal values (rotation, flip, resize, &hellip;) of the texture</td>
+	<td class="name" nowrap><a href="#draw.gradline">draw.gradline (x1, y1, x2, y2, color1, color2)</a></td>
+	<td class="summary">Draws a line with gradient effect</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.tint">draw.tint (texture, color)</a></td>
-	<td class="summary">Changes the color modulation of the texture</td>
+	<td class="name" nowrap><a href="#draw.triangle">draw.triangle (mode, x1, y1, x2, y2, x3, y4, color)</a></td>
+	<td class="summary">Draws a triangle</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.tintcolor">draw.tintcolor (texture)</a></td>
-	<td class="summary">Gets the color modulation of the texture</td>
+	<td class="name" nowrap><a href="#draw.gradtriangle">draw.gradtriangle (mode, x1, y1, x2, y2, x3, y4, color1, color2, color3)</a></td>
+	<td class="summary">Draws a triangle with gradient effect</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.setblendmode">draw.setblendmode (texture, mode)</a></td>
-	<td class="summary">Changes the blend mode of the texture</td>
+	<td class="name" nowrap><a href="#draw.rectangle">draw.rectangle (mode, x, y, w, h, color)</a></td>
+	<td class="summary">Draws a rectangle</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.getblendmode">draw.getblendmode (texture)</a></td>
-	<td class="summary">Gets the current the blend mode of the texture</td>
+	<td class="name" nowrap><a href="#draw.gradrectangle">draw.gradrectangle (mode, x, y, w, h, color1, color2, color3, color4)</a></td>
+	<td class="summary">Draws a rectangle with gradient effect</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.setalpha">draw.setalpha (texture, alpha)</a></td>
-	<td class="summary">Changes the alpha value of the texture.</td>
+	<td class="name" nowrap><a href="#draw.ellipse">draw.ellipse (mode, x, y, radiusx, radiusy, color, segments)</a></td>
+	<td class="summary">Draws an ellipse</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.getalpha">draw.getalpha (texture)</a></td>
-	<td class="summary">Gets the current alpha value of the texture.</td>
+	<td class="name" nowrap><a href="#draw.gradellipse">draw.gradellipse (mode, x, y, radiusx, radiusy, color1, color2, segments)</a></td>
+	<td class="summary">Draws an ellipse with gradient effect</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.getwidth">draw.getwidth (texture)</a></td>
-	<td class="summary">Gets the current width dimension of the texture</td>
+	<td class="name" nowrap><a href="#draw.arc">draw.arc (mode, type, x, y, radiusx, radiusy, angle1, angle2, color, segments)</a></td>
+	<td class="summary">Draws an ellipse arc</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#draw.getheight">draw.getheight (texture)</a></td>
-	<td class="summary">Gets the current height dimension of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.getrealwidth">draw.getrealwidth (texture)</a></td>
-	<td class="summary">Gets the real width dimension of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.getrealheight">draw.getrealheight (texture)</a></td>
-	<td class="summary">Gets the real width dimension of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.resize">draw.resize (texture, width, height)</a></td>
-	<td class="summary">Resizes the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.rotate">draw.rotate (texture, angle)</a></td>
-	<td class="summary">Rotates the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.setcenter">draw.setcenter (texture, x, y)</a></td>
-	<td class="summary">Sets the center of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.getcenter">draw.getcenter (texture)</a></td>
-	<td class="summary">Gets the center of the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.vflip">draw.vflip (texture)</a></td>
-	<td class="summary">Flips a texture vertically</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.hflip">draw.hflip (texture)</a></td>
-	<td class="summary">Flips a texture horizontally</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.isflipped">draw.isflipped (texture)</a></td>
-	<td class="summary">Checks if the texture is flipped</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.setpixel">draw.setpixel (texture, x, y, color)</a></td>
-	<td class="summary">Changes the color of the pixel in the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.getpixel">draw.getpixel (texture, x, y)</a></td>
-	<td class="summary">Gets the color of the pixel in the texture</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.setquality">draw.setquality (text, quality)</a></td>
-	<td class="summary">Sets the quality to render text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.getquality">draw.getquality (text)</a></td>
-	<td class="summary">Gets the quality to render text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.set">draw.set (text, textstring)</a></td>
-	<td class="summary">Replaces the content of the text with a new value</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.add">draw.add (text, textstring)</a></td>
-	<td class="summary">Adds a new content to the rendered text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.clear">draw.clear (text)</a></td>
-	<td class="summary">Clears the content of the rendered text</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#draw.free">draw.free (texture)</a></td>
-	<td class="summary">Destroys a texture object</td>
+	<td class="name" nowrap><a href="#draw.gradarc">draw.gradarc (mode, type, x, y, radiusx, radiusy, angle1, angle2, color1, color2, segments)</a></td>
+	<td class="summary">Draws an ellipse arc with gradient effect</td>
 	</tr>
 </table>
 
@@ -191,105 +124,26 @@
 
     <dl class="function">
     <dt>
-    <a name = "draw.newcanvas"></a>
-    <strong>draw.newcanvas (width, height)</strong>
+    <a name = "draw.point"></a>
+    <strong>draw.point (x, y, color)</strong>
     </dt>
     <dd>
-    Creates new canvas
+    Draws a point
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">width</span>
-            <span class="types"><span class="type">int</span></span>
-         The width of the new canvas
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the point
         </li>
-        <li><span class="parameter">height</span>
-            <span class="types"><span class="type">int</span></span>
-         The height of the new canvas
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../classes/canvas.html#">canvas</a></span>
-        A new canvas objext
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.newtext"></a>
-    <strong>draw.newtext (font, text)</strong>
-    </dt>
-    <dd>
-    Creates new text
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">font</span>
-            <span class="types"><a class="type" href="../classes/font.html#">font</a></span>
-         A font object
-        </li>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The text to render
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-        A new text objext
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.reset"></a>
-    <strong>draw.reset (texture)</strong>
-    </dt>
-    <dd>
-    Resets the internal values (rotation, flip, resize, &hellip;) of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.tint"></a>
-    <strong>draw.tint (texture, color)</strong>
-    </dt>
-    <dd>
-    Changes the color modulation of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the point
         </li>
         <li><span class="parameter">color</span>
             <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
-         A color object
+         The color of the point
         </li>
     </ul>
 
@@ -299,458 +153,128 @@
 
 </dd>
     <dt>
-    <a name = "draw.tintcolor"></a>
-    <strong>draw.tintcolor (texture)</strong>
+    <a name = "draw.line"></a>
+    <strong>draw.line (x1, y1, x2, y2, color)</strong>
     </dt>
     <dd>
-    Gets the color modulation of the texture
+    Draws a line
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
+        <li><span class="parameter">x1</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the initial point
+        </li>
+        <li><span class="parameter">y1</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the initial point
+        </li>
+        <li><span class="parameter">x2</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the final point
+        </li>
+        <li><span class="parameter">y2</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the final point
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color of the line
         </li>
     </ul>
 
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
-        A color object
-    </ol>
 
 
 
 
 </dd>
     <dt>
-    <a name = "draw.setblendmode"></a>
-    <strong>draw.setblendmode (texture, mode)</strong>
+    <a name = "draw.gradline"></a>
+    <strong>draw.gradline (x1, y1, x2, y2, color1, color2)</strong>
     </dt>
     <dd>
-    Changes the blend mode of the texture
+    Draws a line with gradient effect
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
+        <li><span class="parameter">x1</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the initial point
         </li>
+        <li><span class="parameter">y1</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the initial point
+        </li>
+        <li><span class="parameter">x2</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the final point
+        </li>
+        <li><span class="parameter">y2</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the final point
+        </li>
+        <li><span class="parameter">color1</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The initial color of the line
+        </li>
+        <li><span class="parameter">color2</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The final color of the line
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw.triangle"></a>
+    <strong>draw.triangle (mode, x1, y1, x2, y2, x3, y4, color)</strong>
+    </dt>
+    <dd>
+    Draws a triangle
+
+
+    <h3>Parameters:</h3>
+    <ul>
         <li><span class="parameter">mode</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The blend mode as the following values:
+         A string that controls whether shapes are draw, as the following values:
  <ul>
- <li><span class='parameter'>add</span> for additive blending</li>
- <li><span class='parameter'>mod</span> for color modulation</li>
- <li><span class='parameter'>blend</span> for alpha blending</li>
- <li><span class='parameter'>none</span> for no blending</li>
+ <li><span class='parameter'>fill</span> for draw filled shape</li>
+ <li><span class='parameter'>outline</span> for draw outlined shape</li>
  </ul>
         </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.getblendmode"></a>
-    <strong>draw.getblendmode (texture)</strong>
-    </dt>
-    <dd>
-    Gets the current the blend mode of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
- @ŧreturn string The blend mode as the following values:
- <ul>
- <li><span class='parameter'>add</span> for additive blending</li>
- <li><span class='parameter'>mod</span> for color modulation</li>
- <li><span class='parameter'>blend</span> for alpha blending</li>
- <li><span class='parameter'>none</span> for no blending</li>
- </ul>
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.setalpha"></a>
-    <strong>draw.setalpha (texture, alpha)</strong>
-    </dt>
-    <dd>
-    Changes the alpha value of the texture.  <br>
- The texture must have an blend mode established
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-        <li><span class="parameter">alpha</span>
-            <span class="types"><span class="type">int</span></span>
-         The alpha value
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.getalpha"></a>
-    <strong>draw.getalpha (texture)</strong>
-    </dt>
-    <dd>
-    Gets the current alpha value of the texture.  <br>
- The texture must have an blend mode established
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
- @ŧreturn int The alpha value
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.getwidth"></a>
-    <strong>draw.getwidth (texture)</strong>
-    </dt>
-    <dd>
-    Gets the current width dimension of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The current width dimension in pixels
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.getheight"></a>
-    <strong>draw.getheight (texture)</strong>
-    </dt>
-    <dd>
-    Gets the current height dimension of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The current height dimension in pixels
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.getrealwidth"></a>
-    <strong>draw.getrealwidth (texture)</strong>
-    </dt>
-    <dd>
-    Gets the real width dimension of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The real width dimension in pixels
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.getrealheight"></a>
-    <strong>draw.getrealheight (texture)</strong>
-    </dt>
-    <dd>
-    Gets the real width dimension of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">int</span></span>
-        The real width dimension in pixels
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.resize"></a>
-    <strong>draw.resize (texture, width, height)</strong>
-    </dt>
-    <dd>
-    Resizes the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-        <li><span class="parameter">width</span>
-            <span class="types"><span class="type">int</span></span>
-         The new width dimension in pixels
-        </li>
-        <li><span class="parameter">height</span>
-            <span class="types"><span class="type">int</span></span>
-         The new height dimension in pixels
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.rotate"></a>
-    <strong>draw.rotate (texture, angle)</strong>
-    </dt>
-    <dd>
-    Rotates the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-        <li><span class="parameter">angle</span>
+        <li><span class="parameter">x1</span>
             <span class="types"><span class="type">number</span></span>
-         The angle in degrees
+         The x-axis position of the initial point
         </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.setcenter"></a>
-    <strong>draw.setcenter (texture, x, y)</strong>
-    </dt>
-    <dd>
-    Sets the center of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
+        <li><span class="parameter">y1</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the initial point
         </li>
-        <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
-         The x-axis position of the center
+        <li><span class="parameter">x2</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the medium point
         </li>
-        <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
-         The y-axis position of the center
+        <li><span class="parameter">y2</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the medium point
         </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.getcenter"></a>
-    <strong>draw.getcenter (texture)</strong>
-    </dt>
-    <dd>
-    Gets the center of the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
+        <li><span class="parameter">x3</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the final point
         </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-        <li>
-           <span class="types"><span class="type">int</span></span>
-        The x-axis position of the center</li>
-        <li>
-           <span class="types"><span class="type">int</span></span>
-        The y-axis position of the center</li>
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.vflip"></a>
-    <strong>draw.vflip (texture)</strong>
-    </dt>
-    <dd>
-    Flips a texture vertically
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.hflip"></a>
-    <strong>draw.hflip (texture)</strong>
-    </dt>
-    <dd>
-    Flips a texture horizontally
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.isflipped"></a>
-    <strong>draw.isflipped (texture)</strong>
-    </dt>
-    <dd>
-    Checks if the texture is flipped
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-        <li>
-           <span class="types"><span class="type">boolean</span></span>
-        true if the texture is flipped vertically</li>
-        <li>
-           <span class="types"><span class="type">boolean</span></span>
-        true if the texture if flipped horizontally</li>
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.setpixel"></a>
-    <strong>draw.setpixel (texture, x, y, color)</strong>
-    </dt>
-    <dd>
-    Changes the color of the pixel in the texture
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
-        </li>
-        <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
-         The x-axis position of the pixel in the texture
-        </li>
-        <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
-         The y-axis position of the pixel in the texture
+        <li><span class="parameter">y4</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the final point
         </li>
         <li><span class="parameter">color</span>
             <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
-         A color object
+         The color of the triangle
         </li>
     </ul>
 
@@ -760,62 +284,161 @@
 
 </dd>
     <dt>
-    <a name = "draw.getpixel"></a>
-    <strong>draw.getpixel (texture, x, y)</strong>
+    <a name = "draw.gradtriangle"></a>
+    <strong>draw.gradtriangle (mode, x1, y1, x2, y2, x3, y4, color1, color2, color3)</strong>
     </dt>
     <dd>
-    Gets the color of the pixel in the texture
+    Draws a triangle with gradient effect
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         A string that controls whether shapes are draw, as the following values:
+ <ul>
+ <li><span class='parameter'>fill</span> for draw filled shape</li>
+ <li><span class='parameter'>outline</span> for draw outlined shape</li>
+ </ul>
+        </li>
+        <li><span class="parameter">x1</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the initial point
+        </li>
+        <li><span class="parameter">y1</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the initial point
+        </li>
+        <li><span class="parameter">x2</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the medium point
+        </li>
+        <li><span class="parameter">y2</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the medium point
+        </li>
+        <li><span class="parameter">x3</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the final point
+        </li>
+        <li><span class="parameter">y4</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the final point
+        </li>
+        <li><span class="parameter">color1</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the initial point
+        </li>
+        <li><span class="parameter">color2</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the medium point
+        </li>
+        <li><span class="parameter">color3</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the final point
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw.rectangle"></a>
+    <strong>draw.rectangle (mode, x, y, w, h, color)</strong>
+    </dt>
+    <dd>
+    Draws a rectangle
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         A string that controls whether shapes are draw, as the following values:
+ <ul>
+ <li><span class='parameter'>fill</span> for draw filled shape</li>
+ <li><span class='parameter'>outline</span> for draw outlined shape</li>
+ </ul>
         </li>
         <li><span class="parameter">x</span>
-            <span class="types"><span class="type">int</span></span>
-         The x-axis position of the pixel in the texture
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the top left point
         </li>
         <li><span class="parameter">y</span>
-            <span class="types"><span class="type">int</span></span>
-         The y-axis position of the pixel in the texture
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the top left point
+        </li>
+        <li><span class="parameter">w</span>
+            <span class="types"><span class="type">number</span></span>
+         The width of the rectangle
+        </li>
+        <li><span class="parameter">h</span>
+            <span class="types"><span class="type">number</span></span>
+         The height of the rectangle
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color of the rectangle
         </li>
     </ul>
 
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
-        A color object
-    </ol>
 
 
 
 
 </dd>
     <dt>
-    <a name = "draw.setquality"></a>
-    <strong>draw.setquality (text, quality)</strong>
+    <a name = "draw.gradrectangle"></a>
+    <strong>draw.gradrectangle (mode, x, y, w, h, color1, color2, color3, color4)</strong>
     </dt>
     <dd>
-    Sets the quality to render text
+    Draws a rectangle with gradient effect
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
-        </li>
-        <li><span class="parameter">quality</span>
+        <li><span class="parameter">mode</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         A string as the following values:
+         A string that controls whether shapes are draw, as the following values:
  <ul>
- <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- <li><span class='parameter'>normal</span> for slow and smooth text</li>
+ <li><span class='parameter'>fill</span> for draw filled shape</li>
+ <li><span class='parameter'>outline</span> for draw outlined shape</li>
  </ul>
         </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         The x-axis position of the top left point
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         The y-axis position of the top left point
+        </li>
+        <li><span class="parameter">w</span>
+            <span class="types"><span class="type">number</span></span>
+         The width of the rectangle
+        </li>
+        <li><span class="parameter">h</span>
+            <span class="types"><span class="type">number</span></span>
+         The height of the rectangle
+        </li>
+        <li><span class="parameter">color1</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the top left point
+        </li>
+        <li><span class="parameter">color2</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the top right point
+        </li>
+        <li><span class="parameter">color3</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the bottom right point
+        </li>
+        <li><span class="parameter">color4</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the bottom left point
+        </li>
     </ul>
 
 
@@ -824,53 +447,99 @@
 
 </dd>
     <dt>
-    <a name = "draw.getquality"></a>
-    <strong>draw.getquality (text)</strong>
+    <a name = "draw.ellipse"></a>
+    <strong>draw.ellipse (mode, x, y, radiusx, radiusy, color, segments)</strong>
     </dt>
     <dd>
-    Gets the quality to render text
+    Draws an ellipse
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         A string as the following values:
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         A string that controls whether shapes are draw, as the following values:
  <ul>
- <li><span class='parameter'>fast</span> for fast and not smooth text</li>
- <li><span class='parameter'>normal</span> for slow and smooth text</li>
+ <li><span class='parameter'>fill</span> for draw filled shape</li>
+ <li><span class='parameter'>outline</span> for draw outlined shape</li>
  </ul>
-    </ol>
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         The position of the center along the x-axis
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         The position of the center along the y-axis
+        </li>
+        <li><span class="parameter">radiusx</span>
+            <span class="types"><span class="type">number</span></span>
+         The radius of the ellipse along the x-axis (a half of the ellipse width)
+        </li>
+        <li><span class="parameter">radiusy</span>
+            <span class="types"><span class="type">number</span></span>
+         The radius of the ellipse along the y-axis (a half of the ellipse height)
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color of the ellipse
+        </li>
+        <li><span class="parameter">segments</span>
+            <span class="types"><span class="type">number</span></span>
+         The number of segments used for drawing the ellipse
+        </li>
+    </ul>
+
 
 
 
 
 </dd>
     <dt>
-    <a name = "draw.set"></a>
-    <strong>draw.set (text, textstring)</strong>
+    <a name = "draw.gradellipse"></a>
+    <strong>draw.gradellipse (mode, x, y, radiusx, radiusy, color1, color2, segments)</strong>
     </dt>
     <dd>
-    Replaces the content of the text with a new value
+    Draws an ellipse with gradient effect
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
-        </li>
-        <li><span class="parameter">textstring</span>
+        <li><span class="parameter">mode</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The new content
+         A string that controls whether shapes are draw, as the following values:
+ <ul>
+ <li><span class='parameter'>fill</span> for draw filled shape</li>
+ <li><span class='parameter'>outline</span> for draw outlined shape</li>
+ </ul>
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         The position of the center along the x-axis
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         The position of the center along the y-axis
+        </li>
+        <li><span class="parameter">radiusx</span>
+            <span class="types"><span class="type">number</span></span>
+         The radius of the ellipse along the x-axis (a half of the ellipse width)
+        </li>
+        <li><span class="parameter">radiusy</span>
+            <span class="types"><span class="type">number</span></span>
+         The radius of the ellipse along the y-axis (a half of the ellipse height)
+        </li>
+        <li><span class="parameter">color1</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the center of the ellipse
+        </li>
+        <li><span class="parameter">color2</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the border of the ellipse
+        </li>
+        <li><span class="parameter">segments</span>
+            <span class="types"><span class="type">number</span></span>
+         The number of segments used for drawing the ellipse
         </li>
     </ul>
 
@@ -880,22 +549,63 @@
 
 </dd>
     <dt>
-    <a name = "draw.add"></a>
-    <strong>draw.add (text, textstring)</strong>
+    <a name = "draw.arc"></a>
+    <strong>draw.arc (mode, type, x, y, radiusx, radiusy, angle1, angle2, color, segments)</strong>
     </dt>
     <dd>
-    Adds a new content to the rendered text
+    Draws an ellipse arc
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
-        </li>
-        <li><span class="parameter">textstring</span>
+        <li><span class="parameter">mode</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
-         The text to append
+         A string that controls whether shapes are draw, as the following values:
+ <ul>
+ <li><span class='parameter'>fill</span> for draw filled shape</li>
+ <li><span class='parameter'>outline</span> for draw outlined shape</li>
+ </ul>
+        </li>
+        <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         A string that controls the type of arc, as the following values:
+ <ul>
+ <li><span class='parameter'>pie</span> for draw the arc as a slice of pie, connecting the end-points with the center</li>
+ <li><span class='parameter'>open</span> for draw the arc without the end-points unconnected</li>
+ <li><span class='parameter'>closed</span> for draw the arc with the end-points connected to each other</li>
+ </ul>
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         The position of the center along the x-axis
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         The position of the center along the y-axis
+        </li>
+        <li><span class="parameter">radiusx</span>
+            <span class="types"><span class="type">number</span></span>
+         The radius of the ellipse along the x-axis (a half of the ellipse width)
+        </li>
+        <li><span class="parameter">radiusy</span>
+            <span class="types"><span class="type">number</span></span>
+         The radius of the ellipse along the y-axis (a half of the ellipse height)
+        </li>
+        <li><span class="parameter">angle1</span>
+            <span class="types"><span class="type">number</span></span>
+         The angle at which the arc starts
+        </li>
+        <li><span class="parameter">angle2</span>
+            <span class="types"><span class="type">number</span></span>
+         The angle at which the arc ends
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color of the arc
+        </li>
+        <li><span class="parameter">segments</span>
+            <span class="types"><span class="type">number</span></span>
+         The number of segments used for drawing the arc
         </li>
     </ul>
 
@@ -905,39 +615,67 @@
 
 </dd>
     <dt>
-    <a name = "draw.clear"></a>
-    <strong>draw.clear (text)</strong>
+    <a name = "draw.gradarc"></a>
+    <strong>draw.gradarc (mode, type, x, y, radiusx, radiusy, angle1, angle2, color1, color2, segments)</strong>
     </dt>
     <dd>
-    Clears the content of the rendered text
+    Draws an ellipse arc with gradient effect
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="../classes/text.html#">text</a></span>
-         A text object
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         A string that controls whether shapes are draw, as the following values:
+ <ul>
+ <li><span class='parameter'>fill</span> for draw filled shape</li>
+ <li><span class='parameter'>outline</span> for draw outlined shape</li>
+ </ul>
         </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "draw.free"></a>
-    <strong>draw.free (texture)</strong>
-    </dt>
-    <dd>
-    Destroys a texture object
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">texture</span>
-            <span class="types"><span class="type">texture</span></span>
-         A texture object
+        <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         A string that controls the type of arc, as the following values:
+ <ul>
+ <li><span class='parameter'>pie</span> for draw the arc as a slice of pie, connecting the end-points with the center</li>
+ <li><span class='parameter'>open</span> for draw the arc without the end-points unconnected</li>
+ <li><span class='parameter'>closed</span> for draw the arc with the end-points connected to each other</li>
+ </ul>
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         The position of the center along the x-axis
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         The position of the center along the y-axis
+        </li>
+        <li><span class="parameter">radiusx</span>
+            <span class="types"><span class="type">number</span></span>
+         The radius of the ellipse along the x-axis (a half of the ellipse width)
+        </li>
+        <li><span class="parameter">radiusy</span>
+            <span class="types"><span class="type">number</span></span>
+         The radius of the ellipse along the y-axis (a half of the ellipse height)
+        </li>
+        <li><span class="parameter">angle1</span>
+            <span class="types"><span class="type">number</span></span>
+         The angle at which the arc starts
+        </li>
+        <li><span class="parameter">angle2</span>
+            <span class="types"><span class="type">number</span></span>
+         The angle at which the arc ends
+        </li>
+        <li><span class="parameter">color1</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the center of the arc
+        </li>
+        <li><span class="parameter">color2</span>
+            <span class="types"><a class="type" href="../classes/color.html#">color</a></span>
+         The color in the border of the arc
+        </li>
+        <li><span class="parameter">segments</span>
+            <span class="types"><span class="type">number</span></span>
+         The number of segments used for drawing the arc
         </li>
     </ul>
 
@@ -953,7 +691,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-09-16 18:45:52 </i>
+<i style="float:right;">Last updated 2019-10-01 01:00:10 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

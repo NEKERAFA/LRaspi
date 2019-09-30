@@ -13,7 +13,7 @@
 
 #include "modules/font/font.h"
 #include "modules/color/color.h"
-#include "modules/draw/canvas.h"
+#include "modules/image/texture.h"
 
 namespace lraspi
 {
@@ -39,34 +39,13 @@ void close();
 void clear(Color* color);
 
 /**
- * @brief Get the render context object
- * 
- * @return A SDL_Renderer object
- */
-SDL_Renderer* getRenderer();
-
-/**
- * @brief Set a canvas as a target to blit
- * 
- * @param canvas A lraspi::Canvas to set the render
- */
-void setCanvas(Canvas* canvas);
-
-/**
- * @brief Get the current canvas
- * 
- * @return A lraspi::Canvas object
- */
-Canvas* getCanvas();
-
-/**
  * @brief Blit a texture object in the screen
  * 
- * @param texture The texture to blit
  * @param x The x-axis position to draw the texture
  * @param y The y-axis position to draw the texture
+ * @param texture The texture to blit
  */
-void blit(Texture* texture, int x, int y);
+void blit(float x, float y, Texture* texture);
 
 /**
  * @brief Print a text in the screen
@@ -76,7 +55,7 @@ void blit(Texture* texture, int x, int y);
  * @param textstring The string to print
  * @param color A lraspi::Color object
  */
-void print(int x, int y, const char* textstring, Color* color);
+void print(float x, float y, const char* textstring, Color* color);
 
 /**
  * @brief Set the default font

@@ -8,9 +8,7 @@
 
 #include <lua.hpp>
 
-#include "common/exception.h"
-#include "modules/draw/canvas.h"
-#include "modules/draw/text.h"
+#include "modules/common/exception.h"
 #include "modules/draw/module.h"
 
 #include "lraspi/lauxlib.h"
@@ -18,330 +16,257 @@
 
 extern "C" {
 
-int lraspi_draw_new_canvas(lua_State* L)
+int lraspi_draw_point(lua_State* L)
 {
-    lua_Integer width = luaL_checkinteger(L, 1);
-    lua_Integer height = luaL_checkinteger(L, 2);
-
-    try
-    {
-        lraspi::Canvas* canvas = lraspi::draw::newCanvas(width, height);
-        lraspi::lua::push(L, canvas);
-    }
-    catch (lraspi::Exception& e)
-    {
-        return luaL_error(L, e.what());
-    }
-
-    return 1;
-}
-
-int lraspi_draw_new_text(lua_State* L)
-{
-    lraspi::Font* font = static_cast<lraspi::Font*>(lraspi::lua::check(L, lraspi::Font::type, 1));
-    const char* str = luaL_checkstring(L, 2);
-
-    try
-    {
-        lraspi::Text* text = lraspi::draw::newText(font, str);
-        lraspi::lua::push(L, text);
-    }
-    catch (lraspi::Exception e)
-    {
-        return luaL_error(L, e.what());
-    }
-
-    return 1;
-}
-
-int lraspi_draw_reset(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    texture->reset();
+    float x = luaL_checknumber(L, 1);
+    float y = luaL_checknumber(L, 2);
+    lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 3));
+    lraspi::draw::point(x, y, color);
 
     return 0;
 }
 
-int lraspi_draw_tint(lua_State* L)
+int lraspi_draw_line(lua_State* L)
 {
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 2));
-    texture->tint(color);
+    float x1 = luaL_checknumber(L, 1);
+    float y1 = luaL_checknumber(L, 2);
+    float x2 = luaL_checknumber(L, 3);
+    float y2 = luaL_checknumber(L, 4);
+    lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 5));
+    lraspi::draw::line(x1, y1, x2, y2, color);
 
     return 0;
 }
 
-int lraspi_draw_tint_color(lua_State* L)
+int lraspi_draw_grad_line(lua_State* L)
 {
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lraspi::lua::push(L, texture->getTintColor());
-
-    return 1;
-}
-
-int lraspi_draw_set_blend_mode(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    const char* mode = luaL_checkstring(L, 2);
-
-    if (std::strcmp(mode, "add") == 0) {
-        texture->setSdlBlendMode(SDL_BLENDMODE_ADD);
-    }
-    else if (std::strcmp(mode, "mod") == 0)
-    {
-        texture->setSdlBlendMode(SDL_BLENDMODE_MOD);
-    }
-    else if (std::strcmp(mode, "blend") == 0)
-    {
-        texture->setSdlBlendMode(SDL_BLENDMODE_BLEND);
-    }
-    else if (std::strcmp(mode, "none") == 0)
-    {
-        texture->setSdlBlendMode(SDL_BLENDMODE_NONE);
-    }
-    else
-    {
-        const char* msg = lua_pushfstring(L, "must be `add', `mod', `blend' or `none'");
-        return luaL_argerror(L, 2, msg);
-    }
+    float x1 = luaL_checknumber(L, 1);
+    float y1 = luaL_checknumber(L, 2);
+    float x2 = luaL_checknumber(L, 3);
+    float y2 = luaL_checknumber(L, 4);
+    lraspi::Color* color1 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 5));
+    lraspi::Color* color2 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 6));
+    lraspi::draw::gradLine(x1, y1, x2, y2, color1, color2);
 
     return 0;
 }
 
-int lraspi_draw_get_blend_mode(lua_State* L)
+lraspi::draw::DrawMode lraspi_draw_get_draw_mode(const char* mode)
 {
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    const char* mode = luaL_checkstring(L, 2);
-
-    if (texture->getSdlBlendMode() == SDL_BLENDMODE_ADD)
-        lua_pushliteral(L, "add");
-    else if (texture->getSdlBlendMode() == SDL_BLENDMODE_MOD)
-        lua_pushliteral(L, "mod");
-    else if (texture->getSdlBlendMode() == SDL_BLENDMODE_BLEND)
-        lua_pushliteral(L, "blend");
-    else if (texture->getSdlBlendMode() == SDL_BLENDMODE_NONE)
-        lua_pushliteral(L, "none");
-
-    return 1;
-}
-
-int lraspi_draw_set_alpha(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lua_Integer alpha = luaL_checkinteger(L, 2);
-    texture->setAlpha(alpha);
-
-    return 0;
-}
-
-int lraspi_draw_get_alpha(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lua_pushinteger(L, texture->getAlpha());
-
-    return 1;
-}
-
-int lraspi_draw_get_width(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lua_Integer width = texture->getWidth();
-    lua_pushinteger(L, width);
-
-    return 1;
-}
-
-int lraspi_draw_get_height(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lua_Integer height = texture->getHeight();
-    lua_pushinteger(L, height);
-
-    return 1;
-}
-
-int lraspi_draw_get_real_width(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lua_Integer width = texture->getRealWidth();
-    lua_pushinteger(L, width);
-
-    return 1;   
-}
-
-int lraspi_draw_get_real_height(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lua_Integer height = texture->getRealHeight();
-    lua_pushinteger(L, height);
-
-    return 1;
-}
-
-int lraspi_draw_resize(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    int width = luaL_checkinteger(L, 2);
-    int height = luaL_checkinteger(L, 3);
-    texture->setWidth(width);
-    texture->setHeight(height);
-
-    return 0;
-}
-
-int lraspi_draw_rotate(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lua_Number angle = luaL_checknumber(L, 2);
-    texture->setAngle(angle);
-
-    return 0;
-}
-
-int lraspi_draw_set_center(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    lua_Integer x = luaL_checkinteger(L, 2);
-    lua_Integer y = luaL_checkinteger(L, 3);
-    texture->setCenter(x, y);
-
-    return 0;
-}
-
-int lraspi_draw_get_center(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    SDL_Point point = texture->getSdlCenterPoint();
-    lua_pushinteger(L, point.x);
-    lua_pushinteger(L, point.y);
-
-    return 2;
-}
-
-int lraspi_draw_v_flip(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    texture->setVFlip();
-
-    return 0;
-}
-
-int lraspi_draw_h_flip(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    texture->setHFlip();
-
-    return 0;
-}
-
-int lraspi_draw_is_flipped(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    SDL_RendererFlip flip = texture->getSdlFlipStatus();
-    lua_pushboolean(L, flip & SDL_FLIP_VERTICAL);
-    lua_pushboolean(L, flip & SDL_FLIP_HORIZONTAL);
-
-    return 2;
-}
-
-int lraspi_draw_set_pixel(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
+    if (std::strcmp(mode, "fill") == 0)
+        return lraspi::draw::FILL;
     
-    try
+    if (std::strcmp(mode, "outline") == 0)
+        return lraspi::draw::OUTLINE;
+
+    return lraspi::draw::MODE_NONE;
+}
+
+int lraspi_draw_triangle(lua_State* L)
+{
+    const char* strmode = luaL_checkstring(L, 1);
+    lraspi::draw::DrawMode mode = lraspi_draw_get_draw_mode(strmode);
+    if (mode == lraspi::draw::MODE_NONE)
     {
-        lua_Integer x = luaL_checkinteger(L, 2);
-        lua_Integer y = luaL_checkinteger(L, 3);
-        lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 4));
-        texture->setPixel(x, y, color);
+        const char* msg = lua_pushfstring(L, "must be `fill' or `outline'");
+        luaL_argerror(L, 1, msg);
     }
-    catch (lraspi::Exception& e)
-    {
-        return luaL_error(L, e.what());
-    }
+
+    int x1 = luaL_checknumber(L, 2);
+    int y1 = luaL_checknumber(L, 3);
+    int x2 = luaL_checknumber(L, 4);
+    int y2 = luaL_checknumber(L, 5);
+    int x3 = luaL_checknumber(L, 6);
+    int y3 = luaL_checknumber(L, 7);
+    lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 8));
+    lraspi::draw::triangle(mode, x1, y1, x2, y2, x3, y3, color);
 
     return 0;
 }
 
-int lraspi_draw_get_pixel(lua_State* L)
+int lraspi_draw_grad_triangle(lua_State* L)
 {
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
+    const char* strmode = luaL_checkstring(L, 1);
+    lraspi::draw::DrawMode mode = lraspi_draw_get_draw_mode(strmode);
+    if (mode == lraspi::draw::MODE_NONE)
+    {
+        const char* msg = lua_pushfstring(L, "must be `fill' or `outline'");
+        luaL_argerror(L, 1, msg);
+    }
+
+    int x1 = luaL_checknumber(L, 2);
+    int y1 = luaL_checknumber(L, 3);
+    int x2 = luaL_checknumber(L, 4);
+    int y2 = luaL_checknumber(L, 5);
+    int x3 = luaL_checknumber(L, 6);
+    int y3 = luaL_checknumber(L, 7);
+    lraspi::Color* color1 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 8));
+    lraspi::Color* color2 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 9));
+    lraspi::Color* color3 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 10));
+    lraspi::draw::gradTriangle(mode, x1, y1, x2, y2, x3, y3, color1, color2, color3);
+
+    return 0;
+}
+
+int lraspi_draw_rectangle(lua_State* L)
+{
+    const char* strmode = luaL_checkstring(L, 1);
+    lraspi::draw::DrawMode mode = lraspi_draw_get_draw_mode(strmode);
+    if (mode == lraspi::draw::MODE_NONE)
+    {
+        const char* msg = lua_pushfstring(L, "must be `fill' or `outline'");
+        luaL_argerror(L, 1, msg);
+    }
+
+    int x = luaL_checknumber(L, 2);
+    int y = luaL_checknumber(L, 3);
+    int w = luaL_checknumber(L, 4);
+    int h = luaL_checknumber(L, 5);
+    lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 6));
+    lraspi::draw::rectangle(mode, x, y, w, h, color);
+
+    return 0;
+}
+
+int lraspi_draw_grad_rectangle(lua_State* L)
+{
+    const char* strmode = luaL_checkstring(L, 1);
+    lraspi::draw::DrawMode mode = lraspi_draw_get_draw_mode(strmode);
+    if (mode == lraspi::draw::MODE_NONE)
+    {
+        const char* msg = lua_pushfstring(L, "must be `fill' or `outline'");
+        luaL_argerror(L, 1, msg);
+    }
+
+    int x = luaL_checknumber(L, 2);
+    int y = luaL_checknumber(L, 3);
+    int w = luaL_checknumber(L, 4);
+    int h = luaL_checknumber(L, 5);
+    lraspi::Color* color1 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 6));
+    lraspi::Color* color2 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 7));
+    lraspi::Color* color3 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 8));
+    lraspi::Color* color4 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 9));
+    lraspi::draw::gradRectangle(mode, x, y, w, h, color1, color2, color3, color4);
+
+    return 0;
+}
+
+int lraspi_draw_ellipse(lua_State* L)
+{
+    const char* strmode = luaL_checkstring(L, 1);
+    lraspi::draw::DrawMode mode = lraspi_draw_get_draw_mode(strmode);
+    if (mode == lraspi::draw::MODE_NONE)
+    {
+        const char* msg = lua_pushfstring(L, "must be `fill' or `outline'");
+        luaL_argerror(L, 1, msg);
+    }
+
+    int x = luaL_checknumber(L, 2);
+    int y = luaL_checknumber(L, 3);
+    double rx = luaL_checknumber(L, 4);
+    double ry = luaL_checknumber(L, 5);
+    lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 6));
+    int segments = luaL_checknumber(L, 7);
+    lraspi::draw::ellipse(mode, x, y, rx, ry, color, segments);
+
+    return 0;
+}
+
+int lraspi_draw_grad_ellipse(lua_State* L)
+{
+    const char* strmode = luaL_checkstring(L, 1);
+    lraspi::draw::DrawMode mode = lraspi_draw_get_draw_mode(strmode);
+    if (mode == lraspi::draw::MODE_NONE)
+    {
+        const char* msg = lua_pushfstring(L, "must be `fill' or `outline'");
+        luaL_argerror(L, 1, msg);
+    }
+
+    int x = luaL_checknumber(L, 2);
+    int y = luaL_checknumber(L, 3);
+    double rx = luaL_checknumber(L, 4);
+    double ry = luaL_checknumber(L, 5);
+    lraspi::Color* color1 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 6));
+    lraspi::Color* color2 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 7));
+    int segments = luaL_checknumber(L, 8);
+    lraspi::draw::gradEllipse(mode, x, y, rx, ry, color1, color2, segments);
+
+    return 0;
+}
+
+lraspi::draw::ArcType lraspi_draw_get_arc_type(const char* type)
+{
+    if (std::strcmp(type, "pie") == 0)
+        return lraspi::draw::PIE;
     
-    lua_Integer x = luaL_checkinteger(L, 2);
-    lua_Integer y = luaL_checkinteger(L, 3);
-    lraspi::Color* color = texture->getPixel(x, y);
-    lraspi::lua::push(L, color);
-
-    return 1;
-}
-
-int lraspi_draw_set_quality(lua_State* L)
-{
-    lraspi::Text* text = static_cast<lraspi::Text*>(lraspi::lua::check(L, lraspi::Text::type, 1));
-    const char* quality = luaL_checkstring(L, 2);
-
-    if (std::strcmp(quality, "fast") == 0)
-    {
-        text->setQuality(lraspi::TextQuality::FAST);
-    }
-    else if (std::strcmp(quality, "normal") == 0)
-    {
-        text->setQuality(lraspi::TextQuality::NORMAL);
-    }
-    else
-    {
-        const char* msg = lua_pushfstring(L, "must be `fast' or `normal'");
-        return luaL_argerror(L, 2, msg);
-    }
-
-    return 0;
-}
-
-int lraspi_draw_get_quality(lua_State* L)
-{
-    lraspi::Text* text = static_cast<lraspi::Text*>(lraspi::lua::check(L, lraspi::Text::type, 1));
-
-    switch (text->getQuality())
-    {
-    case lraspi::TextQuality::FAST:
-        lua_pushliteral(L, "fast");
-        break;
-    case lraspi::TextQuality::NORMAL:
-        lua_pushliteral(L, "normal");
-        break;
-    }
+    if (std::strcmp(type, "open") == 0)
+        return lraspi::draw::OPEN;
     
-    return 1;
+    if (std::strcmp(type, "closed") == 0)
+        return lraspi::draw::CLOSED;
+
+    return lraspi::draw::TYPE_NONE;
 }
 
-int lraspi_draw_set(lua_State* L)
+int lraspi_draw_arc(lua_State* L)
 {
-    lraspi::Text* text = static_cast<lraspi::Text*>(lraspi::lua::check(L, lraspi::Text::type, 1));
-    const char* str = luaL_checkstring(L, 2);
-    text->setText(str);
+    const char* strmode = luaL_checkstring(L, 1);
+    lraspi::draw::DrawMode mode = lraspi_draw_get_draw_mode(strmode);
+    if (mode == lraspi::draw::MODE_NONE)
+    {
+        const char* msg = lua_pushfstring(L, "must be `fill' or `outline'");
+        luaL_argerror(L, 1, msg);
+    }
+
+    const char* strtype = luaL_checkstring(L, 2);
+    lraspi::draw::ArcType type = lraspi_draw_get_arc_type(strtype);
+    if (type == lraspi::draw::TYPE_NONE)
+    {
+        const char* msg = lua_pushfstring(L, "must be `pie', `open' or `closed'");
+        luaL_argerror(L, 2, msg);
+    }
+
+    int x = luaL_checknumber(L, 3);
+    int y = luaL_checknumber(L, 4);
+    double rx = luaL_checknumber(L, 5);
+    double ry = luaL_checknumber(L, 6);
+    double angle1 = luaL_checknumber(L, 7);
+    double angle2 = luaL_checknumber(L, 8);
+    lraspi::Color* color = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 9));
+    int segments = luaL_checknumber(L, 10);
+    lraspi::draw::arc(mode, type, x, y, rx, ry, angle1, angle2, color, segments);
+
     return 0;
 }
 
-int lraspi_draw_add(lua_State* L)
+int lraspi_draw_grad_arc(lua_State* L)
 {
-    lraspi::Text* text = static_cast<lraspi::Text*>(lraspi::lua::check(L, lraspi::Text::type, 1));
-    const char* str = luaL_checkstring(L, 2);
-    text->addText(str);
-    return 0;    
-}
+    const char* strmode = luaL_checkstring(L, 1);
+    lraspi::draw::DrawMode mode = lraspi_draw_get_draw_mode(strmode);
+    if (mode == lraspi::draw::MODE_NONE)
+    {
+        const char* msg = lua_pushfstring(L, "must be `fill' or `outline'");
+        luaL_argerror(L, 1, msg);
+    }
 
-int lraspi_draw_clear(lua_State* L)
-{
-    lraspi::Text* text = static_cast<lraspi::Text*>(lraspi::lua::check(L, lraspi::Text::type, 1));
-    const char* str = luaL_checkstring(L, 2);
-    text->clear();
-    return 0;    
-}
+    const char* strtype = luaL_checkstring(L, 2);
+    lraspi::draw::ArcType type = lraspi_draw_get_arc_type(strtype);
+    if (type == lraspi::draw::TYPE_NONE)
+    {
+        const char* msg = lua_pushfstring(L, "must be `pie', `open' or `closed'");
+        luaL_argerror(L, 2, msg);
+    }
 
-int lraspi_draw_free(lua_State* L)
-{
-    lraspi::Texture* texture = static_cast<lraspi::Texture*>(lraspi::lua::check(L, lraspi::Texture::type, 1));
-    delete texture;
+    int x = luaL_checknumber(L, 3);
+    int y = luaL_checknumber(L, 4);
+    double rx = luaL_checknumber(L, 5);
+    double ry = luaL_checknumber(L, 6);
+    double angle1 = luaL_checknumber(L, 7);
+    double angle2 = luaL_checknumber(L, 8);
+    lraspi::Color* color1 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 9));
+    lraspi::Color* color2 = static_cast<lraspi::Color*>(lraspi::lua::check(L, lraspi::Color::type, 10));
+    int segments = luaL_checknumber(L, 11);
+    lraspi::draw::gradArc(mode, type, x, y, rx, ry, angle1, angle2, color1, color2, segments);
 
     return 0;
 }
@@ -349,29 +274,17 @@ int lraspi_draw_free(lua_State* L)
 // Draw module functions
 static const luaL_Reg lraspi_draw_functions[] =
 {
-    {"newcanvas",     lraspi_draw_new_canvas},
-    {"newtext",       lraspi_draw_new_text},
-    {"reset",         lraspi_draw_reset},
-    {"tint",          lraspi_draw_tint},
-    {"tintcolor",     lraspi_draw_tint_color},
-    {"getalpha",      lraspi_draw_get_alpha},
-    {"setalpha",      lraspi_draw_set_alpha},
-    {"rotate",        lraspi_draw_rotate},
-    {"getcenter",     lraspi_draw_get_center},
-    {"setcenter",     lraspi_draw_set_center},
-    {"vflip",         lraspi_draw_v_flip},
-    {"hflip",         lraspi_draw_h_flip},
-    {"isflipped",     lraspi_draw_is_flipped},
-    {"getwidth",      lraspi_draw_get_width},
-    {"getheight",     lraspi_draw_get_height},
-    {"getrealwidth",  lraspi_draw_get_real_width},
-    {"getrealheight", lraspi_draw_get_real_height},
-    {"resize",        lraspi_draw_resize},
-    {"getblendmode",  lraspi_draw_get_blend_mode},
-    {"setblendmode",  lraspi_draw_set_blend_mode},
-    {"getpixel",      lraspi_draw_get_pixel},
-    {"setpixel",      lraspi_draw_set_pixel},
-    {"free",          lraspi_draw_free},
+    {"point",         lraspi_draw_point},
+    {"gradline",      lraspi_draw_grad_line},
+    {"line",          lraspi_draw_line},
+    {"triangle",      lraspi_draw_triangle},
+    {"gradtriangle",  lraspi_draw_grad_triangle},
+    {"rectangle",     lraspi_draw_rectangle},
+    {"gradrectangle", lraspi_draw_grad_rectangle},
+    {"ellipse",       lraspi_draw_ellipse},
+    {"gradellipse",   lraspi_draw_grad_ellipse},
+    {"arc",           lraspi_draw_arc},
+    {"gradarc",       lraspi_draw_grad_arc},
     {0, 0}
 };
 

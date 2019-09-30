@@ -1,5 +1,5 @@
 /**
- * Lua Raspi 2019.0 (v0.0.1)
+ * Lua Raspi 2019.0 (0.0.4)
  * Copyright (c) 2019 Rafael Alcalde Azpiazu
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,12 +26,12 @@
 #ifndef LRASPI_H
 #define LRASPI_H
 
-#define LRASPI_VERSION "0.0.3"
+#define LRASPI_VERSION "0.0.4"
 
 #ifdef NDEBUG
-#define LRASPI_RES_FOLDER "usr/local/share/lraspi"
+#define LRASPI_RES_FOLDER "/usr/local/share/lraspi"
 #else
-#define LRASPI_RES_FOLDER "./res/"
+#define LRASPI_RES_FOLDER "res"
 #endif
 
 #include <lua.hpp>

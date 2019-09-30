@@ -19,7 +19,7 @@
 #include <sys/stat.h>
 
 #include "lraspi.h"
-#include "common/exception.h"
+#include "modules/common/exception.h"
 #include "modules/color/color.h"
 #include "modules/color/module.h"
 #include "modules/image/image.h"
@@ -36,13 +36,10 @@ namespace explorer
 {
 
 Image*   _logo = nullptr;
-Text*    _title = nullptr;
+Color*   _color_bg = nullptr;
+Color*   _color_bottom = nullptr;
 Color*   _color_title = nullptr;
 Font*    _default_font = nullptr;
-
-SDL_Renderer* _sdl_renderer = nullptr;
-
-SDL_Rect _explorer_bg;
 
 char _str_time[32] = "";
 
@@ -77,26 +74,9 @@ void loadlogo()
         exit(EXIT_FAILURE);
     }
 
-    _logo->setSdlBlendMode(SDL_BLENDMODE_BLEND);
     _logo->setAlpha(100);
     _logo->setWidth(256);
     _logo->setHeight(256);
-}
-
-void rendertitle()
-{
-    try
-    {
-        // Render title text
-        _title = draw::newText(_default_font, "Lua Raspi");
-        _title->setQuality(TextQuality::NORMAL);
-        _title->tint(_color_title);
-    }
-    catch(lraspi::Exception e)
-    {
-        std::cerr << e.what() << std::endl;
-        exit(EXIT_FAILURE);
-    }
 }
 
 void listdir()
@@ -138,23 +118,22 @@ void listdir()
 void load()
 {
     _color_title = new Color(32, 32, 32);
-    _sdl_renderer = screen::getRenderer();
+    _color_bg = new Color(128, 128, 128, 128);
+    _color_bottom = new Color(200, 200, 200);
     _screen_width = screen::getWidth();
     _screen_height = screen::getHeight();
     _default_font = screen::getFont();
     _selector_width = _default_font->getWidth(">");
-    _explorer_bg = {40, 60, _screen_width - 80, _screen_height - 100};
 
     loadlogo();
-    rendertitle();
 
     _logo_x = ((double) (_screen_width-_logo->getWidth()))/2;
     _logo_y = ((double) (_screen_height-_logo->getHeight()))/2;
 
     listdir();
 
-    _page_max = (_file_list.size()*(_default_font->getHeight()+2)) / (_explorer_bg.h-40);
-    _item_per_page = (_explorer_bg.h-40) / (_default_font->getHeight()+2);
+    _page_max = (_file_list.size()*(_default_font->getHeight()+2)) / (_screen_height-140);
+    _item_per_page = (_screen_height-140) / (_default_font->getHeight()+2);
 }
 
 void gettime()
@@ -203,25 +182,14 @@ const char* update()
 void drawtitle()
 {
     int _time_x = _screen_width-_default_font->getWidth(_str_time)-3;
-    Uint8 r, g, b, a;
-
-    SDL_GetRenderDrawColor(_sdl_renderer, &r, &g, &b, &a);
 
     // Draw title bg
-    for (int i = 0; i < 20; i++)
-    {
-        Uint8 color = 255-i*55/20;
-        SDL_SetRenderDrawColor(_sdl_renderer, color, color, color, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawLine(_sdl_renderer, 0, i, _screen_width, i);
-    }
-
-    SDL_SetRenderDrawColor(_sdl_renderer, 128, 128, 128, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawLine(_sdl_renderer, 0, 20, _screen_width, 20);
-    SDL_RenderDrawLine(_sdl_renderer, _time_x-4, 0, _time_x-4, 19);
-    SDL_SetRenderDrawColor(_sdl_renderer, r, g, b, a);
+    draw::gradRectangle(draw::FILL, 0, 0, _screen_width, 20, color::white, color::white, _color_bottom, _color_bottom);
+    draw::line(0, 20, _screen_width, 20, color::gray);
+    draw::line(_time_x-4, 0, _time_x-4, 19, color::gray);
 
     // Draw title
-    screen::blit(_title, 3, 3);
+    screen::print(3, 3, "Lua Raspi", _color_title);
 
     // Draw hour
     if (std::strlen(_str_time) > 0)
@@ -232,21 +200,14 @@ void drawexplorer()
 {
     int pos = 0;
     Uint8 r, g, b, a;
-    SDL_BlendMode mode;
-
-    SDL_GetRenderDrawColor(_sdl_renderer, &r, &g, &b, &a);
-    SDL_GetRenderDrawBlendMode(_sdl_renderer, &mode);
 
     // Draw background
-    SDL_SetRenderDrawColor(_sdl_renderer, 128, 128, 128, 128);
-    SDL_SetRenderDrawBlendMode(_sdl_renderer, SDL_BLENDMODE_BLEND);
-    SDL_RenderFillRect(_sdl_renderer, &_explorer_bg);
-    SDL_SetRenderDrawColor(_sdl_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+    draw::rectangle(draw::FILL, 40, 60, _screen_width - 80, _screen_height - 100, _color_bg);
 
     // Draw logo
-    screen::blit(_logo, _logo_x, _logo_y);
+    screen::blit(_logo_x, _logo_y, _logo);
 
-    uint16_t _current_page = (_current_file*(_default_font->getHeight()+2)) / (_explorer_bg.h-40);
+    uint16_t _current_page = (_current_file*(_default_font->getHeight()+2)) / (_screen_height - 140);
 
     for (int i = _current_page*_item_per_page; i < std::min((_current_page+1)*_item_per_page, (int) _file_list.size()); i++)
     {
@@ -255,17 +216,13 @@ void drawexplorer()
         // Draw selector
         if (i == _current_file)
         {
-            SDL_Rect selector = {50, 80+pos*(_default_font->getHeight()+2), _screen_width-100, _default_font->getHeight()};
-            SDL_RenderFillRect(_sdl_renderer, &selector);
+            draw::rectangle(draw::FILL, 50, 80+pos*(_default_font->getHeight()+2), _screen_width-100, _default_font->getHeight(), color::white);
             screen::print(60, 80+pos*(_default_font->getHeight()+2), ">", _color_title);
         }
 
         // Draw file
         screen::print(60+_selector_width+5, 80+pos*(_default_font->getHeight()+2), _file_list[i].c_str(), _color_title);
     }
-
-    SDL_SetRenderDrawColor(_sdl_renderer, r, g, b, a);
-    SDL_SetRenderDrawBlendMode(_sdl_renderer, mode);
 }
 
 void draw()
@@ -278,7 +235,8 @@ void draw()
 void close()
 {
     delete _logo;
-    delete _title;
+    delete _color_bg;
+    delete _color_bottom;
     delete _color_title;
 }
 

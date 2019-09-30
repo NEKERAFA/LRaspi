@@ -8,7 +8,7 @@
 
 #include <lua.hpp>
 
-#include "common/exception.h"
+#include "modules/common/exception.h"
 #include "modules/color/color.h"
 #include "modules/color/module.h"
 
@@ -21,16 +21,15 @@ extern "C"
 int lraspi_color_new(lua_State* L)
 {
     int argc = lua_gettop(L);
-    lua_Integer r, g, b, a;
     lraspi::Color* color;
 
-    r = luaL_checkinteger(L, 1);
-    g = luaL_checkinteger(L, 2);
-    b = luaL_checkinteger(L, 3);
+    uint8_t r = luaL_checknumber(L, 1);
+    uint8_t g = luaL_checknumber(L, 2);
+    uint8_t b = luaL_checknumber(L, 3);
 
     if (argc == 4)
     {
-        lua_Integer a = luaL_checkinteger(L, 4);
+        uint8_t a = luaL_checknumber(L, 4);
         color = lraspi::color::create(r, g, b, a);
     }
     else
@@ -119,12 +118,12 @@ int lraspi_color_red(lua_State* L)
 
     if (argc == 2)
     {
-        lua_Integer r = luaL_checkinteger(L, 2);
+        uint8_t r = luaL_checknumber(L, 2);
         color->red(r);
     }
     else
     {
-        lua_Integer r = color->red();
+        uint8_t r = color->red();
         lua_pushinteger(L, r);
         ret = 1;
     }
@@ -141,12 +140,12 @@ int lraspi_color_green(lua_State* L)
     
     if (argc == 2)
     {
-        lua_Integer r = luaL_checkinteger(L, 2);
+        uint8_t r = luaL_checknumber(L, 2);
         color->green(r);
     }
     else
     {
-        lua_Integer r = color->green();
+        uint8_t r = color->green();
         lua_pushinteger(L, r);
         ret = 1;
     }
@@ -163,12 +162,12 @@ int lraspi_color_blue(lua_State* L)
     
     if (argc == 2)
     {
-        lua_Integer r = luaL_checkinteger(L, 2);
+        uint8_t r = luaL_checknumber(L, 2);
         color->blue(r);
     }
     else
     {
-        lua_Integer r = color->blue();
+        uint8_t r = color->blue();
         lua_pushinteger(L, r);
         ret = 1;
     }
@@ -185,12 +184,12 @@ int lraspi_color_alpha(lua_State* L)
     
     if (argc == 2)
     {
-        lua_Integer r = luaL_checkinteger(L, 2);
+        uint8_t r = luaL_checknumber(L, 2);
         color->alpha(r);
     }
     else
     {
-        lua_Integer r = color->alpha();
+        uint8_t r = color->alpha();
         lua_pushinteger(L, r);
         ret = 1;
     }

@@ -16,12 +16,6 @@
  */
 
 /***
- * Initializes the image subsystem. <br>
- * The interpreter calls this function internally, so you should not call explicitly.
- * @function image.init
- */
-
-/***
  * Loads an image from the disk onto the memory
  * @function image.new
  * @string path The path of the image file
@@ -29,10 +23,21 @@
  */
 
 /***
+ * Creates new text
+ * @function draw.newtext
+ * @tparam font font A font object
+ * @string text The text to render
+ * @treturn text A new text objext
+ */
+
+extern "C" {
+
+/***
  * Resets the internal values (rotation, flip, resize, ...) of the image
  * @function image.reset
  * @tparam image image A image object
  */
+int lraspi_image_reset(lua_State* L);
 
 /***
  * Changes the color modulation of the image
@@ -40,91 +45,74 @@
  * @tparam image image A image object
  * @tparam color color A color object
  */
+int lraspi_image_tint(lua_State* L);
 
 /***
  * Gets the color modulation of the image
- * @function image.tintcolor
+ * @function image.gettintcolor
  * @tparam image image A image object
  * @treturn color A color object
  */
-
-/***
- * Changes the blend mode of the image
- * @function image.setblendmode
- * @tparam image image A image object
- * @string mode The blend mode as the following values:
- * <ul>
- * <li><span class='parameter'>add</span> for additive blending</li>
- * <li><span class='parameter'>mod</span> for color modulation</li>
- * <li><span class='parameter'>blend</span> for alpha blending</li>
- * <li><span class='parameter'>none</span> for no blending</li>
- * </ul>
- */
-
-/***
- * Gets the current the blend mode of the image
- * @function image.getblendmode
- * @tparam image image A image object
- * @ŧreturn string The blend mode as the following values:
- * <ul>
- * <li><span class='parameter'>add</span> for additive blending</li>
- * <li><span class='parameter'>mod</span> for color modulation</li>
- * <li><span class='parameter'>blend</span> for alpha blending</li>
- * <li><span class='parameter'>none</span> for no blending</li>
- * </ul>
- */
+int lraspi_image_tint_color(lua_State* L);
 
 /***
  * Changes the alpha value of the image. <br>
  * The image must have an blend mode established
  * @function image.setalpha
  * @tparam image image A image object
- * @int alpha The alpha value
+ * @number alpha The alpha value
  */
+int lraspi_image_set_alpha(lua_State* L);
 
 /***
  * Gets the current alpha value of the image. <br>
  * The image must have an blend mode established
  * @function image.getalpha
  * @tparam image image A image object
- * @ŧreturn int The alpha value
+ * @ŧreturn number The alpha value
  */
+int lraspi_image_get_alpha(lua_State* L);
 
 /***
  * Gets the current width dimension of the image
  * @function image.getwidth
  * @tparam image image A image object
- * @treturn int The current width dimension in pixels
+ * @treturn number The current width dimension in pixels
  */
+int lraspi_image_get_width(lua_State* L);
 
 /***
  * Gets the current height dimension of the image
  * @function image.getheight
  * @tparam image image A image object
- * @treturn int The current height dimension in pixels
+ * @treturn number The current height dimension in pixels
  */
+int lraspi_image_get_height(lua_State* L);
 
 /***
  * Gets the real width dimension of the image
  * @function image.getrealwidth
  * @tparam image image A image object
- * @treturn int The real width dimension in pixels
+ * @treturn number The real width dimension in pixels
  */
+int lraspi_image_get_real_width(lua_State* L);
 
 /***
  * Gets the real width dimension of the image
  * @function image.getrealheight
  * @tparam image image A image object
- * @treturn int The real width dimension in pixels
+ * @treturn number The real width dimension in pixels
  */
+int lraspi_image_get_real_height(lua_State* L);
 
 /***
  * Resizes the image
  * @function image.resize
  * @tparam image image A image object
- * @int width The new width dimension in pixels
- * @int height The new height dimension in pixels
+ * @number width The new width dimension in pixels
+ * @number height The new height dimension in pixels
  */
+int lraspi_image_resize(lua_State* L);
 
 /***
  * Rotates the image
@@ -132,34 +120,39 @@
  * @tparam image image A image object
  * @number angle The angle in degrees
  */
+int lraspi_image_rotate(lua_State* L);
 
 /***
  * Sets the center of the image
  * @function image.setcenter
  * @tparam image image A image object
- * @int x The x-axis position of the center
- * @int y The y-axis position of the center
+ * @number x The x-axis position of the center
+ * @number y The y-axis position of the center
  */
+int lraspi_image_set_center(lua_State* L);
 
 /***
  * Gets the center of the image
  * @function image.getcenter
  * @tparam image image A image object
- * @treturn int The x-axis position of the center
- * @treturn int The y-axis position of the center
+ * @treturn number The x-axis position of the center
+ * @treturn number The y-axis position of the center
  */
+int lraspi_image_get_center(lua_State* L);
 
 /***
  * Flips a image vertically
  * @tparam image image A image object
  * @function image.vflip
  */
+int lraspi_image_v_flip(lua_State* L);
 
 /***
  * Flips a image horizontally
  * @tparam image image A image object
  * @function image.hflip
  */
+int lraspi_image_h_flip(lua_State* L);
 
 /***
  * Checks if the image is flipped
@@ -168,38 +161,37 @@
  * @treturn boolean true if the image is flipped vertically
  * @treturn boolean true if the image if flipped horizontally
  */
+int lraspi_image_is_flipped(lua_State* L);
 
 /***
- * Changes the color of the pixel in the image
- * @function image.setpixel
- * @tparam image image A image object
- * @int x The x-axis position of the pixel in the image
- * @int y The y-axis position of the pixel in the image
- * @tparam color color A color object
+ * Replaces the content of the text with a new value
+ * @function image.settext
+ * @tparam text text A text object
+ * @string textstring The new content
  */
+int lraspi_image_set_text(lua_State* L);
 
 /***
- * Gets the color of the pixel in the image
- * @function image.getpixel
- * @tparam image image A image object
- * @int x The x-axis position of the pixel in the image
- * @int y The y-axis position of the pixel in the image
- * @treturn color A color object
+ * Adds a new content to the rendered text
+ * @function image.addtext
+ * @tparam text text A text object
+ * @string textstring The text to append
  */
+int lraspi_image_add_text(lua_State* L);
+
+/***
+ * Clears the content of the rendered text
+ * @function image.cleartext
+ * @tparam text text A text object
+ */
+int lraspi_image_clear_text(lua_State* L);
 
 /***
  * Destroys a image object
  * @function image.free
  * @tparam image image A image object
  */
-
-/***
- * Closes the image subsystem. <br>
- * The interpreter calls this function internally, so you should not call explicitly.
- * @function image.close
- */
-
-extern "C" {
+int lraspi_image_free(lua_State* L);
 
 int luaopen_image(lua_State* L);
 
