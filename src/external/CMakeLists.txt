@@ -37,3 +37,6 @@ set(EXTERNAL_LUA54
 
 add_library(lua54 STATIC ${EXTERNAL_LUA54})
 
+# RayLib 3.5.0
+add_subdirectory(src/external/raylib)
+

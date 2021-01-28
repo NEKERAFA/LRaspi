@@ -7,5 +7,5 @@ include(src/external/CMakeLists.txt)
 include(src/CMakeLists.txt)
 
 # Link all libraries
-target_link_libraries(lraspi lua54)
+target_link_libraries(lraspi lua54 raylib)
 
