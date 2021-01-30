@@ -73,4 +73,6 @@ CMakeUserPresets.json
 # External projects
 *-prefix/
 
+# Build folder
+build
 # End of https://www.toptal.com/developers/gitignore/api/c,cmake

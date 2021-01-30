@@ -1,4 +1,4 @@
-![Lua Raspi](icon/lraspi-repo-icon.png)
+<p style="text-align: center"><img src="extra/header.png" alt="Lua Raspi" /></p>
 
 [![A Lua Player for Raspberry Pi](https://img.shields.io/badge/powered%20by-lua-blue)](https://www.lua.org/) [![Lua Raspi v0.0.2-alpha](https://img.shields.io/github/v/release/NEKERAFA/Lua-Raspi?include_prereleases)](https://github.com/NEKERAFA/Lua-Raspi/blob/master/LICENSE) [![MIT License](https://img.shields.io/github/license/nekerafa/lua-raspi)](https://github.com/NEKERAFA/Lua-Raspi/releases)
 
@@ -10,12 +10,24 @@ Lua Raspi is a Lua script embedded interpreter for the Raspberry Pi. If you are 
 
 ## Snapshots
 
+<p style="text-align: center"><img src="docs/images/explorer.png" alt="Example" /></p>
+
 ## Features
 
 * A proyect explorer to launch lua scripts
 * Function to load and draw/manipulate images
 
-![Main menu](docs/image/main.png)
+## Example
+
+```lua
+while true do
+    screen.clear()
+
+    screen:print("Hello world!", 10, 10)
+
+    screen.flip()
+end
+```
 
 ## Reference
 
@@ -31,3 +43,4 @@ You can see all releases in [GitHub Repository](https://github.com/NEKERAFA/Lua-
 
 * [2019-09-lraspi-0.0.2r.tar.xz](https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.tar.xz)
 * [2019-09-lraspi-0.0.2r.zip](https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.zip)
+
