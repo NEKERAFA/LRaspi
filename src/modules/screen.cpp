@@ -6,17 +6,16 @@
  */
 
 #include "../external/raylib/src/raylib.h"
-#include "../include/lraspi.h"
+#include "../lraspi.h"
 
 bool screen_initialized = false;
 
-void lraspi::screen_clear(lraspi::Color color) {
-    ::Color rlib_color = { color.r, color.g, color.b, color.a };
+void lraspi::screen::clear(lraspi::color32 color) {
     BeginDrawing();
-    ClearBackground(rlib_color);
+    ClearBackground(color.data());
 }
 
-void lraspi::screen_flip() {
+void lraspi::screen::flip() {
     EndDrawing();
 }
 
