@@ -37,7 +37,7 @@
 
 #define LRASPI_VERSION "2022.1 (0.1.0)"
 
-#define LRASPI_FONT_SIZE 32
+#define LRASPI_FONT_SIZE 24
 
 namespace lraspi {
 
@@ -46,9 +46,9 @@ namespace lraspi {
     // -------------------------------- 
 
     /**
-     * @brief Represents a color in RGBA 32 bits format 
+     * @brief Represents a color in RGBA 32-bit format 
      */
-    class color32 {
+    class color {
     private:
         Color _data;
 
@@ -61,12 +61,12 @@ namespace lraspi {
 	 * @param blue Blue channel value
 	 * @param alpha Alpha channel value
 	 */
-        color32(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
+        color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
 
 	/**
 	 * @brief gets data value
 	 */
-        Color data();
+        Color& data();
     };
 
     /**
@@ -81,8 +81,9 @@ namespace lraspi {
 	 * @brief Loads a font onto memory
 	 *
 	 * @param path Path of the font file
+	 * @param size Size of the glyphs
 	 */
-        font(const char* font);
+        font(const char* path, int size);
 
 	/**
 	 * @brief Releases the font
@@ -92,7 +93,27 @@ namespace lraspi {
 	/**
 	 * @brief Gets internal data
 	 */
-	Font data();
+	Font& data();
+
+	/**
+	 * @brief Loads default font
+	 */
+	static void init();
+
+	/**
+	 * @brief Release default font
+	 */
+	static void close();
+
+	/**
+	 * @brief Gets default font
+	 */
+	static font* default_font();
+
+	/**
+	 * @brief Sets default font
+	 */
+	static void default_font(font* font_obj);
     };
 
     // --------------------------------
@@ -120,7 +141,12 @@ namespace lraspi {
          *
          * @param bg The background color
          */
-        void clear(color32 color);
+        void clear(color* bg);
+
+	/**
+	 * @brief Draws a text
+	 */
+	void print(const char* text, vector2 pos, color* fg);
 
         /**
          * @brief End all draw functions and show the buffer
