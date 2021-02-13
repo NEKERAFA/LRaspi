@@ -9,11 +9,27 @@
 #include "../external/raylib/src/raylib.h"
 #include "../lraspi.h"
 
-lraspi::color32::color32(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) :
-    _data((Color){ red, green, blue, alpha })
+lraspi::color::color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) :
+	_data((Color){ red, green, blue, alpha })
 { }
 
-Color& lraspi::color32::data() {
-    return _data;
+uint8_t lraspi::color::red() {
+	return _data.r;
+}
+
+uint8_t lraspi::color::green() {
+	return _data.g;
+}
+
+uint8_t lraspi::color::blue() {
+	return _data.b;
+}
+
+uint8_t lraspi::color::alpha() {
+	return _data.a;
+}
+
+Color& lraspi::color::data() {
+	return _data;
 }
 

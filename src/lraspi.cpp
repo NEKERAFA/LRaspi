@@ -7,23 +7,21 @@
 #include "lraspi.h"
 
 int main(int argc, char** argv) {  
-    lraspi::init();
+	lraspi::init();
 
-    lraspi::color32* black = new lraspi::color32(0, 0, 0, 255);
-    lraspi::color32* white = new lraspi::color32(255, 255, 255, 255);
+	lraspi::color* black = new lraspi::color(0, 0, 0, 255);
+	lraspi::color* white = new lraspi::color(255, 255, 255, 255);
 
-    while(!WindowShouldClose()) {
-    	lraspi::screen::clear(black);
+	while(!WindowShouldClose()) {
+		lraspi::screen::clear(black);
+		lraspi::screen::print("Hello world!", 10, 10, white);
+		lraspi::screen::flip();
+	}
 
-	lraspi::screen::print("Hello world!", 10, 10, white);
+	delete white;
+	delete black;
 
-	lraspi::screen::flip();
-    }
+	lraspi::close();
 
-    delete white;
-    delete black;
-
-    lraspi::close();
-
-    return 0;
+	return 0;
 }

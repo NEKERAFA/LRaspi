@@ -7,5 +7,4 @@ include(src/external/CMakeLists.txt)
 include(src/CMakeLists.txt)
 
 # Link all libraries
-target_link_libraries(lraspi "lraspi.${PROJECT_VERSION}" lua54 raylib)
-
+target_link_libraries(lraspi "lraspi.${PROJECT_VERSION}" lua54 raylib "usb-1.0")

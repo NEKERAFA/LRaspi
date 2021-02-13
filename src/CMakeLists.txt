@@ -15,3 +15,5 @@ set(LRASPI_EXECUTABLE
 )
 
 add_executable(lraspi ${LRASPI_EXECUTABLE})
+
+target_include_directories(lraspi PRIVATE ${EXTERNAL_LIBUSB_HEADERS} ${EXTERNAL_LUA54_HEADERS})

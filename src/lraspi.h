@@ -32,6 +32,7 @@
 #ifndef LRASPI_LIBRARY_H
 #define LRASPI_LIBRARY_H
 
+#include <string>
 #include <cstdint>
 #include "external/raylib/src/raylib.h"
 
@@ -41,118 +42,142 @@
 
 namespace lraspi {
 
-    // -------------------------------- 
-    //  Types definition
-    // -------------------------------- 
-
-    /**
-     * @brief Represents a color in RGBA 32-bit format 
-     */
-    class color {
-    private:
-        Color _data;
-
-    public:
-	/**
-	 * @brief Creates a color object
-	 *
-	 * @param red Red channel value
-	 * @param green Green channel value
-	 * @param blue Blue channel value
-	 * @param alpha Alpha channel value
-	 */
-        color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
+	// -------------------------------- 
+	//  Types definition
+	// -------------------------------- 
 
 	/**
-	 * @brief gets data value
+	 * @brief Represents a color in RGBA 32-bit format 
 	 */
-        Color& data();
-    };
+	class color {
+	private:
+		Color _data;
 
-    /**
-     * @brief Represents a font object
-     */
-    class font {
-    private:
-        Font _data;
+	public:
+		/**
+		 * @brief Creates a color object
+		 *
+		 * @param red Red channel value
+		 * @param green Green channel value
+		 * @param blue Blue channel value
+		 * @param alpha Alpha channel value
+		 */
+			color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
 
-    public:
-	/**
-	 * @brief Loads a font onto memory
-	 *
-	 * @param path Path of the font file
-	 * @param size Size of the glyphs
-	 */
-        font(const char* path, int size);
+		/**
+		 * @brief Gets red channel value
+		 */
+		uint8_t red();
 
-	/**
-	 * @brief Releases the font
-	 */
-        ~font();
+		/**
+		 * @brief Gets green channel value
+		 */
+		uint8_t green();
 
-	/**
-	 * @brief Gets internal data
-	 */
-	Font& data();
+		/**
+		 * @brief Gets blue channel value
+		 */
+		uint8_t blue();
 
-	/**
-	 * @brief Loads default font
-	 */
-	static void init();
+		/**
+		 * @brief Gets alpha channel value
+		 */
+		uint8_t alpha();
 
-	/**
-	 * @brief Release default font
-	 */
-	static void close();
-
-	/**
-	 * @brief Gets default font
-	 */
-	static font* default_font();
+		/**
+		 * @brief Gets internal data
+		 */
+		Color& data();
+	};
 
 	/**
-	 * @brief Sets default font
+	 * @brief Represents a font object
 	 */
-	static void default_font(font* font_obj);
-    };
+	class font {
+	private:
+		Font _data;
 
-    // --------------------------------
-    // Core funtion definitions
-    // --------------------------------
+	public:
+		/**
+		 * @brief Loads a font onto memory
+		 *
+		 * @param path Path of the font file
+		 * @param size Size of the glyphs
+		 */
+			font(std::string path, int size);
 
-    /**
-     * @brief Initializes internal libraries
-     */
-    void init();
+		/**
+		 * @brief Releases the font
+		 */
+			~font();
 
-    /**
-     * @brief Closes internal libraries and free internal state
-     */
-    void close();
+		/**
+		 * @brief Gets internal data
+		 */
+		Font& data();
 
-    // --------------------------------
-    // Screen function definitions
-    // --------------------------------
+		/**
+		 * @brief Loads default font
+		 */
+		static void init();
 
-    namespace screen {
+		/**
+		 * @brief Release default font
+		 */
+		static void close();
 
-        /**
-         * @brief Clears the buffer and prepares the library to draw
-         *
-         * @param bg The background color
-         */
-        void clear(color* bg);
+		/**
+		 * @brief Gets default font
+		 */
+		static font* default_font();
+
+		/**
+		 * @brief Sets default font
+		 */
+		static void default_font(font* font_obj);
+	};
+
+	// --------------------------------
+	// Core funtion definitions
+	// --------------------------------
 
 	/**
-	 * @brief Draws a text
+	 * @brief Initializes internal libraries
 	 */
-	void print(const char* text, vector2 pos, color* fg);
+	void init();
 
-        /**
-         * @brief End all draw functions and show the buffer
-         */
-        void flip();
-    }
+	/**
+	 * @brief Closes internal libraries and free internal state
+	 */
+	void close();
+
+	// --------------------------------
+	// Screen function definitions
+	// --------------------------------
+
+	namespace screen {
+		/**
+		 * @brief Clears the buffer and prepares the library to draw
+		 *
+		 * @param bg Color that will fill image buffer
+		 */
+		void clear(color* bg);
+
+		/**
+		 * @brief Draws a text with default font
+		 *
+		 * @param text String to print
+		 * @param x x-axis screen position where the text will be printed
+		 * @param y y-axis screen position where the text will be printed
+		 * @param color Color that the text will be printed
+		 */
+		void print(std::string text, int x, int y, color* fg);
+
+		/**
+		 * @brief End all draw functions and show the buffer
+		 */
+		void flip();
+	}
 
 }
 
