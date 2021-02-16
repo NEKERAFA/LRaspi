@@ -1,5 +1,5 @@
 /**
- * screen.cpp - NEKERAFA - 30th january 2020
+ * screen.cpp - NEKERAFA - 30th january 2021
  * Screen manipulation implementation
  *
  * See "lraspi.h" for license information

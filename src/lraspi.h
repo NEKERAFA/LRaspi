@@ -33,8 +33,9 @@
 #define LRASPI_LIBRARY_H
 
 #include <string>
+#include <vector>
 #include <cstdint>
-#include "external/raylib/src/raylib.h"
+#include "raylib.h"
 
 #define LRASPI_VERSION "2022.1 (0.1.0)"
 
@@ -62,7 +63,7 @@ namespace lraspi {
 		 * @param blue Blue channel value
 		 * @param alpha Alpha channel value
 		 */
-			color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
+		color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
 
 		/**
 		 * @brief Gets red channel value
@@ -104,12 +105,12 @@ namespace lraspi {
 		 * @param path Path of the font file
 		 * @param size Size of the glyphs
 		 */
-			font(std::string path, int size);
+		font(std::string path, int size);
 
 		/**
 		 * @brief Releases the font
 		 */
-			~font();
+		~font();
 
 		/**
 		 * @brief Gets internal data
@@ -122,7 +123,7 @@ namespace lraspi {
 		static void init();
 
 		/**
-		 * @brief Release default font
+		 * @brief Release def ault font
 		 */
 		static void close();
 
@@ -179,6 +180,39 @@ namespace lraspi {
 		void flip();
 	}
 
+	// --------------------------------
+	// Files function definitions
+	// --------------------------------
+
+	namespace file {
+		/**
+		 * @brief List files in path
+		 *
+		 * @param path Folder to list
+		 */
+		std::vector<std::string> list(std::string path);
+	}
+
+	// --------------------------------
+	// USB devices function definitions
+	// --------------------------------
+	
+	namespace device {
+		/**
+		 * @brief Initializes device function
+		 */
+		void init();
+
+		/**
+		 * @brief List mount point devices
+		 */
+		std::vector<std::string> list();
+
+		/**
+		 * @brief Closes device function
+		 */
+		void close();
+	}
 }
 
 #endif // LRASPI_LIBRARY_H

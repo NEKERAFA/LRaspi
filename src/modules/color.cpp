@@ -1,5 +1,5 @@
 /**
- * color.cpp - NEKERAFA - 1/2/2021
+ * color.cpp - NEKERAFA - 1st feburary 2021
  * Implements color class
  *
  * See "lraspi.h" for license notice

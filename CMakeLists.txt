@@ -2,9 +2,11 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(LuaRaspi VERSION 0.0.5)
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
 # Include another files
 include(src/external/CMakeLists.txt)
 include(src/CMakeLists.txt)
 
 # Link all libraries
-target_link_libraries(lraspi "lraspi.${PROJECT_VERSION}" lua54 raylib "usb-1.0")
+target_link_libraries(lraspi "lraspi.${PROJECT_VERSION}" lua54 raylib udev)

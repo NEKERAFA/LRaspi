@@ -33,11 +33,4 @@ set(EXTERNAL_LUA54
         ${CMAKE_CURRENT_LIST_DIR}/src/linit.c
 )
 
-set(EXTERNAL_LUA54_HEADERS
-	${CMAKE_CURRENT_LIST_DIR}/src/lua.h
-	${CMAKE_CURRENT_LIST_DIR}/src/lualib.h
-	${CMAKE_CURRENT_LIST_DIR}/src/lauxlib.h
-	${CMAKE_CURRENT_LIST_DIR}/src/lua.hpp
-)
-
 add_library(lua54 STATIC ${EXTERNAL_LUA54})

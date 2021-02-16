@@ -1,5 +1,5 @@
 /**
- * core.cpp - NEKERAFA - 30th january 2020
+ * core.cpp - NEKERAFA - 30th january 2021
  * Initialize and close functions implementation
  *  
  * See "lraspi.h" for license notice 
@@ -17,6 +17,7 @@
 #endif
 
 void lraspi::init() {
+	lraspi::device::init();
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Lua Raspi");
 	lraspi::font::init();
 }
@@ -24,5 +25,6 @@ void lraspi::init() {
 void lraspi::close() {
 	lraspi::font::close();
 	CloseWindow();
+	lraspi::device::close();
 }
 

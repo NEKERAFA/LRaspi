@@ -4,6 +4,7 @@ set(LRASPI_MODULES
     src/modules/color.cpp
     src/modules/screen.cpp
     src/modules/font.cpp
+    src/modules/device.cpp
 )
 
 add_library("lraspi.${PROJECT_VERSION}" STATIC ${LRASPI_MODULES})
@@ -15,5 +16,3 @@ set(LRASPI_EXECUTABLE
 )
 
 add_executable(lraspi ${LRASPI_EXECUTABLE})
-
-target_include_directories(lraspi PRIVATE ${EXTERNAL_LIBUSB_HEADERS} ${EXTERNAL_LUA54_HEADERS})
