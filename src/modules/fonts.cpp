@@ -1,5 +1,5 @@
 /**
- * font.cpp - NEKERAFA - 30th January 2021
+ * fonts.cpp - NEKERAFA - 30th January 2021
  * Implements font class
  *
  * See "lraspi.h" for license notice
@@ -24,19 +24,19 @@ Font& lraspi::font::data() {
 	return _data;
 }
 
-void lraspi::font::init() {
+void lraspi::fonts::init() {
 	_default_font = new lraspi::font("OpenSans.ttf", LRASPI_FONT_SIZE);
 	_current_font = _default_font;
 }
 
-void lraspi::font::close() {
+void lraspi::fonts::close() {
 	delete _default_font;
 }
 
-lraspi::font* lraspi::font::default_font() {
+lraspi::font* lraspi::fonts::default_font() {
 	return _current_font;
 }
 
-void lraspi::font::default_font(font* font_obj) {
+void lraspi::fonts::default_font(font* font_obj) {
 	_current_font = font_obj;
 }

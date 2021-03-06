@@ -35,6 +35,7 @@
 #include <string>
 #include <vector>
 #include <cstdint>
+#include <sys/stat.h>
 #include "raylib.h"
 
 #define LRASPI_VERSION "2022.1 (0.1.0)"
@@ -116,26 +117,6 @@ namespace lraspi {
 		 * @brief Gets internal data
 		 */
 		Font& data();
-
-		/**
-		 * @brief Loads default font
-		 */
-		static void init();
-
-		/**
-		 * @brief Release def ault font
-		 */
-		static void close();
-
-		/**
-		 * @brief Gets default font
-		 */
-		static font* default_font();
-
-		/**
-		 * @brief Sets default font
-		 */
-		static void default_font(font* font_obj);
 	};
 
 	// --------------------------------
@@ -151,6 +132,14 @@ namespace lraspi {
 	 * @brief Closes internal libraries and free internal state
 	 */
 	void close();
+
+	// --------------------------------
+	// Color function definitions
+	// --------------------------------
+
+	namespace colors {
+
+	}
 
 	// --------------------------------
 	// Screen function definitions
@@ -181,23 +170,36 @@ namespace lraspi {
 	}
 
 	// --------------------------------
-	// Files function definitions
+	// Fonts function definitions
 	// --------------------------------
 
-	namespace file {
+	namespace fonts {
 		/**
-		 * @brief List files in path
-		 *
-		 * @param path Folder to list
-		 */
-		std::vector<std::string> list(std::string path);
+                 * @brief Loads default font
+                 */
+                void init();
+
+                /**
+                 * @brief Release def ault font
+                 */
+                void close();
+
+                /**
+                 * @brief Gets default font
+                 */
+                font* default_font();
+
+                /**
+                 * @brief Sets default font
+                 */
+                void default_font(font* font_obj);
 	}
 
 	// --------------------------------
 	// USB devices function definitions
 	// --------------------------------
 	
-	namespace device {
+	namespace usb {
 		/**
 		 * @brief Initializes device function
 		 */

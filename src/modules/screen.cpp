@@ -16,10 +16,10 @@ void lraspi::screen::clear(lraspi::color* col) {
 
 void lraspi::screen::print(std::string text, int x, int y, lraspi::color* col) {
 	DrawTextEx(
-		lraspi::font::default_font()->data(),
+		lraspi::fonts::default_font()->data(),
 		text.c_str(),
 		(Vector2) {(float)x, (float)y},
-		lraspi::font::default_font()->data().baseSize,
+		lraspi::fonts::default_font()->data().baseSize,
 		0, col->data()
 	);
 }

@@ -1,37 +1,27 @@
 /**
  * lraspi.cpp - NEKERAFA - 28th january 2020
- * Stand-alone program
+ * LRaspi stand-alone program
+ *
+ * See "lraspi.h" for license notice
  */
 
 #include <iostream>
-#include <string>
+#include "lua.hpp"
 #include "lraspi.h"
+#include "lauxlib.h"
 
-int main(int argc, char** argv) {  
-	lraspi::init();
+int main(int argc, char** argv) {
+	lraspi::init(); /* intializes lraspi libraries */
 
-	lraspi::color* black = new lraspi::color(0, 0, 0, 255);
-	lraspi::color* white = new lraspi::color(255, 255, 255, 255);
+	lua_State* L = luaL_newstate(); /* opens new Lua state */
+	luaL_openlibs(L); /* opens all lua standard libraries */
+	lraspi::openlibs(L); /* opens all lraspi standard library */
 
-	auto devices = lraspi::device::list();
+	luaL_dofile(L, "main.lua"); /* start main script */
 
-	while(!WindowShouldClose()) {
-		lraspi::screen::clear(black);
+	lua_close(L); /* closes Lua state */
 
-		lraspi::screen::print("Devices: " + std::to_string(devices.size()), 10, 10, white);
-		int y = 26;
-		for (auto it = devices.begin(); it != devices.end(); ++it) {
-			lraspi::screen::print(*it, 10, y, white);
-			y += 14;
-		}
-
-		lraspi::screen::flip();
-	}
-
-	delete white;
-	delete black;
-
-	lraspi::close();
+	lraspi::close(); /* closes lraspi libraries */
 
 	return 0;
 }

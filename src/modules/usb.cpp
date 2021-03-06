@@ -68,11 +68,11 @@ udev_device* get_child(udev* ctx, udev_device* parent, std::string subsystem) {
 	return child;
 }
 
-void lraspi::device::init() {
+void lraspi::usb::init() {
 	ctx = udev_new();
 }
 
-std::vector<std::string> lraspi::device::list() {
+std::vector<std::string> lraspi::usb::list() {
 	auto enumerate = udev_enumerate_new(ctx);
 
 	udev_enumerate_add_match_subsystem(enumerate, "scsi");
@@ -116,6 +116,6 @@ std::vector<std::string> lraspi::device::list() {
 	return device_list;
 }
 
-void lraspi::device::close() {
+void lraspi::usb::close() {
 	udev_unref(ctx);
 }

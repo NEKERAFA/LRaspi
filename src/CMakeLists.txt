@@ -1,13 +1,18 @@
 # Add Lua Raspi modules
 set(LRASPI_MODULES
-    src/modules/core.cpp
-    src/modules/color.cpp
-    src/modules/screen.cpp
-    src/modules/font.cpp
-    src/modules/device.cpp
+	src/modules/colors.cpp
+	src/modules/core.cpp
+	src/modules/fonts.cpp
+	src/modules/screen.cpp
+	src/modules/usb.cpp
 )
 
-add_library("lraspi.${PROJECT_VERSION}" STATIC ${LRASPI_MODULES})
+set(LRASPI_LUA_LIBS
+	src/lauxlib.cpp
+	src/lscreen.cpp
+)
+
+add_library("lraspi.${PROJECT_VERSION}" STATIC ${LRASPI_MODULES} ${LRASPI_LUA_LIBS})
 
 # Add Lua Raspi executable
 

@@ -17,14 +17,14 @@
 #endif
 
 void lraspi::init() {
-	lraspi::device::init();
+	lraspi::usb::init();
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Lua Raspi");
-	lraspi::font::init();
+	lraspi::fonts::init();
 }
 
 void lraspi::close() {
-	lraspi::font::close();
+	lraspi::fonts::close();
 	CloseWindow();
-	lraspi::device::close();
+	lraspi::usb::close();
 }
 
