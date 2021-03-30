@@ -40,3 +40,4 @@ lraspi::font* lraspi::fonts::default_font() {
 void lraspi::fonts::default_font(font* font_obj) {
 	_current_font = font_obj;
 }
+

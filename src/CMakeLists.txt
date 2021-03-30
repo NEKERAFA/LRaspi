@@ -8,8 +8,10 @@ set(LRASPI_MODULES
 )
 
 set(LRASPI_LUA_LIBS
-	src/lauxlib.cpp
+	src/laux.cpp
 	src/lscreen.cpp
+	src/lcolor.cpp
+	src/lfont.cpp
 )
 
 add_library("lraspi.${PROJECT_VERSION}" STATIC ${LRASPI_MODULES} ${LRASPI_LUA_LIBS})

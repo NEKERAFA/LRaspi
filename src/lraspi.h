@@ -42,16 +42,33 @@
 
 #define LRASPI_FONT_SIZE 24
 
-namespace lraspi {
+#define LRASPI_TCOLOR "color"
+#define LRASPI_TFONT "font"
 
+namespace lraspi {
 	// -------------------------------- 
 	//  Types definition
 	// -------------------------------- 
 
 	/**
+	 * @brief Represents a generic object
+	 */
+	template <class T>
+	class object {
+	public:
+		object() {}
+		virtual ~object() {}
+		
+		/**
+		 * Gets the type of the object
+		 */
+		static std::string type() { return T::get_str_type(); }
+	};
+
+	/**
 	 * @brief Represents a color in RGBA 32-bit format 
 	 */
-	class color {
+	class color: public object<color> {
 	private:
 		Color _data;
 
@@ -65,6 +82,8 @@ namespace lraspi {
 		 * @param alpha Alpha channel value
 		 */
 		color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
+
+		~color() {}
 
 		/**
 		 * @brief Gets red channel value
@@ -90,12 +109,14 @@ namespace lraspi {
 		 * @brief Gets internal data
 		 */
 		Color& data();
+
+		static std::string get_str_type() { return LRASPI_TCOLOR; }
 	};
 
 	/**
 	 * @brief Represents a font object
 	 */
-	class font {
+	class font: public object<font> {
 	private:
 		Font _data;
 
@@ -117,6 +138,8 @@ namespace lraspi {
 		 * @brief Gets internal data
 		 */
 		Font& data();
+
+		static std::string get_str_type() { return LRASPI_TFONT; }
 	};
 
 	// --------------------------------

@@ -5,6 +5,7 @@
  * See "lraspi.h" for license notice
  */
 
+#include <string>
 #include <cstdint>
 #include "../external/raylib/src/raylib.h"
 #include "../lraspi.h"

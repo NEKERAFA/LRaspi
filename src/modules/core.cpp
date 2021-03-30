@@ -8,12 +8,12 @@
 #include "../external/raylib/src/raylib.h"
 #include "../lraspi.h"
 
-#ifdef MODE_NATIVE
+#ifdef LRASPI_NATIVE
 	#define SCREEN_WIDTH  GetMonitorWidth(0)
 	#define SCREEN_HEIGHT GetMonitorHeight(0)	
 #else
-	#define SCREEN_WIDTH  1280 
-	#define SCREEN_HEIGHT 720
+	#define SCREEN_WIDTH  640 
+	#define SCREEN_HEIGHT 480
 #endif
 
 void lraspi::init() {

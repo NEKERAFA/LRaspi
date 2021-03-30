@@ -8,14 +8,14 @@
 #include <iostream>
 #include "lua.hpp"
 #include "lraspi.h"
-#include "lauxlib.h"
+#include "laux.h"
 
 int main(int argc, char** argv) {
 	lraspi::init(); /* intializes lraspi libraries */
 
 	lua_State* L = luaL_newstate(); /* opens new Lua state */
 	luaL_openlibs(L); /* opens all lua standard libraries */
-	lraspi::openlibs(L); /* opens all lraspi standard library */
+	lraspi::open_libraries(L); /* opens all lraspi standard library */
 
 	luaL_dofile(L, "main.lua"); /* start main script */
 

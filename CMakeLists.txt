@@ -4,6 +4,7 @@ project(LuaRaspi VERSION 0.0.5)
 
 # Configuration files
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+include(cmake/BuildOptions)
 
 # Include another files
 include(src/external/CMakeLists.txt)

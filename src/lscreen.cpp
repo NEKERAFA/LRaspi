@@ -8,14 +8,14 @@
 
 #include "lua.hpp"
 #include "lraspi.h"
-#include "lauxlib.h"
+#include "laux.h"
 #include "lscreen.h"
 
 static lraspi::color black(0, 0, 0, 255);
 static lraspi::color white(255, 255, 255, 255);
 
 static int screen_clear(lua_State* L) {
-	lraspi::color* bg = lraspi::optcolor(L, 1, &black);
+	lraspi::color* bg = lraspi::opt_object<lraspi::color>(L, 1, &black);
 	lraspi::screen::clear(bg);
 	return 0;
 }
@@ -24,7 +24,7 @@ static int screen_print(lua_State* L) {
 	const char* text = luaL_checkstring(L, 1);
 	lua_Integer x = luaL_checkinteger(L, 2);
 	lua_Integer y = luaL_checkinteger(L, 3);
-	lraspi::color* fg = lraspi::optcolor(L, 4, &white);
+	lraspi::color* fg = lraspi::opt_object<lraspi::color>(L, 4, &white);
 	lraspi::screen::print(std::string(text), x, y, fg);
 	return 0;
 }
