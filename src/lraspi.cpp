@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 	luaL_openlibs(L); /* opens all lua standard libraries */
 	lraspi::open_libraries(L); /* opens all lraspi standard library */
 
-	luaL_dofile(L, "main.lua"); /* start main script */
+	lraspi::dofile(L, "main.lua"); /* start main script */
 
 	lua_close(L); /* closes Lua state */
 

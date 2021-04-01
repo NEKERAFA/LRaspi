@@ -10,12 +10,8 @@ include(cmake/BuildOptions)
 include(src/external/CMakeLists.txt)
 include(src/CMakeLists.txt)
 
-# Add lua libraries
-add_library(lfs SHARED src/external/lfs/src/lfs.c)
-set_target_properties(lfs PROPERTIES PREFIX "")
-
 # Include external files
 configure_file(extra/font/OpenSans.ttf OpenSans.ttf COPYONLY)
 
 # Link all libraries
-target_link_libraries(lraspi "lraspi.${PROJECT_VERSION}" lua54 raylib udev)
+target_link_libraries(lraspi "lraspi.${PROJECT_VERSION}" lua54 lfs raylib udev)

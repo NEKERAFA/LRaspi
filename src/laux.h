@@ -17,6 +17,7 @@
 #define LRASPI_SCREENLIBNAME "screen"
 #define LRASPI_COLORLIBNAME "color"
 #define LRASPI_FONTLIBNAME "font"
+#define LRASPI_FILESLIBNAME "files"
 
 namespace lraspi {
 	/**
@@ -25,6 +26,14 @@ namespace lraspi {
 	 * @param L A Lua state
 	 */
 	void open_libraries(lua_State* L);
+
+	/**
+	 * @brief Loads the file and runs
+	 *
+	 * @param L A lua_State object
+	 * @param path The path of the file
+ 	*/
+	void dofile(lua_State* L, const char* path);
 
 	/**
 	 * @brief Defines a new object as a userdata and save into the stack
