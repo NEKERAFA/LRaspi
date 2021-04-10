@@ -11,6 +11,7 @@ include(src/external/CMakeLists.txt)
 include(src/CMakeLists.txt)
 
 # Include external files
+configure_file(src/scripts/main.lua main.lua COPYONLY)
 configure_file(extra/font/OpenSans.ttf OpenSans.ttf COPYONLY)
 
 # Link all libraries

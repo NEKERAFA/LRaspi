@@ -1,6 +1,6 @@
 /**
  * lfont.cpp - NEKERAFA - 20th March 2021
- * Implements color module
+ * Implements font module
  *
  * Under MIT License
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)

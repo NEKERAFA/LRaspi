@@ -14,10 +14,11 @@
 #include "lua.hpp"
 #include "lraspi.h"
 
-#define LRASPI_SCREENLIBNAME "screen"
 #define LRASPI_COLORLIBNAME "color"
-#define LRASPI_FONTLIBNAME "font"
 #define LRASPI_FILESLIBNAME "files"
+#define LRASPI_FONTLIBNAME "font"
+#define LRASPI_SCREENLIBNAME "screen"
+#define LRASPI_USBLIBNAME "usb"
 
 namespace lraspi {
 	/**

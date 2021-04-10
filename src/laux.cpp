@@ -13,13 +13,15 @@
 #include "lcolor.h"
 #include "lfont.h"
 #include "lscreen.h"
+#include "lusb.h"
 #include "laux.h"
 
 static const luaL_Reg lraspi_libs[] = {
 	{LRASPI_COLORLIBNAME, luaopen_color},
+	{LRASPI_FILESLIBNAME, luaopen_lfs},
 	{LRASPI_FONTLIBNAME, luaopen_font},
 	{LRASPI_SCREENLIBNAME, luaopen_screen},
-	{LRASPI_FILESLIBNAME, luaopen_lfs},
+	{LRASPI_USBLIBNAME, luaopen_usb},
 	{NULL, NULL}
 };
 
