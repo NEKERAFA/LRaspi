@@ -1,21 +1,18 @@
-<p style="text-align: center"><img src="extra/header.png" alt="Lua Raspi" /></p>
-
-[![A Lua Player for Raspberry Pi](https://img.shields.io/badge/powered%20by-lua-blue)](https://www.lua.org/) [![Lua Raspi v0.0.2-alpha](https://img.shields.io/github/v/release/NEKERAFA/Lua-Raspi?include_prereleases)](https://github.com/NEKERAFA/Lua-Raspi/blob/master/LICENSE) [![MIT License](https://img.shields.io/github/license/nekerafa/lua-raspi)](https://github.com/NEKERAFA/Lua-Raspi/releases)
-
----
-
-## Description
+<p style="text-align: center"><img src="extra/icon.png" alt="Lua Raspi" /></p>
 
 Lua Raspi is a Lua script embedded interpreter for the Raspberry Pi. If you are an amateur maker, with Lua Raspi you can make small proyects easier and faster on your Raspberry Pi. The system, which is based on Raspbian Lite, has been simplified and now inclides all necessary stuff to run your projects in Lua language.
 
-## Snapshots
+[![A Lua Player for Raspberry Pi](https://img.shields.io/badge/powered%20by-lua-blue)](https://www.lua.org/) [![Lua Raspi v1.0.0](https://img.shields.io/github/v/release/NEKERAFA/Lua-Raspi?include_prereleases)](https://github.com/NEKERAFA/Lua-Raspi/blob/master/LICENSE) [![MIT License](https://img.shields.io/github/license/nekerafa/lua-raspi)](https://github.com/NEKERAFA/Lua-Raspi/releases)
 
-<p style="text-align: center"><img src="docs/images/explorer.png" alt="Example" /></p>
+---
 
-## Features
+## Dependencies
 
-* A proyect explorer to launch lua scripts
-* Function to load and draw/manipulate images
+*work in progress*
+
+## Building
+
+*work in progress*
 
 ## Example
 
