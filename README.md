@@ -1,4 +1,4 @@
-<p style="text-align: center"><img src="extra/icon.png" alt="Lua Raspi" /></p>
+<p align="center"><img src="extra/icon.png" alt="Lua Raspi" /></p>
 
 Lua Raspi is a Lua script embedded interpreter for the Raspberry Pi. If you are an amateur maker, with Lua Raspi you can make small proyects easier and faster on your Raspberry Pi. The system, which is based on Raspbian Lite, has been simplified and now inclides all necessary stuff to run your projects in Lua language.
 
