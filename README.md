@@ -2,7 +2,7 @@
 
 <h1 align="center">Lua Raspi</h1>
 
-A Lua script embedded interpreter for the Raspberry Pi. If you are an amateur maker, with Lua Raspi you can make small proyects easier and faster on your Raspberry Pi. The system, which is based on Raspbian Lite, has been simplified and now inclides all necessary stuff to run your projects in Lua language.
+A Lua embedded interpreter for the Raspberry Pi. If you are an amateur maker, with Lua Raspi you can make small proyects easier and faster on your Raspberry Pi. The system, which is based on Raspberry OS Lite, has been simplified to inclides all necessary stuff to run your projects using Lua language.
 
 <p align="center"><a href="www.lua.org"><img src="https://img.shields.io/badge/powered%20by-Lua%205.4-blue" alt="Powered by Lua" /></a> <a href="github.com/NEKERAFA/LRaspi/releases"><img src="https://img.shields.io/github/v/release/NEKERAFA/Lua-Raspi?include_prereleases" alt="Lua Raspi 2022.1" /></a> <a href="github.com/NEKERAFA/Lua-Raspi/blob/master/LICENSE"><img src="https://img.shields.io/github/license/nekerafa/lua-raspi" alt="MIT License" /></a></p>
 
@@ -33,7 +33,7 @@ end
 
 All modules and functions are compiled in the [Lua Raspi Reference](https://nekerafa.github.io/LRaspi/reference/index.html) page. For language reference, you can check the [Lua 5.4 Reference](https://www.lua.org/manual/5.4/manual.html) in the official page.
 
-The C++ module wrappes are docummented in the [Lua Raspi C Reference](https://nekerafa.github.io/LRaspi/doxygen/index.html) page.
+The C module wrappes are docummented in the [Lua Raspi C Reference](https://nekerafa.github.io/LRaspi/doxygen/index.html) page.
 
 ## Downloads
 
