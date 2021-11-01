@@ -36,17 +36,43 @@
 #define LRASPI_VERSION "2022.1"
 
 // --------------------------------
-// Core funtion definitions
+// Core module
 // --------------------------------
 
 /**
- * @brief Initializes internal libraries
+ * @brief Initializes internal libraries.
  */
 void lraspi_init();
 
 /**
- * @brief Closes internal libraries and free internal state
+ * @brief Closes internal libraries and free internal state.
  */
 void lraspi_close();
 
+// --------------------------------
+// Screen module
+// --------------------------------
+
+/**
+ * @brief Clears the buffers and prepares the library to draw.
+ */
+void lraspi_screen_clear();
+
+/**
+ * @brief Draws a text with default font.
+ *
+ * @param text String to print
+ * @param x x-axis screen position (in pixels) where the text will be printed
+ * @param y y-axis screen position (in pixels) where the text will be printed
+ */
+void lraspi_screen_print(const char* text, int x, int y);
+
+/**
+ * @brief Sets the library to stop drawing and show the buffer onto the screen.
+ *
+ * @return True if the window will be closed, otherwise false.
+ */
+int lraspi_screen_flip();
+
 #endif // LRASPI_LIBRARY_H
+

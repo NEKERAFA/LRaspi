@@ -18,3 +18,4 @@ void lraspi_close()
 {
     CloseWindow();
 }
+

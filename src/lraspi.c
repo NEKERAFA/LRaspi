@@ -1,7 +1,16 @@
+/**
+ * lraspi.c - NEKERAFA - 25th october 2021
+ * Lua Raspi stand-alone program
+ *
+ * Under MIT License
+ * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
+ */
+
 #include <stdio.h>
 
 #include "lua.h"
 #include "lauxlib.h"
+#include "laux.h"
 #include "lraspi.h"
 
 int main(int argc, char **argv)
@@ -10,6 +19,7 @@ int main(int argc, char **argv)
     luaL_openlibs(L);
 
     lraspi_init();
+    lraspi_openlibs(L);
 
     luaL_dofile(L, "main.lua");
     lua_close(L);
@@ -20,3 +30,4 @@ int main(int argc, char **argv)
 
     return 0;
 }
+
