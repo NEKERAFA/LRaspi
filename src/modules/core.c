@@ -1,3 +1,11 @@
+/**
+ * modules/core.c - NEKERAFA - 1st november 2021
+ * Abstracts core functions
+ *
+ * Under MIT License
+ * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
+ */
+
 #include "../external/raylib37/src/raylib.h"
 #include "../lraspi.h"
 
@@ -9,13 +17,17 @@
 #define SCREEN_HEIGHT GetMonitorHeight(0)
 #endif
 
-void lraspi_init()
-{
+void lraspi_init() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LRaspi");
+    lraspi_font_init();
 }
 
-void lraspi_close()
-{
+int lraspi_isclosing() {
+    return WindowShouldClose();
+}
+
+void lraspi_close() {
+    lraspi_font_close();
     CloseWindow();
 }
 

@@ -35,6 +35,9 @@
 #define LRASPI_LIB_VERSION "1.0.0"
 #define LRASPI_VERSION "2022.1"
 
+#define LRASPI_FONT_SIZE 12
+#define LRASPI_FONT_FILE "OpenSans.ttf"
+
 // --------------------------------
 // Core module
 // --------------------------------
@@ -48,6 +51,13 @@ void lraspi_init();
  * @brief Closes internal libraries and free internal state.
  */
 void lraspi_close();
+
+/**
+ * @brief Check if the window will be closed
+ *
+ * @return True of the window will be close, otherwise false.
+ */
+int lraspi_isclosing();
 
 // --------------------------------
 // Screen module
@@ -73,6 +83,53 @@ void lraspi_screen_print(const char* text, int x, int y);
  * @return True if the window will be closed, otherwise false.
  */
 int lraspi_screen_flip();
+
+// --------------------------------
+// Font module
+// --------------------------------
+
+/**
+ * @brief Represents a font object
+ */
+typedef struct lraspi_font lraspi_Font;
+
+void* lraspi_font_getdata(lraspi_Font* font);
+
+/**
+ * @brief Loads the default font.
+ */
+void lraspi_font_init();
+
+/**
+ * @brief Releases default font.
+ */
+void lraspi_font_close();
+
+
+/**
+ * @brief Loads a font onte the memory.
+ *
+ * @param font_file Path of the font file
+ * @param size Size of the glyphs
+ **/
+lraspi_Font* lraspi_font_new(const char* font_file, int size);
+
+/**
+ * @brief Releases the font.
+ */
+void lraspi_font_free(lraspi_Font* font);
+
+/**
+ * @brief Sets the current default font
+ *
+ * @param font The font to set as default, NULL to reset it.
+ */
+void lraspi_font_setdefault(lraspi_Font* font);
+
+/**
+ * @brief Gets the current default font.
+ */
+lraspi_Font* lraspi_font_getdefault();
 
 #endif // LRASPI_LIBRARY_H
 

@@ -6,9 +6,10 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
-#include "external/lua54/src/lua.h"
-#include "external/lua54/src/lauxlib.h"
+#include "lua.h"
+#include "lauxlib.h"
 #include "lraspi.h"
+#include "lscreen.h"
 
 /****************************
  * Wrappers
@@ -30,9 +31,8 @@ static int lua_screen_print(lua_State* L) {
 }
 
 static int lua_screen_flip(lua_State* L) {
-    int finished = lraspi_screen_flip();
-    lua_pushboolean(L, finished);
-    return 1;
+    lraspi_screen_flip();
+    return 0;
 }
 
 /****************************

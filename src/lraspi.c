@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     lraspi_init();
     lraspi_openlibs(L);
 
-    luaL_dofile(L, "main.lua");
+    lraspi_dofile(L, "main.lua");
     lua_close(L);
 
     lraspi_close();
