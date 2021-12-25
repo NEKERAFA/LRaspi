@@ -24,6 +24,12 @@ static const luaL_Reg lraspi_libs[] = {
 
 /* based on luaL_openlibs code */
 int lraspi_openlibs(lua_State* L) {
+    lua_pushfstring(L, "lraspi %s", LRASPI_LIB_VERSION);
+    lua_setglobal(L, "_LRASPI_LIB_VERSION");
+    
+    lua_pushfstring(L, "Lua Raspi %s",  LRASPI_VERSION);
+    lua_setglobal(L, "_LRASPI_VERSION");
+
     const luaL_Reg *lib;
     for (lib = lua_core; lib->func; lib++) {
         lua_pushcfunction(L, lib->func);
