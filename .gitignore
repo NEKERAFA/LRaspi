@@ -55,6 +55,10 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# Visual Studio Core
+.vscode/
+build/
+
 ### CMake ###
 CMakeLists.txt.user
 CMakeCache.txt
