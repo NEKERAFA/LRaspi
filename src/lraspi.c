@@ -15,18 +15,20 @@
 
 int main(int argc, char **argv)
 {
+    printf("Initializing Lua Raspi %s\n", LRASPI_LIB_VERSION);
+
     lua_State *L = luaL_newstate();
     luaL_openlibs(L);
 
     lraspi_init();
     lraspi_openlibs(L);
 
-    luaL_dofile(L, "main.lua");
+    lraspi_dofile(L, "main.lua");
     lua_close(L);
 
     lraspi_close();
 
-    printf("End\n");
+    printf("Closing Lua Raspi\n");
 
     return 0;
 }

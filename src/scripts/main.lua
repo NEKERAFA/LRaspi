@@ -1,8 +1,6 @@
-continue = true
-
-while continue do
+while not isclosing() do
     screen.clear()
-    screen.print("Hello world", 10, 10)
-    continue = not screen.flip()
+    screen.print("Hello world from " .. _LRASPI_VERSION, 10, 10)
+    screen.flip()
 end
 

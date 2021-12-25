@@ -15,16 +15,28 @@ A Lua embedded interpreter for the Raspberry Pi. If you are an amateur maker, wi
 
 ## Building
 
-*work in progress*
+#### Ubuntu
+
+You should install the tools: **GCC**, **make** and **cmake**; and the libraries: **ALSA**, **MESA** and **X11**
+
+```bash
+sudo apt install build-essential cmake git libreadline-dev libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+```
+
+Next, you can make the tool using the following commands:
+
+```bash
+git clone https://github.com/nekerafa/lraspi.git lraspi
+cd lraspi
+./build.sh
+```
 
 ## Example
 
 ```lua
-while true do
+while isclosing() do
     screen.clear()
-
     screen:print("Hello world!", 10, 10)
-
     screen.flip()
 end
 ```

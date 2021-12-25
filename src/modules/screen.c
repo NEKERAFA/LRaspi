@@ -15,7 +15,9 @@ void lraspi_screen_clear() {
 }
 
 void lraspi_screen_print(const char* text, int x, int y) {
-    DrawText(text, x, y, 12, WHITE);
+    lraspi_Font* font = lraspi_font_getdefault();
+    Font raylib_font = *(Font*)lraspi_font_getdata(font);
+    DrawTextEx(raylib_font, text, (Vector2) {(float)x, (float)y}, raylib_font.baseSize, 0, WHITE);
 }
 
 int lraspi_screen_flip() {
