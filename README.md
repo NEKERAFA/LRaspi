@@ -8,8 +8,8 @@ A Lua embedded interpreter for the Raspberry Pi. If you are an amateur maker, wi
 
 ## Dependencies
 
-* [Lua 5.4](www.lua.org)
-* [RayLib 3.7](www.raylib.com)
+* [Lua 5.4](https://www.lua.org)
+* [RayLib 3.7](https://www.raylib.com)
 
 ## Building
 
@@ -24,7 +24,7 @@ sudo apt install build-essential cmake git libreadline-dev libasound2-dev mesa-c
 Next, you can make the tool using the following commands:
 
 ```bash
-git clone https://github.com/nekerafa/lraspi.git lraspi
+git clone https://github.com/NEKERAFA/LRaspi.git lraspi
 cd lraspi
 ./build.sh
 ```
@@ -41,18 +41,18 @@ end
 
 ## Reference
 
-All modules and functions are compiled in the [Lua Raspi Reference](https://nekerafa.github.io/lraspi/reference/index.html) page. For language reference, you can check the [Lua 5.4 Reference](https://www.lua.org/manual/5.4/manual.html) in the official page.
+All modules and functions are compiled in the [Lua Raspi Reference](https://nekerafa.github.io/LRaspi/reference) page. For language reference, you can check the [Lua 5.4 Reference](https://www.lua.org/manual/5.4/manual.html) in the official page.
 
-The C module wrappes are docummented in the [Lua Raspi C Reference](https://nekerafa.github.io/lraspi/library/index.html) page.
+The C module wrappes are docummented in the [Lua Raspi C Reference](https://nekerafa.github.io/LRaspi/library/index.html) page.
 
 ## Downloads
 
-You can see all releases in [GitHub Repository](https://github.com/nekerafa/lraspi/releases)
+You can see all releases in [GitHub Repository](https://github.com/NEKERAFA/LRaspi/releases)
 
 #### Last Release
 
-* [2019-09-lraspi-0.0.2r.tar.xz](https://github.com/nekerafa/lraspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.tar.xz)
-* [2019-09-lraspi-0.0.2r.zip](https://github.com/nekerafa/lraspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.zip)
+* [2019-09-lraspi-0.0.2r.tar.xz](https://github.com/NEKERAFA/LRaspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.tar.xz)
+* [2019-09-lraspi-0.0.2r.zip](https://github.com/NEKERAFA/LRaspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.zip)
 
 ---
 
