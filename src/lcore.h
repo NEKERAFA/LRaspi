@@ -1,10 +1,10 @@
-/**                                                                                                   
-  * lcore.h - NEKERAFA - 10th novembre 2021
-  * Defines core module
-  *
-  * Under MIT License
-  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
-  */
+/*
+ * lcore.h - NEKERAFA - 10th novembre 2021
+ * Defines core module
+ *
+ * Under MIT License
+ * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
+ */
 
 #ifndef LRASPI_CORE_MODULE_H
 #define LRASPI_CORE_MODULE_H

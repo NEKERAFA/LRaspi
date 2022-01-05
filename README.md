@@ -1,6 +1,4 @@
-<p align="center"><img src="extra/icon.png" alt="Lua Raspi" height=150 /></p>
-
-<h1 align="center">Lua Raspi</h1>
+<p align="center"><img src="extra/header.png" alt="Lua Raspi" width=480 /></p>
 
 A Lua embedded interpreter for the Raspberry Pi. If you are an amateur maker, with Lua Raspi you can make small proyects easier and faster on your Raspberry Pi. The system, which is based on Raspberry OS Lite, has been simplified to inclides all necessary stuff to run your projects using Lua language.
 

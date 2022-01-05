@@ -1,4 +1,4 @@
-/**
+/*
  * lraspi.c - NEKERAFA - 25th october 2021
  * Lua Raspi stand-alone program
  *

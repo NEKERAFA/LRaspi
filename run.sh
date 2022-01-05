@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ ! -d "build" ]; then
     ./build.sh
 fi
@@ -5,3 +7,4 @@ fi
 cd build
 ./lraspi
 cd ..
+

@@ -1,4 +1,4 @@
-/**
+/*
  * modules/font.c - NEKERAFA - 10th november 2021
  * Abstracts font functions manipulation
  *
@@ -8,10 +8,10 @@
 
 #include <stdlib.h>
 
-#include "../external/raylib37/src/raylib.h"
+#include "raylib.h"
 #include "../lraspi.h"
 
-typedef struct lraspi_font {
+typedef struct lraspi_Font {
     Font data;
 } lraspi_Font;
 

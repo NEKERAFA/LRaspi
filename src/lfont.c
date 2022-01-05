@@ -1,4 +1,4 @@
-/**
+/*
  * lfont.c - NEKERAFA - 6th decembre 2021
  * Implements font module
  *
@@ -12,9 +12,13 @@
 #include "laux.h"
 #include "lfont.h"
 
-/****************************
- * Wrappers
- ****************************/
+// Wrappers
+
+/**
+ * Functions to loads font files and manipulate them
+ *
+ * @module font
+ */
 
 void lraspi_pushfont(lua_State* L, lraspi_Font* font) {
     lua_pushlightuserdata(L, (void*)font);
@@ -34,6 +38,14 @@ lraspi_Font* lraspi_optfont(lua_State* L, int arg, lraspi_Font* d) {
     return (lraspi_Font*)luaL_checkudata(L, arg, LRASPI_TFONT);
 }
 
+/**
+ * Loads a font file.
+ *
+ * @function new
+ * @param font_file Path of the font file.
+ * @param[opt=12] size The size of glyphs.
+ * @return New font object.
+ */
 static int lua_font_new(lua_State* L) {
     const char* font_file = luaL_checkstring(L, 1);
     lua_Number size = luaL_optnumber(L, 2, LRASPI_FONT_SIZE);
@@ -44,18 +56,36 @@ static int lua_font_new(lua_State* L) {
     return 0;
 }
 
+/**
+ * Releases a font from memory.
+ *
+ * @function free
+ * @param font The font which wull be released.
+ */
 static int lua_font_free(lua_State* L) {
     lraspi_Font* font = lraspi_checkfont(L, 1);
     lraspi_font_free(font);
     return 0;
 }
 
+/**
+ * Gets the current default font.
+ *
+ * @function getdefault
+ * @return A font object.
+ */
 static int lua_font_getdefault(lua_State* L) {
     lraspi_Font* font = lraspi_font_getdefault();
     lraspi_pushfont(L, font);
     return 1;
 }
 
+/**
+ * Sets the current default font.
+ *
+ * @function setdefault
+ * @param[opt] font The font object to set as default, nil to reset it.
+ */
 static int lua_font_setdefault(lua_State* L) {
     lraspi_Font* font = lraspi_optfont(L, 1, NULL);
     lraspi_font_setdefault(font);
@@ -63,9 +93,7 @@ static int lua_font_setdefault(lua_State* L) {
     return 0;
 }
 
-/****************************
- * Lua module registry
- ****************************/
+// Lua module registry
 
 static const struct luaL_Reg lua_font[] = {
     {"new", lua_font_new},
@@ -75,17 +103,15 @@ static const struct luaL_Reg lua_font[] = {
     {NULL, NULL}
 };
 
-/****************************
- * Lua metatable registry
- ****************************/
+// Lua metatable registry
+
 static const struct luaL_Reg lua_font_mt[] = {
     {"free", lua_font_free},
     {NULL, NULL}
 };
 
-/****************************
- * Initialize module function
- ****************************/
+// Initialize module function
+
 int luaopen_font(lua_State* L) {
     lraspi_newobject(L, LRASPI_TFONT, lua_font_mt);
     luaL_newlib(L, lua_font);

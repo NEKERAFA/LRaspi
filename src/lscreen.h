@@ -1,4 +1,4 @@
-/**
+/*
  * lscreen.h - NEKERAFA - 1st novembre 2021
  * Defines screen module
  *
