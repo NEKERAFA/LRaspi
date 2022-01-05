@@ -1,4 +1,4 @@
-/**
+/*
  * modules/core.c - NEKERAFA - 1st november 2021
  * Abstracts core functions
  *
@@ -6,7 +6,7 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
-#include "../external/raylib37/src/raylib.h"
+#include "raylib.h"
 #include "../lraspi.h"
 
 #ifndef NDEBUG

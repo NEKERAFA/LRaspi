@@ -3,6 +3,7 @@ set(LRASPI_MODULES
 	src/modules/core.c
 	src/modules/screen.c
 	src/modules/font.c
+    src/modules/colour.c
 )
 
 set(LRASPI_LUA_LIBS

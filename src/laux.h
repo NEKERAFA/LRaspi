@@ -1,4 +1,4 @@
-/**
+/*
  * laux.h - NEKERAFA - 1st november 2021
  * Auxiliary functions
  *
@@ -18,25 +18,39 @@
 #define LRASPI_TFONT "font"
 
 /**
- * @brief Opens default libraries
- * @param L A Lua state
+ * @defgroup lua_aux Lua functions
+ * Functions to extends Lua.
+ *
+ * @{
+ */
+
+/**
+ * @brief Opens default LRaspi libraries.
+ *
+ * @param L A Lua state.
  */
 int lraspi_openlibs(lua_State* L);
 
 /**
- * @brief Opens a .lua file
- * @param L A Lua state
- * @param path The .lua file
+ * @brief Opens a lua file.
+ *
+ * @param L A Lua state.
+ * @param path The path of the lua file.
  */
 void lraspi_dofile(lua_State* L, const char* path);
 
 /**
- * @brief Creates a new metatable that represents an object
- * @param L A Lua state
- * @param objname The name of the object
- * @param methods The methods that contains the object
+ * @brief Creates a new metatable that represents an object.
+ *
+ * @param L A Lua state.
+ * @param objname The name of the object.
+ * @param methods The methods that contains the object.
  */
 void lraspi_newobject(lua_State* L, const char* objname, const luaL_Reg methods[]);
+
+/**
+ * @}
+ */
 
 #endif // LRASPI_AUX_H
 

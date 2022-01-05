@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>LRaspi 2022.2</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LRaspi</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Dependencies">Dependencies </a></li>
+<li><a href="#Building">Building </a></li>
+<li><a href="#Example">Example </a></li>
+<li><a href="#Reference">Reference </a></li>
+<li><a href="#Downloads">Downloads </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><strong>README</strong></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/lraspi.html">lraspi</a></li>
+  <li><a href="../modules/font.html">font</a></li>
+  <li><a href="../modules/screen.html">screen</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/main.lua.html">main.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+
+<p align="center"><img src="extra/header.png" alt="Lua Raspi" width=480 /></p>
+
+
+<p>A Lua embedded interpreter for the Raspberry Pi. If you are an amateur maker, with Lua Raspi you can make small proyects easier and faster on your Raspberry Pi. The system, which is based on Raspberry OS Lite, has been simplified to inclides all necessary stuff to run your projects using Lua language.</p>
+
+
+<p align="center"><a href="www.lua.org"><img src="https://img.shields.io/badge/powered%20by-Lua%205.4-blue" alt="Powered by Lua" /></a> <a href="github.com/NEKERAFA/LRaspi/releases"><img src="https://img.shields.io/github/v/release/NEKERAFA/Lua-Raspi?include_prereleases" alt="Lua Raspi 2022.1" /></a> <a href="github.com/NEKERAFA/Lua-Raspi/blob/master/LICENSE"><img src="https://img.shields.io/github/license/nekerafa/lua-raspi" alt="MIT License" /></a></p>
+
+
+<hr/>
+
+<p><a name="Dependencies"></a></p>
+<h2>Dependencies</h2>
+
+<ul>
+    <li><a href="www.lua.org">Lua 5.4</a></li>
+    <li><a href="www.raylib.com">RayLib 3.7</a></li>
+</ul>
+
+<p><a name="Building"></a></p>
+<h2>Building</h2>
+
+<h4>Ubuntu</h4>
+
+<p>You should install the tools: <strong>GCC</strong>, <strong>make</strong> and <strong>cmake</strong>; and the libraries: <strong>ALSA</strong>, <strong>MESA</strong> and <strong>X11</strong></p>
+
+
+<pre>
+sudo apt install build-essential cmake git libreadline-dev libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+</pre>
+
+
+<p>Next, you can make the tool using the following commands:</p>
+
+
+<pre>
+git clone https://github.com/nekerafa/lraspi.git lraspi
+cd lraspi
+./build.sh
+</pre>
+
+
+<p><a name="Example"></a></p>
+<h2>Example</h2>
+
+
+<pre>
+<span class="keyword">while</span> isclosing() <span class="keyword">do</span>
+    screen.clear()
+    screen:<span class="global">print</span>(<span class="string">"Hello world!"</span>, <span class="number">10</span>, <span class="number">10</span>)
+    screen.flip()
+<span class="keyword">end</span>
+</pre>
+
+
+<p><a name="Reference"></a></p>
+<h2>Reference</h2>
+
+<p>All modules and functions are compiled in the <a href="https://nekerafa.github.io/LRaspi/reference/index.html">Lua Raspi Reference</a> page. For language reference, you can check the <a href="https://www.lua.org/manual/5.4/manual.html">Lua 5.4 Reference</a> in the official page.</p>
+
+<p>The C module wrappes are docummented in the <a href="https://nekerafa.github.io/LRaspi/doxygen/index.html">Lua Raspi C Reference</a> page.</p>
+
+<p><a name="Downloads"></a></p>
+<h2>Downloads</h2>
+
+<p>You can see all releases in <a href="https://github.com/NEKERAFA/Lua-Raspi/releases">GitHub Repository</a></p>
+
+<h4>Last Release</h4>
+
+<ul>
+    <li><a href="https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.tar.xz">2019-09-lraspi-0.0.2r.tar.xz</a></li>
+    <li><a href="https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.zip">2019-09-lraspi-0.0.2r.zip</a></li>
+</ul>
+
+<hr/>
+
+<h3>License</h3>
+
+<blockquote>
+    <p>MIT License</p>
+
+    <p>Copyright (c) 2019 Rafael Alcalde Azpiazu</p>
+
+    <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:</p>
+
+    <p>The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.</p>
+
+    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.</p>
+</blockquote>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-01-05 21:21:43 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

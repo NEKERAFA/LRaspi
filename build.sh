@@ -1,3 +1,5 @@
+#!/bin/bash
+
 build() {
     mkdir -p build
     cd build
@@ -39,3 +41,4 @@ else
     echo "command $1 not found"
     usage
 fi
+
