@@ -41,18 +41,18 @@ end
 
 ## Reference
 
-All modules and functions are compiled in the [Lua Raspi Reference](https://nekerafa.github.io/LRaspi/reference/index.html) page. For language reference, you can check the [Lua 5.4 Reference](https://www.lua.org/manual/5.4/manual.html) in the official page.
+All modules and functions are compiled in the [Lua Raspi Reference](https://nekerafa.github.io/lraspi/reference/index.html) page. For language reference, you can check the [Lua 5.4 Reference](https://www.lua.org/manual/5.4/manual.html) in the official page.
 
-The C module wrappes are docummented in the [Lua Raspi C Reference](https://nekerafa.github.io/LRaspi/doxygen/index.html) page.
+The C module wrappes are docummented in the [Lua Raspi C Reference](https://nekerafa.github.io/lraspi/library/index.html) page.
 
 ## Downloads
 
-You can see all releases in [GitHub Repository](https://github.com/NEKERAFA/Lua-Raspi/releases)
+You can see all releases in [GitHub Repository](https://github.com/nekerafa/lraspi/releases)
 
 #### Last Release
 
-* [2019-09-lraspi-0.0.2r.tar.xz](https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.tar.xz)
-* [2019-09-lraspi-0.0.2r.zip](https://github.com/NEKERAFA/Lua-Raspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.zip)
+* [2019-09-lraspi-0.0.2r.tar.xz](https://github.com/nekerafa/lraspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.tar.xz)
+* [2019-09-lraspi-0.0.2r.zip](https://github.com/nekerafa/lraspi/releases/download/v0.0.2-alpha/2019-09-lraspi-0.0.2r.zip)
 
 ---
 
