@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LRaspi: src/laux.h Source File</title>
+<title>LRaspi: src/lcolour.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,7 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('laux_8h_source.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('lcolour_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,47 +96,44 @@ $(document).ready(function(){initNavTree('laux_8h_source.html',''); initResizabl
 
 <div class="header">
   <div class="headertitle">
-<div class="title">laux.h</div>  </div>
+<div class="title">lcolour.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="laux_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * laux.h - NEKERAFA - 1st november 2021</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Auxiliary functions</span></div>
+<a href="lcolour_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * lcolour.h - NEKERAFA - 7th january 2022</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Defines colour module</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Under MIT License</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef LRASPI_AUX_H</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define LRASPI_AUX_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef LRASPI_COLOUR_MODULE_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define LRASPI_COLOUR_MODULE_H</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;lua.h&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;lauxlib.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lraspi_8h.html">lraspi.h</a>&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define LRASPI_SCREENMODULE &quot;screen&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define LRASPI_FONTMODULE &quot;font&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define LRASPI_COLOURMODULE &quot;colour&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define LRASPI_TFONT &quot;font&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define LRASPI_TCOLOUR &quot;colour&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__lua__aux.html#ga081ac26b37be4865b410b9ca460f1211">lraspi_openlibs</a>(lua_State* L);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__lua__aux.html#gad2771d113b166b5347250bfb7c917d99">lraspi_dofile</a>(lua_State* L, <span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__lua__aux.html#ga0d258bc57b2ecc2da0576d37a0c82177">lraspi_newobject</a>(lua_State* L, <span class="keyword">const</span> <span class="keywordtype">char</span>* objname, <span class="keyword">const</span> luaL_Reg methods[]);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif // LRASPI_AUX_H</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__lua__aux.html#ga2075fb96b5f850e2ba93620098d33331">lraspi_pushcolour</a>(lua_State* L, <a class="code" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a>* colour);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a>* <a class="code" href="group__lua__aux.html#ga4731b3b11c8a07e17916376db33ea108">lraspi_checkcolour</a>(lua_State* L, <span class="keywordtype">int</span> narg);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a>* <a class="code" href="group__lua__aux.html#ga9ea88b1cda9b82e44e833e25acc202aa">lraspi_optcolour</a>(lua_State* L, <span class="keywordtype">int</span> arg, <a class="code" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a>* d);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">int</span> luaopen_colour(lua_State* L);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif // LRASPI_COLOUR_MODULE_H</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="agroup__lua__aux_html_ga081ac26b37be4865b410b9ca460f1211"><div class="ttname"><a href="group__lua__aux.html#ga081ac26b37be4865b410b9ca460f1211">lraspi_openlibs</a></div><div class="ttdeci">int lraspi_openlibs(lua_State *L)</div><div class="ttdoc">Opens default LRaspi libraries.</div></div>
-<div class="ttc" id="agroup__lua__aux_html_gad2771d113b166b5347250bfb7c917d99"><div class="ttname"><a href="group__lua__aux.html#gad2771d113b166b5347250bfb7c917d99">lraspi_dofile</a></div><div class="ttdeci">void lraspi_dofile(lua_State *L, const char *path)</div><div class="ttdoc">Opens a lua file.</div></div>
-<div class="ttc" id="agroup__lua__aux_html_ga0d258bc57b2ecc2da0576d37a0c82177"><div class="ttname"><a href="group__lua__aux.html#ga0d258bc57b2ecc2da0576d37a0c82177">lraspi_newobject</a></div><div class="ttdeci">void lraspi_newobject(lua_State *L, const char *objname, const luaL_Reg methods[])</div><div class="ttdoc">Creates a new metatable that represents an object.</div></div>
+<div class="ttc" id="agroup__lua__aux_html_ga9ea88b1cda9b82e44e833e25acc202aa"><div class="ttname"><a href="group__lua__aux.html#ga9ea88b1cda9b82e44e833e25acc202aa">lraspi_optcolour</a></div><div class="ttdeci">lraspi_Colour * lraspi_optcolour(lua_State *L, int arg, lraspi_Colour *d)</div><div class="ttdoc">If the function argument arg is a colour object, return this colour. If the argument is absent or is ...</div></div>
+<div class="ttc" id="agroup__lua__aux_html_ga4731b3b11c8a07e17916376db33ea108"><div class="ttname"><a href="group__lua__aux.html#ga4731b3b11c8a07e17916376db33ea108">lraspi_checkcolour</a></div><div class="ttdeci">lraspi_Colour * lraspi_checkcolour(lua_State *L, int narg)</div><div class="ttdoc">Checks whether the function argument narg is a colour object.</div></div>
+<div class="ttc" id="agroup__lua__aux_html_ga2075fb96b5f850e2ba93620098d33331"><div class="ttname"><a href="group__lua__aux.html#ga2075fb96b5f850e2ba93620098d33331">lraspi_pushcolour</a></div><div class="ttdeci">void lraspi_pushcolour(lua_State *L, lraspi_Colour *colour)</div><div class="ttdoc">Puses a colour object onto the stack.</div></div>
+<div class="ttc" id="alraspi_8h_html"><div class="ttname"><a href="lraspi_8h.html">lraspi.h</a></div></div>
+<div class="ttc" id="agroup__colour_html_ga1b50259129fdbac05c09e6c9c3078124"><div class="ttname"><a href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a></div><div class="ttdeci">struct lraspi_Colour lraspi_Colour</div><div class="ttdef"><b>Definition:</b> lraspi.h:172</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="laux_8h.html">laux.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="lcolour_8h.html">lcolour.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>

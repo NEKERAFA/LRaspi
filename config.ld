@@ -4,7 +4,8 @@ description = "A Lua Player for Raspberry Pi"
 file = {
     "src/lcore.c",
     "src/lfont.c",
-    "src/lscreen.c"
+    "src/lscreen.c",
+    "src/lcolour.c"
 }
 dir = "docs/reference"
 format = "markdown"

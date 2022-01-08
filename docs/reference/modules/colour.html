@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>LRaspi 2022.2</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LRaspi</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/lraspi.html">lraspi</a></li>
+  <li><a href="../modules/font.html">font</a></li>
+  <li><a href="../modules/screen.html">screen</a></li>
+  <li><strong>colour</strong></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">README</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/main.lua.html">main.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>colour</code></h1>
+<p>Functions to create, convert and modify colours</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new (red, green, blue[, alpha=255])</a></td>
+	<td class="summary">Creates a new colour object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#free">free (colour)</a></td>
+	<td class="summary">Releases the colour.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getredchannel">getredchannel (colour)</a></td>
+	<td class="summary">Gets the red channel value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setredchannel">setredchannel (colour, red)</a></td>
+	<td class="summary">Sets the red channel value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getgreenchannel">getgreenchannel (colour)</a></td>
+	<td class="summary">Gets the green channel value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setgreenchannel">setgreenchannel (colour, green)</a></td>
+	<td class="summary">Sets the green channel value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getbluechannel">getbluechannel (colour)</a></td>
+	<td class="summary">Gets the blue channel value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setbluechannel">setbluechannel (colour, blue)</a></td>
+	<td class="summary">Sets the blue channel value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getalphachannel">getalphachannel (colour)</a></td>
+	<td class="summary">Gets the alpha channel value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setalphachannel">setalphachannel (colour, alpha)</a></td>
+	<td class="summary">Sets the alpha channel value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setforeground">setforeground ([colour])</a></td>
+	<td class="summary">Sets the default foreground colour.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getforeground">getforeground ()</a></td>
+	<td class="summary">Gets the default foreground colour.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setbackground">setbackground ([colour])</a></td>
+	<td class="summary">Sets the default foreground colour.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getbackground">getbackground ()</a></td>
+	<td class="summary">Gets the default background colour.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new (red, green, blue[, alpha=255])</strong>
+    </dt>
+    <dd>
+    Creates a new colour object.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">red</span>
+         The red channel value (0 - 255).
+        </li>
+        <li><span class="parameter">green</span>
+         The green channel value (0 - 255).
+        </li>
+        <li><span class="parameter">blue</span>
+         The blue channel value (0 - 255).
+        </li>
+        <li><span class="parameter">alpha</span>
+         The alpha channel value (0 - 255).
+         (<em>default</em> 255)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "free"></a>
+    <strong>free (colour)</strong>
+    </dt>
+    <dd>
+    Releases the colour.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         A colour object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getredchannel"></a>
+    <strong>getredchannel (colour)</strong>
+    </dt>
+    <dd>
+    Gets the red channel value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         A colour object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setredchannel"></a>
+    <strong>setredchannel (colour, red)</strong>
+    </dt>
+    <dd>
+    Sets the red channel value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         A colour object.
+        </li>
+        <li><span class="parameter">red</span>
+         The new value.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getgreenchannel"></a>
+    <strong>getgreenchannel (colour)</strong>
+    </dt>
+    <dd>
+    Gets the green channel value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         A colour object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setgreenchannel"></a>
+    <strong>setgreenchannel (colour, green)</strong>
+    </dt>
+    <dd>
+    Sets the green channel value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         A colour object.
+        </li>
+        <li><span class="parameter">green</span>
+         The new value.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getbluechannel"></a>
+    <strong>getbluechannel (colour)</strong>
+    </dt>
+    <dd>
+    Gets the blue channel value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         A colour object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setbluechannel"></a>
+    <strong>setbluechannel (colour, blue)</strong>
+    </dt>
+    <dd>
+    Sets the blue channel value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         A colour object.
+        </li>
+        <li><span class="parameter">blue</span>
+         The new value.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getalphachannel"></a>
+    <strong>getalphachannel (colour)</strong>
+    </dt>
+    <dd>
+    Gets the alpha channel value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         A colour object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setalphachannel"></a>
+    <strong>setalphachannel (colour, alpha)</strong>
+    </dt>
+    <dd>
+    Sets the alpha channel value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         A colour object.
+        </li>
+        <li><span class="parameter">alpha</span>
+         The new value.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setforeground"></a>
+    <strong>setforeground ([colour])</strong>
+    </dt>
+    <dd>
+    Sets the default foreground colour.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         The font object to set as default, nil to reset it.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getforeground"></a>
+    <strong>getforeground ()</strong>
+    </dt>
+    <dd>
+    Gets the default foreground colour.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Current foreground colour.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setbackground"></a>
+    <strong>setbackground ([colour])</strong>
+    </dt>
+    <dd>
+    Sets the default foreground colour.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colour</span>
+         The font object to set as default, nil to reset it.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getbackground"></a>
+    <strong>getbackground ()</strong>
+    </dt>
+    <dd>
+    Gets the default background colour.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Current background colour.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-01-08 22:56:15 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
