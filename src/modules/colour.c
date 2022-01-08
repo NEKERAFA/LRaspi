@@ -15,8 +15,8 @@ typedef struct lraspi_Colour {
     Color data;
 } lraspi_Colour;
 
-lraspi_Colour foreground_colour = { BLACK };
-lraspi_Colour background_colour = { WHITE };
+lraspi_Colour foreground_colour = { WHITE };
+lraspi_Colour background_colour = { BACK };
 lraspi_Colour* current_foreground_colour = &foreground_colour;
 lraspi_Colour* current_background_colour = &background_colour;
 

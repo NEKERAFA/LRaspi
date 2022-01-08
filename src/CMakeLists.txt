@@ -11,6 +11,7 @@ set(LRASPI_LUA_LIBS
     src/lcore.c
 	src/lscreen.c
     src/lfont.c
+    src/lcolour.c
 )
 
 add_library("lraspi.${PROJECT_VERSION}" STATIC ${LRASPI_MODULES} ${LRASPI_LUA_LIBS})

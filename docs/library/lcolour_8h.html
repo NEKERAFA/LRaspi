@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LRaspi: File List</title>
+<title>LRaspi: src/lcolour.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,7 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('files.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('lcolour_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,24 +95,38 @@ $(document).ready(function(){initNavTree('files.html',''); initResizable(); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">File List</div>  </div>
+<div class="title">lcolour.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all documented files with brief descriptions:</div><div class="directory">
-<div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="toggleFolder('0_')">&#9660;</span><span id="img_0_" class="iconfopen" onclick="toggleFolder('0_')">&#160;</span><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" target="_self">src</a></td><td class="desc"></td></tr>
-<tr id="row_0_0_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="laux_8h_source.html"><span class="icondoc"></span></a><a class="el" href="laux_8h.html" target="_self">laux.h</a></td><td class="desc"></td></tr>
-<tr id="row_0_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="lcolour_8h_source.html"><span class="icondoc"></span></a><a class="el" href="lcolour_8h.html" target="_self">lcolour.h</a></td><td class="desc"></td></tr>
-<tr id="row_0_2_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="lfont_8h_source.html"><span class="icondoc"></span></a><a class="el" href="lfont_8h.html" target="_self">lfont.h</a></td><td class="desc"></td></tr>
-<tr id="row_0_3_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="lraspi_8h_source.html"><span class="icondoc"></span></a><a class="el" href="lraspi_8h.html" target="_self">lraspi.h</a></td><td class="desc"></td></tr>
+<div class="textblock"><code>#include &quot;lua.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="lraspi_8h_source.html">lraspi.h</a>&quot;</code><br />
+</div>
+<p><a href="lcolour_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga2075fb96b5f850e2ba93620098d33331"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lua__aux.html#ga2075fb96b5f850e2ba93620098d33331">lraspi_pushcolour</a> (lua_State *L, <a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *colour)</td></tr>
+<tr class="memdesc:ga2075fb96b5f850e2ba93620098d33331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puses a colour object onto the stack.  <a href="group__lua__aux.html#ga2075fb96b5f850e2ba93620098d33331">More...</a><br /></td></tr>
+<tr class="separator:ga2075fb96b5f850e2ba93620098d33331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4731b3b11c8a07e17916376db33ea108"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lua__aux.html#ga4731b3b11c8a07e17916376db33ea108">lraspi_checkcolour</a> (lua_State *L, int narg)</td></tr>
+<tr class="memdesc:ga4731b3b11c8a07e17916376db33ea108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the function argument <code>narg</code> is a colour object.  <a href="group__lua__aux.html#ga4731b3b11c8a07e17916376db33ea108">More...</a><br /></td></tr>
+<tr class="separator:ga4731b3b11c8a07e17916376db33ea108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9ea88b1cda9b82e44e833e25acc202aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lua__aux.html#ga9ea88b1cda9b82e44e833e25acc202aa">lraspi_optcolour</a> (lua_State *L, int arg, <a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *d)</td></tr>
+<tr class="memdesc:ga9ea88b1cda9b82e44e833e25acc202aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the function argument <code>arg</code> is a colour object, return this colour. If the argument is absent or is nil, return <code>d</code>. Otherwise, raises an error.  <a href="group__lua__aux.html#ga9ea88b1cda9b82e44e833e25acc202aa">More...</a><br /></td></tr>
+<tr class="separator:ga9ea88b1cda9b82e44e833e25acc202aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f5a1053af4bc3fd6f2ee152c2c26839"><td class="memItemLeft" align="right" valign="top"><a id="a6f5a1053af4bc3fd6f2ee152c2c26839"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>luaopen_colour</b> (lua_State *L)</td></tr>
+<tr class="separator:a6f5a1053af4bc3fd6f2ee152c2c26839"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- directory -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="lcolour_8h.html">lcolour.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>

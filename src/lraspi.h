@@ -45,7 +45,6 @@
 #define LRASPI_FONT_SIZE 12
 #define LRASPI_FONT_FILE "OpenSans.ttf"
 
-
 /**
  * @defgroup core Core functions
  *
@@ -183,10 +182,10 @@ void* lraspi_colour_getdata(lraspi_Colour* colour);
 /**
  * @brief Creates a new colour object.
  *
- * @param red The red channel value (0 - 255)
- * @param green The green channel value (0 - 255)
- * @param blue The blue channel value (0 - 255)
- * @param alpha The alpha channel value (0 - 255)
+ * @param red The red channel value (0 - 255).
+ * @param green The green channel value (0 - 255).
+ * @param blue The blue channel value (0 - 255).
+ * @param alpha The alpha channel value (0 - 255).
  */
 lraspi_Colour* lraspi_colour_new(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
 

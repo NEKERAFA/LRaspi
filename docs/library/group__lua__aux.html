@@ -120,15 +120,62 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga7f3c57d2e53b723a8d59d187fdd6bcc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes a font object onto the stack.  <a href="group__lua__aux.html#ga7f3c57d2e53b723a8d59d187fdd6bcc4">More...</a><br /></td></tr>
 <tr class="separator:ga7f3c57d2e53b723a8d59d187fdd6bcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9a2d30b2319b07e41d6dd3ac80bc6297"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__font.html#ga4d2501c95f249360fc699a4b7aabe5f7">lraspi_Font</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lua__aux.html#ga9a2d30b2319b07e41d6dd3ac80bc6297">lraspi_checkfont</a> (lua_State *L, int narg)</td></tr>
-<tr class="memdesc:ga9a2d30b2319b07e41d6dd3ac80bc6297"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the function argument <code>narg</code> hat a font object.  <a href="group__lua__aux.html#ga9a2d30b2319b07e41d6dd3ac80bc6297">More...</a><br /></td></tr>
+<tr class="memdesc:ga9a2d30b2319b07e41d6dd3ac80bc6297"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the function argument <code>narg</code> is a font object.  <a href="group__lua__aux.html#ga9a2d30b2319b07e41d6dd3ac80bc6297">More...</a><br /></td></tr>
 <tr class="separator:ga9a2d30b2319b07e41d6dd3ac80bc6297"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga95d52bd901d32934459c1b4255d0af17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__font.html#ga4d2501c95f249360fc699a4b7aabe5f7">lraspi_Font</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lua__aux.html#ga95d52bd901d32934459c1b4255d0af17">lraspi_optfont</a> (lua_State *L, int arg, <a class="el" href="group__font.html#ga4d2501c95f249360fc699a4b7aabe5f7">lraspi_Font</a> *d)</td></tr>
-<tr class="memdesc:ga95d52bd901d32934459c1b4255d0af17"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the function argument arg is a font object, return this font. If this argument is absent or is nil, return <code>d</code>. Otherwise, raises an error.  <a href="group__lua__aux.html#ga95d52bd901d32934459c1b4255d0af17">More...</a><br /></td></tr>
+<tr class="memdesc:ga95d52bd901d32934459c1b4255d0af17"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the function argument <code>arg</code> is a font object, return this font. If this argument is absent or is nil, return <code>d</code>. Otherwise, raises an error.  <a href="group__lua__aux.html#ga95d52bd901d32934459c1b4255d0af17">More...</a><br /></td></tr>
 <tr class="separator:ga95d52bd901d32934459c1b4255d0af17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2075fb96b5f850e2ba93620098d33331"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lua__aux.html#ga2075fb96b5f850e2ba93620098d33331">lraspi_pushcolour</a> (lua_State *L, <a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *colour)</td></tr>
+<tr class="memdesc:ga2075fb96b5f850e2ba93620098d33331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puses a colour object onto the stack.  <a href="group__lua__aux.html#ga2075fb96b5f850e2ba93620098d33331">More...</a><br /></td></tr>
+<tr class="separator:ga2075fb96b5f850e2ba93620098d33331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4731b3b11c8a07e17916376db33ea108"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lua__aux.html#ga4731b3b11c8a07e17916376db33ea108">lraspi_checkcolour</a> (lua_State *L, int narg)</td></tr>
+<tr class="memdesc:ga4731b3b11c8a07e17916376db33ea108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the function argument <code>narg</code> is a colour object.  <a href="group__lua__aux.html#ga4731b3b11c8a07e17916376db33ea108">More...</a><br /></td></tr>
+<tr class="separator:ga4731b3b11c8a07e17916376db33ea108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9ea88b1cda9b82e44e833e25acc202aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lua__aux.html#ga9ea88b1cda9b82e44e833e25acc202aa">lraspi_optcolour</a> (lua_State *L, int arg, <a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *d)</td></tr>
+<tr class="memdesc:ga9ea88b1cda9b82e44e833e25acc202aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the function argument <code>arg</code> is a colour object, return this colour. If the argument is absent or is nil, return <code>d</code>. Otherwise, raises an error.  <a href="group__lua__aux.html#ga9ea88b1cda9b82e44e833e25acc202aa">More...</a><br /></td></tr>
+<tr class="separator:ga9ea88b1cda9b82e44e833e25acc202aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions to extends Lua. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga4731b3b11c8a07e17916376db33ea108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4731b3b11c8a07e17916376db33ea108">&#9670;&nbsp;</a></span>lraspi_checkcolour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a>* lraspi_checkcolour </td>
+          <td>(</td>
+          <td class="paramtype">lua_State *&#160;</td>
+          <td class="paramname"><em>L</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>narg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks whether the function argument <code>narg</code> is a colour object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>A Lua state. </td></tr>
+    <tr><td class="paramname">narg</td><td>The position of the argument. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A font object. </dd></dl>
+
+</div>
+</div>
 <a id="ga9a2d30b2319b07e41d6dd3ac80bc6297"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga9a2d30b2319b07e41d6dd3ac80bc6297">&#9670;&nbsp;</a></span>lraspi_checkfont()</h2>
 
@@ -155,7 +202,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Checks whether the function argument <code>narg</code> hat a font object. </p>
+<p>Checks whether the function argument <code>narg</code> is a font object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">L</td><td>A Lua state. </td></tr>
@@ -274,6 +321,51 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga9ea88b1cda9b82e44e833e25acc202aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9ea88b1cda9b82e44e833e25acc202aa">&#9670;&nbsp;</a></span>lraspi_optcolour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a>* lraspi_optcolour </td>
+          <td>(</td>
+          <td class="paramtype">lua_State *&#160;</td>
+          <td class="paramname"><em>L</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If the function argument <code>arg</code> is a colour object, return this colour. If the argument is absent or is nil, return <code>d</code>. Otherwise, raises an error. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>A Lua state. </td></tr>
+    <tr><td class="paramname">arg</td><td>The position of the argument. </td></tr>
+    <tr><td class="paramname">d</td><td>The default value if the argument is absent or nil. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A colour object. </dd></dl>
+
+</div>
+</div>
 <a id="ga95d52bd901d32934459c1b4255d0af17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga95d52bd901d32934459c1b4255d0af17">&#9670;&nbsp;</a></span>lraspi_optfont()</h2>
 
@@ -306,16 +398,53 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If the function argument arg is a font object, return this font. If this argument is absent or is nil, return <code>d</code>. Otherwise, raises an error. </p>
+<p>If the function argument <code>arg</code> is a font object, return this font. If this argument is absent or is nil, return <code>d</code>. Otherwise, raises an error. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">L</td><td>A Lua state. </td></tr>
     <tr><td class="paramname">arg</td><td>The position of the argument. </td></tr>
-    <tr><td class="paramname">d</td><td>The default value if the arguments is absent or nil. </td></tr>
+    <tr><td class="paramname">d</td><td>The default value if the argument is absent or nil. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A font object. </dd></dl>
+
+</div>
+</div>
+<a id="ga2075fb96b5f850e2ba93620098d33331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2075fb96b5f850e2ba93620098d33331">&#9670;&nbsp;</a></span>lraspi_pushcolour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lraspi_pushcolour </td>
+          <td>(</td>
+          <td class="paramtype">lua_State *&#160;</td>
+          <td class="paramname"><em>L</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__colour.html#ga1b50259129fdbac05c09e6c9c3078124">lraspi_Colour</a> *&#160;</td>
+          <td class="paramname"><em>colour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Puses a colour object onto the stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>A Lua state. </td></tr>
+    <tr><td class="paramname">colour</td><td>A colour object. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

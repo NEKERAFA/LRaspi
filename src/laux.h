@@ -14,10 +14,14 @@
 
 #define LRASPI_SCREENMODULE "screen"
 #define LRASPI_FONTMODULE "font"
+#define LRASPI_COLOURMODULE "colour"
 
 #define LRASPI_TFONT "font"
+#define LRASPI_TCOLOUR "colour"
 
 /**
+ * @file laux.h
+ *
  * @defgroup lua_aux Lua functions
  * Functions to extends Lua.
  *

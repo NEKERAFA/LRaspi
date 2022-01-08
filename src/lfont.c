@@ -26,16 +26,12 @@ void lraspi_pushfont(lua_State* L, lraspi_Font* font) {
     lua_setmetatable(L, -2);
 }
 
-lraspi_Font* lraspi_checkfont(lua_State* L, int arg) {
-    return (lraspi_Font*)luaL_checkudata(L, arg, LRASPI_TFONT);
+lraspi_Font* lraspi_checkfont(lua_State* L, int narg) {
+    return (lraspi_Font*)luaL_checkudata(L, narg, LRASPI_TFONT);
 }
 
 lraspi_Font* lraspi_optfont(lua_State* L, int arg, lraspi_Font* d) {
-    if (lua_isnoneornil(L, arg)) {
-        return d;
-    }
-
-    return (lraspi_Font*)luaL_checkudata(L, arg, LRASPI_TFONT);
+    return luaL_opt(L, lraspi_checkfont, arg, d);
 }
 
 /**
@@ -53,7 +49,7 @@ static int lua_font_new(lua_State* L) {
     lraspi_Font* font = lraspi_font_new(font_file, size);
     lraspi_pushfont(L, font);
 
-    return 0;
+    return 1;
 }
 
 /**
