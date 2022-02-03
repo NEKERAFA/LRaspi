@@ -6,30 +6,57 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
+#include <stdlib.h>
+
 #include "raylib.h"
 #include "../lraspi.h"
+#include "colour.h"
+#include "image.h"
 
-void lraspi_screen_clear() {
-    lraspi_Colour* colour = lraspi_colour_getbackground();
-    Color raylib_color = *(Color*)lraspi_colour_getdata(colour);
+lraspi_Image* default_image = NULL;
+RenderTexture2D render;
 
-    BeginDrawing();
-    ClearBackground(raylib_color);
+void lraspi_screen_setdefault(lraspi_Image* image) {
+    if (default_image != NULL) {
+        EndTextureMode();
+        UnloadTexture(default_image->data);
+        default_image->data = render.texture;
+        UnloadRenderTexture(render);
+    }
+
+    if (image == NULL) {
+        default_image = NULL;
+    } else {
+        default_image = image;
+        render = LoadRenderTexture(image->initialWidth, image->initialHeight);
+        BeginTextureMode(render);
+        DrawTexture(image->data, 0, 0, WHITE);
+    }
 }
 
-void lraspi_screen_print(const char* text, int x, int y) {
-    lraspi_Font* font = lraspi_font_getdefault();
-    Font raylib_font = *(Font*)lraspi_font_getdata(font);
+lraspi_Image* lraspi_screen_getdefault() {
+    if (default_image != NULL) {
+        EndTextureMode();
+        UnloadTexture(default_image->data);
+        default_image->data = render.texture;
+        BeginTextureMode(render);
+    }
 
-    lraspi_Colour* colour = lraspi_colour_getforeground();
-    Color raylib_color = *(Color*)lraspi_colour_getdata(colour);
-    
-    Vector2 raylib_pos = (Vector2) { (float) x, (float) y };
+    return default_image;
+}
 
-    DrawTextEx(raylib_font, text, raylib_pos, raylib_font.baseSize, 0, raylib_color);
+void lraspi_screen_clear() {
+    if (default_image == NULL) {
+        BeginDrawing();
+    }
+
+    lraspi_Colour* colour = lraspi_colour_getbackground();
+    ClearBackground(colour->data);
 }
 
 void lraspi_screen_flip() {
-    EndDrawing();
+    if (default_image == NULL) {
+        EndDrawing();
+    }
 }
 

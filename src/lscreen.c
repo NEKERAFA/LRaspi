@@ -30,24 +30,6 @@ static int lua_screen_clear(lua_State* L) {
 }
 
 /**
- * Draws a text in a position using the default font and the foreground colour.
- *
- * @function print
- * @param text Text to print
- * @param x x-axis screen position (in pixels) where the text will be printed
- * @param y y-axis screen position (in pixels) where the text will be printed
- */
-static int lua_screen_print(lua_State* L) {
-    const char* text = luaL_checkstring(L, 1);
-    int x = luaL_checkinteger(L, 2);
-    int y = luaL_checkinteger(L, 3);
-
-    lraspi_screen_print(text, x, y);
-    
-    return 0;
-}
-
-/**
  * Sets the library to stop drawing and show the buffer onto the screen.
  *
  * @function flip
@@ -61,7 +43,6 @@ static int lua_screen_flip(lua_State* L) {
 
 static const struct luaL_Reg lua_screen[] = {
     {"clear", lua_screen_clear},
-    {"print", lua_screen_print},
     {"flip", lua_screen_flip},
     {NULL, NULL}
 };

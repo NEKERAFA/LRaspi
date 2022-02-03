@@ -116,18 +116,19 @@ $(document).ready(function(){initNavTree('laux_8h_source.html',''); initResizabl
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define LRASPI_SCREENMODULE &quot;screen&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define LRASPI_FONTMODULE &quot;font&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define LRASPI_COLOURMODULE &quot;colour&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define LRASPI_TFONT &quot;font&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define LRASPI_TCOLOUR &quot;colour&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__lua__aux.html#ga081ac26b37be4865b410b9ca460f1211">lraspi_openlibs</a>(lua_State* L);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__lua__aux.html#gad2771d113b166b5347250bfb7c917d99">lraspi_dofile</a>(lua_State* L, <span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__lua__aux.html#ga0d258bc57b2ecc2da0576d37a0c82177">lraspi_newobject</a>(lua_State* L, <span class="keyword">const</span> <span class="keywordtype">char</span>* objname, <span class="keyword">const</span> luaL_Reg methods[]);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif // LRASPI_AUX_H</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define LRASPI_DRAWMODULE &quot;draw&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define LRASPI_TFONT &quot;font&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define LRASPI_TCOLOUR &quot;colour&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__lua__aux.html#ga081ac26b37be4865b410b9ca460f1211">lraspi_openlibs</a>(lua_State* L);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__lua__aux.html#gad2771d113b166b5347250bfb7c917d99">lraspi_dofile</a>(lua_State* L, <span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__lua__aux.html#ga0d258bc57b2ecc2da0576d37a0c82177">lraspi_newobject</a>(lua_State* L, <span class="keyword">const</span> <span class="keywordtype">char</span>* objname, <span class="keyword">const</span> luaL_Reg methods[]);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif // LRASPI_AUX_H</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="agroup__lua__aux_html_ga081ac26b37be4865b410b9ca460f1211"><div class="ttname"><a href="group__lua__aux.html#ga081ac26b37be4865b410b9ca460f1211">lraspi_openlibs</a></div><div class="ttdeci">int lraspi_openlibs(lua_State *L)</div><div class="ttdoc">Opens default LRaspi libraries.</div></div>

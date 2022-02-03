@@ -101,6 +101,9 @@ $(document).ready(function(){initNavTree('group__core.html',''); initResizable()
 <div class="title">Core functions</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Common functionalities.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -112,20 +115,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga3f2c93c9ae0df3d08fc034f9be4f0ff6">lraspi_close</a> ()</td></tr>
 <tr class="memdesc:ga3f2c93c9ae0df3d08fc034f9be4f0ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes internal libraries and free internal state. <br /></td></tr>
 <tr class="separator:ga3f2c93c9ae0df3d08fc034f9be4f0ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4533ecb0610e494f2df08226f655bce3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga4533ecb0610e494f2df08226f655bce3">lraspi_isclosing</a> ()</td></tr>
-<tr class="memdesc:ga4533ecb0610e494f2df08226f655bce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the window will be closed.  <a href="group__core.html#ga4533ecb0610e494f2df08226f655bce3">More...</a><br /></td></tr>
-<tr class="separator:ga4533ecb0610e494f2df08226f655bce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46b622e408afc764d29ceccdb2853e53"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__core.html#ga46b622e408afc764d29ceccdb2853e53">lraspi_isclosing</a> ()</td></tr>
+<tr class="memdesc:ga46b622e408afc764d29ceccdb2853e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the program will be closed.  <a href="group__core.html#ga46b622e408afc764d29ceccdb2853e53">More...</a><br /></td></tr>
+<tr class="separator:ga46b622e408afc764d29ceccdb2853e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Common functionalities. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga4533ecb0610e494f2df08226f655bce3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4533ecb0610e494f2df08226f655bce3">&#9670;&nbsp;</a></span>lraspi_isclosing()</h2>
+<a id="ga46b622e408afc764d29ceccdb2853e53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga46b622e408afc764d29ceccdb2853e53">&#9670;&nbsp;</a></span>lraspi_isclosing()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int lraspi_isclosing </td>
+          <td class="memname">bool lraspi_isclosing </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -133,8 +137,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
       </table>
 </div><div class="memdoc">
 
-<p>Check if the window will be closed. </p>
-<dl class="section return"><dt>Returns</dt><dd>True of the window will be close, otherwise false. </dd></dl>
+<p>Checks if the program will be closed. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the program will be close, false otherwise. </dd></dl>
 
 </div>
 </div>

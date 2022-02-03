@@ -16,11 +16,13 @@
 #include "lscreen.h"
 #include "lfont.h"
 #include "lcolour.h"
+#include "ldraw.h"
 
 static const luaL_Reg lraspi_libs[] = {
     {LRASPI_SCREENMODULE, luaopen_screen},
     {LRASPI_FONTMODULE, luaopen_font},
     {LRASPI_COLOURMODULE, luaopen_colour},
+    {LRASPI_DRAWMODULE, luaopen_draw},
     {NULL, NULL}
 };
 

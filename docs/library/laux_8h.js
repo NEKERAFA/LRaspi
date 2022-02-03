@@ -1,6 +1,7 @@
 var laux_8h =
 [
     [ "LRASPI_COLOURMODULE", "laux_8h.html#a6080df7efb3ca57e57c83c1f78aa304d", null ],
+    [ "LRASPI_DRAWMODULE", "laux_8h.html#a62eba6167fd3bb774768c29a7adcb3e5", null ],
     [ "LRASPI_FONTMODULE", "laux_8h.html#ab7949e8c9a47ab75746148fae6e60188", null ],
     [ "LRASPI_SCREENMODULE", "laux_8h.html#a5401267e699c7be870369acaba4656ff", null ],
     [ "LRASPI_TCOLOUR", "laux_8h.html#ac7cf0608c40d2b99d698c2e2a2f13eb8", null ],

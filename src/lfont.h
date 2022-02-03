@@ -6,8 +6,8 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
-#ifndef LRASPI_FONT_MODULE_H
-#define LRASPI_FONT_MODULE_H
+#ifndef LRASPI_FONT_H
+#define LRASPI_FONT_H
 
 #include "lua.h"
 #include "lraspi.h"
@@ -53,4 +53,4 @@ lraspi_Font* lraspi_optfont(lua_State* L, int arg, lraspi_Font* d);
 
 int luaopen_font(lua_State* L);
 
-#endif // LRASPI_FONT_MODULE_H
+#endif // LRASPI_FONT_H

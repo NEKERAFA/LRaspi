@@ -6,8 +6,8 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
-#ifndef LRASPI_COLOUR_MODULE_H
-#define LRASPI_COLOUR_MODULE_H
+#ifndef LRASPI_COLOUR_H
+#define LRASPI_COLOUR_H
 
 #include "lua.h"
 #include "lraspi.h"
@@ -53,5 +53,5 @@ lraspi_Colour* lraspi_optcolour(lua_State* L, int arg, lraspi_Colour* d);
 
 int luaopen_colour(lua_State* L);
 
-#endif // LRASPI_COLOUR_MODULE_H
+#endif // LRASPI_COLOUR_H
 

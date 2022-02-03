@@ -6,6 +6,8 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
+#include <stdbool.h>
+
 #include "raylib.h"
 #include "../lraspi.h"
 
@@ -22,7 +24,7 @@ void lraspi_init() {
     lraspi_font_init();
 }
 
-int lraspi_isclosing() {
+bool lraspi_isclosing() {
     return WindowShouldClose();
 }
 

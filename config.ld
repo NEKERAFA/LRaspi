@@ -13,3 +13,4 @@ readme = "README.md"
 examples = {
     "src/scripts/main.lua"
 }
+style="!fixed"

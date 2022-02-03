@@ -6,11 +6,11 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
-#ifndef LRASPI_CORE_MODULE_H
-#define LRASPI_CORE_MODULE_H
+#ifndef LRASPI_CORE_H
+#define LRASPI_CORE_H
 
 #include "lauxlib.h"
 
 const struct luaL_Reg lua_core[2];
 
-#endif // LRASPI_CORE_MODULE_H
+#endif // LRASPI_CORE_H

@@ -7,16 +7,14 @@
  */
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "raylib.h"
 #include "../lraspi.h"
-
-typedef struct lraspi_Colour {
-    Color data;
-} lraspi_Colour;
+#include "colour.h"
 
 lraspi_Colour foreground_colour = { WHITE };
-lraspi_Colour background_colour = { BACK };
+lraspi_Colour background_colour = { BLACK };
 lraspi_Colour* current_foreground_colour = &foreground_colour;
 lraspi_Colour* current_background_colour = &background_colour;
 
@@ -33,9 +31,7 @@ lraspi_Colour* lraspi_colour_new(uint8_t red, uint8_t green, uint8_t blue, uint8
 }
 
 void lraspi_colour_free(lraspi_Colour* colour) {
-    if ((colour != &foreground_colour) && (colour != &background_colour)) {
-        free(colour);
-    }
+    free(colour);
 }
 
 uint8_t lraspi_colour_getredchannel(lraspi_Colour* colour) {

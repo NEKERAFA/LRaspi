@@ -29,10 +29,11 @@
  * API functions and types definition
  */
 
-#include <stdint.h>
-
 #ifndef LRASPI_LIBRARY_H
 #define LRASPI_LIBRARY_H
+
+#include <stdint.h>
+#include <stdbool.h>
 
 /** @file lraspi.h */
 
@@ -47,6 +48,7 @@
 
 /**
  * @defgroup core Core functions
+ * Common functionalities
  *
  * @{
  */
@@ -62,11 +64,123 @@ void lraspi_init();
 void lraspi_close();
 
 /**
- * @brief Check if the window will be closed.
+ * @brief Checks if the program will be closed.
  *
- * @return True of the window will be close, otherwise false.
+ * @return true if the program will be close, false otherwise.
  */
-int lraspi_isclosing();
+bool lraspi_isclosing();
+
+/**
+ * @}
+ * 
+ * @defgroup image Image functions
+ * Image loading and manipulation
+ *
+ * @{
+ */
+
+/** Represents a image object */
+typedef struct lraspi_Image lraspi_Image;
+
+/** Represents how the image will be scaled */
+typedef enum {
+    LRASPI_FILTER_NEAREST = 0, /** Scales without filter */
+    LRASPI_FILTER_BILINEAR, /** Scales using a bilinear filtering */
+    LRASPI_FILTER_TRILINEAR /** Scales using a trilinear filtering */
+} lraspi_FilterMode;
+
+/**
+ * @brief Loads an image file onto the GPU memory.
+ *
+ * @param image_file Path of the image file.
+ * @return An image object.
+ */
+lraspi_Image* lraspi_image_new(const char* image_file);
+
+/**
+ * @brief Releases an image from memory.
+ *
+ * @param image The image which will be released.
+ */
+void lraspi_image_free(lraspi_Image* image);
+
+/**
+ * @brief Gets the current width (in pixels) of the image.
+ *
+ * @note If the image was modified, the returned value will be the value of the last modification. If you need the real one, you should use lraspi_image_getinitialwidth(lraspi_Image*).
+ *
+ * @param image An image object.
+ */
+int lraspi_image_getwidth(lraspi_Image* image);
+
+/**
+ * @brief Gets the width (in pixels) of the image.
+ *
+ * @param image An image object.
+ */
+int lraspi_image_getinitialwidth(lraspi_Image* image);
+
+/**
+ * @brief Gets the current height (in pixels) of the image.
+ *
+ * @param image An image object.
+ */
+int lraspi_image_getheight(lraspi_Image* image);
+
+/**
+ * @brief Gets the height (in pixels) of the image.
+ *
+ * @note If the image was modified, the returned value may change. If you need the real one, you should use lraspi_image_getinitialheight(lraspi_Image*).
+ *
+ * @param image An image object.
+ */
+int lraspi_image_getinitialheight(lraspi_Image* image);
+
+/**
+ * @brief Resizes the image.
+ *
+ * @param image An image object.
+ * @param width The new width (in pixels).
+ * @param height The new height (in pixels).
+ */
+void lraspi_image_resize(lraspi_Image* image, int height, int width);
+
+/**
+ * @brief Gets the rotation angle (in radians) of the image.
+ *
+ * @param image An image object.
+ */
+float lraspi_image_getrotation(lraspi_Image* image);
+
+/**
+ * @brief Rotates the image.
+ *
+ * @param image An image object.
+ * @param angle The new value (in radians).
+ */
+void lraspi_image_rotate(lraspi_Image* image, float angle);
+
+/**
+ * @brief Checks if the image is vertically flipped.
+ *
+ * @param image An image object.
+ * @return true if the image is vertically flipped, false otherwise.
+ */
+bool lraspi_image_isvflip(lraspi_Image* image);
+
+/**
+ * @brief Sets the vertically flip of an image
+ *
+ */
+void lraspi_image_vflip(lraspi_Image* image, bool vflip);
+
+bool lraspi_image_ishflip(lraspi_Image* image);
+
+void lraspi_image_hflip(lraspi_Image* image, bool hflip);
+
+lraspi_FilterMode lraspi_image_getfilter(lraspi_Image* image);
+
+void lraspi_image_setfilter(lraspi_Image* image, lraspi_FilterMode filter);
 
 /**
  * @}
@@ -84,18 +198,34 @@ int lraspi_isclosing();
 void lraspi_screen_clear();
 
 /**
+ * @brief Sets the library to stop drawing and show the buffer onto the screen.
+ */
+void lraspi_screen_flip();
+
+void lraspi_screen_setdefault(lraspi_Image* image);
+
+lraspi_Image* lraspi_screen_getdefault();
+
+/**
+ * @}
+ *
+ *
+ * @defgroup draw Draw module
+ * Functions to draw elements into images
+ *
+ * @{
+ */
+
+/**
  * @brief Draws a text with default font.
  *
  * @param text String to print.
  * @param x x-axis screen position (in pixels) where the text will be printed.
  * @param y y-axis screen position (in pixels) where the text will be printed.
  */
-void lraspi_screen_print(const char* text, int x, int y);
+void lraspi_draw_print(const char* text, int x, int y);
 
-/**
- * @brief Sets the library to stop drawing and show the buffer onto the screen.
- */
-void lraspi_screen_flip();
+void lraspi_draw_blit(lraspi_Image* image, int x, int y);
 
 /**
  * @}
@@ -109,14 +239,6 @@ void lraspi_screen_flip();
 
 /** Represents a font object. */
 typedef struct lraspi_Font lraspi_Font;
-
-/**
- * @brief Gets the internal data of the font.
- *
- * @param font A font object.
- * @return A pointer to the internal data of the font.
- */
-void* lraspi_font_getdata(lraspi_Font* font);
 
 /**
  * @brief Loads the default font.
@@ -170,14 +292,6 @@ lraspi_Font* lraspi_font_getdefault();
 
 /** Represents a colour object. */
 typedef struct lraspi_Colour lraspi_Colour;
-
-/**
- * @brief Gets the internal data of the colour.
- *
- * @param colour A colour object.
- * @return A pointer to the internal data of the colour.
- */
-void* lraspi_colour_getdata(lraspi_Colour* colour);
 
 /**
  * @brief Creates a new colour object.

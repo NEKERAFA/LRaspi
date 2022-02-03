@@ -7,16 +7,14 @@
  */
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "raylib.h"
 #include "../lraspi.h"
+#include "font.h"
 
-typedef struct lraspi_Font {
-    Font data;
-} lraspi_Font;
-
-lraspi_Font* default_font;
-lraspi_Font* current_default_font;
+lraspi_Font* default_font = NULL;
+lraspi_Font* current_default_font = NULL;
 
 void* lraspi_font_getdata(lraspi_Font* font) {
     return (void*)&font->data;
@@ -28,8 +26,7 @@ void lraspi_font_init() {
 }
 
 void lraspi_font_close() {
-    UnloadFont(default_font->data);
-    free(default_font);
+    lraspi_font_free(default_font);
 }
 
 lraspi_Font* lraspi_font_new(const char* font_file, int size) {
@@ -43,10 +40,8 @@ lraspi_Font* lraspi_font_new(const char* font_file, int size) {
 }
 
 void lraspi_font_free(lraspi_Font* font) {
-    if (font != default_font) {
-        UnloadFont(font->data);
-        free(font);
-    }
+    UnloadFont(font->data);
+    free(font);
 }
 
 void lraspi_font_setdefault(lraspi_Font* font) {
