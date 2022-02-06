@@ -7,26 +7,24 @@
  */
 
 #include <stdlib.h>
-#include <string.h>
 
 #include "raylib.h"
 #include "../lraspi.h"
 #include "font.h"
 
-lraspi_Font* default_font = NULL;
-lraspi_Font* current_default_font = NULL;
-
-void* lraspi_font_getdata(lraspi_Font* font) {
-    return (void*)&font->data;
-}
+lraspi_Font* current_font = NULL;
 
 void lraspi_font_init() {
-    default_font = lraspi_font_new(LRASPI_FONT_FILE, LRASPI_FONT_SIZE * 2);
-    current_default_font = default_font;
+    lraspi_font_default = lraspi_font_new(LRASPI_FONT_FILE, LRASPI_FONT_SIZE * 2);
+    current_font = lraspi_font_default;
 }
 
 void lraspi_font_close() {
-    lraspi_font_free(default_font);
+    lraspi_font_free(lraspi_font_default);
+}
+
+bool lraspi_font_isdefault(lraspi_Font* font) {
+    return font == lraspi_font_default;
 }
 
 lraspi_Font* lraspi_font_new(const char* font_file, int size) {
@@ -40,15 +38,17 @@ lraspi_Font* lraspi_font_new(const char* font_file, int size) {
 }
 
 void lraspi_font_free(lraspi_Font* font) {
-    UnloadFont(font->data);
-    free(font);
+    if (!lraspi_font_isdefault(font)) {
+        UnloadFont(font->data);
+        free(font);
+    }
 }
 
 void lraspi_font_setdefault(lraspi_Font* font) {
-    current_default_font = font == NULL ? default_font : font;
+    current_font = font == NULL ? lraspi_font_default : font;
 }
 
 lraspi_Font* lraspi_font_getdefault() {
-    return current_default_font;
+    return current_font;
 }
 

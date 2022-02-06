@@ -6,28 +6,29 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
+#include <stdbool.h>
 #include <stdlib.h>
 
 #include "raylib.h"
 #include "../lraspi.h"
+#include "screen.h"
 #include "colour.h"
 #include "image.h"
 
-lraspi_Image* default_image = NULL;
 RenderTexture2D render;
 
 void lraspi_screen_setdefault(lraspi_Image* image) {
-    if (default_image != NULL) {
+    if (lraspi_screen_default != NULL) {
         EndTextureMode();
-        UnloadTexture(default_image->data);
-        default_image->data = render.texture;
+        UnloadTexture(lraspi_screen_default->data);
+        lraspi_screen_default->data = render.texture;
         UnloadRenderTexture(render);
     }
 
     if (image == NULL) {
-        default_image = NULL;
+        lraspi_screen_default = NULL;
     } else {
-        default_image = image;
+        lraspi_screen_default = image;
         render = LoadRenderTexture(image->initialWidth, image->initialHeight);
         BeginTextureMode(render);
         DrawTexture(image->data, 0, 0, WHITE);
@@ -35,18 +36,18 @@ void lraspi_screen_setdefault(lraspi_Image* image) {
 }
 
 lraspi_Image* lraspi_screen_getdefault() {
-    if (default_image != NULL) {
+    if (lraspi_screen_default != NULL) {
         EndTextureMode();
-        UnloadTexture(default_image->data);
-        default_image->data = render.texture;
+        UnloadTexture(lraspi_screen_default->data);
+        lraspi_screen_default->data = render.texture;
         BeginTextureMode(render);
     }
 
-    return default_image;
+    return lraspi_screen_default;
 }
 
 void lraspi_screen_clear() {
-    if (default_image == NULL) {
+    if (lraspi_screen_default == NULL) {
         BeginDrawing();
     }
 
@@ -55,7 +56,7 @@ void lraspi_screen_clear() {
 }
 
 void lraspi_screen_flip() {
-    if (default_image == NULL) {
+    if (lraspi_screen_default == NULL) {
         EndDrawing();
     }
 }

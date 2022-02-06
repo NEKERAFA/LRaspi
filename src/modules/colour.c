@@ -6,20 +6,30 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
+#include <stdbool.h>
 #include <stdlib.h>
-#include <string.h>
 
 #include "raylib.h"
 #include "../lraspi.h"
 #include "colour.h"
 
-lraspi_Colour foreground_colour = { WHITE };
-lraspi_Colour background_colour = { BLACK };
-lraspi_Colour* current_foreground_colour = &foreground_colour;
-lraspi_Colour* current_background_colour = &background_colour;
+lraspi_Colour* current_foreground = NULL;
+lraspi_Colour* current_background = NULL;
 
-void* lraspi_colour_getdata(lraspi_Colour* colour) {
-    return (void*)&colour->data;
+void lraspi_colour_init() {
+    lraspi_colour_foreground = lraspi_colour_new(0, 0, 0, 255);
+    current_foreground = lraspi_colour_foreground;
+    lraspi_colour_background = lraspi_colour_new(255, 255, 255, 255);
+    current_background = lraspi_colour_background;
+}
+
+void lraspi_colour_close() {
+    lraspi_colour_free(lraspi_colour_foreground);
+    lraspi_colour_free(lraspi_colour_background);
+}
+
+bool lraspi_colour_isdefault(lraspi_Colour* colour) {
+    colour == lraspi_colour_foreground || colour == lraspi_colour_background;
 }
 
 lraspi_Colour* lraspi_colour_new(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
@@ -31,7 +41,10 @@ lraspi_Colour* lraspi_colour_new(uint8_t red, uint8_t green, uint8_t blue, uint8
 }
 
 void lraspi_colour_free(lraspi_Colour* colour) {
-    free(colour);
+    if (!lraspi_colour_isdefault(colour))
+    {
+        free(colour);
+    }
 }
 
 uint8_t lraspi_colour_getredchannel(lraspi_Colour* colour) {
@@ -39,7 +52,9 @@ uint8_t lraspi_colour_getredchannel(lraspi_Colour* colour) {
 }
 
 void lraspi_colour_setredchannel(lraspi_Colour* colour, uint8_t red) {
-    colour->data.r = red;
+    if (!lraspi_colour_isdefault(colour)) {
+        colour->data.r = red;
+    }
 }
 
 uint8_t lraspi_colour_getgreenchannel(lraspi_Colour* colour) {
@@ -47,7 +62,9 @@ uint8_t lraspi_colour_getgreenchannel(lraspi_Colour* colour) {
 }
 
 void lraspi_colour_setgreenchannel(lraspi_Colour* colour, uint8_t green) {
-    colour->data.g = green;
+    if (!lraspi_colour_isdefault(colour)) {
+        colour->data.g = green;
+    }
 }
 
 uint8_t lraspi_colour_getbluechannel(lraspi_Colour* colour) {
@@ -55,7 +72,9 @@ uint8_t lraspi_colour_getbluechannel(lraspi_Colour* colour) {
 }
 
 void lraspi_colour_setbluechannel(lraspi_Colour* colour, uint8_t blue) {
-    colour->data.b = blue;
+    if (!lraspi_colour_isdefault(colour)) {
+        colour->data.b = blue;
+    }
 }
 
 uint8_t lraspi_colour_getalphachannel(lraspi_Colour* colour) {
@@ -63,22 +82,24 @@ uint8_t lraspi_colour_getalphachannel(lraspi_Colour* colour) {
 }
 
 void lraspi_colour_setalphachannel(lraspi_Colour* colour, uint8_t alpha) {
-    colour->data.a = alpha;
+    if (!lraspi_colour_isdefault(colour)) {
+        colour->data.a = alpha;
+    }
 }
 
 void lraspi_colour_setforeground(lraspi_Colour* colour) {
-    current_foreground_colour = colour == NULL ? &foreground_colour : colour;
+    current_foreground = colour == NULL ? lraspi_colour_foreground : colour;
 }
 
 lraspi_Colour* lraspi_colour_getforeground() {
-    return current_foreground_colour;
+    return current_foreground;
 }
 
 void lraspi_colour_setbackground(lraspi_Colour* colour) {
-    current_background_colour = colour == NULL ? &background_colour : colour;
+    current_background = colour == NULL ? lraspi_colour_background : colour;
 }
 
 lraspi_Colour* lraspi_colour_getbackground() {
-    return current_background_colour;
+    return current_background;
 }
 

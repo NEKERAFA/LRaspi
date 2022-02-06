@@ -169,17 +169,43 @@ void lraspi_image_rotate(lraspi_Image* image, float angle);
 bool lraspi_image_isvflip(lraspi_Image* image);
 
 /**
- * @brief Sets the vertically flip of an image
+ * @brief Flips the image vertically.
  *
+ * @param image An image object.
+ * @param vflip True to flip the image vertically, false otherwise.
  */
 void lraspi_image_vflip(lraspi_Image* image, bool vflip);
 
+/**
+ * @brief Checks if the image is horizontally flipped.
+ *
+ * @param image An image object.
+ * @return true if the image is horizontally flipped, false otherwise.
+ */
 bool lraspi_image_ishflip(lraspi_Image* image);
 
+/**
+ * @brief Flips the image vertically.
+ *
+ * @param image An image object.
+ * @param hflip True to flip the image horizontally, false otherwise.
+ */
 void lraspi_image_hflip(lraspi_Image* image, bool hflip);
 
+/**
+ * @brief Gets the image filter.
+ *
+ * @param image An image object.
+ * @return The current filter of the image.
+ */
 lraspi_FilterMode lraspi_image_getfilter(lraspi_Image* image);
 
+/**
+ * @brief Sets the image filter.
+ *
+ * @param image An image object.
+ * @param filter The filter to apply to the image.
+ */
 void lraspi_image_setfilter(lraspi_Image* image, lraspi_FilterMode filter);
 
 /**
@@ -202,8 +228,20 @@ void lraspi_screen_clear();
  */
 void lraspi_screen_flip();
 
+/**
+ * @brief Sets the render target to a image object.
+ * 
+ * @note All draws will be rendered in the image object and not be shown on the screen.
+ *
+ * @param image An image object. Set NULL to restart drawing on screen.
+ */
 void lraspi_screen_setdefault(lraspi_Image* image);
 
+/**
+ * @brief Gets the current render image.
+ *
+ * @return image An image object.
+ */
 lraspi_Image* lraspi_screen_getdefault();
 
 /**
@@ -225,6 +263,13 @@ lraspi_Image* lraspi_screen_getdefault();
  */
 void lraspi_draw_print(const char* text, int x, int y);
 
+/**
+ * @brief Draws an image with default foreground colour.
+ *
+ * @param image The image object to draw.
+ * @param x x-axis screen position (in pixels) where the image will be blited.
+ * @param y y-axis screen position (in pixels) where the image will be blited.
+ */
 void lraspi_draw_blit(lraspi_Image* image, int x, int y);
 
 /**
@@ -239,16 +284,6 @@ void lraspi_draw_blit(lraspi_Image* image, int x, int y);
 
 /** Represents a font object. */
 typedef struct lraspi_Font lraspi_Font;
-
-/**
- * @brief Loads the default font.
- */
-void lraspi_font_init();
-
-/**
- * @brief Releases default font.
- */
-void lraspi_font_close();
 
 /**
  * @brief Loads a font file onto the memory.
@@ -373,7 +408,7 @@ void lraspi_colour_setalphachannel(lraspi_Colour* colour, uint8_t alpha);
 /**
  * @brief Sets the default foreground colour.
  *
- * @param colour A colour object.
+ * @param colour A colour object. NULL to set the default foreground.
  */
 void lraspi_colour_setforeground(lraspi_Colour* colour);
 
@@ -387,7 +422,7 @@ lraspi_Colour* lraspi_colour_getforeground();
 /**
  * @brief Sets the default foreground colour.
  *
- * @param colour A colour object.
+ * @param colour A colour object. NULL to set the default foreground.
  */
 void lraspi_colour_setbackground(lraspi_Colour* colour);
 

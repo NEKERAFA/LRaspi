@@ -10,6 +10,8 @@
 
 #include "raylib.h"
 #include "../lraspi.h"
+#include "font.h"
+#include "colour.h"
 
 #ifndef NDEBUG
 #define SCREEN_WIDTH 640
@@ -22,6 +24,7 @@
 void lraspi_init() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LRaspi");
     lraspi_font_init();
+    lraspi_colour_init();
 }
 
 bool lraspi_isclosing() {
@@ -30,6 +33,7 @@ bool lraspi_isclosing() {
 
 void lraspi_close() {
     lraspi_font_close();
+    lraspi_colour_init();
     CloseWindow();
 }
 
