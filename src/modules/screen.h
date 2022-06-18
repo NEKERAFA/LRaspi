@@ -1,6 +1,6 @@
 /*
  * modules/screen.h - NEKERAFA - 6th february 2022
- * Abstracts screen functions manipulation
+ * Defines utilities that will shared across the library
  *
  * Under MIT License
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
@@ -13,6 +13,6 @@
 
 #include "../lraspi.h"
 
-lraspi_Image* lraspi_screen_default;
+extern lraspi_Image* lraspi_screen_default;
 
 #endif // LRASPI_MODULES_SCREEN_H

@@ -5,6 +5,7 @@ set(LRASPI_MODULES
 	src/modules/font.c
     src/modules/colour.c
     src/modules/draw.c
+    src/modules/image.c
 )
 
 set(LRASPI_LUA_LIBS
@@ -14,6 +15,7 @@ set(LRASPI_LUA_LIBS
     src/lfont.c
     src/lcolour.c
     src/ldraw.c
+    src/limage.c
 )
 
 add_library("lraspi.${PROJECT_VERSION}" STATIC ${LRASPI_MODULES} ${LRASPI_LUA_LIBS})

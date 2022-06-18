@@ -11,6 +11,6 @@
 
 #include "lauxlib.h"
 
-const struct luaL_Reg lua_core[2];
+int lua_isclosing(lua_State* L);
 
 #endif // LRASPI_CORE_H

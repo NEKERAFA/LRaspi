@@ -13,6 +13,32 @@
 #include "laux.h"
 #include "lraspi.h"
 
+/*
+int main(int argc, char** argv) {
+    lraspi_init();
+
+    lraspi_Image* image = lraspi_image_new("icon.png");
+    lraspi_image_resize(image, 100, 100);
+    lraspi_image_vflip(image, true);
+
+    lraspi_Colour* fg = lraspi_colour_getbackground();
+    lraspi_colour_setforeground(fg);
+
+    while (!lraspi_isclosing()) {
+        lraspi_screen_clear();
+        //lraspi_image_rotate(image, lraspi_image_getrotation(image) + 0.01);
+        
+        lraspi_draw_print("Hello world", 10, 10);
+        lraspi_draw_blit(image, 100, 100);
+
+        lraspi_screen_flip();
+    }
+
+    lraspi_close();
+}
+*/
+
+
 int main(int argc, char **argv)
 {
     printf("Initializing Lua Raspi %s\n", LRASPI_LIB_VERSION);

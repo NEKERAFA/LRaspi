@@ -18,10 +18,11 @@ typedef struct lraspi_Font {
     Font data;
 } lraspi_Font;
 
-lraspi_Font* lraspi_font_default;
+extern lraspi_Font* lraspi_font_default;
 
 void lraspi_font_init();
 void lraspi_font_close();
+
 bool lraspi_font_isdefault(lraspi_Font* font);
 
 #endif // LRASPI_MODULES_FONT_H

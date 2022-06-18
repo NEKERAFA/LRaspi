@@ -1,6 +1,6 @@
 /*
  * modules/font.c - NEKERAFA - 10th november 2021
- * Abstracts font functions manipulation
+ * Implements functions to loads font files and manipulate them.
  *
  * Under MIT License
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
@@ -11,6 +11,8 @@
 #include "raylib.h"
 #include "../lraspi.h"
 #include "font.h"
+
+lraspi_Font* lraspi_font_default = NULL;
 
 lraspi_Font* current_font = NULL;
 
@@ -24,7 +26,7 @@ void lraspi_font_close() {
 }
 
 bool lraspi_font_isdefault(lraspi_Font* font) {
-    return font == lraspi_font_default;
+    return font == current_font;
 }
 
 lraspi_Font* lraspi_font_new(const char* font_file, int size) {

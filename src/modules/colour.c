@@ -1,6 +1,6 @@
 /*
  * modules/colour.c - NEKERAFA - 4th january 2022
- * Abstracts colour manipulation
+ * Implements the funtions to create, convert and modify colours
  *
  * Under MIT License
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
@@ -12,6 +12,9 @@
 #include "raylib.h"
 #include "../lraspi.h"
 #include "colour.h"
+
+lraspi_Colour* lraspi_colour_foreground = NULL;
+lraspi_Colour* lraspi_colour_background = NULL;
 
 lraspi_Colour* current_foreground = NULL;
 lraspi_Colour* current_background = NULL;
@@ -29,7 +32,7 @@ void lraspi_colour_close() {
 }
 
 bool lraspi_colour_isdefault(lraspi_Colour* colour) {
-    colour == lraspi_colour_foreground || colour == lraspi_colour_background;
+    return (colour == current_foreground) || (colour == current_background);
 }
 
 lraspi_Colour* lraspi_colour_new(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {

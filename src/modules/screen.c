@@ -1,6 +1,6 @@
 /*
  * modules/screen.c - NEKERAFA - 1st november 2021
- * Abstracts screen functions manipulation
+ * Implements functions to manipulate screen.
  *
  * Under MIT License
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
@@ -14,6 +14,8 @@
 #include "screen.h"
 #include "colour.h"
 #include "image.h"
+
+lraspi_Image* lraspi_screen_default = NULL;
 
 RenderTexture2D render;
 
@@ -29,7 +31,7 @@ void lraspi_screen_setdefault(lraspi_Image* image) {
         lraspi_screen_default = NULL;
     } else {
         lraspi_screen_default = image;
-        render = LoadRenderTexture(image->initialWidth, image->initialHeight);
+        render = LoadRenderTexture(image->initial_width, image->initial_height);
         BeginTextureMode(render);
         DrawTexture(image->data, 0, 0, WHITE);
     }

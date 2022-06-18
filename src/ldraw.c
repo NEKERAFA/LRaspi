@@ -9,6 +9,7 @@
 #include "lua.h"
 #include "lauxlib.h"
 #include "lraspi.h"
+#include "limage.h"
 
 /**
  * Draws a text in a position using the default font and the foreground colour.
@@ -28,8 +29,27 @@ static int lua_draw_print(lua_State* L) {
     return 0;
 }
 
+static int lua_draw_blit(lua_State* L) {
+    lraspi_Image* image = lraspi_checkimage(L, 1);
+    int x = luaL_checkinteger(L, 2);
+    int y = luaL_checkinteger(L, 3);
+
+    lraspi_draw_blit(image, x, y);
+
+    return 0;
+}
+
+/**
+ * Draws an image with default foreground colour.
+ *
+ * @function blit
+ * @param x x-axis screen position (in pixels) where the text will be printed
+ * @param y y-axis screen position (in pixels) where the text will be printed
+ */
+
 static const struct luaL_Reg lua_draw[] = {
     {"print", lua_draw_print},
+    {"blit", lua_draw_blit},
     {NULL, NULL}
 };
 

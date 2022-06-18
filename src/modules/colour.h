@@ -18,12 +18,13 @@ typedef struct lraspi_Colour {
     Color data;
 } lraspi_Colour;
 
-lraspi_Colour* lraspi_colour_foreground;
-lraspi_Colour* lraspi_colour_background;
+extern lraspi_Colour* lraspi_colour_foreground;
+extern lraspi_Colour* lraspi_colour_background;
 
 void lraspi_colour_init();
 void lraspi_colour_close();
-bool lraspi_font_isdefault(lraspi_Font* font);
+
+bool lraspi_colour_isdefault(lraspi_Colour* colour);
 
 #endif // LRASPI_MODULES_COLOUR_H
 

@@ -16,14 +16,14 @@
 
 typedef struct lraspi_Image {
     Texture2D data;
-    int initialWidth;
+    int initial_width;
     int width;
-    int initialHeight;
+    int initial_height;
     int height;
     float angle;
-    bool vflip;
-    bool hflip;
-    lraspi_FilterMode filterMode;
+    bool vertical_flip;
+    bool horizontal_flip;
+    lraspi_FilterMode filter_mode;
 } lraspi_Image;
 
 #endif // LRASPI_MODULE_IMAGE_H

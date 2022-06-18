@@ -25,16 +25,9 @@
  * @function isclosing
  * @return true if the window will be close, otherwise false.
  */
-static int lua_isclosing(lua_State* L) {
+int lua_isclosing(lua_State* L) {
     int is_closing = lraspi_isclosing();
     lua_pushboolean(L, is_closing);
     return 1;
 }
-
-// Lua registry
-
-const struct luaL_Reg lua_core[] = {
-    {"isclosing", lua_isclosing},
-    {NULL, NULL}
-};
 

@@ -17,12 +17,14 @@
 #include "lfont.h"
 #include "lcolour.h"
 #include "ldraw.h"
+#include "limage.h"
 
 static const luaL_Reg lraspi_libs[] = {
     {LRASPI_SCREENMODULE, luaopen_screen},
     {LRASPI_FONTMODULE, luaopen_font},
     {LRASPI_COLOURMODULE, luaopen_colour},
     {LRASPI_DRAWMODULE, luaopen_draw},
+    {LRASPI_IMAGEMODULE, luaopen_image},
     {NULL, NULL}
 };
 
@@ -34,12 +36,10 @@ int lraspi_openlibs(lua_State* L) {
     lua_pushfstring(L, "Lua Raspi %s",  LRASPI_VERSION);
     lua_setglobal(L, "_LRASPI_VERSION");
 
-    const luaL_Reg *lib;
-    for (lib = lua_core; lib->func; lib++) {
-        lua_pushcfunction(L, lib->func);
-        lua_setglobal(L, lib->name);
-    }
+    lua_pushcfunction(L, lua_isclosing);
+    lua_setglobal(L, "isclosing");
 
+    const luaL_Reg *lib;
     for (lib = lraspi_libs; lib->func; lib++) {
         luaL_requiref(L, lib->name, lib->func, 1); /* loads the library using require function */
         lua_pop(L, 1);  /* remove lib */
@@ -77,3 +77,4 @@ void lraspi_newobject(lua_State* L, const char* objname, const luaL_Reg methods[
         luaL_setfuncs(L, methods, 0); // stack = { mtbl = {__index = mtbl, methods...}, args...}
     }
 }
+

@@ -16,9 +16,11 @@
 #define LRASPI_FONTMODULE "font"
 #define LRASPI_COLOURMODULE "colour"
 #define LRASPI_DRAWMODULE "draw"
+#define LRASPI_IMAGEMODULE "image"
 
 #define LRASPI_TFONT "font"
 #define LRASPI_TCOLOUR "colour"
+#define LRASPI_TIMAGE "image"
 
 /**
  * @file laux.h

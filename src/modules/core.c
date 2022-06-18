@@ -1,6 +1,6 @@
 /*
  * modules/core.c - NEKERAFA - 1st november 2021
- * Abstracts core functions
+ * Implements common functions
  *
  * Under MIT License
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
