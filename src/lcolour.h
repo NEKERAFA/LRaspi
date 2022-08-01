@@ -6,8 +6,8 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
-#ifndef LRASPI_COLOUR_MODULE_H
-#define LRASPI_COLOUR_MODULE_H
+#ifndef LRASPI_COLOUR_H
+#define LRASPI_COLOUR_H
 
 #include "lua.h"
 #include "lraspi.h"
@@ -21,7 +21,12 @@
  */
 
 /**
- * @brief Puses a colour object onto the stack.
+ * Defines a colour type
+ */
+typedef lraspi_Colour** lua_Colour;
+
+/**
+ * @brief Pushes a colour object onto the stack.
  *
  * @param L A Lua state.
  * @param colour A colour object.
@@ -35,7 +40,7 @@ void lraspi_pushcolour(lua_State* L, lraspi_Colour* colour);
  * @param narg The position of the argument.
  * @return A font object.
  */
-lraspi_Colour* lraspi_checkcolour(lua_State* L, int narg);
+lua_Colour lraspi_checkcolour(lua_State* L, int narg);
 
 /**
  * @brief If the function argument \p arg is a colour object, return this colour. If the argument is absent or is nil, return \p d. Otherwise, raises an error.
@@ -45,7 +50,7 @@ lraspi_Colour* lraspi_checkcolour(lua_State* L, int narg);
  * @param d The default value if the argument is absent or nil.
  * @return A colour object.
  */
-lraspi_Colour* lraspi_optcolour(lua_State* L, int arg, lraspi_Colour* d);
+lua_Colour lraspi_optcolour(lua_State* L, int arg, lua_Colour d);
 
 /**
  * @}
@@ -53,5 +58,5 @@ lraspi_Colour* lraspi_optcolour(lua_State* L, int arg, lraspi_Colour* d);
 
 int luaopen_colour(lua_State* L);
 
-#endif // LRASPI_COLOUR_MODULE_H
+#endif // LRASPI_COLOUR_H
 

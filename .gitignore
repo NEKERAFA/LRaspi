@@ -81,3 +81,6 @@ CMakeUserPresets.json
 [Bb]uild/
 
 # End of https://www.toptal.com/developers/gitignore/api/c,cmake
+
+
+.vscode/

@@ -1,35 +1,89 @@
 /*
  * modules/screen.c - NEKERAFA - 1st november 2021
- * Abstracts screen functions manipulation
+ * Implements functions to manipulate screen.
  *
  * Under MIT License
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
+#include <stdbool.h>
+#include <stdlib.h>
+
 #include "raylib.h"
 #include "../lraspi.h"
+#include "screen.h"
+#include "colour.h"
+#include "image.h"
 
-void lraspi_screen_clear() {
-    lraspi_Colour* colour = lraspi_colour_getbackground();
-    Color raylib_color = *(Color*)lraspi_colour_getdata(colour);
+lraspi_Image* lraspi_screen_default = NULL;
 
-    BeginDrawing();
-    ClearBackground(raylib_color);
+RenderTexture2D render;
+
+void lraspi_screen_setdefault(lraspi_Image* image) {
+    if (lraspi_screen_default != NULL) {
+        EndTextureMode();
+        UnloadTexture(lraspi_screen_default->data);
+        lraspi_screen_default->data = render.texture;
+        UnloadRenderTexture(render);
+    }
+
+    if (image == NULL) {
+        lraspi_screen_default = NULL;
+    } else {
+        lraspi_screen_default = image;
+        render = LoadRenderTexture(image->initial_width, image->initial_height);
+        BeginTextureMode(render);
+        DrawTexture(image->data, 0, 0, WHITE);
+    }
 }
 
-void lraspi_screen_print(const char* text, int x, int y) {
-    lraspi_Font* font = lraspi_font_getdefault();
-    Font raylib_font = *(Font*)lraspi_font_getdata(font);
+lraspi_Image* lraspi_screen_getdefault() {
+    if (lraspi_screen_default != NULL) {
+        EndTextureMode();
+        UnloadTexture(lraspi_screen_default->data);
+        lraspi_screen_default->data = render.texture;
+        BeginTextureMode(render);
+    }
 
-    lraspi_Colour* colour = lraspi_colour_getforeground();
-    Color raylib_color = *(Color*)lraspi_colour_getdata(colour);
-    
-    Vector2 raylib_pos = (Vector2) { (float) x, (float) y };
+    return lraspi_screen_default;
+}
 
-    DrawTextEx(raylib_font, text, raylib_pos, raylib_font.baseSize, 0, raylib_color);
+bool lraspi_screen_isclosing() {
+    return WindowShouldClose();
+}
+
+int lraspi_screen_getwidth() {
+    return GetScreenWidth();
+}
+
+int lraspi_screen_getheight() {
+    return GetScreenHeight();
+}
+
+int lraspi_screen_getfps() {
+    return GetFPS();
+}
+
+void lraspi_screen_setfps(int frame_per_seconds) {
+    SetTargetFPS(frame_per_seconds);
+}
+
+float lraspi_screen_getdeltatime() {
+    return GetFrameTime();
+}
+
+void lraspi_screen_clear() {
+    if (lraspi_screen_default == NULL) {
+        BeginDrawing();
+    }
+
+    lraspi_Colour* colour = lraspi_colour_getbackground();
+    ClearBackground(colour->data);
 }
 
 void lraspi_screen_flip() {
-    EndDrawing();
+    if (lraspi_screen_default == NULL) {
+        EndDrawing();
+    }
 }
 

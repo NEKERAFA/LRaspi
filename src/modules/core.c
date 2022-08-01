@@ -1,13 +1,17 @@
 /*
  * modules/core.c - NEKERAFA - 1st november 2021
- * Abstracts core functions
+ * Implements common functions
  *
  * Under MIT License
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
+#include <stdbool.h>
+
 #include "raylib.h"
 #include "../lraspi.h"
+#include "font.h"
+#include "colour.h"
 
 #ifndef NDEBUG
 #define SCREEN_WIDTH 640
@@ -19,15 +23,14 @@
 
 void lraspi_init() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LRaspi");
+    SetTargetFPS(60);
     lraspi_font_init();
-}
-
-int lraspi_isclosing() {
-    return WindowShouldClose();
+    lraspi_colour_init();
 }
 
 void lraspi_close() {
     lraspi_font_close();
+    lraspi_colour_init();
     CloseWindow();
 }
 

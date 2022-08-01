@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['screen_20module_49',['Screen module',['../group__screen.html',1,'']]]
+  ['image_20functions_4',['Image functions',['../group__image.html',1,'']]]
 ];

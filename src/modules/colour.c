@@ -1,27 +1,39 @@
 /*
  * modules/colour.c - NEKERAFA - 4th january 2022
- * Abstracts colour manipulation
+ * Implements the funtions to create, convert and modify colours
  *
  * Under MIT License
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
+#include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "raylib.h"
 #include "../lraspi.h"
+#include "colour.h"
 
-typedef struct lraspi_Colour {
-    Color data;
-} lraspi_Colour;
+lraspi_Colour* lraspi_colour_foreground = NULL;
+lraspi_Colour* lraspi_colour_background = NULL;
 
-lraspi_Colour foreground_colour = { WHITE };
-lraspi_Colour background_colour = { BACK };
-lraspi_Colour* current_foreground_colour = &foreground_colour;
-lraspi_Colour* current_background_colour = &background_colour;
+lraspi_Colour* current_foreground = NULL;
+lraspi_Colour* current_background = NULL;
 
-void* lraspi_colour_getdata(lraspi_Colour* colour) {
-    return (void*)&colour->data;
+void lraspi_colour_init() {
+    lraspi_colour_foreground = lraspi_colour_new(0, 0, 0, 255);
+    current_foreground = lraspi_colour_foreground;
+    lraspi_colour_background = lraspi_colour_new(255, 255, 255, 255);
+    current_background = lraspi_colour_background;
+}
+
+void lraspi_colour_close() {
+    lraspi_colour_free(lraspi_colour_foreground);
+    lraspi_colour_free(lraspi_colour_background);
+}
+
+bool lraspi_colour_isdefault(lraspi_Colour* colour) {
+    return (colour == current_foreground) || (colour == current_background);
 }
 
 lraspi_Colour* lraspi_colour_new(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
@@ -33,7 +45,8 @@ lraspi_Colour* lraspi_colour_new(uint8_t red, uint8_t green, uint8_t blue, uint8
 }
 
 void lraspi_colour_free(lraspi_Colour* colour) {
-    if ((colour != &foreground_colour) && (colour != &background_colour)) {
+    if (!lraspi_colour_isdefault(colour))
+    {
         free(colour);
     }
 }
@@ -43,7 +56,9 @@ uint8_t lraspi_colour_getredchannel(lraspi_Colour* colour) {
 }
 
 void lraspi_colour_setredchannel(lraspi_Colour* colour, uint8_t red) {
-    colour->data.r = red;
+    if (!lraspi_colour_isdefault(colour)) {
+        colour->data.r = red;
+    }
 }
 
 uint8_t lraspi_colour_getgreenchannel(lraspi_Colour* colour) {
@@ -51,7 +66,9 @@ uint8_t lraspi_colour_getgreenchannel(lraspi_Colour* colour) {
 }
 
 void lraspi_colour_setgreenchannel(lraspi_Colour* colour, uint8_t green) {
-    colour->data.g = green;
+    if (!lraspi_colour_isdefault(colour)) {
+        colour->data.g = green;
+    }
 }
 
 uint8_t lraspi_colour_getbluechannel(lraspi_Colour* colour) {
@@ -59,7 +76,9 @@ uint8_t lraspi_colour_getbluechannel(lraspi_Colour* colour) {
 }
 
 void lraspi_colour_setbluechannel(lraspi_Colour* colour, uint8_t blue) {
-    colour->data.b = blue;
+    if (!lraspi_colour_isdefault(colour)) {
+        colour->data.b = blue;
+    }
 }
 
 uint8_t lraspi_colour_getalphachannel(lraspi_Colour* colour) {
@@ -67,22 +86,30 @@ uint8_t lraspi_colour_getalphachannel(lraspi_Colour* colour) {
 }
 
 void lraspi_colour_setalphachannel(lraspi_Colour* colour, uint8_t alpha) {
-    colour->data.a = alpha;
+    if (!lraspi_colour_isdefault(colour)) {
+        colour->data.a = alpha;
+    }
 }
 
 void lraspi_colour_setforeground(lraspi_Colour* colour) {
-    current_foreground_colour = colour == NULL ? &foreground_colour : colour;
+    current_foreground = colour == NULL ? lraspi_colour_foreground : colour;
 }
 
 lraspi_Colour* lraspi_colour_getforeground() {
-    return current_foreground_colour;
+    return current_foreground;
 }
 
 void lraspi_colour_setbackground(lraspi_Colour* colour) {
-    current_background_colour = colour == NULL ? &background_colour : colour;
+    current_background = colour == NULL ? lraspi_colour_background : colour;
 }
 
 lraspi_Colour* lraspi_colour_getbackground() {
-    return current_background_colour;
+    return current_background;
+}
+
+const char* lraspi_colour_tostring(lraspi_Colour* colour) {
+    char* str = (char*)malloc(sizeof(char) * 11);
+    sprintf(str, "0x%2x%02x%02x%02x", colour->data.r, colour->data.g, colour->data.b, colour->data.a);
+    return (const char*)str;
 }
 

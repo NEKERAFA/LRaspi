@@ -8,36 +8,61 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
 #include "lua.h"
 #include "lauxlib.h"
 #include "laux.h"
-#include "lcore.h"
 #include "lscreen.h"
 #include "lfont.h"
 #include "lcolour.h"
+#include "ldraw.h"
+#include "limage.h"
 
 static const luaL_Reg lraspi_libs[] = {
     {LRASPI_SCREENMODULE, luaopen_screen},
     {LRASPI_FONTMODULE, luaopen_font},
     {LRASPI_COLOURMODULE, luaopen_colour},
+    {LRASPI_DRAWMODULE, luaopen_draw},
+    {LRASPI_IMAGEMODULE, luaopen_image},
     {NULL, NULL}
 };
 
+const char* strtoupper(const char* str) {
+    size_t str_len = strlen(str);
+    char* buff = malloc(sizeof(char) * str_len);
+    
+    int pos;
+    for (pos = 0; str[pos]; pos++) {
+        buff[pos] = (char)toupper((unsigned char) str[pos]);
+    }
+
+    return buff;
+}
+
 /* based on luaL_openlibs code */
-int lraspi_openlibs(lua_State* L) {
+void lraspi_openlibs(lua_State* L) {
+    // Add LRASPI_LIB_VERSION
     lua_pushfstring(L, "lraspi %s", LRASPI_LIB_VERSION);
     lua_setglobal(L, "_LRASPI_LIB_VERSION");
     
+    // Add LRASPI_VERSION
     lua_pushfstring(L, "Lua Raspi %s",  LRASPI_VERSION);
     lua_setglobal(L, "_LRASPI_VERSION");
 
-    const luaL_Reg *lib;
-    for (lib = lua_core; lib->func; lib++) {
-        lua_pushcfunction(L, lib->func);
-        lua_setglobal(L, lib->name);
+    // Add filtermode types
+    lua_newtable(L);
+    int pos;
+    for (pos = 0; lraspi_filtermodes[pos]; pos++) {
+        lua_pushstring(L, lraspi_filtermodes[pos]);
+        const char* buff = strtoupper(lraspi_filtermodes[pos]);
+        lua_setfield(L, -2, buff);
     }
+    lua_setglobal(L, "filtermodes");
 
+    // Add libraries
+    const luaL_Reg *lib;
     for (lib = lraspi_libs; lib->func; lib++) {
         luaL_requiref(L, lib->name, lib->func, 1); /* loads the library using require function */
         lua_pop(L, 1);  /* remove lib */
@@ -75,3 +100,4 @@ void lraspi_newobject(lua_State* L, const char* objname, const luaL_Reg methods[
         luaL_setfuncs(L, methods, 0); // stack = { mtbl = {__index = mtbl, methods...}, args...}
     }
 }
+

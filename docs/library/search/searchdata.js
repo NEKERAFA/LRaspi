@@ -1,11 +1,13 @@
 var indexSectionsWithContent =
 {
-  0: "cfls",
+  0: "cdfils",
   1: "l",
   2: "l",
   3: "l",
   4: "l",
-  5: "cfls"
+  5: "l",
+  6: "l",
+  7: "cdfils"
 };
 
 var indexSectionNames =
@@ -14,8 +16,10 @@ var indexSectionNames =
   1: "files",
   2: "functions",
   3: "typedefs",
-  4: "defines",
-  5: "groups"
+  4: "enums",
+  5: "enumvalues",
+  6: "defines",
+  7: "groups"
 };
 
 var indexSectionLabels =
@@ -24,7 +28,9 @@ var indexSectionLabels =
   1: "Files",
   2: "Functions",
   3: "Typedefs",
-  4: "Macros",
-  5: "Modules"
+  4: "Enumerations",
+  5: "Enumerator",
+  6: "Macros",
+  7: "Modules"
 };
 
