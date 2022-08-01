@@ -36,7 +36,7 @@
  *
  * @param L A Lua state.
  */
-int lraspi_openlibs(lua_State* L);
+void lraspi_openlibs(lua_State* L);
 
 /**
  * @brief Opens a lua file.

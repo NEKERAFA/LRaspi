@@ -21,6 +21,11 @@
  */
 
 /**
+ * Defines a font type
+ */
+typedef lraspi_Font** lua_Font;
+
+/**
  * @brief Pushes a font object onto the stack.
  *
  * @param L A Lua state.
@@ -35,7 +40,7 @@ void lraspi_pushfont(lua_State* L, lraspi_Font* font);
  * @param narg The position of the argument.
  * @return A font object.
  */
-lraspi_Font* lraspi_checkfont(lua_State* L, int narg);
+lua_Font lraspi_checkfont(lua_State* L, int narg);
 
 /**
  * @brief If the function argument \p arg is a font object, return this font. If this argument is absent or is nil, return \p d. Otherwise, raises an error.
@@ -45,7 +50,7 @@ lraspi_Font* lraspi_checkfont(lua_State* L, int narg);
  * @param d The default value if the argument is absent or nil.
  * @return A font object.
  */
-lraspi_Font* lraspi_optfont(lua_State* L, int arg, lraspi_Font* d);
+lua_Font lraspi_optfont(lua_State* L, int arg, lua_Font d);
 
 /**
  * @}

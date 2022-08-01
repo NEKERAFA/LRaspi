@@ -12,6 +12,12 @@
 #include "limage.h"
 
 /**
+ * Functions to draw elements into images
+ *
+ * @module draw
+ */
+
+/**
  * Draws a text in a position using the default font and the foreground colour.
  *
  * @function print
@@ -29,12 +35,20 @@ static int lua_draw_print(lua_State* L) {
     return 0;
 }
 
+/**
+ * Draws a image in a position using the foreground colour.
+ *
+ * @function draw
+ * @param image The image object to draw
+ * @param x x-axis screen position (in pixels) where the text will be printed
+ * @param y y-axis screen position (in pixels) where the text will be printed
+ */
 static int lua_draw_blit(lua_State* L) {
-    lraspi_Image* image = lraspi_checkimage(L, 1);
+    lua_Image limage = lraspi_checkimage(L, 1);
     int x = luaL_checkinteger(L, 2);
     int y = luaL_checkinteger(L, 3);
 
-    lraspi_draw_blit(image, x, y);
+    lraspi_draw_blit(*limage, x, y);
 
     return 0;
 }

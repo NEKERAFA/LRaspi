@@ -15,6 +15,7 @@
 #include "../lraspi.h"
 
 typedef struct lraspi_Font {
+    const char* name;
     Font data;
 } lraspi_Font;
 

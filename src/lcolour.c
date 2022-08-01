@@ -7,6 +7,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
 
 #include "lua.h"
@@ -24,16 +25,17 @@
  */
 
 void lraspi_pushcolour(lua_State* L, lraspi_Colour* colour) {
-    lua_pushlightuserdata(L, (void*)colour);
+    lua_Colour lcolour = (lua_Colour)lua_newuserdata(L, sizeof(lua_Colour));
+    *lcolour = colour;
     luaL_getmetatable(L, LRASPI_TCOLOUR);
     lua_setmetatable(L, -2);
 }
 
-lraspi_Colour* lraspi_checkcolour(lua_State* L, int narg) {
-    return (lraspi_Colour*)luaL_checkudata(L, narg, LRASPI_TCOLOUR);
+lua_Colour lraspi_checkcolour(lua_State* L, int narg) {
+    return (lua_Colour)luaL_checkudata(L, narg, LRASPI_TCOLOUR);
 }
 
-lraspi_Colour* lraspi_optcolour(lua_State* L, int arg, lraspi_Colour* d) {
+lua_Colour lraspi_optcolour(lua_State* L, int arg, lua_Colour d) {
     return luaL_opt(L, lraspi_checkcolour, arg, d);
 }
 
@@ -67,7 +69,6 @@ static int lua_colour_new(lua_State* L) {
 
     lraspi_Colour* colour = lraspi_colour_new(red, green, blue, alpha);
     lraspi_pushcolour(L, colour);
-
     return 1;
 }
 
@@ -78,8 +79,9 @@ static int lua_colour_new(lua_State* L) {
  * @param colour A colour object.
  */
 static int lua_colour_free(lua_State* L) {
-    lraspi_Colour* colour = lraspi_checkcolour(L, 1);
-    lraspi_colour_free(colour);
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
+    lraspi_colour_free(*lcolour);
+    *lcolour = NULL;
     return 0;
 }
 
@@ -90,8 +92,8 @@ static int lua_colour_free(lua_State* L) {
  * @param colour A colour object.
  */
 static int lua_colour_getredchannel(lua_State* L) {
-    lraspi_Colour* colour = lraspi_checkcolour(L, 1);
-    lua_Integer red = lraspi_colour_getredchannel(colour);
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
+    lua_Integer red = lraspi_colour_getredchannel(*lcolour);
     lua_pushinteger(L, red);
     return 1;
 }
@@ -104,9 +106,9 @@ static int lua_colour_getredchannel(lua_State* L) {
  * @param red The new value.
  */
 static int lua_colour_setredchannel(lua_State* L) {
-    lraspi_Colour* colour = lraspi_checkcolour(L, 1);
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
     lua_Integer red = lraspi_checkuint8(L, 2);
-    lraspi_colour_setredchannel(colour, red);
+    lraspi_colour_setredchannel(*lcolour, red);
     return 0;
 }
 
@@ -117,8 +119,8 @@ static int lua_colour_setredchannel(lua_State* L) {
  * @param colour A colour object.
  */
 static int lua_colour_getgreenchannel(lua_State* L) {
-    lraspi_Colour* colour = lraspi_checkcolour(L, 1);
-    lua_Integer green = lraspi_colour_getgreenchannel(colour);
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
+    lua_Integer green = lraspi_colour_getgreenchannel(*lcolour);
     lua_pushinteger(L, green);
     return 1;
 }
@@ -131,9 +133,9 @@ static int lua_colour_getgreenchannel(lua_State* L) {
  * @param green The new value.
  */
 static int lua_colour_setgreenchannel(lua_State* L) {
-    lraspi_Colour* colour = lraspi_checkcolour(L, 1);
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
     lua_Integer green = lraspi_checkuint8(L, 2);
-    lraspi_colour_setgreenchannel(colour, green);
+    lraspi_colour_setgreenchannel(*lcolour, green);
     return 0;
 }
 
@@ -144,8 +146,8 @@ static int lua_colour_setgreenchannel(lua_State* L) {
  * @param colour A colour object.
  */
 static int lua_colour_getbluechannel(lua_State* L) {
-    lraspi_Colour* colour = lraspi_checkcolour(L, 1);
-    lua_Integer blue = lraspi_colour_getbluechannel(colour);
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
+    lua_Integer blue = lraspi_colour_getbluechannel(*lcolour);
     lua_pushinteger(L, blue);
     return 1;
 }
@@ -158,9 +160,9 @@ static int lua_colour_getbluechannel(lua_State* L) {
  * @param blue The new value.
  */
 static int lua_colour_setbluechannel(lua_State* L) {
-    lraspi_Colour* colour = lraspi_checkcolour(L, 1);
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
     lua_Integer blue = lraspi_checkuint8(L, 2);
-    lraspi_colour_setbluechannel(colour, blue);
+    lraspi_colour_setbluechannel(*lcolour, blue);
     return 0;
 }
 
@@ -171,8 +173,8 @@ static int lua_colour_setbluechannel(lua_State* L) {
  * @param colour A colour object.
  */
 static int lua_colour_getalphachannel(lua_State* L) {
-    lraspi_Colour* colour = lraspi_checkcolour(L, 1);
-    lua_Integer alpha = lraspi_colour_getalphachannel(colour);
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
+    lua_Integer alpha = lraspi_colour_getalphachannel(*lcolour);
     lua_pushinteger(L, alpha);
     return 1;
 }
@@ -185,9 +187,9 @@ static int lua_colour_getalphachannel(lua_State* L) {
  * @param alpha The new value.
  */
 static int lua_colour_setalphachannel(lua_State* L) {
-    lraspi_Colour* colour = lraspi_checkcolour(L, 1);
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
     lua_Integer alpha = lraspi_checkuint8(L, 2);
-    lraspi_colour_setalphachannel(colour, alpha);
+    lraspi_colour_setalphachannel(*lcolour, alpha);
     return 0;
 }
 
@@ -198,8 +200,8 @@ static int lua_colour_setalphachannel(lua_State* L) {
  * @param[opt] colour The font object to set as default, nil to reset it.
 */
 static int lua_colour_setforeground(lua_State* L) {
-    lraspi_Colour* colour = lraspi_optcolour(L, 1, NULL);
-    lraspi_colour_setforeground(colour);
+    lua_Colour lcolour = lraspi_optcolour(L, 1, NULL);
+    lraspi_colour_setforeground(lcolour == NULL ? NULL : *lcolour);
     return 0;
 }
 
@@ -222,8 +224,8 @@ static int lua_colour_getforeground(lua_State* L) {
  * @param[opt] colour The font object to set as default, nil to reset it.
  */
 static int lua_colour_setbackground(lua_State* L) {
-    lraspi_Colour* colour = lraspi_optcolour(L, 1, NULL);
-    lraspi_colour_setbackground(colour);
+    lua_Colour lcolour = lraspi_optcolour(L, 1, NULL);
+    lraspi_colour_setbackground(lcolour == NULL ? NULL : *lcolour);
     return 0;
 }
 
@@ -239,9 +241,26 @@ static int lua_colour_getbackground(lua_State* L) {
     return 1;
 }
 
+/**
+ * Gets the string representation of the colour.
+ *
+ * @function tostring
+ * @param colour A colour object.
+ * @return String representation of the colour.
+ */
+static int lua_colour_tostring(lua_State* L) {
+    lua_Colour lcolour = lraspi_checkcolour(L, 1);
+    const char* colour_str = lraspi_colour_tostring(*lcolour);
+    char* lcolour_str = malloc(sizeof(char) * 19);
+    sprintf(lcolour_str, "colour: %s", colour_str);
+    lua_pushstring(L, lcolour_str);
+    free((char*)colour_str);
+    free(lcolour_str);
+    return 1;
+}
 
 // Lua module registry
-static const struct luaL_Reg lua_colour[] = {
+static const struct luaL_Reg lua_colour_f[] = {
     {"new", lua_colour_new},
     {"free", lua_colour_free},
     {"setredchannel", lua_colour_setredchannel},
@@ -256,11 +275,12 @@ static const struct luaL_Reg lua_colour[] = {
     {"getforeground", lua_colour_getforeground},
     {"setbackground", lua_colour_setbackground},
     {"getbackground", lua_colour_getbackground},
+    {"tostring", lua_colour_tostring},
     {NULL, NULL}
 };
 
 // Lua metatable registry
-static const struct luaL_Reg lua_colour_mt[] = {
+static const struct luaL_Reg lua_colour_m[] = {
     {"free", lua_colour_free},
     {"setredchannel", lua_colour_setredchannel},
     {"getredchannel", lua_colour_getredchannel},
@@ -270,14 +290,16 @@ static const struct luaL_Reg lua_colour_mt[] = {
     {"getbluechannel", lua_colour_getbluechannel},
     {"setalphachannel", lua_colour_setalphachannel},
     {"getalphachannel", lua_colour_getalphachannel},
+    {"__gc", lua_colour_free},
+    {"__tostring", lua_colour_tostring},
     {NULL, NULL}
 };
 
 // Initialize module function
 
 int luaopen_colour(lua_State* L) {
-    lraspi_newobject(L, LRASPI_TCOLOUR, lua_colour_mt);
-    luaL_newlib(L, lua_colour);
+    lraspi_newobject(L, LRASPI_TCOLOUR, lua_colour_m);
+    luaL_newlib(L, lua_colour_f);
     return 1;
 }
 

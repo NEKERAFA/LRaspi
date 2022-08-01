@@ -23,12 +23,9 @@
 
 void lraspi_init() {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LRaspi");
+    SetTargetFPS(60);
     lraspi_font_init();
     lraspi_colour_init();
-}
-
-bool lraspi_isclosing() {
-    return WindowShouldClose();
 }
 
 void lraspi_close() {

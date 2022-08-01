@@ -6,8 +6,9 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
-#include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "raylib.h"
 #include "../lraspi.h"
@@ -104,5 +105,11 @@ void lraspi_colour_setbackground(lraspi_Colour* colour) {
 
 lraspi_Colour* lraspi_colour_getbackground() {
     return current_background;
+}
+
+const char* lraspi_colour_tostring(lraspi_Colour* colour) {
+    char* str = (char*)malloc(sizeof(char) * 11);
+    sprintf(str, "0x%2x%02x%02x%02x", colour->data.r, colour->data.g, colour->data.b, colour->data.a);
+    return (const char*)str;
 }
 

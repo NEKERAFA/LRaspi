@@ -6,6 +6,7 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "raylib.h"
@@ -32,6 +33,7 @@ bool lraspi_font_isdefault(lraspi_Font* font) {
 lraspi_Font* lraspi_font_new(const char* font_file, int size) {
     lraspi_Font* font = (lraspi_Font*)malloc(sizeof(lraspi_Font));
     if (font != NULL) {
+        font->name = GetFileName(font_file);
         font->data = LoadFontEx(font_file, size, 0, 0);
         GenTextureMipmaps(&(font->data.texture));
         SetTextureFilter(font->data.texture, TEXTURE_FILTER_BILINEAR);
@@ -54,3 +56,8 @@ lraspi_Font* lraspi_font_getdefault() {
     return current_font;
 }
 
+const char* lraspi_font_tostring(lraspi_Font* font) {
+    char* str = (char*)malloc(sizeof(char) * 256);
+    sprintf(str, "%s<%i>", font->name, font->data.baseSize);
+    return (const char*)str;
+}

@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>LRaspi 2022.2</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LRaspi</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/font.html">font</a></li>
+  <li><a href="../modules/screen.html">screen</a></li>
+  <li><a href="../modules/colour.html">colour</a></li>
+  <li><a href="../modules/draw.html">draw</a></li>
+  <li><strong>image</strong></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">README</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/main.lua.html">main.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>image</code></h1>
+<p>Funtions to create, convert and modify images</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new (image_file)</a></td>
+	<td class="summary">Loads an image file onto the GPU memory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#free">free (image)</a></td>
+	<td class="summary">Releases a image from memory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getwidth">getwidth (image)</a></td>
+	<td class="summary">Gets the current width (in pixels) of the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getinitialwidth">getinitialwidth (image)</a></td>
+	<td class="summary">Gets the width (in pixels) of the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getheight">getheight (image)</a></td>
+	<td class="summary">Gets the current height (in pixels) of the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getinitialheight">getinitialheight (image)</a></td>
+	<td class="summary">Gets the height (in pixels) of the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#resize">resize (image, width, height)</a></td>
+	<td class="summary">Resizes the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getrotation">getrotation (image)</a></td>
+	<td class="summary">Gets the rotation angle (in radians) of the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotate">rotate (image, angle)</a></td>
+	<td class="summary">Rotates the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#isvflip">isvflip (image)</a></td>
+	<td class="summary">Checks if the image is vertically flipped.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#vflip">vflip (image, vflip)</a></td>
+	<td class="summary">Flips the image vertically.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ishflip">ishflip (image)</a></td>
+	<td class="summary">Checks if the image is horizontally flipped.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hflip">hflip (image, hflip)</a></td>
+	<td class="summary">Flips the image vertically.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getfilter">getfilter (image)</a></td>
+	<td class="summary">Gets the image filter.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setfilter">setfilter (image, filter)</a></td>
+	<td class="summary">Sets the image filter.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getpixel">getpixel (image, x, y)</a></td>
+	<td class="summary">Gets the colour pixel of the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setpixel">setpixel (image, colour, x, y)</a></td>
+	<td class="summary">Sets the colour pixel of the image.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tostring">tostring (image)</a></td>
+	<td class="summary">Gets the string representation of the image.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new (image_file)</strong>
+    </dt>
+    <dd>
+    Loads an image file onto the GPU memory.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image_file</span>
+         Path of the image file.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        New image object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "free"></a>
+    <strong>free (image)</strong>
+    </dt>
+    <dd>
+    Releases a image from memory.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         The image which will be released.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getwidth"></a>
+    <strong>getwidth (image)</strong>
+    </dt>
+    <dd>
+    Gets the current width (in pixels) of the image. </p>
+
+<p> If the image was modified, the returned value will be the value of the last modification. If you need the real one, you should use <a href="../modules/image.html#getinitialwidth">getinitialwidth</a>.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Current width value (in pixels).
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getinitialwidth"></a>
+    <strong>getinitialwidth (image)</strong>
+    </dt>
+    <dd>
+    Gets the width (in pixels) of the image.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Width value (in pixels).
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getheight"></a>
+    <strong>getheight (image)</strong>
+    </dt>
+    <dd>
+    Gets the current height (in pixels) of the image. </p>
+
+<p> If the image was modified, the returned value will be the value of the last modification. If you need the real one, you should use <a href="../modules/image.html#getinitialheight">getinitialheight</a>.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Current height value (in pixels).
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getinitialheight"></a>
+    <strong>getinitialheight (image)</strong>
+    </dt>
+    <dd>
+    Gets the height (in pixels) of the image.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Height value (in pixels).
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "resize"></a>
+    <strong>resize (image, width, height)</strong>
+    </dt>
+    <dd>
+    Resizes the image.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+        <li><span class="parameter">width</span>
+         The new width (in pixels).
+        </li>
+        <li><span class="parameter">height</span>
+         The new height (in pixels).
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getrotation"></a>
+    <strong>getrotation (image)</strong>
+    </dt>
+    <dd>
+    Gets the rotation angle (in radians) of the image.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Rotation angle value (in radians).
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotate"></a>
+    <strong>rotate (image, angle)</strong>
+    </dt>
+    <dd>
+    Rotates the image.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+        <li><span class="parameter">angle</span>
+         The new value (in radians).
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "isvflip"></a>
+    <strong>isvflip (image)</strong>
+    </dt>
+    <dd>
+    Checks if the image is vertically flipped.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        true if the image is vertically flipped, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "vflip"></a>
+    <strong>vflip (image, vflip)</strong>
+    </dt>
+    <dd>
+    Flips the image vertically.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+        <li><span class="parameter">vflip</span>
+         True to flip the image vertically, false otherwise.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ishflip"></a>
+    <strong>ishflip (image)</strong>
+    </dt>
+    <dd>
+    Checks if the image is horizontally flipped.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        true if the image is horizontally flipped, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "hflip"></a>
+    <strong>hflip (image, hflip)</strong>
+    </dt>
+    <dd>
+    Flips the image vertically.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+        <li><span class="parameter">hflip</span>
+         True to flip the image horizontally, false otherwise.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getfilter"></a>
+    <strong>getfilter (image)</strong>
+    </dt>
+    <dd>
+    Gets the image filter.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Current filter of the image.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setfilter"></a>
+    <strong>setfilter (image, filter)</strong>
+    </dt>
+    <dd>
+    Sets the image filter.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+        <li><span class="parameter">filter</span>
+         The filter to apply to the image.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getpixel"></a>
+    <strong>getpixel (image, x, y)</strong>
+    </dt>
+    <dd>
+    Gets the colour pixel of the image.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+        <li><span class="parameter">x</span>
+         x-axis image position (in pixels).
+        </li>
+        <li><span class="parameter">y</span>
+         y-axis image position (in pixels).
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setpixel"></a>
+    <strong>setpixel (image, colour, x, y)</strong>
+    </dt>
+    <dd>
+    Sets the colour pixel of the image.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         An image object.
+        </li>
+        <li><span class="parameter">colour</span>
+         An colour object.
+        </li>
+        <li><span class="parameter">x</span>
+         x-axis image position (in pixels).
+        </li>
+        <li><span class="parameter">y</span>
+         y-axis image position (in pixels).
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tostring"></a>
+    <strong>tostring (image)</strong>
+    </dt>
+    <dd>
+    Gets the string representation of the image.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image</span>
+         A image object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String representation of the image.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-08-01 11:21:18 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

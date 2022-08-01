@@ -20,6 +20,14 @@
  * @{
  */
 
+/**
+ * Defines a image type
+ */
+typedef lraspi_Image** lua_Image;
+
+/**
+ * @brief list of filter modes
+ */
 extern const char* const lraspi_filtermodes[];
 
 /**
@@ -37,7 +45,7 @@ void lraspi_pushimage(lua_State* L, lraspi_Image* image);
  * @param narg The position of the argument.
  * @return A image object.
  */
-lraspi_Image* lraspi_checkimage(lua_State* L, int narg);
+lua_Image lraspi_checkimage(lua_State* L, int narg);
 
 /**
  * @brief If the function argument \p arg is an image object, return this image. If the argument is absent or is nil, return \p d. Otherwise, raises an error.
@@ -47,7 +55,7 @@ lraspi_Image* lraspi_checkimage(lua_State* L, int narg);
  * @param d The default value if the argument is absent or nil.
  * @return A image object.
  */
-lraspi_Image* lraspi_optimage(lua_State* L, int arg, lraspi_Image* d);
+lua_Image lraspi_optimage(lua_State* L, int arg, lua_Image d);
 
 /**
  * @}

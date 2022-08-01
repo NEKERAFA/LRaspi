@@ -6,12 +6,14 @@
  * Copyright (c) 2019 - Rafael Alcalde Azpiazu (NEKERAFA)
  */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #include "raylib.h"
 #include "../lraspi.h"
 #include "image.h"
+#include "colour.h"
 
 lraspi_Image* lraspi_image_new(const char* image_file) {
     lraspi_Image* image = (lraspi_Image*)malloc(sizeof(lraspi_Image));
@@ -92,3 +94,25 @@ void lraspi_image_setfilter(lraspi_Image* image, lraspi_FilterMode filter) {
     image->filter_mode = filter;
 }
 
+lraspi_Colour* lraspi_image_getpixel(lraspi_Image* image, int x, int y) {
+    Image data = LoadImageFromTexture(image->data);
+    Color colourData = GetImageColor(data, x, y);
+    lraspi_Colour* colour = (lraspi_Colour*)malloc(sizeof(lraspi_Colour));
+    colour->data = colourData;
+    UnloadImage(data);
+    return colour;
+}
+
+void lraspi_image_setpixel(lraspi_Image* image, lraspi_Colour* colour, int x, int y) {
+    Image data = LoadImageFromTexture(image->data);
+    ImageDrawPixel(&data, x, y, colour->data);
+    UnloadTexture(image->data);
+    image->data = LoadTextureFromImage(data);
+    UnloadImage(data);
+}
+
+const char* lraspi_image_tostring(lraspi_Image* image) {
+    char* str = (char*)malloc(sizeof(char) * 256);
+    sprintf(str, "<%i x %i>", image->initial_width, image->initial_height);
+    return (const char*)str;
+}

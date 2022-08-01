@@ -48,6 +48,30 @@ lraspi_Image* lraspi_screen_getdefault() {
     return lraspi_screen_default;
 }
 
+bool lraspi_screen_isclosing() {
+    return WindowShouldClose();
+}
+
+int lraspi_screen_getwidth() {
+    return GetScreenWidth();
+}
+
+int lraspi_screen_getheight() {
+    return GetScreenHeight();
+}
+
+int lraspi_screen_getfps() {
+    return GetFPS();
+}
+
+void lraspi_screen_setfps(int frame_per_seconds) {
+    SetTargetFPS(frame_per_seconds);
+}
+
+float lraspi_screen_getdeltatime() {
+    return GetFrameTime();
+}
+
 void lraspi_screen_clear() {
     if (lraspi_screen_default == NULL) {
         BeginDrawing();

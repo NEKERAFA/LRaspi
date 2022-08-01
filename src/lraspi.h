@@ -64,11 +64,127 @@ void lraspi_init();
 void lraspi_close();
 
 /**
- * @brief Checks if the program will be closed.
+ * @}
  *
- * @return true if the program will be close, false otherwise.
+ *
+ * @defgroup colour Colour module
+ * Funtions to create, convert and modify colours
+ *
+ * @{
  */
-bool lraspi_isclosing();
+
+/** Represents a colour object. */
+typedef struct lraspi_Colour lraspi_Colour;
+
+/**
+ * @brief Creates a new colour object.
+ *
+ * @param red The red channel value (0 - 255).
+ * @param green The green channel value (0 - 255).
+ * @param blue The blue channel value (0 - 255).
+ * @param alpha The alpha channel value (0 - 255).
+ */
+lraspi_Colour* lraspi_colour_new(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
+
+/**
+ * @brief Releases the colour.
+ *
+ * @param colour The colour object which will be released.
+ */
+void lraspi_colour_free(lraspi_Colour* colour);
+
+/**
+ * @brief Gets the red channel value.
+ *
+ * @param colour A colour object.
+ */
+uint8_t lraspi_colour_getredchannel(lraspi_Colour* colour);
+
+/**
+ * @brief Sets the red channel value.
+ *
+ * @param colour A colour object.
+ * @param red The new value.
+ */
+void lraspi_colour_setredchannel(lraspi_Colour* colour, uint8_t red);
+
+/**
+ * @brief Gets the green channel value.
+ *
+ * @param colour A colour object.
+ */
+uint8_t lraspi_colour_getgreenchannel(lraspi_Colour* colour);
+
+/**
+ * @brief Sets the green channel value.
+ *
+ * @param colour A colour object.
+ * @param green The new value.
+ */
+void lraspi_colour_setgreenchannel(lraspi_Colour* colour, uint8_t green);
+
+/**
+ * @brief Gets the blue channel value.
+ *
+ * @param colour A colour object.
+ */
+uint8_t lraspi_colour_getbluechannel(lraspi_Colour* colour);
+
+/**
+ * @brief Sets the blue channel value.
+ *
+ * @param colour A colour object.
+ * @param blue The new value.
+ */
+void lraspi_colour_setbluechannel(lraspi_Colour* colour, uint8_t blue);
+
+/**
+ * @brief Gets the alpha channel value.
+ *
+ * @param colour A colour object.
+ */
+uint8_t lraspi_colour_getalphachannel(lraspi_Colour* colour);
+
+/**
+ * @brief Sets the alpha channel value.
+ *
+ * @param colour A colour object.
+ * @param alpha The new value.
+ */
+void lraspi_colour_setalphachannel(lraspi_Colour* colour, uint8_t alpha);
+
+/**
+ * @brief Sets the default foreground colour.
+ *
+ * @param colour A colour object. NULL to set the default foreground.
+ */
+void lraspi_colour_setforeground(lraspi_Colour* colour);
+
+/**
+ * @brief Gets the default foreground colour.
+ *
+ * @return Current foreground colour.
+ */
+lraspi_Colour* lraspi_colour_getforeground();
+
+/**
+ * @brief Sets the default foreground colour.
+ *
+ * @param colour A colour object. NULL to set the default foreground.
+ */
+void lraspi_colour_setbackground(lraspi_Colour* colour);
+
+/**
+ * @brief Gets the default background colour.
+ *
+ * @return Current background colour.
+ */
+lraspi_Colour* lraspi_colour_getbackground();
+
+/**
+ * @brief Gets the string representation of the colour.
+ */
+const char* lraspi_colour_tostring(lraspi_Colour* colour);
 
 /**
  * @}
@@ -90,7 +206,7 @@ typedef enum {
 } lraspi_FilterMode;
 
 /**
- * @brief Loads an image file onto the GPU memory.
+ * @brief Loads an image file onto the memory.
  *
  * @param image_file Path of the image file.
  * @return An image object.
@@ -209,6 +325,30 @@ lraspi_FilterMode lraspi_image_getfilter(lraspi_Image* image);
 void lraspi_image_setfilter(lraspi_Image* image, lraspi_FilterMode filter);
 
 /**
+ * @brief Gets the colour pixel of the image.
+ * 
+ * @param image An image object.
+ * @param x x-axis image position (in pixels).
+ * @param y y-axis image position (in pixels).
+ */
+lraspi_Colour* lraspi_image_getpixel(lraspi_Image* image, int x, int y);
+
+/**
+ * @brief Sets the colour pixel of the image.
+ * 
+ * @param image An image object.
+ * @param colour An colour object.
+ * @param x x-axis image position (in pixels).
+ * @param y y-axis image position (in pixels).
+ */
+void lraspi_image_setpixel(lraspi_Image* image, lraspi_Colour* colour, int x, int y);
+
+/**
+ * @brief Gets the string representation of the image.
+ */
+const char* lraspi_image_tostring(lraspi_Image* image);
+
+/**
  * @}
  *
  *
@@ -217,6 +357,42 @@ void lraspi_image_setfilter(lraspi_Image* image, lraspi_FilterMode filter);
  *
  * @{
  */
+
+/**
+ * @brief Checks if the program will be closed.
+ *
+ * @return true if the program will be close, false otherwise.
+ */
+bool lraspi_screen_isclosing();
+
+/**
+ * @brief Gets the width of the screen
+ * 
+ * @return int current screen width
+ */
+int lraspi_screen_getwidth();
+
+/**
+ * @brief Gets the height of the screen
+ * 
+ * @return int current screen height
+ */
+int lraspi_screen_getheight();
+
+/**
+ * @brief Gets the frames per second
+ */
+int lraspi_screen_getfps();
+
+/**
+ * @brief Sets the frames per second
+ */
+void lraspi_screen_setfps(int frame_per_seconds);
+
+/**
+ * @brief Gets the time in seconds since the last screen update
+ */
+float lraspi_screen_getdeltatime();
 
 /**
  * @brief Clears the buffer using the default background colour and prepares the library to draw.
@@ -316,122 +492,9 @@ void lraspi_font_setdefault(lraspi_Font* font);
 lraspi_Font* lraspi_font_getdefault();
 
 /**
- * @}
- *
- *
- * @defgroup colour Colour module
- * Funtions to create, convert and modify colours
- *
- * @{
+ * @brief Gets the string representation of the image.
  */
-
-/** Represents a colour object. */
-typedef struct lraspi_Colour lraspi_Colour;
-
-/**
- * @brief Creates a new colour object.
- *
- * @param red The red channel value (0 - 255).
- * @param green The green channel value (0 - 255).
- * @param blue The blue channel value (0 - 255).
- * @param alpha The alpha channel value (0 - 255).
- */
-lraspi_Colour* lraspi_colour_new(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
-
-/**
- * @brief Releases the colour.
- *
- * @param colour The colour object which will be released.
- */
-void lraspi_colour_free(lraspi_Colour* colour);
-
-/**
- * @brief Gets the red channel value.
- *
- * @param colour A colour object.
- */
-uint8_t lraspi_colour_getredchannel(lraspi_Colour* colour);
-
-/**
- * @brief Sets the red channel value.
- *
- * @param colour A colour object.
- * @param red The new value.
- */
-void lraspi_colour_setredchannel(lraspi_Colour* colour, uint8_t red);
-
-/**
- * @brief Gets the green channel value.
- *
- * @param colour A colour object.
- */
-uint8_t lraspi_colour_getgreenchannel(lraspi_Colour* colour);
-
-/**
- * @brief Sets the green channel value.
- *
- * @param colour A colour object.
- * @param green The new value.
- */
-void lraspi_colour_setgreenchannel(lraspi_Colour* colour, uint8_t green);
-
-/**
- * @brief Gets the blue channel value.
- *
- * @param colour A colour object.
- */
-uint8_t lraspi_colour_getbluechannel(lraspi_Colour* colour);
-
-/**
- * @brief Sets the blue channel value.
- *
- * @param colour A colour object.
- * @param blue The new value.
- */
-void lraspi_colour_setbluechannel(lraspi_Colour* colour, uint8_t blue);
-
-/**
- * @brief Gets the alpha channel value.
- *
- * @param colour A colour object.
- */
-uint8_t lraspi_colour_getalphachannel(lraspi_Colour* colour);
-
-/**
- * @brief Sets the alpha channel value.
- *
- * @param colour A colour object.
- * @param alpha The new value.
- */
-void lraspi_colour_setalphachannel(lraspi_Colour* colour, uint8_t alpha);
-
-/**
- * @brief Sets the default foreground colour.
- *
- * @param colour A colour object. NULL to set the default foreground.
- */
-void lraspi_colour_setforeground(lraspi_Colour* colour);
-
-/**
- * @brief Gets the default foreground colour.
- *
- * @return Current foreground colour.
- */
-lraspi_Colour* lraspi_colour_getforeground();
-
-/**
- * @brief Sets the default foreground colour.
- *
- * @param colour A colour object. NULL to set the default foreground.
- */
-void lraspi_colour_setbackground(lraspi_Colour* colour);
-
-/**
- * @brief Gets the default background colour.
- *
- * @return Current background colour.
- */
-lraspi_Colour* lraspi_colour_getbackground();
+const char* lraspi_font_tostring(lraspi_Font* font);
 
 /**
  * @}
